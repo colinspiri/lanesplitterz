@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7410342431335568266}
   - component: {fileID: 6358661147363804594}
   - component: {fileID: 7470741508688094766}
+  - component: {fileID: 7040545534150770670}
   m_Layer: 0
   m_Name: PF_Pin
   m_TagString: Pin
@@ -153,3 +154,19 @@ MonoBehaviour:
   currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
   pointValue: 1
   uprightAngleRange: 15
+--- !u!114 &7040545534150770670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760851470008906924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8d5e579fe64841a219d167d94b4e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleTags:
+  - Pin
+  triggerCount: 1
+  shakeMagnitude: 0.1

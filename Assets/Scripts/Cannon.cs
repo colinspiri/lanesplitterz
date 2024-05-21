@@ -74,5 +74,7 @@ public class Cannon : MonoBehaviour
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+        
+        CameraFollowObject.Instance.EnableFollow();
     }
 }

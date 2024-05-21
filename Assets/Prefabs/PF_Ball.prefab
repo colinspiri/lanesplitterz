@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1377128706734412512}
   - component: {fileID: 9095661317396777986}
   - component: {fileID: 793625586155202326}
+  - component: {fileID: 4911003802255330980}
   m_Layer: 0
   m_Name: PF_Ball
   m_TagString: Ball
@@ -133,3 +134,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4911003802255330980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394013142470015375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7ff6fc190de5340b2e2c87d2fb2b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleTags:
+  - Pin
+  triggerCount: 1
