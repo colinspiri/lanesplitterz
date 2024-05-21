@@ -14,7 +14,6 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float launchForce;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Transform launchPoint;
-    
 
     [SerializeField] private Rigidbody ball;
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2835391763423027068}
   m_Layer: 0
   m_Name: PF_Pin
-  m_TagString: Untagged
+  m_TagString: Pin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,3 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e21319e66dd23449a7ef21f8478ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allPins: {fileID: 11400000, guid: 5f7405f0aeba16843a20e781756ebd11, type: 2}
+  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
+  pointValue: 1
+  uprightAngleRange: 15
