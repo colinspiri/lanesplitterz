@@ -16,6 +16,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Transform launchPoint;
 
     [SerializeField] private Rigidbody ball;
+    [SerializeField] private AudioSource launchSound;
 
     private bool launched;
     private Vector2 movementInput;
@@ -74,6 +75,8 @@ public class Cannon : MonoBehaviour
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+
+        launchSound.Play();
         
         CameraFollowObject.Instance.EnableFollow();
     }
