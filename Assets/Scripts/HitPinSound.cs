@@ -15,19 +15,15 @@ public class HitPinSound : MonoBehaviour
     // parameters
     [SerializeField] private float wait = 0.15f;
     
-    private bool _played;
-
     private void Start() {
         PinManager.OnPinKnockedDown += PlayPinHitSound;
     }
 
     private void PlayPinHitSound() {
-        if (!_played) {
-            pinHit.Play();
-            StartCoroutine(PinsFall());
-            _played = true;
-        }
+        pinHit.Play();
+        StartCoroutine(PinsFall());
 
+        // remove callback so it only happens the first time you hit a pin
         PinManager.OnPinKnockedDown -= PlayPinHitSound;
     }
 
