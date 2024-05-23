@@ -5,27 +5,26 @@ using UnityEngine;
 public class Pin : MonoBehaviour {
     // components
     [SerializeField] private PinCollection allPins;
-    [SerializeField] private IntVariable currentPoints;
 
-    [SerializeField] private int pointValue = 1;
-    
+    // public data
     [Tooltip("Range of angles that pin is considered upright. When euler angle is > the range or < (360 - the range), the pin is considered knocked over. In degrees.")]
     [SerializeField] private float uprightAngleRange = 5;
+    [SerializeField] private int pointValue = 1;
+    public int PointValue => pointValue;
     
-    private bool _hit;
-    private bool _knockedDown;
+    // private state
+    private enum PinState { Untouched, Hit, KnockedDown }
+    private PinState _pinState;
 
-    // Start is called before the first frame update
     void Start()
     {
         allPins.Add( this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // after being hit, start checking if the angle exceeds a certain range
-        if (_hit && !_knockedDown) {
+        if (_pinState == PinState.Hit) {
             var zAngle = transform.localEulerAngles.z;
             if (zAngle > uprightAngleRange || zAngle < (360 - uprightAngleRange)) {
                 SetKnockedDown();
@@ -33,15 +32,17 @@ public class Pin : MonoBehaviour {
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void SetKnockedDown() {
-        _knockedDown = true;
-        currentPoints.Value += pointValue;
+        _pinState = PinState.KnockedDown;
+
+        PinManager.Instance.NotifyPinKnockedDown(this);
     }
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ball") || collision.collider.CompareTag("Pin")) {
-            _hit = true;
+        if (_pinState == PinState.Untouched && (collision.collider.CompareTag("Ball") || collision.collider.CompareTag("Pin"))) {
+            _pinState = PinState.Hit;
         }
     }
 
