@@ -98,10 +98,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Points: 00'
+  m_text: 'Points: 11'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d196020b290dd314d93b1307dbdadff7, type: 2}
+  m_sharedMaterial: {fileID: -7879454424170370881, guid: d196020b290dd314d93b1307dbdadff7,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -820,7 +821,7 @@ PrefabInstance:
     - target: {fileID: 4829591992053970631, guid: 889a07d3fe156894ab8b89a77e486fdb,
         type: 3}
       propertyPath: m_text
-      value: QUIT
+      value: quit
       objectReference: {fileID: 0}
     - target: {fileID: 5578273971731233429, guid: 889a07d3fe156894ab8b89a77e486fdb,
         type: 3}
@@ -1171,7 +1172,7 @@ PrefabInstance:
     - target: {fileID: 4829591992053970631, guid: 889a07d3fe156894ab8b89a77e486fdb,
         type: 3}
       propertyPath: m_text
-      value: MAIN MENU
+      value: main menu
       objectReference: {fileID: 0}
     - target: {fileID: 4829591992053970631, guid: 889a07d3fe156894ab8b89a77e486fdb,
         type: 3}
