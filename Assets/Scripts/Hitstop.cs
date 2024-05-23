@@ -26,8 +26,12 @@ public class Hitstop : MonoBehaviour
         
         Time.timeScale = hitstopTimeScale;
 
-        yield return new WaitForSecondsRealtime(hitstopTime);
-
+        var timer = 0f;
+        while (timer < hitstopTime) {
+            if(!GameManager.Instance.GamePaused) timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        
         Time.timeScale = 1;
     }
 }
