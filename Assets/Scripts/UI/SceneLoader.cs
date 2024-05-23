@@ -11,18 +11,18 @@ public class SceneLoader : ScriptableObject {
     }
 
     public void LoadGameScene() {
-        Time.timeScale = 1;
+        ResetTime();
         SceneManager.LoadScene(gameScene.ScenePath);
     }
 
     public void Restart()
     {
-        Time.timeScale = 1;
+        ResetTime();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu() {
-        Time.timeScale = 1;
+        ResetTime();
         SceneManager.LoadScene(mainMenuScene.ScenePath);
     }
 
@@ -32,5 +32,10 @@ public class SceneLoader : ScriptableObject {
 #else
         Application.Quit();
 #endif
+    }
+
+    private void ResetTime() {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
     }
 }

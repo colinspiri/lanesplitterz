@@ -9,9 +9,7 @@ public class GameManager : MonoBehaviour {
     
     private bool _paused;
     public bool GamePaused => _paused;
-
-    private float _timeScaleBeforePause = 1f;
-
+    
     private void Awake() {
         Instance = this;
     }
@@ -23,15 +21,15 @@ public class GameManager : MonoBehaviour {
     public void Pause(bool pauseAudio = true) {
         _paused = true;
 
-        _timeScaleBeforePause = Time.timeScale;
-        Time.timeScale = 0;
+        TimeManager.Instance.PauseTime();
 
         if(pauseAudio) AudioListener.pause = true;
     }
 
     public void Resume(bool resumeAudio = true) {
         _paused = false;
-        Time.timeScale = _timeScaleBeforePause;
+        
+        TimeManager.Instance.ResumeTime();
         
         if(resumeAudio) AudioListener.pause = false;
     }

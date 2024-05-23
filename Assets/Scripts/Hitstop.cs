@@ -24,7 +24,7 @@ public class Hitstop : MonoBehaviour
     {
         if (hitstopTime == 0) hitstopTime = defaultHitstopTime;
         
-        Time.timeScale = hitstopTimeScale;
+        TimeManager.Instance.SetTimeScale(hitstopTimeScale);
 
         var timer = 0f;
         while (timer < hitstopTime) {
@@ -32,6 +32,6 @@ public class Hitstop : MonoBehaviour
             yield return null;
         }
         
-        Time.timeScale = 1;
+        TimeManager.Instance.SetTimeScale(1);
     }
 }
