@@ -7,8 +7,8 @@ public class BallMove : MonoBehaviour
     private Rigidbody rigid;
     public float speed;
     Vector3 oldPosition;
-    // Update is called once per frame
 
+    // Update is called once per frame
     private void Start()
     {
         rigid = gameObject.GetComponent<Rigidbody>();
