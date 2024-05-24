@@ -1,30 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpeedPlane : MonoBehaviour
 {
     public float speedMultiplier = 2f;
-    public GameObject ball;
-    private BallMove speedOfBall;
-    private Rigidbody rigid;
+    // private Rigidbody _rigid;
+    [SerializeField] private PlayerMovement _playerMove;
  
-    private void Start()
-    {
-        rigid = ball.GetComponent<Rigidbody>();
-    }
-
-    void Update()
-    {
-        speedOfBall = ball.GetComponent<BallMove>();
-    }
+    // private void Start()
+    // {
+        // Doesn't work when ball is disabled at start of load
+        // _playerMove = GameObject.FindWithTag("Ball").GetComponent<PlayerMovement>();
+    // }
 
     private void OnTriggerEnter( Collider collision )
     {
-        rigid.AddForce(Vector3.forward * speedMultiplier);
+        // _rigid.AddForce(Vector3.forward * speedMultiplier, ForceMode.Impulse);
+        _playerMove.Accelerate(speedMultiplier);
 
         Debug.Log("BOOOOOOOOST");
-        Debug.Log("Speed of Ball: " + speedOfBall.speed.ToString("F2"));
+        // Debug.Log("Speed of Ball: " + speedOfBall.speed.ToString("F2"));
     }
 
 

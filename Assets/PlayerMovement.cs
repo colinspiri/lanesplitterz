@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         
         _myCam = GameObject.FindWithTag("MainCamera").transform;
         _camInvRot = Quaternion.Inverse(_myCam.rotation);
+        /* To do: Remove y component of inverse rotation */
         
         _myCollider = GetComponent<SphereCollider>();
 
@@ -97,6 +98,17 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
     }
     
+    // Public version, accelVal is magnitude of force to apply
+    public void Accelerate(float accelVal)
+    {
+        // Linear acceleration
+        _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
+        
+        // Rotational acceleration
+        _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
+    }
+    
+    /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
     private void Strafe()
     {
         if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * strafeForce, ForceMode.Impulse);
