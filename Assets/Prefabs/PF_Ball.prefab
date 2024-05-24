@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca77dc6866d19946a1551ce347942ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelForce: 10
+  accelForce: 5
   turnForce: 5
-  jumpForce: 200
-  strafeForce: 200
+  jumpForce: 50
+  strafeForce: 100
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 50
