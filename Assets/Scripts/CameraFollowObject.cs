@@ -10,7 +10,7 @@ public class CameraFollowObject : MonoBehaviour {
 
     private Vector3 _targetPosition;
     private Vector3 _offset;
-    private bool _followEnabled;
+    [SerializeField] private bool followEnabled;
 
     private void Awake() {
         Instance = this;
@@ -24,7 +24,7 @@ public class CameraFollowObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (_followEnabled) {
+        if (followEnabled) {
             LerpTowardsObject();
         }
     }
@@ -38,6 +38,6 @@ public class CameraFollowObject : MonoBehaviour {
     }
 
     public void EnableFollow() {
-        _followEnabled = true;
+        followEnabled = true;
     }
 }
