@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
-    [HideInInspector] public int AccelerateState; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
+    [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
 
     #region MonoBehaviour Functions
 
@@ -108,9 +108,9 @@ public class PlayerMovement : MonoBehaviour
         float accelVal = Input.GetAxis("Accelerate") * accelForce;
         
         // set public-accessible state
-        if (accelVal < 0) AccelerateState = -1;
-        else if (accelVal > 0) AccelerateState = 1;
-        else AccelerateState = 0;
+        if (accelVal < 0) AccelerationDirection = -1;
+        else if (accelVal > 0) AccelerationDirection = 1;
+        else AccelerationDirection = 0;
         
         // Linear acceleration
         _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
