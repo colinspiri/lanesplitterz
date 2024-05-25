@@ -7,7 +7,7 @@ public class Hitstop : MonoBehaviour
 
     [SerializeField] private float hitstopTimeScale = 0f;
     [SerializeField] private float defaultHitstopTime = 1f;
-    [SerializeField] private float hitstopShakeStrength = 0.4f;
+    [SerializeField] private float hitstopShakeStrength;
 
     private void Awake()
     {

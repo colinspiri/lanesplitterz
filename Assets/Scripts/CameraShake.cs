@@ -6,9 +6,12 @@ public class CameraShake : MonoBehaviour {
     public static CameraShake Instance;
 
     public KeyCode cameraShakeTestKey;
-    
-    private float duration = 0.25f;
+
+    private const float Duration = 0.25f;
     [SerializeField] private float defaultMagnitude = 0.4f;
+
+    private Coroutine _shakeCoroutine;
+    private float _currentMagnitude;
 
     private void Awake() {
         if (Instance == null) Instance = this;
@@ -18,22 +21,29 @@ public class CameraShake : MonoBehaviour {
     void Update()
     {
         if (Input.GetKeyDown(cameraShakeTestKey)) {
-            StartCoroutine(ShakeCoroutine());
+            Shake(defaultMagnitude);
         }
     }
 
-    public void Shake(float magnitude = 0) {
-        StartCoroutine(ShakeCoroutine(magnitude));
+    public void Shake(float magnitude = -1) {
+        if (magnitude == -1) magnitude = defaultMagnitude;
+
+        // if already shaking, reset shake with the greater magnitude
+        if (_shakeCoroutine != null) {
+            StopCoroutine(_shakeCoroutine);
+            magnitude = Mathf.Max(_currentMagnitude, magnitude);
+        }
+        _shakeCoroutine = StartCoroutine(ShakeCoroutine(magnitude));
+
+        _currentMagnitude = magnitude;
     }
 
-    private IEnumerator ShakeCoroutine(float magnitude = 0) {
-        if (magnitude == 0) magnitude = defaultMagnitude;
-        
+    private IEnumerator ShakeCoroutine(float magnitude) {
         Vector3 originalPos = transform.localPosition;
 
         float elapsed = 0.0f;
 
-        while (elapsed < duration) {
+        while (elapsed < Duration) {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
             float z = Random.Range(-1f, 1f) * magnitude;
@@ -46,5 +56,7 @@ public class CameraShake : MonoBehaviour {
         }
 
         transform.localPosition = originalPos;
+
+        _shakeCoroutine = null;
     }
 }
