@@ -1,9 +1,12 @@
+using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     #region Object Variables
-    
+
+    public static PlayerMovement Instance;
     private Rigidbody _myBody;
     private Transform _myCam;
     private Quaternion _camInvRot;
@@ -29,8 +32,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxLinearVelocity = 1e+16f;
     [SerializeField] private float maxAngularVelocity = 50f;
 
+    // public properties
+    [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
+    [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
+
     #region MonoBehaviour Functions
-    
+
+    private void Awake() {
+        Instance = this;
+    }
+
     private void Start()
     {
         _myBody = GetComponent<Rigidbody>();
@@ -79,6 +90,11 @@ public class PlayerMovement : MonoBehaviour
         // Amount to turn, -1 for max left, 1 for max right
         float turnVal = Input.GetAxis("Turn") * turnForce;
         
+        // set public-accessible state
+        if (turnVal < 0) TurnDirection = -1;
+        else if (turnVal > 0) TurnDirection = 1;
+        else TurnDirection = 0;
+        
         // Linear acceleration
         _myBody.AddForce((_camInvRot * _myCam.right) * turnVal, ForceMode.Impulse);
         
@@ -90,6 +106,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // Amount to speed up or down, -1 max decelerating, 1 max accelerating
         float accelVal = Input.GetAxis("Accelerate") * accelForce;
+        
+        // set public-accessible state
+        if (accelVal < 0) AccelerationDirection = -1;
+        else if (accelVal > 0) AccelerationDirection = 1;
+        else AccelerationDirection = 0;
         
         // Linear acceleration
         _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);

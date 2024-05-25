@@ -151,9 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allPins: {fileID: 11400000, guid: 5f7405f0aeba16843a20e781756ebd11, type: 2}
-  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
-  pointValue: 1
   uprightAngleRange: 15
+  pointValue: 1
 --- !u!114 &7040545534150770670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleTags:
-  - Pin
+  - Ball
   triggerCount: 1
-  shakeMagnitude: 0.1
+  shakeMagnitude: 0.3
