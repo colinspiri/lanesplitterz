@@ -11,7 +11,8 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float maxYaw;
     [SerializeField] private float minPitch;
     [SerializeField] private float maxPitch;
-    [SerializeField] private float launchForce;
+    [SerializeField] private float maxLaunchForce;
+    [SerializeField] private float minLaunchForce;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Transform launchPoint;
 
@@ -20,6 +21,7 @@ public class Cannon : MonoBehaviour
 
     private bool launched;
     private Vector2 movementInput;
+    private float launchForce;
 
     private void Awake()
     {
@@ -36,6 +38,11 @@ public class Cannon : MonoBehaviour
         if (!launched)
         {
             if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PowerLevelManager.Instance.EnablePowerSlider();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
             {
                 Launch();
                 return;
@@ -74,10 +81,14 @@ public class Cannon : MonoBehaviour
         launched = true;
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
+
+        // update launch force based on power level
+        launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
 
         launchSound.Play();
         
         CameraFollowObject.Instance.EnableFollow();
+        PowerLevelManager.Instance.DisablePowerSlider();
     }
 }
