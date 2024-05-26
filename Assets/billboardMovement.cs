@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class billboardMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerMovement playerMove;
+    [SerializeField] public GameObject billboard;
     [SerializeField] public GameObject movementPoint1;
     [SerializeField] public GameObject movementPoint2;
     [SerializeField] public float moveDuration = 5;
+    [SerializeField] private float slowDown = 0.01f;
+    [SerializeField] private float SecondsStunned = 3f;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -17,6 +21,16 @@ public class billboardMovement : MonoBehaviour
             yield return StartCoroutine( MoveBillboardBack ( movementPoint1.transform.position ) );
         }
     }
+
+ //   void Update()
+ //   {
+   //     if (SecondsStunned > 0)
+    //    {
+    //        SecondsStunned -= Time.deltaTime;
+     //       Debug.Log("Get Stunned Loser! Seconds Stunned:" + SecondsStunned);
+     //       return;
+    //    }
+  //  }
 
     IEnumerator MoveBillboardForward ( Vector3 targetPosition )
     {
@@ -50,5 +64,19 @@ public class billboardMovement : MonoBehaviour
     {
         Gizmos.DrawWireCube(movementPoint1.transform.position, new Vector3(12, 5, 1));
         Gizmos.DrawWireCube(movementPoint2.transform.position, new Vector3(12, 5, 1));
+    }
+
+    void OnTriggerEnter( Collider billboardHit )
+    {
+        //SecondsStunned += 1.0f;
+
+        billboard.gameObject.SetActive(false);
+        playerMove.Accelerate( slowDown );
+
+        for (float i = 0; i < SecondsStunned; i += Time.deltaTime )
+        {
+            Debug.Log("You are stunned for: " + i + " Seconds");
+        }
+
     }
 }
