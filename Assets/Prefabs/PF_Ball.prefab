@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4911003802255330980}
   - component: {fileID: 3453596374459429697}
   - component: {fileID: 9041972455083765477}
+  - component: {fileID: 262683764499468453}
   m_Layer: 0
   m_Name: PF_Ball
   m_TagString: Ball
@@ -284,3 +285,19 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!208 &262683764499468453
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394013142470015375}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

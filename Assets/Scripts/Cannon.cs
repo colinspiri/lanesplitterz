@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,10 +23,18 @@ public class Cannon : MonoBehaviour
     private bool launched;
     private Vector2 movementInput;
     private float launchForce;
+    private Enemy _enemy;
 
     private void Awake()
     {
         ball.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        _enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
+        
+        if (!_enemy) Debug.LogError("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
 
     private void Update()
@@ -79,16 +88,27 @@ public class Cannon : MonoBehaviour
     private void Launch()
     {
         launched = true;
-        ball.gameObject.SetActive(true);
-        ball.transform.position = launchPoint.position;
-
+        PowerLevelManager.Instance.DisablePowerSlider();
+        
         // update launch force based on power level
         launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
+        
+        // Begin enemy launch sequence
+        _enemy.LaunchSequence();
+
+        StartCoroutine(LaunchWithEnemy());
+    }
+
+    private IEnumerator LaunchWithEnemy()
+    {
+        yield return new WaitUntil(() => _enemy.Launched);
+        
+        ball.gameObject.SetActive(true);
+        ball.transform.position = launchPoint.position;
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
 
         launchSound.Play();
         
         CameraFollowObject.Instance.EnableFollow();
-        PowerLevelManager.Instance.DisablePowerSlider();
     }
 }
