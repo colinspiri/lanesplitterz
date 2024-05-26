@@ -32,9 +32,9 @@ public class Cannon : MonoBehaviour
 
     private void Start()
     {
-        _enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
+        _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
         
-        if (!_enemy) Debug.LogError("Cannon Error: Enemy not found. Is enemy parent disabled?");
+        if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
 
     private void Update()
@@ -94,14 +94,14 @@ public class Cannon : MonoBehaviour
         launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
         
         // Begin enemy launch sequence
-        _enemy.LaunchSequence();
+        if (_enemy) _enemy.LaunchSequence();
 
         StartCoroutine(LaunchWithEnemy());
     }
 
     private IEnumerator LaunchWithEnemy()
     {
-        yield return new WaitUntil(() => _enemy.Launched);
+        if (_enemy) yield return new WaitUntil(() => _enemy.Launched);
         
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
