@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Action Flags
-    
+
+    public bool acceptingInputs = true;
     private bool _jumpRequest;
     private bool _strafeLeft;
     private bool _strafeRight;
+    private float _turnVal;
+    private float _accelVal;
     
     #endregion
     
@@ -64,17 +67,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _jumpRequest = _jumpRequest || Input.GetKeyDown(KeyCode.Space);
+        if (acceptingInputs)
+        {
+            _turnVal = Input.GetAxis("Turn") * turnForce;
+
+            _accelVal = Input.GetAxis("Accelerate") * accelForce;
         
-        _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
-        _strafeRight = _strafeRight || Input.GetKeyDown(KeyCode.E);
+            _jumpRequest = _jumpRequest || Input.GetKeyDown(KeyCode.Space);
+        
+            _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
+            _strafeRight = _strafeRight || Input.GetKeyDown(KeyCode.E);
+        }
+        else
+        {
+            _turnVal = 0f;
+            _accelVal = 0f;
+            _jumpRequest = false;
+            _strafeLeft = false;
+            _strafeRight = false;
+        }
     }
     
     private void FixedUpdate()
     {
-        Turn();
+        if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
-        Accelerate();
+        if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
         
         if (_strafeLeft || _strafeRight) Strafe();
         
@@ -85,11 +103,9 @@ public class PlayerMovement : MonoBehaviour
 
     #region Movement Functions
     
-    private void Turn()
+    // turnVal is amount to turn, -1 for max left, 1 for max right
+    private void Turn(float turnVal)
     {
-        // Amount to turn, -1 for max left, 1 for max right
-        float turnVal = Input.GetAxis("Turn") * turnForce;
-        
         // set public-accessible state
         if (turnVal < 0) TurnDirection = -1;
         else if (turnVal > 0) TurnDirection = 1;
@@ -101,27 +117,15 @@ public class PlayerMovement : MonoBehaviour
         // Rotational acceleration
         _myBody.AddTorque((_camInvRot * _myCam.up) * turnVal, ForceMode.Impulse);
     }
-
-    private void Accelerate()
+    
+    // accelVal is amount to speed up or down, -1 max decelerating, 1 max accelerating
+    public void Accelerate(float accelVal)
     {
-        // Amount to speed up or down, -1 max decelerating, 1 max accelerating
-        float accelVal = Input.GetAxis("Accelerate") * accelForce;
-        
         // set public-accessible state
         if (accelVal < 0) AccelerationDirection = -1;
         else if (accelVal > 0) AccelerationDirection = 1;
         else AccelerationDirection = 0;
         
-        // Linear acceleration
-        _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
-        
-        // Rotational acceleration
-        _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
-    }
-    
-    // Public version, accelVal is magnitude of force to apply
-    public void Accelerate(float accelVal)
-    {
         // Linear acceleration
         _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
         
