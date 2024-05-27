@@ -68,15 +68,8 @@ public class billboardMovement : MonoBehaviour
 
     void OnTriggerEnter( Collider billboardHit )
     {
-        //SecondsStunned += 1.0f;
-
         billboard.gameObject.SetActive(false);
         playerMove.Accelerate( slowDown );
-
-        for (float i = 0; i < SecondsStunned; i += Time.deltaTime )
-        {
-            Debug.Log("You are stunned for: " + i + " Seconds");
-        }
-
     }
+
 }
