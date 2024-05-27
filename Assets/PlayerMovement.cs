@@ -63,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
         // Setting max parameters of rigidbody
         _myBody.maxLinearVelocity = maxLinearVelocity;
         _myBody.maxAngularVelocity = maxAngularVelocity;
+        
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -152,6 +154,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _jumpRequest = false;
+    }
+
+    // Adds spin to the ball
+    // Positive spinVal spins CW (right), negative spins CCW (left)
+    // Magnitude of spinVal determines magnitude of torque
+    public void Spin(float spinVal)
+    {
+        _myBody.AddTorque((_camInvRot * _myCam.up) * spinVal, ForceMode.Impulse);
     }
     
     #endregion

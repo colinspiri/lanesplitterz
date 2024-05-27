@@ -24,12 +24,7 @@ public class Cannon : MonoBehaviour
     private Vector2 movementInput;
     private float launchForce;
     private Enemy _enemy;
-
-    private void Awake()
-    {
-        ball.gameObject.SetActive(false);
-    }
-
+    
     private void Start()
     {
         _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
@@ -105,7 +100,11 @@ public class Cannon : MonoBehaviour
         
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
+        
+        // Linear acceleration
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+        
+        // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 
         launchSound.Play();
         
