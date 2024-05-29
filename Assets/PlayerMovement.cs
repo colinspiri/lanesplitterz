@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnForce;
     [SerializeField] private float jumpForce;
     [SerializeField] private float strafeForce;
+    [SerializeField] private float slipperyForce = 10f;
     
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
         if (acceptingInputs)
         {
             _turnVal = Input.GetAxis("Turn") * turnForce;
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
             _strafeLeft = false;
             _strafeRight = false;
         }
+                
     }
     
     private void FixedUpdate()
@@ -106,16 +109,17 @@ public class PlayerMovement : MonoBehaviour
     #region Movement Functions
     
     // turnVal is amount to turn, -1 for max left, 1 for max right
-    private void Turn(float turnVal)
+    public void Turn(float turnVal)
     {
         // set public-accessible state
         if (turnVal < 0) TurnDirection = -1;
         else if (turnVal > 0) TurnDirection = 1;
-        else TurnDirection = 0;
-        
+        else TurnDirection = 0;  
+
         // Linear acceleration
-        _myBody.AddForce((_camInvRot * _myCam.right) * turnVal, ForceMode.Impulse);
-        
+        //_myBody.AddForce((_camInvRot * _myCam.right) * turnVal, ForceMode.Impulse);
+        disableLinTurn(turnVal);
+
         // Rotational acceleration
         _myBody.AddTorque((_camInvRot * _myCam.up) * turnVal, ForceMode.Impulse);
     }
@@ -130,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         
         // Linear acceleration
         _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
-        
+
         // Rotational acceleration
         _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
     }
@@ -156,12 +160,30 @@ public class PlayerMovement : MonoBehaviour
         _jumpRequest = false;
     }
 
+
     // Adds spin to the ball
     // Positive spinVal spins CW (right), negative spins CCW (left)
     // Magnitude of spinVal determines magnitude of torque
     public void Spin(float spinVal)
     {
         _myBody.AddTorque((_camInvRot * _myCam.up) * spinVal, ForceMode.Impulse);
+    }
+
+    //diasable the linear force of the Turn() method if it is on ice (currently testing with no limited turn)
+    private void disableLinTurn( float __turnVal )
+    {
+        if (!(isIcy()))
+        {
+            _myBody.AddForce((_camInvRot * _myCam.right) * __turnVal, 
+                ForceMode.Impulse);
+            Debug.Log("notIcy");
+        } 
+        else
+        {
+            Debug.Log("Icy");
+            //_myBody.AddForce((_camInvRot * _myCam.right) * (__turnVal / slipperyForce), 
+                //ForceMode.Impulse);
+        }
     }
     
     #endregion
@@ -175,6 +197,14 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         return Physics.SphereCast(transform.position, _myCollider.radius, (_camInvRot * _myCam.up) * -1, out hit,
             1f, LayerMask.GetMask("Ground"));
+    }
+
+    
+    public bool isIcy()
+    {
+        RaycastHit detectIce;
+        return Physics.SphereCast(transform.position, _myCollider.radius, (_camInvRot * _myCam.up) * -1, out detectIce,
+            1f, LayerMask.GetMask("Icy Ground"));
     }
     
     #endregion
