@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         else AccelerationDirection = 0;
         
         // Linear acceleration
-        _myBody.AddForce((_camInvRot * _myCam.forward) * accelVal, ForceMode.Impulse);
+        disableLinAccel(accelVal);
 
         // Rotational acceleration
         _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
@@ -169,25 +169,48 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddTorque((_camInvRot * _myCam.up) * spinVal, ForceMode.Impulse);
     }
 
-    //diasable the linear force of the Turn() method if it is on ice (currently testing with no limited turn)
-    private void disableLinTurn( float __turnVal )
+    
+    #endregion
+
+    #region Disable Functions
+    //disable the linear force of the Accelerate() method if it is on ice (currently testing with limited turn)
+    private void disableLinTurn( float __accelVal )
+    {
+        if (!(isIcy()))
+        {
+            _myBody.AddForce((_camInvRot * _myCam.right) * __accelVal, 
+                ForceMode.Impulse);
+            //Debug.Log("notIcy");
+        } 
+        else
+        {
+            //Debug.Log("Icy");
+            //Disable completely by commenting
+            _myBody.AddForce((_camInvRot * _myCam.right) * (__accelVal / slipperyForce), 
+                ForceMode.Impulse);
+        }
+    }
+
+    //disables Linear Acceleration of the Accelerate() function if Player detects ice (also currently testing w/ limited accel)
+    private void disableLinAccel ( float __turnVal )
     {
         if (!(isIcy()))
         {
             _myBody.AddForce((_camInvRot * _myCam.right) * __turnVal, 
                 ForceMode.Impulse);
-            Debug.Log("notIcy");
+            //Debug.Log("notIcy");
         } 
         else
         {
-            Debug.Log("Icy");
-            //_myBody.AddForce((_camInvRot * _myCam.right) * (__turnVal / slipperyForce), 
-                //ForceMode.Impulse);
+            //Debug.Log("Icy");
+            //Disable completely by commenting
+            _myBody.AddForce((_camInvRot * _myCam.right) * (__turnVal / slipperyForce), 
+                ForceMode.Impulse);
         }
     }
-    
+
     #endregion
-    
+
     #region Support Functions
     
     // Returns true if on the ground, false otherwise
@@ -199,7 +222,8 @@ public class PlayerMovement : MonoBehaviour
             1f, LayerMask.GetMask("Ground"));
     }
 
-    
+    //Returns true is on icy ground, false if not
+    /* same as above, if we add slopes, needs to be updated*/
     public bool isIcy()
     {
         RaycastHit detectIce;

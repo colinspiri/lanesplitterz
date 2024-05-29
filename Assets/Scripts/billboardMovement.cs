@@ -10,7 +10,6 @@ public class billboardMovement : MonoBehaviour
     [SerializeField] public GameObject movementPoint2;
     [SerializeField] public float moveDuration = 5;
     [SerializeField] private float slowDown = 0.01f;
-    [SerializeField] private float SecondsStunned = 3f;
 
     // Start is called before the first frame update
     IEnumerator Start()

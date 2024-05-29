@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class icyField : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMove;
-
-   private void Update()
-    {
-        if ( playerMove.isIcy() )
-        {
-            playerMove.Turn(0f);
-        }
-    }
-
-
-
+    //sends a log to console if ball is in icy field (might also do the same if any OTHER collider interacts with it, but, ya know)
     private void OnTriggerEnter( Collider collider )
     {      
-        //playerMove.Turn (0f, true);
-        Debug.Log("Turning Off");
+        Debug.Log("Icy Field");
     }
 
+    //draws a gizmo over the icy field
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(70, 1, 50));
