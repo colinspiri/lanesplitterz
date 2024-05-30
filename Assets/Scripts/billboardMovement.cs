@@ -21,16 +21,6 @@ public class billboardMovement : MonoBehaviour
         }
     }
 
- //   void Update()
- //   {
-   //     if (SecondsStunned > 0)
-    //    {
-    //        SecondsStunned -= Time.deltaTime;
-     //       Debug.Log("Get Stunned Loser! Seconds Stunned:" + SecondsStunned);
-     //       return;
-    //    }
-  //  }
-
     IEnumerator MoveBillboardForward ( Vector3 targetPosition )
     {
         Vector3 startPosition = movementPoint1.transform.position;
