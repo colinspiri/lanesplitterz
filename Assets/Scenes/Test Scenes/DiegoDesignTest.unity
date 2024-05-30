@@ -1364,11 +1364,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8709273493075997718, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 309326141}
+    - target: {fileID: 8709273493075997718, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: _speedometer
+      value: 
+      objectReference: {fileID: 845648530}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3d5e174593649d489b7211f8f0b6415, type: 3}
+--- !u!114 &845648530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8349536064301145933, guid: a3d5e174593649d489b7211f8f0b6415,
+    type: 3}
+  m_PrefabInstance: {fileID: 845648529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &884737248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2076,7 +2098,7 @@ Transform:
   m_GameObject: {fileID: 1627722873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5115, y: 0.3, z: 37.8441}
+  m_LocalPosition: {x: 5, y: 0.3, z: 134.7}
   m_LocalScale: {x: 7, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2269,7 +2291,7 @@ GameObject:
   - component: {fileID: 1725278784}
   - component: {fileID: 1725278783}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Player Start Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

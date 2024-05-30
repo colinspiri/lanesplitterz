@@ -14,7 +14,7 @@ public class StunBall : MonoBehaviour
         yield return null;
     }
 
-    //Stun mechanic (disable movement -> wait for 1 seconds)
+    //Stun mechanic (disable movement -> wait for SecondsStunned -> re-enable movement)
     IEnumerator EnableStun ()
     {
         playerMove.GetComponent<PlayerMovement>().acceptingInputs = false;
