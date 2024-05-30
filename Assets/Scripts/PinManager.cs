@@ -9,6 +9,7 @@ public class PinManager : MonoBehaviour {
     [SerializeField] private IntVariable currentPoints;
 
     public static Action OnPinKnockedDown;
+    public static Action OnPinHitByBall;
 
     private void Awake() {
         Instance = this;
@@ -24,5 +25,10 @@ public class PinManager : MonoBehaviour {
         currentPoints.Value += pin.PointValue;
         
         OnPinKnockedDown?.Invoke();
+    }
+
+    public void NotifyPinHitByBall(Pin pin)
+    {
+        OnPinHitByBall?.Invoke();
     }
 }

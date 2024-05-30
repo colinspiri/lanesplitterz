@@ -13,10 +13,17 @@ public class HitPinSound : MonoBehaviour
     [SerializeField] private AudioSource smallFall;
     
     // parameters
-    [SerializeField] private float wait = 0.15f;
+
+    // controls how long it waits to count number of fallen pins and then plays sound
+    [SerializeField] private float countWait = 0.15f;
+    // controls how long it waits until playing the whole sound again (hitting another group of pins)
+    [SerializeField] private float nextHitWait = 0.5f;
+    [SerializeField] private int pinNumber = 5;
+
+    private int currentlyKnockedDown = 0;
     
     private void Start() {
-        PinManager.OnPinKnockedDown += PlayPinHitSound;
+        PinManager.OnPinHitByBall += PlayPinHitSound;
     }
 
     private void PlayPinHitSound() {
@@ -24,13 +31,13 @@ public class HitPinSound : MonoBehaviour
         StartCoroutine(PinsFall());
 
         // remove callback so it only happens the first time you hit a pin
-        PinManager.OnPinKnockedDown -= PlayPinHitSound;
+        PinManager.OnPinHitByBall -= PlayPinHitSound;
     }
 
     private IEnumerator PinsFall()
     {
-        yield return new WaitForSeconds(wait);
-        if (pinsKnockedDown.Value > 5)
+        yield return new WaitForSeconds(countWait);
+        if (pinsKnockedDown.Value - currentlyKnockedDown > pinNumber)
         {
             bigFall.Play();
         }
@@ -38,5 +45,9 @@ public class HitPinSound : MonoBehaviour
         {
             smallFall.Play();
         }
+        currentlyKnockedDown = pinsKnockedDown.Value;
+        yield return new WaitForSeconds(nextHitWait);
+        PinManager.OnPinHitByBall += PlayPinHitSound;
     }
+
 }

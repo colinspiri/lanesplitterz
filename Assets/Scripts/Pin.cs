@@ -43,6 +43,10 @@ public class Pin : MonoBehaviour {
     {
         if (_pinState == PinState.Untouched && (collision.collider.CompareTag("Ball") || collision.collider.CompareTag("Pin"))) {
             _pinState = PinState.Hit;
+            if (collision.collider.CompareTag("Ball"))
+            {
+                PinManager.Instance.NotifyPinHitByBall(this);
+            }
         }
     }
 
