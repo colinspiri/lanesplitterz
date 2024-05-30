@@ -173,26 +173,8 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Disable Functions
-    //disable the linear force of the Accelerate() method if it is on ice (currently testing with limited turn)
-    private void disableLinTurn( float __accelVal )
-    {
-        if (!(isIcy()))
-        {
-            _myBody.AddForce((_camInvRot * _myCam.right) * __accelVal, 
-                ForceMode.Impulse);
-            //Debug.Log("notIcy");
-        } 
-        else
-        {
-            //Debug.Log("Icy");
-            //Disable completely by commenting
-            _myBody.AddForce((_camInvRot * _myCam.right) * (__accelVal / slipperyForce), 
-                ForceMode.Impulse);
-        }
-    }
-
-    //disables Linear Acceleration of the Accelerate() function if Player detects ice (also currently testing w/ limited accel)
-    private void disableLinAccel ( float __turnVal )
+    //disable the linear force of the Turn() method if it is on ice (currently testing with no limited turn)
+    private void disableLinTurn( float __turnVal )
     {
         if (!(isIcy()))
         {
@@ -205,6 +187,24 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Icy");
             //Disable completely by commenting
             _myBody.AddForce((_camInvRot * _myCam.right) * (__turnVal / slipperyForce), 
+                ForceMode.Impulse);
+        }
+    }
+
+    //disables Linear Acceleration of the Accelerate() function if Player detects ice (also currently testing w/ limited accel)
+    private void disableLinAccel ( float __accelVal )
+    {
+        if (!(isIcy()))
+        {
+            _myBody.AddForce((_camInvRot * _myCam.forward) * __accelVal,
+                ForceMode.Impulse);
+            //Debug.Log("notIcy");
+        } 
+        else
+        {
+            //Debug.Log("Icy");
+            //Disable completely by commenting
+            _myBody.AddForce((_camInvRot * _myCam.right) * (__accelVal / slipperyForce), 
                 ForceMode.Impulse);
         }
     }
