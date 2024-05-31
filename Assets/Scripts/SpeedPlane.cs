@@ -5,6 +5,7 @@ public class SpeedPlane : MonoBehaviour
     public float speedMultiplier = 2f;
     // private Rigidbody _rigid;
     [SerializeField] private PlayerMovement _playerMove;
+    [SerializeField] private AudioSource _audioSource;
  
     // private void Start()
     // {
@@ -16,6 +17,7 @@ public class SpeedPlane : MonoBehaviour
     {
         // _rigid.AddForce(Vector3.forward * speedMultiplier, ForceMode.Impulse);
         _playerMove.Accelerate(speedMultiplier);
+        _audioSource.Play();
 
         Debug.Log("BOOOOOOOOST");
         // Debug.Log("Speed of Ball: " + speedOfBall.speed.ToString("F2"));
