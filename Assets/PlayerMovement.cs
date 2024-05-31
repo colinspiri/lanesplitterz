@@ -70,7 +70,9 @@ public class PlayerMovement : MonoBehaviour
 
         _startingPosition = transform.position;
         _startingRotation = transform.rotation;
-        
+
+        RoundManager.OnNewThrow += Initialize;
+        RoundManager.OnNewRound += Initialize;
         Initialize();
     }
 

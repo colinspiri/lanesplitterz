@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class EndOfTrackTrigger : MonoBehaviour
 {
-    [SerializeField] private SceneLoader sceneLoader;
     [SerializeField] private float resetTime;
-    private int ballCount = 0;
+    private int _ballCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
-            ballCount++;
+            _ballCount++;
             // if (ballCount == 2) // this means both balls have reached the end of the track
-            if (ballCount > 0) // temp until we have an enemy ball
+            if (_ballCount > 0) // temp until we have an enemy ball
             {
-                ballCount = 0;
-                StartCoroutine(resetCoroutine());
+                _ballCount = 0;
+                StartCoroutine(ResetCoroutine());
             }
         }
     }
 
-    private IEnumerator resetCoroutine()
+    private IEnumerator ResetCoroutine()
     {
         yield return new WaitForSeconds(3);
-        sceneLoader.Restart();
+        RoundManager.Instance.NotifyBallsAtEndOfTrack();
     }
 }

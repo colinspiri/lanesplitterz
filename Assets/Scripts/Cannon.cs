@@ -29,7 +29,9 @@ public class Cannon : MonoBehaviour
     {
         _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
-        
+
+        RoundManager.OnNewThrow += Initialize;
+        RoundManager.OnNewRound += Initialize;
         Initialize();
     }
 
@@ -43,10 +45,6 @@ public class Cannon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
-            Initialize();
-        }
-        
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -120,7 +118,5 @@ public class Cannon : MonoBehaviour
         // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 
         launchSound.Play();
-        
-        CameraFollowObject.Instance.EnableFollow();
     }
 }

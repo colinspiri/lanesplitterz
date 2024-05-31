@@ -32,18 +32,14 @@ public class PinManager : MonoBehaviour {
     }
 
     private void Start() {
-        pinsKnockedDown.Value = 0;
+        RoundManager.OnNewThrow += ClearFallenPins;
+        RoundManager.OnNewRound += ResetAllPins;
+
+        // RoundManager.OnNewThrow += Initialize;
     }
 
-    private void Update() {
-        
-        // debug keybindings to test functionality
-        if (Input.GetKeyDown(KeyCode.Alpha9)) {
-            ClearFallenPins();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            ResetAllPins();
-        }
+    private void Initialize() {
+        pinsKnockedDown.Value = 0;
     }
 
     // called by Pins to tell PinManager that it's been knocked down. PinManager handles the counting and points

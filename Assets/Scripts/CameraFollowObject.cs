@@ -2,42 +2,29 @@
 using UnityEngine;
 
 public class CameraFollowObject : MonoBehaviour {
-    public static CameraFollowObject Instance;
-    
-    public GameObject objectToFollow;
+    private GameObject _objectToFollow;
 
     [SerializeField] private float moveSpeed;
 
     private Vector3 _targetPosition;
     private Vector3 _offset;
-    [SerializeField] private bool followEnabled;
-
-    private void Awake() {
-        Instance = this;
-    }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        _offset = transform.position - objectToFollow.transform.position;
+    void Start() {
+        _objectToFollow = PlayerMovement.Instance.gameObject;
+        _offset = transform.position - _objectToFollow.transform.position;
     }
 
     // Update is called once per frame
     void Update() {
-        if (followEnabled) {
-            LerpTowardsObject();
-        }
+        LerpTowardsObject();
     }
 
     private void LerpTowardsObject() {
-        if (objectToFollow != null) {
-            _targetPosition = objectToFollow.transform.position + _offset;
+        if (_objectToFollow != null) {
+            _targetPosition = _objectToFollow.transform.position + _offset;
         }
 
         transform.position = Vector3.Lerp(transform.position, _targetPosition, moveSpeed * Time.deltaTime);
-    }
-
-    public void EnableFollow() {
-        followEnabled = true;
     }
 }

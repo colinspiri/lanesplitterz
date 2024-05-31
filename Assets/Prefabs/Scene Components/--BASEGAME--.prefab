@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9435007f5d984a62b59b55bf377e5a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
 --- !u!1 &190630542078749311
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +91,37 @@ MonoBehaviour:
   hitstopTimeScale: 0.1
   defaultHitstopTime: 1
   hitstopShakeStrength: 0.4
+--- !u!1 &1013112468165360583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8372731976383085208}
+  m_Layer: 0
+  m_Name: --MANAGERS--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8372731976383085208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013112468165360583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8500893530938471023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1331049182850074008
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,13 +378,16 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1835640705316064180}
+  - {fileID: 8159446023395520770}
+  - {fileID: 98212294387673928}
+  - {fileID: 8372731976383085208}
   - {fileID: 2050755588094689838}
+  - {fileID: 558111682399319831}
+  - {fileID: 8419766991365602407}
   - {fileID: 7002644511987626761}
   - {fileID: 3714782452154209967}
-  - {fileID: 8159446023395520770}
-  - {fileID: 8419766991365602407}
-  - {fileID: 98212294387673928}
   - {fileID: 3063868451232587686}
+  - {fileID: 1518812678695142261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6000663064895137253
@@ -382,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6000663064895137253}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -390,7 +423,7 @@ Transform:
   - {fileID: 5415712123125923407}
   - {fileID: 4752428248348131787}
   - {fileID: 6468086782757144953}
-  m_Father: {fileID: 3063868451232587686}
+  m_Father: {fileID: 8500893530938471023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8629238500320701218
 MonoBehaviour:
@@ -466,6 +499,55 @@ MonoBehaviour:
   ballSmokeRight: {fileID: 4148254606607550151}
   ballSmokeBack: {fileID: 1117222813604801}
   ballSmokeFront: {fileID: 8622347460827957838}
+--- !u!1 &6747174831744636089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558111682399319831}
+  - component: {fileID: 8448607558652642381}
+  m_Layer: 0
+  m_Name: Round Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558111682399319831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747174831744636089}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8500893530938471023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8448607558652642381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747174831744636089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13947a7395d4f4d9876c1c7ca1747dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwsPerRound: 2
+  currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
+  currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
+  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
+  pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
 --- !u!1 &7396798548552269009
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,7 +773,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToFollow: {fileID: 0}
   moveSpeed: 5
-  followEnabled: 0
 --- !u!1 &8349335627459339574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,8 +1082,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1518812678695142261}
+  m_Children: []
   m_Father: {fileID: 8500893530938471023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &362730074230352058
