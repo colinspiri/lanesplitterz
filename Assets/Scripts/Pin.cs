@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour {
     // components
-    [SerializeField] private PinCollection allPins;
-
+    [Tooltip("Pin type to instantiate when this pin is respawned.")] 
+    [SerializeField] public PinType pinType;
+    
     // public data
     [Tooltip("Range of angles that pin is considered upright. When euler angle is > the range or < (360 - the range), the pin is considered knocked over. In degrees.")]
     [SerializeField] private float uprightAngleRange = 5;
@@ -18,7 +19,7 @@ public class Pin : MonoBehaviour {
 
     void Start()
     {
-        allPins.Add( this);
+        PinManager.Instance.AddPin(this);
     }
 
     void Update()
@@ -32,7 +33,6 @@ public class Pin : MonoBehaviour {
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void SetKnockedDown() {
         _pinState = PinState.KnockedDown;
 
@@ -51,6 +51,6 @@ public class Pin : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        allPins.Remove(this);
+        PinManager.Instance.DestroyPin(this);
     }
 }

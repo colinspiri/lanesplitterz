@@ -265,6 +265,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a5704e4bd44c6bae003753a3b36c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pinPrefab: {fileID: 4760851470008906924, guid: 963310912e23156469bc5d0f5f57667f,
+    type: 3}
+  goldenPinPrefab: {fileID: 5264718845464563505, guid: 1f0ed9cfbf586504f9f88b819d5df217,
+    type: 3}
+  allPins: {fileID: 11400000, guid: 5f7405f0aeba16843a20e781756ebd11, type: 2}
+  pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
+  pinsFallen: {fileID: 11400000, guid: b3a102e005dce7841ae8209202862b6b, type: 2}
   pinsKnockedDown: {fileID: 11400000, guid: 4c462e06b4b6c1749b2b2d6ab064610c, type: 2}
   currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
 --- !u!1 &3886986884091025869
@@ -404,7 +411,9 @@ MonoBehaviour:
   pinHit: {fileID: 9010901523361082931}
   bigFall: {fileID: 3409199844018954182}
   smallFall: {fileID: 431941730551285613}
-  wait: 0.15
+  countWait: 0.15
+  nextHitWait: 0.5
+  pinNumber: 5
 --- !u!1 &6744893038393502986
 GameObject:
   m_ObjectHideFlags: 0

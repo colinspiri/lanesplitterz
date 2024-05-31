@@ -102,8 +102,6 @@ public class PlayerMovement : MonoBehaviour
         if (_strafeLeft || _strafeRight) Strafe();
         
         if (_jumpRequest) Jump();
-
-        Debug.Log("Current Velocity: " + _myBody.velocity.magnitude);
     }
     
     #endregion
