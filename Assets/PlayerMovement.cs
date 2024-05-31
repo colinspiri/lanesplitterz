@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
     [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
+    
+    // private state
+    private Vector3 _startingPosition;
+    private Quaternion _startingRotation;
 
     #region MonoBehaviour Functions
 
@@ -52,10 +56,9 @@ public class PlayerMovement : MonoBehaviour
         
         _myCam = GameObject.FindWithTag("MainCamera").transform;
         _camInvRot = Quaternion.Inverse(_myCam.rotation);
-        /* To do: Remove y component of inverse rotation */
+        /* TODO: Remove y component of inverse rotation */
         
         _myCollider = GetComponent<SphereCollider>();
-
         if (!_myBody || !_myCam || !_myCollider)
         {
             Debug.LogError("PlayerMovement Error: Missing component");
@@ -64,12 +67,28 @@ public class PlayerMovement : MonoBehaviour
         // Setting max parameters of rigidbody
         _myBody.maxLinearVelocity = maxLinearVelocity;
         _myBody.maxAngularVelocity = maxAngularVelocity;
+
+        _startingPosition = transform.position;
+        _startingRotation = transform.rotation;
         
+        Initialize();
+    }
+
+    private void Initialize() {
         gameObject.SetActive(false);
+        
+        transform.position = _startingPosition;
+        transform.rotation = _startingRotation;
+        
+        _myBody.velocity = Vector3.zero;
+        _myBody.angularVelocity = Vector3.zero;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
+            Initialize();
+        }
 
         if (acceptingInputs)
         {

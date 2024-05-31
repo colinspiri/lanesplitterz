@@ -47,6 +47,7 @@ public class PowerLevelManager : MonoBehaviour
     {
         powerBarUI.gameObject.SetActive(true);
         powerSliderEnabled = true;
+        t = 0;
     }
 
     public void DisablePowerSlider()

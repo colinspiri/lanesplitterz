@@ -28,12 +28,25 @@ public class Cannon : MonoBehaviour
     private void Start()
     {
         _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
-        
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
+        
+        Initialize();
+    }
+
+    private void Initialize() {
+        transform.rotation = Quaternion.identity;
+
+        launched = false;
+        launchForce = 0;
+        PowerLevelManager.Instance.DisablePowerSlider();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
+            Initialize();
+        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
