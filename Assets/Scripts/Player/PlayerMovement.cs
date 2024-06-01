@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool acceptingInputs = true;
     public bool disableOnStart = true;
+    public bool enableFuelLoss = true;
     private bool _jumpRequest;
     private bool _strafeLeft;
     private bool _strafeRight;
@@ -340,9 +341,12 @@ public class PlayerMovement : MonoBehaviour
     // Deplete the fuel meter by some percent (between 0 and 1)
     public void ReduceFuel(float fuelPercent)
     {
-        _fuelMeter -= Mathf.Clamp(fuelPercent, 0f, 1f);
+        if (enableFuelLoss)
+        {
+            _fuelMeter -= Mathf.Clamp(fuelPercent, 0f, 1f);
 
-        _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
+            _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
+        }
     }
 
     // Increase the fuel meter by some percent (between 0 and 1)

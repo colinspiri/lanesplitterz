@@ -166,17 +166,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptingInputs: 1
   disableOnStart: 1
+  enableFuelLoss: 1
   accelForce: 5
-  turnForce: 5
-  jumpForce: 50
+  turnForce: 2.5
+  jumpForce: 60
   strafeForce: 100
   strafeSeconds: 0.5
   slipperyForce: 10
   brakeDelay: 15
-  accelFuel: 0.15
-  turnFuel: 0.1
-  jumpFuel: 0.15
-  strafeFuel: 0.15
+  accelFuel: 0.25
+  turnFuel: 0.5
+  jumpFuel: 0.25
+  strafeFuel: 0.25
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   TurnDirection: 0
