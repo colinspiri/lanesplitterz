@@ -13,13 +13,13 @@ public class Speedometer : MonoBehaviour
     
     void Awake()
     {
-        _speedometer.text = "Speed: " + _currentSpeed.ToString("F3");
+        _speedometer.text = "Speed: " + _currentSpeed.ToString("F2");
         _playerBall = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
         _currentSpeed = _playerBall.velocity.magnitude;
-        _speedometer.text = "Speed: " + _currentSpeed.ToString("F3");
+        _speedometer.text = "Speed: " + _currentSpeed.ToString("F2");
     }
 }
