@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -21,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _jumpRequest;
     private bool _strafeLeft;
     private bool _strafeRight;
+    private bool _strafing = false;
     private float _turnVal;
     private float _accelVal;
     
@@ -31,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnForce;
     [SerializeField] private float jumpForce;
     [SerializeField] private float strafeForce;
+    // # of seconds for strafe to adjust back to linear velocity
+    [SerializeField] private float strafeSeconds;
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float brakeDelay;
     
@@ -110,9 +115,12 @@ public class PlayerMovement : MonoBehaviour
             if (_accelVal > 0f) _accelVal *= accelForce;
         
             _jumpRequest = _jumpRequest || Input.GetKeyDown(KeyCode.Space);
-        
-            _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
-            _strafeRight = _strafeRight || Input.GetKeyDown(KeyCode.E);
+
+            if (!_strafing)
+            {
+                _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
+                _strafeRight = _strafeRight || Input.GetKeyDown(KeyCode.E);
+            }
         }
         else
         {
@@ -215,11 +223,19 @@ public class PlayerMovement : MonoBehaviour
     /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
     private void Strafe()
     {
-        if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * strafeForce, ForceMode.Impulse);
-        if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * strafeForce), ForceMode.Impulse);
+        if (_strafeLeft || _strafeRight)
+        {
+            _strafing = true;
+            Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
+            
+            if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * strafeForce, ForceMode.Impulse);
+            if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * strafeForce), ForceMode.Impulse);
 
-        _strafeRight = false;
-        _strafeLeft = false;
+            _strafeRight = false;
+            _strafeLeft = false;
+
+            StartCoroutine(StrafeAdjust(lastForwardVelocity));
+        }
     }
 
     // Check y-axis velocity for jump being legal
@@ -258,12 +274,38 @@ public class PlayerMovement : MonoBehaviour
 
     //Returns true is on icy ground, false if not
     /* same as above, if we add slopes, needs to be updated*/
-    public bool IsIcy()
+    private bool IsIcy()
     {
         RaycastHit detectIce;
         
         return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out detectIce, 
             _myCollider.radius + 0.5f, _groundMask) && detectIce.collider.gameObject.CompareTag("Icy");
+    }
+
+    // Adjust velocity to forward after strafing
+    private IEnumerator StrafeAdjust(Vector3 lastVelocity)
+    {
+        // Wait for next physics frame, ensure calculations for force are done
+        yield return new WaitForFixedUpdate();
+        
+        // Avoid dividing by zero!
+        if (strafeSeconds < Mathf.Epsilon)
+        {
+            _myBody.velocity = lastVelocity;
+            
+            _strafing = false;
+
+            yield break;
+        }
+        
+        for (float t = 0f; t <= strafeSeconds; t += Time.fixedDeltaTime)
+        {
+            _myBody.velocity = Vector3.Lerp(_myBody.velocity, lastVelocity, t / strafeSeconds);
+            
+            yield return new WaitForFixedUpdate();
+        }
+
+        _strafing = false;
     }
     
     #endregion
