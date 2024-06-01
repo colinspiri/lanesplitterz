@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     // private state
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
+    
+    // misc
+    private int _groundMask;
 
     #region MonoBehaviour Functions
 
@@ -65,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("PlayerMovement Error: Missing component");
         }
+
+        _groundMask = LayerMask.GetMask("Ground");
         
         // Setting max parameters of rigidbody
         _myBody.maxLinearVelocity = maxLinearVelocity;
@@ -149,9 +154,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
-
+        
+        // Skid if on ice (reduce acceleration)
+        if (IsIcy())
+        {
+            Debug.Log("Turning skidding on ice");
+            
+            linForce /= slipperyForce;
+            rotForce /= slipperyForce;
+        }
+        
         // Linear acceleration
-        if (isIcy()) linForce /= slipperyForce;
         _myBody.AddForce(linForce, ForceMode.Impulse);
 
         // Rotational acceleration
@@ -183,8 +196,14 @@ public class PlayerMovement : MonoBehaviour
             rotationalForce = camRight * accelVal;
         }
 
-        // Skid if on ice (reduce linear acceleration)
-        if (isIcy()) linearForce /= slipperyForce;
+        // Skid if on ice (reduce acceleration)
+        if (IsIcy())
+        {
+            Debug.Log("Acceleration skidding on ice");
+            
+            linearForce /= slipperyForce;
+            rotationalForce /= slipperyForce;
+        }
         
         // Linear acceleration
         _myBody.AddForce(linearForce, ForceMode.Impulse);
@@ -234,16 +253,17 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
         return Physics.SphereCast(transform.position, _myCollider.radius, (_camInvRot * _myCam.up) * -1, out hit,
-            1f, LayerMask.GetMask("Ground"));
+            0.5f, _groundMask);
     }
 
     //Returns true is on icy ground, false if not
     /* same as above, if we add slopes, needs to be updated*/
-    public bool isIcy()
+    public bool IsIcy()
     {
         RaycastHit detectIce;
-        return Physics.SphereCast(transform.position, _myCollider.radius, (_camInvRot * _myCam.up) * -1, out detectIce,
-            1f, LayerMask.GetMask("Icy Ground"));
+        
+        return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out detectIce, 
+            _myCollider.radius + 0.5f, _groundMask) && detectIce.collider.gameObject.CompareTag("Icy");
     }
     
     #endregion
