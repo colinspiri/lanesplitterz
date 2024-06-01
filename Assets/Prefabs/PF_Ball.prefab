@@ -170,8 +170,13 @@ MonoBehaviour:
   turnForce: 5
   jumpForce: 50
   strafeForce: 100
+  strafeSeconds: 0.5
   slipperyForce: 10
   brakeDelay: 15
+  accelFuel: 0.15
+  turnFuel: 0.1
+  jumpFuel: 0.15
+  strafeFuel: 0.15
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   TurnDirection: 0
@@ -274,7 +279,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
