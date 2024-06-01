@@ -6,19 +6,20 @@ using UnityEngine.UI;
 
 public class Speedometer : MonoBehaviour
 {
-    [SerializeField] public float currentSpeed = 0f;
-    [SerializeField] private Rigidbody ball;
-    [SerializeField] public TextMeshProUGUI _speedometer;
+    public TextMeshProUGUI _speedometer;
     
-    void Start()
+    private Rigidbody _playerBall;
+    private float _currentSpeed = 0f;
+    
+    void Awake()
     {
-        _speedometer.text = "Speed: " + currentSpeed.ToString("F3");
+        _speedometer.text = "Speed: " + _currentSpeed.ToString("F3");
+        _playerBall = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
-        currentSpeed = ball.velocity.magnitude;
-        _speedometer.text = "Speed: " + currentSpeed.ToString("F3");
-
+        _currentSpeed = _playerBall.velocity.magnitude;
+        _speedometer.text = "Speed: " + _currentSpeed.ToString("F3");
     }
 }

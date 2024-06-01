@@ -6,10 +6,16 @@ public class EndOfTrackTrigger : MonoBehaviour
 {
     [SerializeField] private float resetTime;
     private int _ballCount = 0;
+    private int _ballLayer;
+
+    private void Start()
+    {
+        _ballLayer = LayerMask.NameToLayer("Balls");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ball"))
+        if (other.gameObject.layer == _ballLayer)
         {
             _ballCount++;
             // if (ballCount == 2) // this means both balls have reached the end of the track

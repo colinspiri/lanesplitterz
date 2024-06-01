@@ -10,7 +10,7 @@ public class SpeedPlane : MonoBehaviour
     // private void Start()
     // {
         // Doesn't work when ball is disabled at start of load
-        // _playerMove = GameObject.FindWithTag("Ball").GetComponent<PlayerMovement>();
+        // _playerMove = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
     // }
 
     private void OnTriggerEnter( Collider collision )
