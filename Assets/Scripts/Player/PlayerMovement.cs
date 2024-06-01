@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
     // turnVal is amount to turn, -1 for max left, 1 for max right
     public void Turn(float turnVal)
     {
-        if (_fuelMeter <= Mathf.Epsilon) return;
+        if (_fuelMeter < turnFuel) return;
         
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
         // Accelerate ahead
         else
         {
-            if (_fuelMeter <= Mathf.Epsilon) return;
+            if (_fuelMeter < accelFuel) return;
             
             linearForce = camForward * accelVal;
             rotationalForce = camRight * accelVal;
@@ -246,7 +246,7 @@ public class PlayerMovement : MonoBehaviour
     /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
     private void Strafe()
     {
-        if (_fuelMeter > Mathf.Epsilon &&(_strafeLeft || _strafeRight))
+        if (_fuelMeter >= strafeFuel && (_strafeLeft || _strafeRight))
         {
             _strafing = true;
             Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
@@ -267,7 +267,7 @@ public class PlayerMovement : MonoBehaviour
     // Check y-axis velocity for jump being legal
     private void Jump()
     {
-        if (Grounded() && _fuelMeter > Mathf.Epsilon)
+        if (Grounded() && _fuelMeter >= jumpFuel)
         {
             _myBody.AddForce((_camInvRot * _myCam.up) * jumpForce, ForceMode.Impulse);
             
