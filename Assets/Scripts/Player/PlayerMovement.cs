@@ -38,6 +38,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float strafeSeconds;
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float brakeDelay;
+
+    [Header("Fuel specifications")]
+    [Tooltip("Amount of fuel expended per second while accelerating (not decelerating)")]
+    [SerializeField] private float accelFuel;
+    [Tooltip("Amount of fuel expended per second while steering left or right")]
+    [SerializeField] private float turnFuel;
+    [Tooltip("Amount of fuel expended per jump")]
+    [SerializeField] private float jumpFuel;
+    [Tooltip("Amount of fuel expended per strafe")]
+    [SerializeField] private float strafeFuel;
+    
     
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
@@ -50,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     // private state
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
+    private float _fuelMeter = 1f;
     
     // misc
     private int _groundMask;
@@ -160,6 +172,8 @@ public class PlayerMovement : MonoBehaviour
     // turnVal is amount to turn, -1 for max left, 1 for max right
     public void Turn(float turnVal)
     {
+        if (_fuelMeter <= Mathf.Epsilon) return;
+        
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
         
@@ -177,6 +191,9 @@ public class PlayerMovement : MonoBehaviour
 
         // Rotational acceleration
         _myBody.AddTorque(rotForce, ForceMode.Impulse);
+        
+        // Reduce fuel
+        ReduceFuel(turnFuel * Time.fixedDeltaTime);
     }
     
     // accelVal is amount to speed up or down, -1 max decelerating, 1 max accelerating
@@ -200,8 +217,13 @@ public class PlayerMovement : MonoBehaviour
         // Accelerate ahead
         else
         {
+            if (_fuelMeter <= Mathf.Epsilon) return;
+            
             linearForce = camForward * accelVal;
             rotationalForce = camRight * accelVal;
+            
+            // Reduce fuel
+            ReduceFuel(accelFuel * Time.fixedDeltaTime);
         }
 
         // Skid if on ice (reduce acceleration)
@@ -223,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
     /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
     private void Strafe()
     {
-        if (_strafeLeft || _strafeRight)
+        if (_fuelMeter > Mathf.Epsilon &&(_strafeLeft || _strafeRight))
         {
             _strafing = true;
             Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
@@ -233,6 +255,9 @@ public class PlayerMovement : MonoBehaviour
 
             _strafeRight = false;
             _strafeLeft = false;
+            
+            // Reduce fuel
+            ReduceFuel(strafeFuel);
 
             StartCoroutine(StrafeAdjust(lastForwardVelocity));
         }
@@ -241,9 +266,12 @@ public class PlayerMovement : MonoBehaviour
     // Check y-axis velocity for jump being legal
     private void Jump()
     {
-        if (Grounded())
+        if (Grounded() && _fuelMeter > Mathf.Epsilon)
         {
             _myBody.AddForce((_camInvRot * _myCam.up) * jumpForce, ForceMode.Impulse);
+            
+            // Reduce fuel
+            ReduceFuel(jumpFuel);
         }
 
         _jumpRequest = false;
@@ -268,8 +296,9 @@ public class PlayerMovement : MonoBehaviour
     private bool Grounded()
     {
         RaycastHit hit;
-        return Physics.SphereCast(transform.position, _myCollider.radius, (_camInvRot * _myCam.up) * -1, out hit,
-            0.5f, _groundMask);
+        
+        return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit, 
+            _myCollider.radius + 1f, _groundMask);
     }
 
     //Returns true is on icy ground, false if not
@@ -279,7 +308,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit detectIce;
         
         return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out detectIce, 
-            _myCollider.radius + 0.5f, _groundMask) && detectIce.collider.gameObject.CompareTag("Icy");
+            _myCollider.radius + 1f, _groundMask) && detectIce.collider.gameObject.CompareTag("Icy");
     }
 
     // Adjust velocity to forward after strafing
@@ -306,6 +335,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _strafing = false;
+    }
+
+    // Deplete the fuel meter by some percent (between 0 and 1)
+    public void ReduceFuel(float fuelPercent)
+    {
+        _fuelMeter -= Mathf.Clamp(fuelPercent, 0f, 1f);
+
+        _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
+    }
+
+    // Increase the fuel meter by some percent (between 0 and 1)
+    public void RestoreFuel(float fuelPercent)
+    {
+        _fuelMeter += Mathf.Clamp(fuelPercent, 0f, 1f);
+        
+        _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
     }
     
     #endregion
