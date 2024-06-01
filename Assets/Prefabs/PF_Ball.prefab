@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 262683764499468453}
   m_Layer: 0
   m_Name: PF_Ball
-  m_TagString: Ball
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,10 +164,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca77dc6866d19946a1551ce347942ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptingInputs: 1
+  disableOnStart: 1
+  enableFuelLoss: 1
   accelForce: 5
-  turnForce: 5
-  jumpForce: 50
+  turnForce: 2.5
+  jumpForce: 60
   strafeForce: 100
+  strafeSeconds: 0.5
+  slipperyForce: 10
+  brakeDelay: 15
+  accelFuel: 0.25
+  turnFuel: 0.5
+  jumpFuel: 0.25
+  strafeFuel: 0.25
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   TurnDirection: 0
@@ -270,7 +280,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0

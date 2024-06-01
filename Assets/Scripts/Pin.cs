@@ -16,10 +16,15 @@ public class Pin : MonoBehaviour {
     // private state
     private enum PinState { Untouched, Hit, KnockedDown }
     private PinState _pinState;
+    
+    // misc
+    private int _ballLayer;
 
     void Start()
     {
         PinManager.Instance.AddPin(this);
+
+        _ballLayer = LayerMask.NameToLayer("Balls");
     }
 
     void Update()
@@ -41,9 +46,11 @@ public class Pin : MonoBehaviour {
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (_pinState == PinState.Untouched && (collision.collider.CompareTag("Ball") || collision.collider.CompareTag("Pin"))) {
+        int collisionLayer = collision.gameObject.layer;
+        
+        if (_pinState == PinState.Untouched && (collisionLayer == _ballLayer || collision.collider.CompareTag("Pin"))) {
             _pinState = PinState.Hit;
-            if (collision.collider.CompareTag("Ball"))
+            if (collisionLayer == _ballLayer)
             {
                 PinManager.Instance.NotifyPinHitByBall(this);
             }

@@ -24,6 +24,7 @@ public class HitPinSound : MonoBehaviour
     
     private void Start() {
         PinManager.OnPinHitByBall += PlayPinHitSound;
+        RoundManager.OnNewThrow += ResetThrow;
     }
 
     private void PlayPinHitSound() {
@@ -34,8 +35,14 @@ public class HitPinSound : MonoBehaviour
         PinManager.OnPinHitByBall -= PlayPinHitSound;
     }
 
+    private void ResetThrow()
+    {
+        currentlyKnockedDown = 0;
+    }
+
     private IEnumerator PinsFall()
     {
+        currentlyKnockedDown = pinsKnockedDown.Value;
         yield return new WaitForSeconds(countWait);
         if (pinsKnockedDown.Value - currentlyKnockedDown > pinNumber)
         {
@@ -45,7 +52,6 @@ public class HitPinSound : MonoBehaviour
         {
             smallFall.Play();
         }
-        currentlyKnockedDown = pinsKnockedDown.Value;
         yield return new WaitForSeconds(nextHitWait);
         PinManager.OnPinHitByBall += PlayPinHitSound;
     }
