@@ -164,10 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ca77dc6866d19946a1551ce347942ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptingInputs: 1
+  disableOnStart: 1
   accelForce: 5
   turnForce: 5
   jumpForce: 50
   strafeForce: 100
+  slipperyForce: 10
+  brakeDelay: 5
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   TurnDirection: 0

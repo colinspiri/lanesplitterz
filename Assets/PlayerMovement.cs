@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     #region Action Flags
 
     public bool acceptingInputs = true;
+    public bool disableOnStart = true;
     private bool _jumpRequest;
     private bool _strafeLeft;
     private bool _strafeRight;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float strafeForce;
     [SerializeField] private float slipperyForce = 10f;
+    [SerializeField] private float brakeDelay;
     
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
@@ -73,11 +75,12 @@ public class PlayerMovement : MonoBehaviour
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
+        
         Initialize();
     }
 
     private void Initialize() {
-        gameObject.SetActive(false);
+        if (disableOnStart) gameObject.SetActive(false);
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;
@@ -96,7 +99,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _turnVal = Input.GetAxis("Turn") * turnForce;
 
-            _accelVal = Input.GetAxis("Accelerate") * accelForce;
+            _accelVal = Input.GetAxis("Accelerate");
+            
+            // Input value between 0 and -1 if decelerating
+            if (_accelVal > 0f) _accelVal *= accelForce;
         
             _jumpRequest = _jumpRequest || Input.GetKeyDown(KeyCode.Space);
         
@@ -111,7 +117,16 @@ public class PlayerMovement : MonoBehaviour
             _strafeLeft = false;
             _strafeRight = false;
         }
+        
+        // set public-accessible acceleration state
+        if (_accelVal < 0) AccelerationDirection = -1;
+        else if (_accelVal > 0) AccelerationDirection = 1;
+        else AccelerationDirection = 0;
                 
+        // set public-accessible turn state
+        if (_turnVal < 0) TurnDirection = -1;
+        else if (_turnVal > 0) TurnDirection = 1;
+        else TurnDirection = 0;
     }
     
     private void FixedUpdate()
@@ -132,32 +147,50 @@ public class PlayerMovement : MonoBehaviour
     // turnVal is amount to turn, -1 for max left, 1 for max right
     public void Turn(float turnVal)
     {
-        // set public-accessible state
-        if (turnVal < 0) TurnDirection = -1;
-        else if (turnVal > 0) TurnDirection = 1;
-        else TurnDirection = 0;  
+        Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
+        Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
 
         // Linear acceleration
-        //_myBody.AddForce((_camInvRot * _myCam.right) * turnVal, ForceMode.Impulse);
-        disableLinTurn(turnVal);
+        if (isIcy()) linForce /= slipperyForce;
+        _myBody.AddForce(linForce, ForceMode.Impulse);
 
         // Rotational acceleration
-        _myBody.AddTorque((_camInvRot * _myCam.up) * turnVal, ForceMode.Impulse);
+        _myBody.AddTorque(rotForce, ForceMode.Impulse);
     }
     
     // accelVal is amount to speed up or down, -1 max decelerating, 1 max accelerating
     public void Accelerate(float accelVal)
     {
-        // set public-accessible state
-        if (accelVal < 0) AccelerationDirection = -1;
-        else if (accelVal > 0) AccelerationDirection = 1;
-        else AccelerationDirection = 0;
+        Vector3 linearForce;
+        Vector3 rotationalForce;
+
+        Vector3 camForward = (_camInvRot * _myCam.forward).normalized;
+        Vector3 camRight = (_camInvRot * _myCam.right).normalized;
+        
+        // Put on the brakes
+        if (accelVal < 0)
+        {
+            Vector3 forwardLinVelocity = Vector3.Project(_myBody.velocity, camForward);
+            linearForce = forwardLinVelocity * accelVal / brakeDelay;
+            
+            Vector3 forwardRotVelocity = Vector3.Project(_myBody.angularVelocity, camRight);
+            rotationalForce = forwardRotVelocity * accelVal / brakeDelay;
+        }
+        // Accelerate ahead
+        else
+        {
+            linearForce = camForward * accelVal;
+            rotationalForce = camRight * accelVal;
+        }
+
+        // Skid if on ice (reduce linear acceleration)
+        if (isIcy()) linearForce /= slipperyForce;
         
         // Linear acceleration
-        disableLinAccel(accelVal);
-
+        _myBody.AddForce(linearForce, ForceMode.Impulse);
+        
         // Rotational acceleration
-        _myBody.AddTorque((_camInvRot * _myCam.right) * accelVal, ForceMode.Impulse);
+        _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
     }
     
     /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
@@ -191,45 +224,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-    #endregion
-
-    #region Disable Functions
-    //disable the linear force of the Turn() method if it is on ice (currently testing with no limited turn)
-    private void disableLinTurn( float __turnVal )
-    {
-        if (!(isIcy()))
-        {
-            _myBody.AddForce((_camInvRot * _myCam.right) * __turnVal, 
-                ForceMode.Impulse);
-            //Debug.Log("notIcy");
-        } 
-        else
-        {
-            //Debug.Log("Icy");
-            //Disable completely by commenting
-            _myBody.AddForce((_camInvRot * _myCam.right) * (__turnVal / slipperyForce), 
-                ForceMode.Impulse);
-        }
-    }
-
-    //disables Linear Acceleration of the Accelerate() function if Player detects ice (also currently testing w/ limited accel)
-    private void disableLinAccel ( float __accelVal )
-    {
-        if (!(isIcy()))
-        {
-            _myBody.AddForce((_camInvRot * _myCam.forward) * __accelVal,
-                ForceMode.Impulse);
-            //Debug.Log("notIcy");
-        } 
-        else
-        {
-            //Debug.Log("Icy");
-            //Disable completely by commenting
-            _myBody.AddForce((_camInvRot * _myCam.right) * (__accelVal / slipperyForce), 
-                ForceMode.Impulse);
-        }
-    }
-
     #endregion
 
     #region Support Functions
