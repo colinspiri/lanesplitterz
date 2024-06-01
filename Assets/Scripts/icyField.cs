@@ -13,7 +13,7 @@ public class icyField : MonoBehaviour
     //draws a gizmo over the icy field
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(70, 1, 50));
+        Gizmos.DrawWireCube(transform.position, new Vector3(69, 1, 24));
     }
 
 

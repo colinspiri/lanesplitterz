@@ -8,7 +8,7 @@ public class StunBall : MonoBehaviour
     [SerializeField] private float SecondsStunned = 0.5f;
 
     //When Ball hits billboard, activates Stun.
-    IEnumerator OnTriggerEnter( Collider billboardHit )
+    IEnumerator OnTriggerEnter( Collider Hit )
     {
         StartCoroutine( EnableStun() );
         yield return null;

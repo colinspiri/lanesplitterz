@@ -21,6 +21,7 @@ public class billboardMovement : MonoBehaviour
         }
     }
 
+    //Moves billboard from one position to another (via lerping)
     IEnumerator MoveBillboardForward ( Vector3 targetPosition )
     {
         Vector3 startPosition = movementPoint1.transform.position;
@@ -49,12 +50,14 @@ public class billboardMovement : MonoBehaviour
         transform.position = targetPosition;
     }
 
+    //draws movement points for easy understanding
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(movementPoint1.transform.position, new Vector3(12, 5, 1));
         Gizmos.DrawWireCube(movementPoint2.transform.position, new Vector3(12, 5, 1));
     }
 
+    //on trigger hit, slows down Ball by a float and deactivates the object
     void OnTriggerEnter( Collider billboardHit )
     {
         billboard.gameObject.SetActive(false);

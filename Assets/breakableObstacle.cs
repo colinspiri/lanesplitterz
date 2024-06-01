@@ -14,7 +14,7 @@ public class breakableObstacle : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.matrix = gameObject.transform.localToWorldMatrix;
-        Gizmos.DrawWireCube(transform.position, gameObject.transform.localScale);
+        //Gizmos.matrix = gameObject.transform.localToWorldMatrix;;
+        //Gizmos.DrawWireCube(transform.position, gameObject.transform.localScale);
     }
 }
