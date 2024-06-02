@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4020487077586076407}
   m_Layer: 0
   m_Name: PF_Enemy
-  m_TagString: Enemy
+  m_TagString: Enemy Parent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,6 +191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694571530473555704, guid: 8399923800c3c3848a0e6b2c705abd86,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy Ball
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

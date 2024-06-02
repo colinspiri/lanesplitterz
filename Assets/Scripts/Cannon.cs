@@ -27,7 +27,7 @@ public class Cannon : MonoBehaviour
 
     private void Awake()
     {
-        _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
+        _enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
     

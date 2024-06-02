@@ -619,7 +619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6ad31e06ddcd7458e0817adbebbaed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoader: {fileID: 11400000, guid: e4be4f08e033c7d4784863d0cec404a9, type: 2}
   resetTime: 3
 --- !u!65 &834957260
 BoxCollider:
@@ -783,6 +782,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417044641770934574, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy Parent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
