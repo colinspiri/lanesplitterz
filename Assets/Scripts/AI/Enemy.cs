@@ -5,10 +5,18 @@ public class Enemy : MonoBehaviour
 {
     private BehaviorTree _myTree;
     public bool Launched { get; set; }
-    
+
     private void Start()
     {
         _myTree = GetComponent<BehaviorTree>();
+
+        RoundManager.OnNewThrow += Initialize;
+        RoundManager.OnNewRound += Initialize;
+    }
+
+    private void Initialize() {
+        _myTree.enabled = false;
+        Launched = false;
     }
 
     public void LaunchSequence()
