@@ -43,7 +43,6 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void EndThrow() {
-
         if (currentThrow.Value < throwsPerRound && pinsStanding.Count > 0) {
             NextThrow();
         }
