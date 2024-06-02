@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ActionOnCollide : MonoBehaviour {
@@ -7,7 +8,13 @@ public abstract class ActionOnCollide : MonoBehaviour {
     
     private int _triggerCounter;
 
-    private void Awake() {
+    private void Start() {
+        Initialize();
+        RoundManager.OnNewThrow += Initialize;
+        RoundManager.OnNewRound += Initialize;
+    }
+
+    private void Initialize() {
         _triggerCounter = triggerCount;
     }
 
