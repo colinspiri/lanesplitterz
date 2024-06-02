@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         ReduceFuel(turnFuel * Time.fixedDeltaTime);
     }
     
-    // accelVal is amount to speed up or down, -1 max decelerating, 1 max accelerating
+    // accelVal is the force to accelerate with
     public void Accelerate(float accelVal)
     {
         Vector3 linearForce;
