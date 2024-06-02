@@ -24,12 +24,15 @@ public class Cannon : MonoBehaviour
     private Vector2 movementInput;
     private float launchForce;
     private Enemy _enemy;
-    
-    private void Start()
+
+    private void Awake()
     {
         _enemy = GameObject.FindWithTag("Enemy")?.GetComponent<Enemy>();
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
-
+    }
+    
+    private void Start()
+    {
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
         Initialize();
