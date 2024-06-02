@@ -1,24 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Cannon : MonoBehaviour
 {
     [Header("Launch parameters")]
-    
+
     [SerializeField] private float minYaw;
     [SerializeField] private float maxYaw;
     [SerializeField] private float minPitch;
     [SerializeField] private float maxPitch;
-    [SerializeField] private float maxLaunchForce;
-    [SerializeField] private float minLaunchForce;
+    /*    [SerializeField] private float maxLaunchForce;
+        [SerializeField] private float minLaunchForce;*/
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Transform launchPoint;
 
     [SerializeField] private Rigidbody ball;
     [SerializeField] private AudioSource launchSound;
+
+    [SerializeField] private MeterData powerMeterData;
+
+    [Header("Events")]
+    [SerializeField] private GameEvent ConfirmedCannonPosition;
+    [SerializeField] private MeterDataGameEvent ConfirmedLaunchPower;
+    //[SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
 
     private bool launched;
     private Vector2 movementInput;
@@ -30,7 +38,6 @@ public class Cannon : MonoBehaviour
         _enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
-    
     private void Start()
     {
         RoundManager.OnNewThrow += Initialize;
@@ -38,12 +45,13 @@ public class Cannon : MonoBehaviour
         Initialize();
     }
 
-    private void Initialize() {
+    private void Initialize()
+    {
         transform.rotation = Quaternion.identity;
 
         launched = false;
         launchForce = 0;
-        PowerLevelManager.Instance.DisablePowerSlider();
+        //PowerLevelManager.Instance.DisablePowerSlider();
     }
 
     private void Update()
@@ -57,11 +65,14 @@ public class Cannon : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                PowerLevelManager.Instance.EnablePowerSlider();
+                //PowerLevelManager.Instance.EnablePowerSlider();
+                ConfirmedCannonPosition.Raise();
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                // this needs to happen before launch
+                ConfirmedLaunchPower.Raise(powerMeterData);
                 Launch();
                 return;
             }
@@ -75,7 +86,7 @@ public class Cannon : MonoBehaviour
             if (down) movementInput += Vector2.down;
             if (left) movementInput += Vector2.left;
             if (right) movementInput += Vector2.right;
-            
+
             if (movementInput.sqrMagnitude > float.Epsilon)
             {
                 Vector3 diff = new Vector3(-movementInput.y, movementInput.x, 0) * (rotateSpeed * Time.deltaTime);
@@ -97,11 +108,11 @@ public class Cannon : MonoBehaviour
     private void Launch()
     {
         launched = true;
-        PowerLevelManager.Instance.DisablePowerSlider();
-        
+        //PowerLevelManager.Instance.DisablePowerSlider();
+
         // update launch force based on power level
-        launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
-        
+        //launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
+
         // Begin enemy launch sequence
         if (_enemy) _enemy.LaunchSequence();
 
@@ -111,13 +122,14 @@ public class Cannon : MonoBehaviour
     private IEnumerator LaunchWithEnemy()
     {
         if (_enemy) yield return new WaitUntil(() => _enemy.Launched);
-        
+
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
-        
+
         // Linear acceleration
-        ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
-        
+        //ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+        ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
+
         // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 
         launchSound.Play();
