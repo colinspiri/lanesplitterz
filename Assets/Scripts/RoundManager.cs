@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -12,6 +13,10 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable currentPoints;
     [SerializeField] private PinCollection pinsStanding;
+
+    [Space] 
+    public List<int> playerPointsByThrow = new();
+    public List<int> enemyPointsByThrow = new();
 
     public static Action OnNewThrow;
     public static Action OnNewRound;
@@ -36,20 +41,39 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void NotifyBallsAtEndOfTrack() {
-        // TODO: scoreboard updates each player's points
+        UpdateScoreboard();
+        
         // then a little delay before end of throw (move delay here from end of track trigger)
         
         EndThrow();
     }
 
+    private void UpdateScoreboard() {
+        playerPointsByThrow.Add(currentPoints.Value);
+        enemyPointsByThrow.Add(0);
+        
+        currentPoints.Value = 0;
+
+        if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
+    }
+
     private void EndThrow() {
-        if (currentThrow.Value < throwsPerRound && pinsStanding.Count > 0) {
+        // if no more pins, count points as 0 and skip to next round
+        if (pinsStanding.Count == 0) {
+            playerPointsByThrow.Add(0);
+            enemyPointsByThrow.Add(0);
+            if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
+
+            NextRound();
+        }
+        else if (currentThrow.Value < throwsPerRound) {
             NextThrow();
         }
         else NextRound();
     }
 
     private void EndThrowAndRound() {
+        UpdateScoreboard();
         NextRound();
     }
 
@@ -63,8 +87,6 @@ public class RoundManager : MonoBehaviour {
         currentRound.Value++;
         currentThrow.Value = 1;
         
-        currentPoints.Value = 0;
-
         OnNewRound?.Invoke();
     }
 }
