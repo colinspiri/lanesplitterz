@@ -31,6 +31,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4534724891217292728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4948422112662601055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3845537898261787056}
+  - component: {fileID: 121919458462603880}
+  m_Layer: 0
+  m_Name: StunBallHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3845537898261787056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948422112662601055}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.123251, y: -4.555848, z: -33.382835}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4086292483255306974}
+  m_Father: {fileID: 4534724891217292728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121919458462603880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948422112662601055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0309aeb9fbc280d47a7ea12d1f88ff0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 0}
+  SecondsStunned: 0.5
 --- !u!1 &6777815240214295508
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,11 +107,11 @@ Transform:
   m_GameObject: {fileID: 6777815240214295508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -11.2, y: -15.7, z: -30.311035}
+  m_LocalPosition: {x: -1.0767488, y: -11.144152, z: 3.0718002}
   m_LocalScale: {x: 11.8193, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4534724891217292728}
+  m_Father: {fileID: 3845537898261787056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &3133624669496571040
 MeshFilter:
@@ -149,9 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c614b8b027b93d48bcfac8b0aaa7773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMove: {fileID: 0}
+  billboard: {fileID: 0}
   movementPoint1: {fileID: 2760055243190176197}
   movementPoint2: {fileID: 8943246574405186823}
   moveDuration: 5
+  slowDown: 0.01
 --- !u!1 &7651755260666972930
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,9 +231,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4086292483255306974}
   - {fileID: 8658406507758920541}
   - {fileID: 8684898369668664587}
+  - {fileID: 3845537898261787056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8943246574405186823
