@@ -5,10 +5,13 @@ using UnityEngine;
 public class breakableObstacle : MonoBehaviour
 {
 
+    [SerializeField] AudioSource destroySound;
+
 
     void OnTriggerEnter( Collider collider )
     {
         gameObject.SetActive(false);
+        destroySound.Play();
         //this is where my fuel method would go... if I had one
     }
 

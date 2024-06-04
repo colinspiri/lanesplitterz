@@ -8,6 +8,7 @@ public class billboardMovement : MonoBehaviour
     [SerializeField] public GameObject billboard;
     [SerializeField] public GameObject movementPoint1;
     [SerializeField] public GameObject movementPoint2;
+    [SerializeField] private AudioSource destroySound;
     [SerializeField] public float moveDuration = 5;
     [SerializeField] private float slowDown = 0.01f;
 
@@ -62,6 +63,7 @@ public class billboardMovement : MonoBehaviour
     {
         billboard.gameObject.SetActive(false);
         playerMove.Accelerate( slowDown );
+        destroySound.Play();
     }
 
 }
