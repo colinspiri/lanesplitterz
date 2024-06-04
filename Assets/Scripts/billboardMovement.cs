@@ -9,7 +9,9 @@ public class billboardMovement : MonoBehaviour
     [SerializeField] public GameObject movementPoint1;
     [SerializeField] public GameObject movementPoint2;
     [SerializeField] public float moveDuration = 5;
-    [SerializeField] private float slowDown = 0.01f;
+    //[SerializeField] private float slowDown = 0.01f;
+    [Range(0.01f, 1.0f)]
+    [SerializeField] private float fuelSub = 0.1f;
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -61,7 +63,9 @@ public class billboardMovement : MonoBehaviour
     void OnTriggerEnter( Collider billboardHit )
     {
         billboard.gameObject.SetActive(false);
-        playerMove.Accelerate( slowDown );
+        //playerMove.Accelerate( slowDown );
+
+        playerMove.ReduceFuel(fuelSub);
     }
 
 }
