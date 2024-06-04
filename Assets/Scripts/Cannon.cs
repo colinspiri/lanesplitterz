@@ -22,16 +22,18 @@ public class Cannon : MonoBehaviour
     [SerializeField] private AudioSource launchSound;
 
     [SerializeField] private MeterData powerMeterData;
+    [SerializeField] private MeterData spinMeterData;
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
     [SerializeField] private MeterDataGameEvent ConfirmedLaunchPower;
-    //[SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
+    [SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
 
     private bool launched;
     private Vector2 movementInput;
-    private float launchForce;
+    //private float launchForce;
     private Enemy _enemy;
+    private int numSpacePressed = 0;
 
     private void Awake()
     {
@@ -42,6 +44,8 @@ public class Cannon : MonoBehaviour
     {
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
+        RoundManager.OnNewThrow += () => numSpacePressed = 0;
+        RoundManager.OnNewRound += () => numSpacePressed = 0;
         Initialize();
     }
 
@@ -50,7 +54,7 @@ public class Cannon : MonoBehaviour
         transform.rotation = Quaternion.identity;
 
         launched = false;
-        launchForce = 0;
+        //launchForce = 0;
         //PowerLevelManager.Instance.DisablePowerSlider();
     }
 
@@ -65,16 +69,23 @@ public class Cannon : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //PowerLevelManager.Instance.EnablePowerSlider();
-                ConfirmedCannonPosition.Raise();
-            }
+                if (numSpacePressed == 0)
+                {
+                    ConfirmedCannonPosition.Raise();
+                }
+                else if (numSpacePressed == 1)
+                {
+                    ConfirmedLaunchPower.Raise(powerMeterData);
+                }
+                else if (numSpacePressed == 2)
+                {
+                    ConfirmedInitialSpin.Raise(spinMeterData);
+                    Launch();
+                    numSpacePressed = 0;
+                    return;
+                }
 
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                // this needs to happen before launch
-                ConfirmedLaunchPower.Raise(powerMeterData);
-                Launch();
-                return;
+                numSpacePressed++;
             }
 
             bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
@@ -108,10 +119,6 @@ public class Cannon : MonoBehaviour
     private void Launch()
     {
         launched = true;
-        //PowerLevelManager.Instance.DisablePowerSlider();
-
-        // update launch force based on power level
-        //launchForce = PowerLevelManager.Instance.CalculateLaunchForce(minLaunchForce, maxLaunchForce);
 
         // Begin enemy launch sequence
         if (_enemy) _enemy.LaunchSequence();
@@ -127,8 +134,8 @@ public class Cannon : MonoBehaviour
         ball.transform.position = launchPoint.position;
 
         // Linear acceleration
-        //ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
+        PlayerMovement.Instance.Spin(spinMeterData.meterValue); // meterValue is the spin force
 
         // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 
