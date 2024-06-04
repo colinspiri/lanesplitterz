@@ -1037,6 +1037,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783580897007481994, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_Name
+      value: Power Meter UI
+      objectReference: {fileID: 0}
     - target: {fileID: 1498301291803449353, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1046,6 +1051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: --UI--
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831158637911700152, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4912926335631285498, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
@@ -1100,6 +1110,11 @@ PrefabInstance:
     - target: {fileID: 6845286529127141625, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887677303913058050, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
