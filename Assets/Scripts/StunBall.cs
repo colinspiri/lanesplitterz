@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class StunBall : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMove;
+    private PlayerMovement playerMove;
     [SerializeField] private float SecondsStunned = 0.5f;
+
+    void Awake()
+    {
+        playerMove = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+
+        if (!playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
+    }
 
     //When Ball hits billboard, activates Stun.
     IEnumerator OnTriggerEnter( Collider Hit )
