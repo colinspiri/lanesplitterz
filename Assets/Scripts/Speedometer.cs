@@ -7,19 +7,27 @@ using UnityEngine.UI;
 public class Speedometer : MonoBehaviour
 {
     public TextMeshProUGUI _speedometer;
-    
     private Rigidbody _playerBall;
+    private Transform cameraPosition;
     private float _currentSpeed = 0f;
     
     void Awake()
     {
         _speedometer.text = "Speed: " + _currentSpeed.ToString("F2");
         _playerBall = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
+
     }
-    
+
+    void Start()
+    {
+        cameraPosition = GameObject.FindWithTag("MainCamera").transform;
+    }
+
     void FixedUpdate()
     {
-        _currentSpeed = _playerBall.velocity.magnitude;
+        _currentSpeed = Vector3.Project( _playerBall.velocity, cameraPosition.forward ).magnitude;
         _speedometer.text = "Speed: " + _currentSpeed.ToString("F2");
+        
+        //Debug.Log("speed: " + _currentSpeed);
     }
 }
