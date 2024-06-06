@@ -26,6 +26,7 @@ public class Cannon : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
+    [SerializeField] private GameEvent LaunchedBall;
     [SerializeField] private MeterDataGameEvent ConfirmedLaunchPower;
     [SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
 
@@ -136,6 +137,8 @@ public class Cannon : MonoBehaviour
         // Linear acceleration
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
         PlayerMovement.Instance.Spin(spinMeterData.meterValue); // meterValue is the spin force
+
+        LaunchedBall.Raise();
 
         // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 

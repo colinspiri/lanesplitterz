@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ScriptableObjectArchitecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -51,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float strafeFuel;
     
     
+    [Header("Events")]
+    [SerializeField] private FloatVariableGameEvent fuelChanged;
+
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
     [SerializeField] private float maxAngularVelocity = 50f;
@@ -58,14 +62,17 @@ public class PlayerMovement : MonoBehaviour
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
     [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
-    
+
     // private state
+    [SerializeField] private FloatVariable currentFuel;
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
-    
+
     // misc
     private int _groundMask;
+
+    
 
     #region MonoBehaviour Functions
 
@@ -95,10 +102,11 @@ public class PlayerMovement : MonoBehaviour
 
         _startingPosition = transform.position;
         _startingRotation = transform.rotation;
+        currentFuel.Value = 1;
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
-        
+
         Initialize();
     }
 
@@ -110,6 +118,10 @@ public class PlayerMovement : MonoBehaviour
         
         _myBody.velocity = Vector3.zero;
         _myBody.angularVelocity = Vector3.zero;
+
+        currentFuel.Value = 1;
+        _fuelMeter = 1f;
+        fuelChanged.Raise(currentFuel);
     }
 
     private void Update()
@@ -346,6 +358,10 @@ public class PlayerMovement : MonoBehaviour
             _fuelMeter -= Mathf.Clamp(fuelPercent, 0f, 1f);
 
             _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
+
+            currentFuel.Value -= fuelPercent;
+
+            fuelChanged.Raise(currentFuel);
         }
     }
 
@@ -355,6 +371,10 @@ public class PlayerMovement : MonoBehaviour
         _fuelMeter += Mathf.Clamp(fuelPercent, 0f, 1f);
         
         _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
+
+        currentFuel.Value += fuelPercent;
+
+        fuelChanged.Raise(currentFuel);
     }
     
     #endregion
