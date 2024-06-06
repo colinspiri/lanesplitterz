@@ -178,10 +178,12 @@ MonoBehaviour:
   turnFuel: 0.5
   jumpFuel: 0.25
   strafeFuel: 0.25
+  fuelChanged: {fileID: 11400000, guid: 27be1206cb6324b4384256b436293067, type: 2}
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   TurnDirection: 0
   AccelerationDirection: 0
+  currentFuel: {fileID: 11400000, guid: bb603df81b5ebc845902757dd6a21c6a, type: 2}
 --- !u!96 &9041972455083765477
 TrailRenderer:
   serializedVersion: 3

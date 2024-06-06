@@ -13,6 +13,7 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable currentPoints;
     [SerializeField] private PinCollection pinsStanding;
+    [SerializeField] private GameEvent ballAtEndOfTrack;
 
     [Space] 
     public List<int> playerPointsByThrow = new();
@@ -20,6 +21,7 @@ public class RoundManager : MonoBehaviour {
 
     public static Action OnNewThrow;
     public static Action OnNewRound;
+
 
     private void Awake() {
         Instance = this;
@@ -46,6 +48,7 @@ public class RoundManager : MonoBehaviour {
         // then a little delay before end of throw (move delay here from end of track trigger)
         
         EndThrow();
+        ballAtEndOfTrack.Raise();
     }
 
     private void UpdateScoreboard() {

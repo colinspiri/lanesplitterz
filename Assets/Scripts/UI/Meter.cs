@@ -11,7 +11,7 @@ public class Meter : MonoBehaviour
 
     protected bool isEnabled;
 
-    public void Start()
+    public virtual void Start()
     {
         DisableMeter();
     }
