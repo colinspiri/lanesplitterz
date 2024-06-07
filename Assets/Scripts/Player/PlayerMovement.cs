@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ScriptableObjectArchitecture;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -68,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
+    private GameObject _ground = null;
 
     // misc
     private int _groundMask;
@@ -85,8 +87,6 @@ public class PlayerMovement : MonoBehaviour
         _myBody = GetComponent<Rigidbody>();
         
         _myCam = GameObject.FindWithTag("MainCamera").transform;
-        _camInvRot = Quaternion.Inverse(_myCam.rotation);
-        /* TODO: Remove y component of inverse rotation */
         
         _myCollider = GetComponent<SphereCollider>();
         if (!_myBody || !_myCam || !_myCollider)
@@ -126,6 +126,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Update camera inverse transform
+        Quaternion camRotation = _myCam.rotation;
+        _camInvRot = Quaternion.Inverse(new Quaternion(camRotation.x, 0f, camRotation.z, camRotation.w));
+        
         if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
             Initialize();
         }
@@ -169,6 +173,10 @@ public class PlayerMovement : MonoBehaviour
     
     private void FixedUpdate()
     {
+        UpdateGround();
+
+        // if (!IsIcy()) Hook();
+        
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
         if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
@@ -181,6 +189,12 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Movement Functions
+
+    // Emulate frictional movement to the side
+    private void Hook()
+    {
+        Vector3.Dot(_myBody.angularVelocity, (_camInvRot * _myCam.up));
+    }
     
     // turnVal is amount to turn, -1 for max left, 1 for max right
     public void Turn(float turnVal)
@@ -303,25 +317,34 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Support Functions
-    
-    // Returns true if on the ground, false otherwise
+
+    // Updates the internal ground variable for keeping track of current terrain
     /* Will need to be updated if we ever add curved terrain with different normals */
-    private bool Grounded()
+    private void UpdateGround()
     {
         RaycastHit hit;
-        
-        return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit, 
-            _myCollider.radius + 1f, _groundMask);
+
+        if (Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit,
+                _myCollider.radius + 1f, _groundMask))
+        {
+            _ground = hit.collider.gameObject;
+        }
+        else
+        {
+            _ground = null;
+        }
+    }
+    
+    // Returns true if on the ground, false otherwise
+    private bool Grounded()
+    {
+        return _ground;
     }
 
     //Returns true is on icy ground, false if not
-    /* same as above, if we add slopes, needs to be updated*/
     private bool IsIcy()
     {
-        RaycastHit detectIce;
-        
-        return Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out detectIce, 
-            _myCollider.radius + 1f, _groundMask) && detectIce.collider.gameObject.CompareTag("Icy");
+        return _ground.CompareTag("Icy");
     }
 
     // Adjust velocity to forward after strafing
