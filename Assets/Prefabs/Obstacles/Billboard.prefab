@@ -205,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0309aeb9fbc280d47a7ea12d1f88ff0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMove: {fileID: 0}
   SecondsStunned: 0.5
 --- !u!1 &6777815240214295508
 GameObject:
@@ -331,7 +330,7 @@ MonoBehaviour:
   movementPoint2: {fileID: 8943246574405186823}
   destroySound: {fileID: 6890485234492830145}
   moveDuration: 5
-  slowDown: 0.01
+  fuelSub: 0.1
 --- !u!1 &7651755260666972930
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,6 +363,7 @@ Transform:
   - {fileID: 8658406507758920541}
   - {fileID: 8684898369668664587}
   - {fileID: 8147583271698592936}
+  - {fileID: 3845537898261787056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8943246574405186823
