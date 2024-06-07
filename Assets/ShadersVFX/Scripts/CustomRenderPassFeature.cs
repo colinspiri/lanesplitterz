@@ -36,7 +36,7 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
         // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            CommandBuffer cmd = CommandeBufferPool.Get("CustomFeature");
+            CommandBuffer cmd = CommandBufferPool.Get("CustomFeature");
 
             // create a temporary render texture
             RenderTextureDescriptor camTexDesc = renderingData.cameraData.cameraTargetDescriptor;
@@ -63,10 +63,10 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
     /// <inheritdoc/>
     public override void Create()
     {
-        m_ScriptablePass = new CustomRenderPass();
+        // m_ScriptablePass = new CustomRenderPass();
 
         // Configures where the render pass should be injected.
-        m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterPostProcessing;
+        // m_ScriptablePass.renderPassEvent = RenderPassEvent.AfterPostProcessing;
     }
 
     // Here you can inject one or multiple render passes in the renderer.

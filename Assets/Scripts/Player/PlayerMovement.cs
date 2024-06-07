@@ -15,11 +15,13 @@ public class PlayerMovement : MonoBehaviour
     private Transform _myCam;
     private Quaternion _camInvRot;
     private SphereCollider _myCollider;
+    private float _myRadius;
     
     #endregion
 
     #region Action Flags
 
+    [Header("Configuration Flags")]
     public bool acceptingInputs = true;
     public bool disableOnStart = true;
     public bool enableFuelLoss = true;
@@ -40,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
     // # of seconds for strafe to adjust back to linear velocity
     [SerializeField] private float strafeSeconds;
     [SerializeField] private float slipperyForce = 10f;
+    [Tooltip("The multiplier determining what % of rotational force transforms into hooking")]
+    [SerializeField] private float hookMultiplier;
     [SerializeField] private float brakeDelay;
 
     [Header("Fuel specifications")]
@@ -74,8 +78,6 @@ public class PlayerMovement : MonoBehaviour
     // misc
     private int _groundMask;
 
-    
-
     #region MonoBehaviour Functions
 
     private void Awake() {
@@ -89,10 +91,8 @@ public class PlayerMovement : MonoBehaviour
         _myCam = GameObject.FindWithTag("MainCamera").transform;
         
         _myCollider = GetComponent<SphereCollider>();
-        if (!_myBody || !_myCam || !_myCollider)
-        {
-            Debug.LogError("PlayerMovement Error: Missing component");
-        }
+
+        _myRadius = _myCollider.radius * transform.lossyScale.x;
 
         _groundMask = LayerMask.GetMask("Ground");
         
@@ -175,17 +175,17 @@ public class PlayerMovement : MonoBehaviour
     {
         UpdateGround();
 
-        // if (!IsIcy()) Hook();
+        Hook();
         
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
         if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
         
-        if (_strafeLeft || _strafeRight) Strafe();
+        if (_strafeLeft || _strafeRight) Strafe(strafeForce);
         
         if (_jumpRequest) Jump();
     }
-    
+
     #endregion
 
     #region Movement Functions
@@ -193,10 +193,16 @@ public class PlayerMovement : MonoBehaviour
     // Emulate frictional movement to the side
     private void Hook()
     {
-        Vector3.Dot(_myBody.angularVelocity, (_camInvRot * _myCam.up));
+        if (!Grounded() || IsIcy()) return;
+        
+        Vector3 camUp = _camInvRot * _myCam.up;
+        
+        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized);
+        
+        Turn(force * hookMultiplier);
     }
     
-    // turnVal is amount to turn, -1 for max left, 1 for max right
+    // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal)
     {
         if (_fuelMeter < turnFuel) return;
@@ -269,16 +275,15 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
     }
     
-    /* To do: Make strafe stabilize after some amount of distance (Maybe use Rigidbody Move method? */
-    private void Strafe()
+    private void Strafe(float force)
     {
         if (_fuelMeter >= strafeFuel && (_strafeLeft || _strafeRight))
         {
             _strafing = true;
             Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
             
-            if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * strafeForce, ForceMode.Impulse);
-            if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * strafeForce), ForceMode.Impulse);
+            if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * force, ForceMode.Impulse);
+            if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * force), ForceMode.Impulse);
 
             _strafeRight = false;
             _strafeLeft = false;
@@ -344,7 +349,7 @@ public class PlayerMovement : MonoBehaviour
     //Returns true is on icy ground, false if not
     private bool IsIcy()
     {
-        return _ground.CompareTag("Icy");
+        return _ground && _ground.CompareTag("Icy");
     }
 
     // Adjust velocity to forward after strafing
