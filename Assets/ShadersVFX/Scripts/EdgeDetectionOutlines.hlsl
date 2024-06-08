@@ -26,21 +26,21 @@ static float sobelYWeights[9] = {
 };
 
 // runs Sobel over depth texture
-void DepthSobel_float(float2 UV, float Thickness, out float Out)
+void DepthSobel_float(float2 UV, float DepthLineThickness, out float Out)
 {
     float2 sobel = 0;
     // unroll for more efficiency
     // get depth values
     [unroll] for (int i = 0; i < 9; i++)
     {
-        float2 sampleUV = UV + sobelSamplePoints[i] * Thickness;
+        float2 sampleUV = UV + sobelSamplePoints[i] * DepthLineThickness;
         float depth = SHADERGRAPH_SAMPLE_SCENE_DEPTH(sampleUV);
         sobel += depth * float2(sobelXWeights[i], sobelYWeights[i]);
     }
     Out = length(sobel);
 }
 
-void ColorSobel_float(float2 UV, float Thickness, out float Out)
+void ColorSobel_float(float2 UV, float ColorLineThickness, out float Out)
 {
     float2 sobelRed = 0;
     float2 sobelGreen = 0;
@@ -49,12 +49,30 @@ void ColorSobel_float(float2 UV, float Thickness, out float Out)
     // get color values
     [unroll] for (int i = 0; i < 9; i++)
     {
-        float2 sampleUV = UV + sobelSamplePoints[i] * Thickness;
+        float2 sampleUV = UV + sobelSamplePoints[i] * ColorLineThickness;
         float3 color = SHADERGRAPH_SAMPLE_SCENE_COLOR(sampleUV);
         sobelRed += color.r * float2(sobelXWeights[i], sobelYWeights[i]);
         sobelGreen += color.g * float2(sobelXWeights[i], sobelYWeights[i]);
         sobelBlue += color.b * float2(sobelXWeights[i], sobelYWeights[i]);
     }
     Out = max(length(sobelRed), max(length(sobelGreen), length(sobelBlue)));
+}
+
+void NormalSobel_float(float2 UV, float NormalLineThickness, out float Out)
+{
+    float2 sobelX = 0;
+    float2 sobelY = 0;
+    float2 sobelZ = 0;
+    // unroll for more efficiency
+    // get color values
+    [unroll] for (int i = 0; i < 9; i++)
+    {
+        float2 sampleUV = UV + sobelSamplePoints[i] * NormalLineThickness;
+        float3 normal = SHADERGRAPH_SAMPLE_SCENE_NORMAL(sampleUV);
+        sobelX += normal.x * float2(sobelXWeights[i], sobelYWeights[i]);
+        sobelY += normal.y * float2(sobelXWeights[i], sobelYWeights[i]);
+        sobelZ += normal.z * float2(sobelXWeights[i], sobelYWeights[i]);
+    }
+    Out = max(length(sobelX), max(length(sobelY), length(sobelZ)));
 }
 #endif
