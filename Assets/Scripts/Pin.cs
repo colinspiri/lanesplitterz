@@ -24,7 +24,7 @@ public class Pin : MonoBehaviour {
     {
         PinManager.Instance.AddPin(this);
 
-        _ballLayer = LayerMask.NameToLayer("Balls");
+        _ballLayer = LayerMask.NameToLayer("Pin Colliders");
     }
 
     void Update()
@@ -48,7 +48,9 @@ public class Pin : MonoBehaviour {
     {
         int collisionLayer = collision.gameObject.layer;
         
-        if (_pinState == PinState.Untouched && (collisionLayer == _ballLayer || collision.collider.CompareTag("Pin"))) {
+        if (_pinState == PinState.Untouched &&
+            (collision.collider.CompareTag("Pin") || collisionLayer == _ballLayer))
+        {
             _pinState = PinState.Hit;
             if (collisionLayer == _ballLayer)
             {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6358661147363804594}
   - component: {fileID: 7470741508688094766}
   - component: {fileID: 7040545534150770670}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PF_Pin
   m_TagString: Pin
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e21319e66dd23449a7ef21f8478ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinPrefab: {fileID: 4760851470008906924}
+  pinType: 0
   uprightAngleRange: 15
   pointValue: 1
 --- !u!114 &7040545534150770670
@@ -165,7 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d5e579fe64841a219d167d94b4e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleTags:
-  - Ball
+  possibleTags: []
+  possibleLayers:
+  - Pin Colliders
   triggerCount: 1
   shakeMagnitude: 0.3

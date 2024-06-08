@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class ActionOnCollide : MonoBehaviour {
     [SerializeField] private List<string> possibleTags;
+    [SerializeField] private List<string> possibleLayers;
     [SerializeField] private int triggerCount = -1;
     
     private int _triggerCounter;
@@ -22,15 +23,29 @@ public abstract class ActionOnCollide : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (_triggerCounter is > 0 or -1) {
-            bool hitObjectWithTag = false;
+            bool hitValidObject = false;
+            
+            // Check object tags against list
             foreach (var tag in possibleTags) {
                 if (collision.gameObject.CompareTag(tag)) {
-                    hitObjectWithTag = true;
+                    hitValidObject = true;
                     break;
                 }
             }
+
+            // Check object layer against list
+            if (!hitValidObject)
+            {
+                foreach (string layer in possibleLayers) {
+                    if (collision.gameObject.layer == LayerMask.NameToLayer(layer)) {
+                        hitValidObject = true;
+                        break;
+                    }
+                }
+            }
             
-            if (hitObjectWithTag) {
+            // If valid tag or layer is found, perform action
+            if (hitValidObject) {
                 DoAction();
 
                 if (_triggerCounter > 0) {
