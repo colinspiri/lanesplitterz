@@ -13,7 +13,8 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable currentThrow;
     
     [Space]
-    [SerializeField] private IntVariable currentPoints;
+    [SerializeField] private IntVariable playerCurrentPoints;
+    [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
 
@@ -31,7 +32,8 @@ public class RoundManager : MonoBehaviour {
         Instance = this;
     }
     private void Start() {
-        currentPoints.Value = 0;
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
 
         currentRound.Value = 1;
         currentThrow.Value = 1;
@@ -56,10 +58,11 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void UpdateScoreboard() {
-        playerPointsByThrow.Add(currentPoints.Value);
-        enemyPointsByThrow.Add(0);
+        playerPointsByThrow.Add(playerCurrentPoints.Value);
+        enemyPointsByThrow.Add(enemyCurrentPoints.Value);
         
-        currentPoints.Value = 0;
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
 
         if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
     }
@@ -106,7 +109,7 @@ public class RoundManager : MonoBehaviour {
         currentRound.Value++;
         currentThrow.Value = 1;
 
-        if (currentRound.Value >= totalRounds) {
+        if (currentRound.Value > totalRounds) {
             Debug.Log("game over on round " + currentRound.Value + " / " + totalRounds);
             GameManager.Instance.Pause();
             CalculateFinalScores();

@@ -16,7 +16,9 @@ public class Pin : MonoBehaviour {
     // private state
     private enum PinState { Untouched, Hit, KnockedDown }
     private PinState _pinState;
-    
+    public enum LastTouched { None, PlayerBall, EnemyBall }
+    public LastTouched LastTouchedBy { get; private set; }
+
     // misc
     private int _ballLayer;
 
@@ -48,6 +50,21 @@ public class Pin : MonoBehaviour {
     {
         int collisionLayer = collision.gameObject.layer;
         
+        // set last touched by
+        if (_pinState != PinState.KnockedDown) {
+            if (collision.gameObject.CompareTag("Pin")) {
+                var pin = collision.gameObject.GetComponent<Pin>();
+                LastTouchedBy = pin.LastTouchedBy;
+            }
+            else if (collision.gameObject.CompareTag("Player")) {
+                LastTouchedBy = LastTouched.PlayerBall;
+            }
+            else if (collision.gameObject.CompareTag("Enemy Ball")) {
+                LastTouchedBy = LastTouched.EnemyBall;
+            }
+        }
+
+        // set state to hit
         if (_pinState == PinState.Untouched &&
             (collision.collider.CompareTag("Pin") || collisionLayer == _ballLayer))
         {
