@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using Yarn.Unity;
 
 public class RoundManager : MonoBehaviour {
     public static RoundManager Instance;
@@ -19,6 +20,11 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private GameEvent ballAtEndOfTrack;
 
     [Space] 
+    [SerializeField] private string dialogueOnGameStart;
+    [SerializeField] private string dialogueOnGameEnd;
+    private DialogueRunner _dialogueRunner;
+
+    [Space] 
     public List<int> playerPointsByThrow = new();
     public List<int> enemyPointsByThrow = new();
     public int playerFinalScore;
@@ -30,6 +36,7 @@ public class RoundManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        _dialogueRunner = FindObjectOfType<DialogueRunner>();
     }
     private void Start() {
         playerCurrentPoints.Value = 0;
@@ -37,6 +44,10 @@ public class RoundManager : MonoBehaviour {
 
         currentRound.Value = 1;
         currentThrow.Value = 1;
+
+        if (_dialogueRunner && dialogueOnGameStart != "") {
+            _dialogueRunner.StartDialogue(dialogueOnGameStart);
+        }
     }
 
     private void Update() {
@@ -110,10 +121,9 @@ public class RoundManager : MonoBehaviour {
         currentThrow.Value = 1;
 
         if (currentRound.Value > totalRounds) {
-            Debug.Log("game over on round " + currentRound.Value + " / " + totalRounds);
-            GameManager.Instance.Pause();
             CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
+            _dialogueRunner.StartDialogue(dialogueOnGameEnd);
         }
         
         OnNewRound?.Invoke();

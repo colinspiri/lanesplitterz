@@ -49,8 +49,6 @@ public class PinManager : MonoBehaviour {
         pinsFallen.Add(pin);
         pinsKnockedDown.Value++;
         
-        Debug.Log(pin.name + " fallen with last touched = " + pin.LastTouchedBy);
-
         if (pin.LastTouchedBy == Pin.LastTouched.PlayerBall) {
             playerCurrentPoints.Value += pin.PointValue;
         }
