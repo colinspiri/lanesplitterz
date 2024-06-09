@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour {
     public static RoundManager Instance;
-    
+
+    [Tooltip("Rounds to play before a winner is decided. If -1, game never ends.")]
+    [SerializeField] private int totalRounds = -1;
     [SerializeField] private int throwsPerRound = 1;
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private IntVariable currentThrow;
@@ -18,6 +20,8 @@ public class RoundManager : MonoBehaviour {
     [Space] 
     public List<int> playerPointsByThrow = new();
     public List<int> enemyPointsByThrow = new();
+    public int playerFinalScore;
+    public int enemyFinalScore;
 
     public static Action OnNewThrow;
     public static Action OnNewRound;
@@ -60,6 +64,18 @@ public class RoundManager : MonoBehaviour {
         if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
     }
 
+    private void CalculateFinalScores() {
+        playerFinalScore = 0;
+        foreach (var playerPoint in playerPointsByThrow) {
+            playerFinalScore += playerPoint;
+        }
+
+        enemyFinalScore = 0;
+        foreach (var enemyPoint in enemyPointsByThrow) {
+            enemyFinalScore += enemyPoint;
+        }
+    }
+
     private void EndThrow() {
         // if no more pins, count points as 0 and skip to next round
         if (pinsStanding.Count == 0) {
@@ -89,6 +105,13 @@ public class RoundManager : MonoBehaviour {
     private void NextRound() {
         currentRound.Value++;
         currentThrow.Value = 1;
+
+        if (currentRound.Value >= totalRounds) {
+            Debug.Log("game over on round " + currentRound.Value + " / " + totalRounds);
+            GameManager.Instance.Pause();
+            CalculateFinalScores();
+            ScoreboardUI.Instance.ShowFinalScores();
+        }
         
         OnNewRound?.Invoke();
     }
