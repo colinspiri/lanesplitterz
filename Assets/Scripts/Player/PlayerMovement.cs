@@ -209,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
         {
             float fuelReduction = turnFuel * Time.fixedDeltaTime;
 
-            if (_fuelMeter < fuelReduction)
+            if (_fuelMeter <= Mathf.Epsilon)
             {
                 return;
             }
@@ -264,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 float fuelReduction = accelFuel * Time.fixedDeltaTime;
 
-                if (_fuelMeter < fuelReduction)
+                if (_fuelMeter <= Mathf.Epsilon)
                 {
                     return;
                 }
@@ -298,13 +298,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (expendFuel)
         {
-            if (_fuelMeter >= strafeFuel)
+            if (_fuelMeter <= Mathf.Epsilon)
             {
-                ReduceFuel(strafeFuel);
+                return;
             }
             else
             {
-                return;
+                ReduceFuel(strafeFuel);
             }
         }
         
@@ -325,9 +325,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Grounded())
         {
-            if (expendFuel && _fuelMeter >= jumpFuel)
+            if (expendFuel)
             {
-                ReduceFuel(jumpFuel);
+                if (_fuelMeter <= Mathf.Epsilon)
+                {
+                    return;
+                }
+                else
+                {
+                    ReduceFuel(jumpFuel);
+                }
             }
             
             _myBody.AddForce((_camInvRot * _myCam.up) * jumpForce, ForceMode.Impulse);
@@ -416,6 +423,8 @@ public class PlayerMovement : MonoBehaviour
             _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
 
             currentFuel.Value -= fuelPercent;
+
+            currentFuel.Value = Mathf.Clamp(currentFuel.Value, 0f, 1f);
 
             fuelChanged.Raise(currentFuel);
         }
