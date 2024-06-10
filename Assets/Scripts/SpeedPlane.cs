@@ -21,7 +21,7 @@ public class SpeedPlane : MonoBehaviour
         // _rigid.AddForce(Vector3.forward * speedMultiplier, ForceMode.Impulse);
         if (collision.gameObject.CompareTag("Player"))
         {
-            _playerMove.Accelerate(speedMultiplier);
+            _playerMove.Accelerate(speedMultiplier, false);
             _audioSource.Play();
         }
         else if (collision.gameObject.CompareTag("Enemy Ball"))

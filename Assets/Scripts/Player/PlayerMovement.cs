@@ -205,7 +205,20 @@ public class PlayerMovement : MonoBehaviour
     // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal, bool expendFuel = true)
     {
-        if (_fuelMeter < turnFuel) return;
+        if (expendFuel)
+        {
+            float fuelReduction = turnFuel * Time.fixedDeltaTime;
+
+            if (_fuelMeter < fuelReduction)
+            {
+                return;
+            }
+            else
+            { 
+                ReduceFuel(fuelReduction);
+            }
+        }
+
         
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
@@ -224,13 +237,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Rotational acceleration
         _myBody.AddTorque(rotForce, ForceMode.Impulse);
-        
-        // Reduce fuel
-        if (expendFuel) ReduceFuel(turnFuel * Time.fixedDeltaTime);
     }
     
     // accelVal is the force to accelerate with
-    public void Accelerate(float accelVal)
+    public void Accelerate(float accelVal, bool expendFuel = true)
     {
         Vector3 linearForce;
         Vector3 rotationalForce;
@@ -250,13 +260,22 @@ public class PlayerMovement : MonoBehaviour
         // Accelerate ahead
         else
         {
-            if (_fuelMeter < accelFuel) return;
-            
+            if (expendFuel)
+            {
+                float fuelReduction = accelFuel * Time.fixedDeltaTime;
+
+                if (_fuelMeter < fuelReduction)
+                {
+                    return;
+                }
+                else
+                {
+                    ReduceFuel(fuelReduction);
+                }
+            }
+        
             linearForce = camForward * accelVal;
             rotationalForce = camRight * accelVal;
-            
-            // Reduce fuel
-            ReduceFuel(accelFuel * Time.fixedDeltaTime);
         }
 
         // Skid if on ice (reduce acceleration)
@@ -275,35 +294,44 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
     }
     
-    private void Strafe(float force)
+    private void Strafe(float force, bool expendFuel = true)
     {
-        if (_fuelMeter >= strafeFuel && (_strafeLeft || _strafeRight))
+        if (expendFuel)
         {
-            _strafing = true;
-            Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
-            
-            if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * force, ForceMode.Impulse);
-            if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * force), ForceMode.Impulse);
-
-            _strafeRight = false;
-            _strafeLeft = false;
-            
-            // Reduce fuel
-            ReduceFuel(strafeFuel);
-
-            StartCoroutine(StrafeAdjust(lastForwardVelocity));
+            if (_fuelMeter >= strafeFuel)
+            {
+                ReduceFuel(strafeFuel);
+            }
+            else
+            {
+                return;
+            }
         }
+        
+        _strafing = true;
+        Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
+        
+        if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * force, ForceMode.Impulse);
+        if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * force), ForceMode.Impulse);
+
+        _strafeRight = false;
+        _strafeLeft = false;
+
+        StartCoroutine(StrafeAdjust(lastForwardVelocity));
     }
 
     // Check y-axis velocity for jump being legal
-    private void Jump()
+    private void Jump(bool expendFuel = true)
     {
-        if (Grounded() && _fuelMeter >= jumpFuel)
+        if (Grounded())
         {
+            if (expendFuel && _fuelMeter >= jumpFuel)
+            {
+                ReduceFuel(jumpFuel);
+            }
+            
             _myBody.AddForce((_camInvRot * _myCam.up) * jumpForce, ForceMode.Impulse);
             
-            // Reduce fuel
-            ReduceFuel(jumpFuel);
         }
 
         _jumpRequest = false;
