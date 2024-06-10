@@ -97,6 +97,8 @@ Material:
     m_Ints: []
     m_Floats:
     - REQUIRE_DEPTH_TEXTURE: 1
+    - _AcuteAnglesThreshold: 0.8
+    - _AcuteAnglesThresholdScale: 2
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -104,7 +106,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorLineThickness: 0.001
+    - _ColorLineThickness: 0.0013
     - _ColorMinThreshold: 0.35
     - _ColorStrength: 1
     - _ColorThickness: 1
@@ -123,6 +125,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NormalLineThickness: 0.0001
     - _OcclusionStrength: 1
     - _OutlineThickness: 0.1
     - _Parallax: 0.005
@@ -139,7 +142,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.20359038, g: 0.34117648, b: 0.15686277, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
