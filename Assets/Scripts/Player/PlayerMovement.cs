@@ -175,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
     {
         UpdateGround();
 
-        Hook();
+        // Hook();
         
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
@@ -191,16 +191,16 @@ public class PlayerMovement : MonoBehaviour
     #region Movement Functions
 
     // Emulate frictional movement to the side
-    private void Hook()
-    {
-        if (!Grounded() || IsIcy()) return;
-        
-        Vector3 camUp = _camInvRot * _myCam.up;
-        
-        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized);
-        
-        Turn(force * hookMultiplier, false);
-    }
+    // private void Hook()
+    // {
+    //     if (!Grounded() || IsIcy()) return;
+    //     
+    //     Vector3 camUp = _camInvRot * _myCam.up;
+    //     
+    //     float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized);
+    //     
+    //     Turn(force * hookMultiplier, false);
+    // }
     
     // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal, bool expendFuel = true)
@@ -346,11 +346,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Adds spin to the ball
-    // Positive spinVal spins CW (right), negative spins CCW (left)
+    // Positive spinVal spins CW (left), negative spins CCW (right)
     // Magnitude of spinVal determines magnitude of torque
     public void Spin(float spinVal)
     {
-        _myBody.AddTorque((_camInvRot * _myCam.up) * spinVal, ForceMode.Impulse);
+        _myBody.AddTorque((_camInvRot * _myCam.forward) * spinVal, ForceMode.Impulse);
     }
 
     
