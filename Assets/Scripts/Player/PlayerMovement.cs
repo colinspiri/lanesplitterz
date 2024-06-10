@@ -199,11 +199,11 @@ public class PlayerMovement : MonoBehaviour
         
         float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized);
         
-        Turn(force * hookMultiplier);
+        Turn(force * hookMultiplier, false);
     }
     
     // turnVal is turn force, negative for left, positive for right
-    public void Turn(float turnVal)
+    public void Turn(float turnVal, bool expendFuel = true)
     {
         if (_fuelMeter < turnFuel) return;
         
@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddTorque(rotForce, ForceMode.Impulse);
         
         // Reduce fuel
-        ReduceFuel(turnFuel * Time.fixedDeltaTime);
+        if (expendFuel) ReduceFuel(turnFuel * Time.fixedDeltaTime);
     }
     
     // accelVal is the force to accelerate with
