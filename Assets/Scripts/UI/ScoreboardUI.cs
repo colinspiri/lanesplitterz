@@ -23,6 +23,14 @@ public class ScoreboardUI : MonoBehaviour {
         enemyScoreText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
     }
 
+    public void ShowFinalScores() {
+        bool playerWins = RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore;
+        playerScoreText.text = (playerWins ? "player won" : "player lost") + " with " +
+                               RoundManager.Instance.playerFinalScore + " points";
+        enemyScoreText.text = (playerWins ? "enemy lost" : "enemy won") + " with " +
+                              RoundManager.Instance.enemyFinalScore + " points";
+    }
+
     private string PointsByThrowToString(IReadOnlyList<int> pointsByThrow) {
         string toString = "";
         for (var i = 0; i < pointsByThrow.Count; i++) {

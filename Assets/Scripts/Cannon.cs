@@ -136,7 +136,7 @@ public class Cannon : MonoBehaviour
 
         // Linear acceleration
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
-        PlayerMovement.Instance.Spin(spinMeterData.meterValue); // meterValue is the spin force
+        PlayerMovement.Instance.Spin(spinMeterData.meterValue * -1f); // meterValue is the spin force
 
         LaunchedBall.Raise();
 

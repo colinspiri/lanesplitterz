@@ -7,9 +7,9 @@ public class StunBall : MonoBehaviour
     private PlayerMovement playerMove;
     [SerializeField] private float SecondsStunned = 0.5f;
 
-    void Awake()
+    void Start()
     {
-        playerMove = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+        playerMove = PlayerMovement.Instance;
 
         if (!playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
     }
@@ -17,8 +17,11 @@ public class StunBall : MonoBehaviour
     //When Ball hits billboard, activates Stun.
     IEnumerator OnTriggerEnter( Collider Hit )
     {
-        StartCoroutine( EnableStun() );
-        yield return null;
+        if (Hit.gameObject.layer == LayerMask.NameToLayer("Balls"))
+        {
+            StartCoroutine( EnableStun() );
+            yield return null;
+        }
     }
 
     //Stun mechanic (disable movement -> wait for SecondsStunned -> re-enable movement)

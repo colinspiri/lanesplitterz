@@ -402,7 +402,9 @@ MonoBehaviour:
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   pinsFallen: {fileID: 11400000, guid: b3a102e005dce7841ae8209202862b6b, type: 2}
   pinsKnockedDown: {fileID: 11400000, guid: 4c462e06b4b6c1749b2b2d6ab064610c, type: 2}
-  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
+  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
+    type: 2}
+  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
 --- !u!1 &3886986884091025869
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756b61e6db124fa8a17b037ccf9ed9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballFuel: {fileID: 11400000, guid: bb603df81b5ebc845902757dd6a21c6a, type: 2}
   ballSmokeLeft: {fileID: 7579818363064969951}
   ballSmokeRight: {fileID: 4148254606607550151}
   ballSmokeBack: {fileID: 1117222813604801}
@@ -848,14 +851,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13947a7395d4f4d9876c1c7ca1747dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalRounds: 3
   throwsPerRound: 2
   currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
   currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
-  currentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa, type: 2}
+  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
+    type: 2}
+  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
+  dialogueOnGameStart: GameStart
+  dialogueOnGameEnd: GameEnd
   playerPointsByThrow: 
   enemyPointsByThrow: 
+  playerFinalScore: 0
+  enemyFinalScore: 0
 --- !u!1 &7396798548552269009
 GameObject:
   m_ObjectHideFlags: 0
