@@ -7,9 +7,9 @@ public class SpeedPlane : MonoBehaviour
     private PlayerMovement _playerMove;
     private AudioSource _audioSource;
  
-    private void Awake()
+    private void Start()
     {
-        _playerMove = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+        _playerMove = PlayerMovement.Instance;
 
         if (!_playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
 
@@ -19,7 +19,7 @@ public class SpeedPlane : MonoBehaviour
     private void OnTriggerEnter( Collider collision )
     {
         // _rigid.AddForce(Vector3.forward * speedMultiplier, ForceMode.Impulse);
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Balls") && collision.gameObject.CompareTag("Player"))
         {
             _playerMove.Accelerate(speedMultiplier, false);
             _audioSource.Play();

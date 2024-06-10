@@ -10,9 +10,9 @@ public class breakableObstacle : MonoBehaviour
     [Range(0.01f, 1f)]
     [SerializeField] private float fuelSub = 0.1f;
 
-    void Awake()
+    void Start()
     {
-        _playerMove = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+        _playerMove = PlayerMovement.Instance;
 
         if (!_playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
     }

@@ -9,9 +9,9 @@ public class FuelPad : MonoBehaviour
     [SerializeField] private float fuelAdd = 0.1f;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        _playerMove = GameObject.FindWithTag("Player")?.GetComponent<PlayerMovement>();
+        _playerMove = PlayerMovement.Instance;
     }
 
     // Update is called once per frame
