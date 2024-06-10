@@ -1,14 +1,17 @@
 ﻿using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 public class BallVFX : MonoBehaviour {
+    [SerializeField] private FloatVariable ballFuel;
+    
     [SerializeField] private ParticleSystem ballSmokeLeft;
     [SerializeField] private ParticleSystem ballSmokeRight;
     [SerializeField] private ParticleSystem ballSmokeBack;
     [SerializeField] private ParticleSystem ballSmokeFront;
 
     private void Update() {
-        if (PlayerMovement.Instance == null) return;
+        if (PlayerMovement.Instance == null || ballFuel.Value <= Mathf.Epsilon) return;
         
         SnapToBall();
 
