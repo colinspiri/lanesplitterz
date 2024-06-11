@@ -69,9 +69,10 @@ void NormalSobel_float(float2 UV, float NormalLineThickness, out float Out)
     {
         float2 sampleUV = UV + sobelSamplePoints[i] * NormalLineThickness;
         float3 normal = SHADERGRAPH_SAMPLE_SCENE_NORMAL(sampleUV);
-        sobelX += normal.x * float2(sobelXWeights[i], sobelYWeights[i]);
-        sobelY += normal.y * float2(sobelXWeights[i], sobelYWeights[i]);
-        sobelZ += normal.z * float2(sobelXWeights[i], sobelYWeights[i]);
+        float3 viewNormal = TransformWorldToViewNormal(normal.xyz, true);
+        sobelX += viewNormal.x * float2(sobelXWeights[i], sobelYWeights[i]);
+        sobelY += viewNormal.y * float2(sobelXWeights[i], sobelYWeights[i]);
+        sobelZ += viewNormal.z * float2(sobelXWeights[i], sobelYWeights[i]);
     }
     Out = max(length(sobelX), max(length(sobelY), length(sobelZ)));
 }
