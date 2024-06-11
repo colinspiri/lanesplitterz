@@ -64,6 +64,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxLinearVelocity = 1e+16f;
     [SerializeField] private float maxAngularVelocity = 50f;
 
+    [Header("Audio Sources")]
+    [SerializeField] AudioSource BallRolling;
+
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
     [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
@@ -367,11 +370,16 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit,
                 _myCollider.radius + 1f, _groundMask))
         {
+            if (!Grounded())
+            {
+                BallRolling.Play();
+            }
             _ground = hit.collider.gameObject;
         }
         else
         {
             _ground = null;
+            BallRolling.Stop();
         }
     }
     
