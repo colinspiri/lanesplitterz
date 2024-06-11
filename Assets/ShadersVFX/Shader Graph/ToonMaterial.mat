@@ -110,10 +110,10 @@ Material:
     - _ColorThickness: 1
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DepthLineThickness: 0.0035
+    - _DepthLineThickness: 0.005
     - _DepthMinThreshold: 0.002
     - _DepthNormalThreshold: 3
-    - _DepthNormalThresholdScale: 1000
+    - _DepthNormalThresholdScale: 3000
     - _DepthStrength: 20
     - _DepthThickness: 1
     - _DetailAlbedoMapScale: 1
@@ -125,7 +125,11 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NormalFarDepth: 100
+    - _NormalFarDepthThreshold: 20
     - _NormalLineThickness: 0.001
+    - _NormalNearDepth: 0.01
+    - _NormalNearDepthThreshold: 0.5
     - _OcclusionStrength: 1
     - _OutlineThickness: 0.1
     - _Parallax: 0.005
