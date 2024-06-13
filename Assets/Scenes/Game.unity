@@ -1512,6 +1512,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: --UI--
       objectReference: {fileID: 0}
+    - target: {fileID: 1592562405279454201, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1963661663559615273, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1791,10 +1796,30 @@ PrefabInstance:
       propertyPath: objectToFollow
       value: 
       objectReference: {fileID: 1390863922}
+    - target: {fileID: 684744494371811234, guid: 261810348d112d944a6dfb05cfadb073,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 684744494371811234, guid: 261810348d112d944a6dfb05cfadb073,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.6032343
+      objectReference: {fileID: 0}
+    - target: {fileID: 684744494371811234, guid: 261810348d112d944a6dfb05cfadb073,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4478742880529064818, guid: 261810348d112d944a6dfb05cfadb073,
         type: 3}
       propertyPath: m_Name
       value: --BASEGAME--
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013212937215070517, guid: 261810348d112d944a6dfb05cfadb073,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8500893530938471023, guid: 261810348d112d944a6dfb05cfadb073,
         type: 3}
