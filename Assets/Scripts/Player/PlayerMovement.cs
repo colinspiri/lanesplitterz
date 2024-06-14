@@ -94,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         _myCam = GameObject.FindWithTag("MainCamera").transform;
         
         _myCollider = GetComponent<SphereCollider>();
+        _myCollider.hasModifiableContacts = true;
 
         _myRadius = _myCollider.radius * transform.lossyScale.x;
 
