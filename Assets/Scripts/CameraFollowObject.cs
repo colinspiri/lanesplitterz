@@ -13,11 +13,21 @@ public class CameraFollowObject : MonoBehaviour {
     private Vector3 _targetPosition;
     private Vector3 _offset;
 
+    private Vector3 _initialPos;
+    private Quaternion _initialRot;
+
+    private bool _initialized = false;
+
     // Start is called before the first frame update
     void Start() {
         _objectToFollow = PlayerMovement.Instance.gameObject;
         _offset = transform.position - _objectToFollow.transform.position;
         _myCamera = transform.GetChild(0);
+
+        _initialPos = transform.position;
+        _initialRot = transform.rotation;
+
+        _initialized = true;
     }
 
     // Update is called once per frame
@@ -46,6 +56,15 @@ public class CameraFollowObject : MonoBehaviour {
         // Rotate orientation gradually
         Quaternion destRot = diffRot * transform.rotation;
         StartCoroutine(RotateOrientation(destRot));
+    }
+
+    public void DefaultForward()
+    {
+        if (!_initialized) return;
+        
+        transform.position = _initialPos;
+        transform.rotation = _initialRot;
+        _offset = transform.position - _objectToFollow.transform.position;
     }
 
     private IEnumerator RotateOrientation(Quaternion destRot)

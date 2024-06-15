@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance;
     private Rigidbody _myBody;
     private Transform _myCam;
+    private CameraFollowObject _myCamHandle;
     private Quaternion _camInvRot;
     private SphereCollider _myCollider;
     private float _myRadius;
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         _myBody = GetComponent<Rigidbody>();
         
         _myCam = GameObject.FindWithTag("MainCamera").transform;
+        _myCamHandle = _myCam.GetComponentInParent<CameraFollowObject>();
         
         _myCollider = GetComponent<SphereCollider>();
         _myCollider.hasModifiableContacts = true;
@@ -122,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
         
         _myBody.velocity = Vector3.zero;
         _myBody.angularVelocity = Vector3.zero;
+
+        _myCamHandle.DefaultForward();
 
         currentFuel.Value = 1;
         _fuelMeter = 1f;
