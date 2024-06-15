@@ -6,6 +6,7 @@ public class SpeedPlane : MonoBehaviour
     // private Rigidbody _rigid;
     private PlayerMovement _playerMove;
     private AudioSource _audioSource;
+    private CameraFollowObject _playerCam;
  
     private void Start()
     {
@@ -14,6 +15,8 @@ public class SpeedPlane : MonoBehaviour
         if (!_playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
 
         _audioSource = GetComponent<AudioSource>();
+        
+        _playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInParent<CameraFollowObject>();
     }
 
     private void OnTriggerEnter( Collider collision )
@@ -28,6 +31,8 @@ public class SpeedPlane : MonoBehaviour
             {
                 // I think the forward is pointing backwards by default?
                 _playerMove.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                
+                _playerCam.ResetForward(transform.forward * -1f);
             }
             // Slow down
             else
