@@ -3,6 +3,8 @@ using UnityEngine;
 public class SpeedPlane : MonoBehaviour
 {
     public float speedMultiplier = 2f;
+    public bool updatePlayerForward = true;
+    public bool updateCameraForward = true;
     // private Rigidbody _rigid;
     private PlayerMovement _playerMove;
     private AudioSource _audioSource;
@@ -29,10 +31,20 @@ public class SpeedPlane : MonoBehaviour
             // Speed up
             if (speedMultiplier > Mathf.Epsilon)
             {
-                // I think the forward is pointing backwards by default?
-                _playerMove.Accelerate(speedMultiplier * transform.forward * -1f, false);
-                
-                _playerCam.ResetForward(transform.forward * -1f);
+                if (updatePlayerForward)
+                {
+                    // I think the forward is pointing backwards by default?
+                    _playerMove.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                }
+                else
+                {
+                    _playerMove.Accelerate(speedMultiplier, false);
+                }
+
+                if (updateCameraForward)
+                {
+                    _playerCam.ResetForward(transform.forward * -1f);
+                }
             }
             // Slow down
             else
