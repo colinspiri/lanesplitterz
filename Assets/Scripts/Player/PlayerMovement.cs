@@ -299,6 +299,8 @@ public class PlayerMovement : MonoBehaviour
     }
     
     // Overload for acceleration in an arbitrary direction
+    // Forces velocity along new direction, then adds extra force
+    /* Can probably be split into multiple methods (See Steer() below) */
     public void Accelerate(Vector3 accelForce, bool expendFuel = true)
     {
         if (expendFuel)
@@ -337,6 +339,19 @@ public class PlayerMovement : MonoBehaviour
         
         // Rotational acceleration
         _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
+    }
+
+    // Force velocity along a new direction
+    /* TO DO */
+    /* Make this gradual later (through coroutines) */
+    /* Increase acceleration overload efficiency with this */
+    public void Steer(Vector3 linDir)
+    {
+        Vector3 camUp = (_camInvRot * _myCam.up).normalized;
+        Vector3 rotDir = Vector3.Cross(linDir, camUp);
+        
+        _myBody.velocity = linDir.normalized * _myBody.velocity.magnitude;
+        _myBody.angularVelocity = rotDir.normalized * _myBody.angularVelocity.magnitude;
     }
     
     private void Strafe(float force, bool expendFuel = true)
