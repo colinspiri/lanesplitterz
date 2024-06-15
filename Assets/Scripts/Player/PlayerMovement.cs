@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (_strafeLeft || _strafeRight) Strafe(strafeForce);
         
-        if (_jumpRequest) Jump();
+        if (_jumpRequest) Jump(jumpForce);
     }
 
     #endregion
@@ -285,11 +285,52 @@ public class PlayerMovement : MonoBehaviour
         // Skid if on ice (reduce acceleration)
         if (IsIcy())
         {
-            Debug.Log("Acceleration skidding on ice");
+            // Debug.Log("Acceleration skidding on ice");
             
             linearForce /= slipperyForce;
             rotationalForce /= slipperyForce;
         }
+        
+        // Linear acceleration
+        _myBody.AddForce(linearForce, ForceMode.Impulse);
+        
+        // Rotational acceleration
+        _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
+    }
+    
+    // Overload for acceleration in an arbitrary direction
+    public void Accelerate(Vector3 accelForce, bool expendFuel = true)
+    {
+        if (expendFuel)
+        {
+            float fuelReduction = accelFuel * Time.fixedDeltaTime;
+
+            if (_fuelMeter <= Mathf.Epsilon)
+            {
+                return;
+            }
+            else
+            {
+                ReduceFuel(fuelReduction);
+            }
+        }
+        
+        Vector3 camUp = (_camInvRot * _myCam.up).normalized;
+        Vector3 linearForce = accelForce;
+        Vector3 rotationalForce = Vector3.Cross(accelForce, camUp);
+
+        // Skid if on ice (reduce acceleration)
+        if (IsIcy())
+        {
+            // Debug.Log("Acceleration skidding on ice");
+            
+            linearForce /= slipperyForce;
+            rotationalForce /= slipperyForce;
+        }
+        
+        // Steer existing velocity toward direction of force
+        _myBody.velocity = linearForce.normalized * _myBody.velocity.magnitude;
+        _myBody.angularVelocity = rotationalForce.normalized * _myBody.angularVelocity.magnitude;
         
         // Linear acceleration
         _myBody.AddForce(linearForce, ForceMode.Impulse);
@@ -325,7 +366,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Check y-axis velocity for jump being legal
-    private void Jump(bool expendFuel = true)
+    private void Jump(float force, bool expendFuel = true)
     {
         if (Grounded())
         {
@@ -341,7 +382,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             
-            _myBody.AddForce((_camInvRot * _myCam.up) * jumpForce, ForceMode.Impulse);
+            _myBody.AddForce((_camInvRot * _myCam.up) * force, ForceMode.Impulse);
             
         }
 
