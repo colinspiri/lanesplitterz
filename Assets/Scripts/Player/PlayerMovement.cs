@@ -194,6 +194,22 @@ public class PlayerMovement : MonoBehaviour
         if (_jumpRequest) Jump(jumpForce);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Negate force of collision against pin
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
+        {
+            ContactPoint[] contactList = new ContactPoint[collision.contactCount];
+        
+            collision.GetContacts(contactList);
+
+            foreach (ContactPoint contact in contactList)
+            {
+                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            }
+        }
+    }
+
     #endregion
 
     #region Movement Functions
@@ -510,6 +526,25 @@ public class PlayerMovement : MonoBehaviour
 
         fuelChanged.Raise(currentFuel);
     }
+
+    // Negate collision force against pins
+    // Assuming fixedupdate will never be interrupted by a collision call
+    // private void NegateCollisions()
+    // {
+    //     if (_hasCollided)
+    //     {
+    //         foreach (ContactPoint[] contactList in _collisionContacts)
+    //         {
+    //             foreach (ContactPoint contact in contactList)
+    //             {
+    //                 _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+    //             }
+    //         }
+    //         
+    //         _collisionContacts.Clear();
+    //         _hasCollided = false;
+    //     }
+    // }
     
     #endregion
 }
