@@ -26,7 +26,7 @@ public class Pin : MonoBehaviour {
     {
         PinManager.Instance.AddPin(this);
 
-        _ballLayer = LayerMask.NameToLayer("Pin Colliders");
+        _ballLayer = LayerMask.NameToLayer("Balls");
     }
 
     void Update()
