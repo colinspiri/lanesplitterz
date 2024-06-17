@@ -54,7 +54,7 @@ public class Pin : MonoBehaviour {
         if (_pinState != PinState.KnockedDown) {
             if (collision.gameObject.CompareTag("Pin")) {
                 var pin = collision.gameObject.GetComponent<Pin>();
-                LastTouchedBy = pin.LastTouchedBy;
+                if (pin) LastTouchedBy = pin.LastTouchedBy;
             }
             else if (collision.gameObject.CompareTag("Player")) {
                 LastTouchedBy = LastTouched.PlayerBall;
