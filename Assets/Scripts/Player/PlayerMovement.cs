@@ -354,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
         _myBody.velocity = linearForce.normalized * _myBody.velocity.magnitude;
         _myBody.angularVelocity = rotationalForce.normalized * _myBody.angularVelocity.magnitude;
         
-        // Linear acceleration
+        // Linear acceleration 
         _myBody.AddForce(linearForce, ForceMode.Impulse);
         
         // Rotational acceleration
