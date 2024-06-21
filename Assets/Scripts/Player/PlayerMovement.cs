@@ -129,7 +129,6 @@ public class PlayerMovement : MonoBehaviour
 
         currentFuel.Value = 1;
         _fuelMeter = 1f;
-        fuelChanged.Raise(currentFuel);
     }
 
     private void Update()
