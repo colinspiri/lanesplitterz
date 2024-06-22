@@ -24,6 +24,7 @@ public class Cannon : MonoBehaviour
 
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
+    [SerializeField] private TrajectoryLine trajectoryLine;
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
@@ -57,6 +58,8 @@ public class Cannon : MonoBehaviour
         transform.rotation = Quaternion.identity;
 
         launched = false;
+
+        trajectoryLine.SetPositions();
         //launchForce = 0;
         //PowerLevelManager.Instance.DisablePowerSlider();
     }
@@ -108,6 +111,7 @@ public class Cannon : MonoBehaviour
                 target.x = Mathf.Clamp(RoundAngle(target.x), minPitch, maxPitch);
                 target.y = Mathf.Clamp(RoundAngle(target.y), minYaw, maxYaw);
                 transform.rotation = Quaternion.Euler(target);
+                trajectoryLine.SetPositions();
                 if (!moving /*&& target.x < maxPitch && target.x > minPitch*/)
                 {
                     moving = true;
