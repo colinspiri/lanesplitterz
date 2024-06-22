@@ -20,6 +20,7 @@ public class Cannon : MonoBehaviour
 
     [SerializeField] private Rigidbody ball;
     [SerializeField] private AudioSource launchSound;
+    [SerializeField] private AudioSource turnSound;
 
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
@@ -35,6 +36,7 @@ public class Cannon : MonoBehaviour
     //private float launchForce;
     private Enemy _enemy;
     private int numSpacePressed = 0;
+    private bool moving = false;
 
     private void Awake()
     {
@@ -106,7 +108,22 @@ public class Cannon : MonoBehaviour
                 target.x = Mathf.Clamp(RoundAngle(target.x), minPitch, maxPitch);
                 target.y = Mathf.Clamp(RoundAngle(target.y), minYaw, maxYaw);
                 transform.rotation = Quaternion.Euler(target);
+                if (!moving /*&& target.x < maxPitch && target.x > minPitch*/)
+                {
+                    moving = true;
+                    turnSound.Play();
+                }
             }
+            else if (moving)
+            {
+                moving = false;
+                turnSound.Stop();
+            }
+            /*if (transform.rotation.x > maxPitch || transform.rotation.x < minPitch)
+            {
+                moving = false;
+                turnSound.Stop();
+            }*/
         }
     }
 
