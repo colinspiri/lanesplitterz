@@ -860,8 +860,8 @@ MonoBehaviour:
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
-  dialogueOnGameStart: GameStart
-  dialogueOnGameEnd: GameEnd
+  dialogueOnGameStart: ElvisStart
+  dialogueOnGameEnd: ElvisEnd
   playerPointsByThrow: 
   enemyPointsByThrow: 
   playerFinalScore: 0
@@ -1535,17 +1535,17 @@ PrefabInstance:
     - target: {fileID: 1954470329152901676, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.78
       objectReference: {fileID: 0}
     - target: {fileID: 1954470329152901676, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 1954470329152901676, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 1954470329152901676, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
@@ -1586,6 +1586,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: hookMultiplier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
