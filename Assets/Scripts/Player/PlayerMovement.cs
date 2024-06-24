@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     public bool acceptingInputs = true;
     public bool disableOnStart = true;
     public bool enableFuelLoss = true;
-    private bool _jumpRequest;
     private bool _strafeLeft;
     private bool _strafeRight;
     private bool _strafing = false;
@@ -38,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Force specifications")]
     [SerializeField] private float accelForce;
     [SerializeField] private float turnForce;
-    [SerializeField] private float jumpForce;
     [SerializeField] private float strafeForce;
     // # of seconds for strafe to adjust back to linear velocity
     [SerializeField] private float strafeSeconds;
@@ -52,8 +50,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelFuel;
     [Tooltip("Amount of fuel expended per second while steering left or right")]
     [SerializeField] private float turnFuel;
-    [Tooltip("Amount of fuel expended per jump")]
-    [SerializeField] private float jumpFuel;
     [Tooltip("Amount of fuel expended per strafe")]
     [SerializeField] private float strafeFuel;
     
@@ -150,8 +146,6 @@ public class PlayerMovement : MonoBehaviour
             // Input value between 0 and -1 if decelerating
             if (_accelVal > 0f) _accelVal *= accelForce;
         
-            _jumpRequest = _jumpRequest || Input.GetKeyDown(KeyCode.Space);
-
             if (!_strafing)
             {
                 _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
@@ -162,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _turnVal = 0f;
             _accelVal = 0f;
-            _jumpRequest = false;
             _strafeLeft = false;
             _strafeRight = false;
         }
@@ -189,8 +182,6 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
         
         if (_strafeLeft || _strafeRight) Strafe(strafeForce);
-        
-        if (_jumpRequest) Jump(jumpForce);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -398,31 +389,6 @@ public class PlayerMovement : MonoBehaviour
 
         StartCoroutine(StrafeAdjust(lastForwardVelocity));
     }
-
-    // Check y-axis velocity for jump being legal
-    private void Jump(float force, bool expendFuel = true)
-    {
-        if (Grounded())
-        {
-            if (expendFuel)
-            {
-                if (_fuelMeter <= Mathf.Epsilon)
-                {
-                    return;
-                }
-                else
-                {
-                    ReduceFuel(jumpFuel);
-                }
-            }
-            
-            _myBody.AddForce((_camInvRot * _myCam.up) * force, ForceMode.Impulse);
-            
-        }
-
-        _jumpRequest = false;
-    }
-
 
     // Adds spin to the ball
     // Positive spinVal spins CW (left), negative spins CCW (right)
