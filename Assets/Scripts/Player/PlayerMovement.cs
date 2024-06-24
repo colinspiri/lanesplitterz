@@ -26,9 +26,6 @@ public class PlayerMovement : MonoBehaviour
     public bool acceptingInputs = true;
     public bool disableOnStart = true;
     public bool enableFuelLoss = true;
-    private bool _strafeLeft;
-    private bool _strafeRight;
-    private bool _strafing = false;
     private float _turnVal;
     private float _accelVal;
     
@@ -37,9 +34,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Force specifications")]
     [SerializeField] private float accelForce;
     [SerializeField] private float turnForce;
-    [SerializeField] private float strafeForce;
-    // # of seconds for strafe to adjust back to linear velocity
-    [SerializeField] private float strafeSeconds;
     [SerializeField] private float slipperyForce = 10f;
     [Tooltip("The multiplier determining what % of rotational force transforms into hooking")]
     [SerializeField] private float hookMultiplier;
@@ -50,9 +44,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelFuel;
     [Tooltip("Amount of fuel expended per second while steering left or right")]
     [SerializeField] private float turnFuel;
-    [Tooltip("Amount of fuel expended per strafe")]
-    [SerializeField] private float strafeFuel;
-    
     
     [Header("Events")]
     [SerializeField] private FloatVariableGameEvent fuelChanged;
@@ -145,19 +136,11 @@ public class PlayerMovement : MonoBehaviour
             
             // Input value between 0 and -1 if decelerating
             if (_accelVal > 0f) _accelVal *= accelForce;
-        
-            if (!_strafing)
-            {
-                _strafeLeft = _strafeLeft || Input.GetKeyDown(KeyCode.Q);
-                _strafeRight = _strafeRight || Input.GetKeyDown(KeyCode.E);
-            }
         }
         else
         {
             _turnVal = 0f;
             _accelVal = 0f;
-            _strafeLeft = false;
-            _strafeRight = false;
         }
         
         // set public-accessible acceleration state
@@ -180,8 +163,6 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
         if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
-        
-        if (_strafeLeft || _strafeRight) Strafe(strafeForce);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -363,32 +344,6 @@ public class PlayerMovement : MonoBehaviour
         _myBody.velocity = linDir.normalized * _myBody.velocity.magnitude;
         _myBody.angularVelocity = rotDir.normalized * _myBody.angularVelocity.magnitude;
     }
-    
-    private void Strafe(float force, bool expendFuel = true)
-    {
-        if (expendFuel)
-        {
-            if (_fuelMeter <= Mathf.Epsilon)
-            {
-                return;
-            }
-            else
-            {
-                ReduceFuel(strafeFuel);
-            }
-        }
-        
-        _strafing = true;
-        Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity, (_camInvRot * _myCam.forward).normalized);
-        
-        if (_strafeRight) _myBody.AddForce((_camInvRot * _myCam.right) * force, ForceMode.Impulse);
-        if (_strafeLeft) _myBody.AddForce((_camInvRot * _myCam.right) * (-1 * force), ForceMode.Impulse);
-
-        _strafeRight = false;
-        _strafeLeft = false;
-
-        StartCoroutine(StrafeAdjust(lastForwardVelocity));
-    }
 
     // Adds spin to the ball
     // Positive spinVal spins CW (left), negative spins CCW (right)
@@ -435,32 +390,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IsIcy()
     {
         return _ground && _ground.CompareTag("Icy");
-    }
-
-    // Adjust velocity to forward after strafing
-    private IEnumerator StrafeAdjust(Vector3 lastVelocity)
-    {
-        // Wait for next physics frame, ensure calculations for force are done
-        yield return new WaitForFixedUpdate();
-        
-        // Avoid dividing by zero!
-        if (strafeSeconds < Mathf.Epsilon)
-        {
-            _myBody.velocity = lastVelocity;
-            
-            _strafing = false;
-
-            yield break;
-        }
-        
-        for (float t = 0f; t <= strafeSeconds; t += Time.fixedDeltaTime)
-        {
-            _myBody.velocity = Vector3.Lerp(_myBody.velocity, lastVelocity, t / strafeSeconds);
-            
-            yield return new WaitForFixedUpdate();
-        }
-
-        _strafing = false;
     }
 
     // Deplete the fuel meter by some percent (between 0 and 1)
