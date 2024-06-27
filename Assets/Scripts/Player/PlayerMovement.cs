@@ -35,10 +35,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelForce;
     [SerializeField] private float turnForce;
     [SerializeField] private float slipperyForce = 10f;
-    [Tooltip("The multiplier determining what % of rotational force transforms into hooking")]
-    [SerializeField] private float hookMultiplier;
     [SerializeField] private float brakeDelay;
     [SerializeField] private float minimumSpeed;
+
+    [Header("Spin")] 
+    [Tooltip("Every frame, hookForce is multiplied by the spin [-100, 100] to turn the ball based on the spin")]
+    [SerializeField] private float hookForceMultiplier;
+    [Tooltip("While turning, spin value [-100, 100] is modified each second by this value")] 
+    [SerializeField] private float turnSpeedPerSecond = 0.1f;
 
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while accelerating (not decelerating)")]
@@ -68,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     private float _currentSpeed = 0f;
     private GameObject _ground = null;
     private bool _hasLaunched;
+    private float _currentSpin = 0f;
 
     // misc
     private int _groundMask;
@@ -135,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (acceptingInputs)
         {
-            _turnVal = Input.GetAxis("Turn") * turnForce;
+            _turnVal = Input.GetAxis("Turn");
 
             _accelVal = Input.GetAxis("Accelerate");
             
@@ -163,7 +168,8 @@ public class PlayerMovement : MonoBehaviour
     {
         UpdateGround();
 
-        // Hook();
+        // Debug.Log("currentSpin = " + _currentSpin);
+        Hook();
         
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
@@ -195,16 +201,19 @@ public class PlayerMovement : MonoBehaviour
     #region Movement Functions
 
     // Emulate frictional movement to the side
-    // private void Hook()
-    // {
-    //     if (!Grounded() || IsIcy()) return;
-    //     
-    //     Vector3 camUp = _camInvRot * _myCam.up;
-    //     
-    //     float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized);
-    //     
-    //     Turn(force * hookMultiplier, false);
-    // }
+    private void Hook()
+    { 
+        if (!Grounded() || IsIcy()) return;
+
+        float hookForceMagnitude = _currentSpin * hookForceMultiplier;
+        Vector3 hookForce = (_camInvRot * _myCam.right) * hookForceMagnitude;
+        
+        _myBody.AddForce(hookForce);
+
+        /*Vector3 camUp = _camInvRot * _myCam.up; 
+        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
+        Turn(force * hookMultiplier, false);*/
+    }
     
     // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal, bool expendFuel = true)
@@ -223,6 +232,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
+        if (_currentSpin > 100) _currentSpin = 100;
+        else if (_currentSpin < -100) _currentSpin = -100;
+
+        /*
+        turnVal *= turnForce;
         
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
@@ -240,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddForce(linForce, ForceMode.Impulse);
 
         // Rotational acceleration
-        _myBody.AddTorque(rotForce, ForceMode.Impulse);
+        _myBody.AddTorque(rotForce, ForceMode.Impulse);*/
     }
     
     // accelVal is the force to accelerate with
@@ -357,9 +372,9 @@ public class PlayerMovement : MonoBehaviour
     // Adds spin to the ball
     // Positive spinVal spins CW (left), negative spins CCW (right)
     // Magnitude of spinVal determines magnitude of torque
-    public void Spin(float spinVal)
-    {
-        _myBody.AddTorque((_camInvRot * _myCam.forward) * spinVal, ForceMode.Impulse);
+    public void Spin(float spinVal) {
+        _currentSpin = spinVal * -1;
+        //_myBody.AddTorque((_camInvRot * _myCam.forward) * spinVal, ForceMode.Impulse);
     }
 
     
