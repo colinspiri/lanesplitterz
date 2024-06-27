@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("The multiplier determining what % of rotational force transforms into hooking")]
     [SerializeField] private float hookMultiplier;
     [SerializeField] private float brakeDelay;
+    [SerializeField] private float minimumSpeed;
 
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while accelerating (not decelerating)")]
@@ -64,7 +65,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
+    private float _currentSpeed = 0f;
     private GameObject _ground = null;
+    private bool _hasLaunched;
 
     // misc
     private int _groundMask;
@@ -99,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
+        RoundManager.OnNewThrow += () => _hasLaunched = false;
+        RoundManager.OnNewRound += () => _hasLaunched = false;
 
         Initialize();
     }
@@ -163,6 +168,10 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
         if (Mathf.Abs(_accelVal) > Mathf.Epsilon) Accelerate(_accelVal);
+
+        // Keep ball from going too slow
+        _currentSpeed = Vector3.Project(_myBody.velocity, _myCam.forward).magnitude;
+        if (_hasLaunched && _currentSpeed < minimumSpeed) Accelerate(1f, false);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -419,6 +428,14 @@ public class PlayerMovement : MonoBehaviour
         currentFuel.Value += fuelPercent;
 
         fuelChanged.Raise(currentFuel);
+    }
+
+    public void SetBallLaunched() { StartCoroutine(BallLaunchedCoroutine()); }
+
+    private IEnumerator BallLaunchedCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+        _hasLaunched = true;
     }
 
     // Negate collision force against pins
