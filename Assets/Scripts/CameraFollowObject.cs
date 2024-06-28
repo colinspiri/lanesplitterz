@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform;
 using UnityEngine;
 
 public class CameraFollowObject : MonoBehaviour {
-    private GameObject _objectToFollow;
+    [SerializeField] private GameObject _objectToFollow;
     private Transform _myCamera;
     
     [SerializeField] private float moveSpeed;
@@ -20,7 +20,7 @@ public class CameraFollowObject : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _objectToFollow = PlayerMovement.Instance.gameObject;
+        // _objectToFollow = PlayerMovement.Instance.gameObject;
         _offset = transform.position - _objectToFollow.transform.position;
         _myCamera = transform.GetChild(0);
 

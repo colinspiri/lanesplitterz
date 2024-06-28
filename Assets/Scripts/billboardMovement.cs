@@ -12,7 +12,7 @@ public class billboardMovement : MonoBehaviour
     [SerializeField] public float moveDuration = 5;
     //[SerializeField] private float slowDown = 0.01f;
     [Range(0.01f, 1.0f)]
-    [SerializeField] private float fuelSub = 0.1f;
+    public float fuelSub = 0.1f;
 
     // Start is called before the first frame update
     IEnumerator Start()

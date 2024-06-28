@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 793625586155202326}
   - component: {fileID: 3453596374459429697}
   - component: {fileID: 9041972455083765477}
-  - component: {fileID: 262683764499468453}
   - component: {fileID: 6862339446579452368}
   - component: {fileID: 5375558769427908883}
   - component: {fileID: 3863889324186810178}
@@ -158,9 +157,10 @@ MonoBehaviour:
   accelForce: 5
   turnForce: 2.5
   slipperyForce: 10
-  hookMultiplier: 0.05
   brakeDelay: 15
   minimumSpeed: 0
+  hookForceMultiplier: 0
+  turnSpeedPerSecond: 0.1
   accelFuel: 0.25
   turnFuel: 0.5
   fuelChanged: {fileID: 11400000, guid: 27be1206cb6324b4384256b436293067, type: 2}
@@ -283,22 +283,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!208 &262683764499468453
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394013142470015375}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!82 &6862339446579452368
 AudioSource:
   m_ObjectHideFlags: 0

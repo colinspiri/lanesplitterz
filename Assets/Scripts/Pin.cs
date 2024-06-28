@@ -1,6 +1,7 @@
 using System;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Pin : MonoBehaviour {
     // components
@@ -14,25 +15,27 @@ public class Pin : MonoBehaviour {
     public int PointValue => pointValue;
     
     // private state
-    private enum PinState { Untouched, Hit, KnockedDown }
-    private PinState _pinState;
+    public enum PinState { Untouched, Hit, KnockedDown }
+    [FormerlySerializedAs("_pinState")] public PinState pinState;
     public enum LastTouched { None, PlayerBall, EnemyBall }
     public LastTouched LastTouchedBy { get; private set; }
 
     // misc
     private int _ballLayer;
+    private int _pinLayer;
 
     void Start()
     {
         PinManager.Instance.AddPin(this);
 
         _ballLayer = LayerMask.NameToLayer("Balls");
+        _pinLayer = gameObject.layer;
     }
 
     void Update()
     {
         // after being hit, start checking if the angle exceeds a certain range
-        if (_pinState == PinState.Hit) {
+        if (pinState == PinState.Hit) {
             var zAngle = transform.localEulerAngles.z;
             if (zAngle > uprightAngleRange || zAngle < (360 - uprightAngleRange)) {
                 SetKnockedDown();
@@ -41,7 +44,7 @@ public class Pin : MonoBehaviour {
     }
 
     private void SetKnockedDown() {
-        _pinState = PinState.KnockedDown;
+        pinState = PinState.KnockedDown;
 
         PinManager.Instance.NotifyPinKnockedDown(this);
     }
@@ -51,8 +54,8 @@ public class Pin : MonoBehaviour {
         int collisionLayer = collision.gameObject.layer;
         
         // set last touched by
-        if (_pinState != PinState.KnockedDown) {
-            if (collision.gameObject.CompareTag("Pin")) {
+        if (pinState != PinState.KnockedDown) {
+            if (collisionLayer == _pinLayer) {
                 var pin = collision.gameObject.GetComponent<Pin>();
                 if (pin) LastTouchedBy = pin.LastTouchedBy;
             }
@@ -65,10 +68,10 @@ public class Pin : MonoBehaviour {
         }
 
         // set state to hit
-        if (_pinState == PinState.Untouched &&
-            (collision.collider.CompareTag("Pin") || collisionLayer == _ballLayer))
+        if (pinState == PinState.Untouched &&
+            (collisionLayer == _pinLayer || collisionLayer == _ballLayer))
         {
-            _pinState = PinState.Hit;
+            pinState = PinState.Hit;
             if (collisionLayer == _ballLayer)
             {
                 PinManager.Instance.NotifyPinHitByBall(this);

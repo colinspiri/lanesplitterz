@@ -47,6 +47,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Container
       objectReference: {fileID: 0}
+    - target: {fileID: 1403223193336534916, guid: 795462a24fe4ae140b1ebe926319ed75,
+        type: 3}
+      propertyPath: _objectToFollow
+      value: 
+      objectReference: {fileID: 7133769728073839050}
     - target: {fileID: 6153170201295498946, guid: 795462a24fe4ae140b1ebe926319ed75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -281,6 +286,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
+--- !u!1 &7133769728073839050 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 394013142470015375, guid: 27a3a13a5fa452a42b310974564d601d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7383630805299628101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!54 &7887046894306013011 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 793625586155202326, guid: 27a3a13a5fa452a42b310974564d601d,
