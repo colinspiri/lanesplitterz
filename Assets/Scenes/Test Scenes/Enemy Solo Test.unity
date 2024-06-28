@@ -2850,7 +2850,7 @@ GameObject:
   - component: {fileID: 1020581035}
   - component: {fileID: 1020581036}
   m_Layer: 0
-  m_Name: Ground
+  m_Name: Lane Boundaries
   m_TagString: Lane Bounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2890,7 +2890,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9, y: 1, z: 1}
+  m_Size: {x: 0.85, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1026520130
 PrefabInstance:
@@ -5881,19 +5881,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
-  aiUpdateTime: 0.01
+  aiUpdateTime: 0.1
   visibleLimit: 40
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1280
   straightenSeconds: 1
-  secondsToConsider: 3
+  secondsToConsider: 2
   considerTimeSteps: 12
   fuelWeight: 0.2
   speedWeight: 0
-  pointWeight: 0.8
+  pointWeight: 1
   turnForce: 2.5
-  turnFuel: 0.01
+  turnFuel: 0.0001
 --- !u!54 &6057166134287014167
 Rigidbody:
   m_ObjectHideFlags: 0
