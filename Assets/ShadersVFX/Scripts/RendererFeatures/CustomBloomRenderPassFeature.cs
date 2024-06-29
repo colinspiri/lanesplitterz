@@ -168,7 +168,7 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
 
             // A list of rendering tasks we want to perform
             CommandBuffer cmd = CommandBufferPool.Get();
-            using (new ProfilingScope(cmd, new ProfilingSampler("Custom Post Process Effects")))
+            using (new ProfilingScope(cmd, new ProfilingSampler("Bloom Post Process Effects")))
             {
                 // Do bloom pass -> create _Bloom_Texture to read from
                 SetupBloom(cmd, m_CameraColorTarget);
@@ -193,9 +193,6 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
         // Cleanup any allocated resources that were created during the execution of this render pass.
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
-            // // Cleanup code
-            // CoreUtils.Destroy(m_BloomMaterial);
-            // CoreUtils.Destroy(m_CompMaterial);
         }
 
         public void SetTarget(RTHandle colorTarget, RTHandle depthTarget)
@@ -205,21 +202,12 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
         }
     }
 
-    class CustomOutlineRenderPass : ScriptableRenderPass
-    {
-        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
     [SerializeField]
     private Shader m_BloomShader;
     [SerializeField]
     private Shader m_CompShader;
     private Material m_BloomMaterial;
     private Material m_CompMaterial;
-    CustomOutlineRenderPass m_OutlinePass;
     CustomBloomRenderPass m_ScriptablePass;
 
     /// <inheritdoc/>
