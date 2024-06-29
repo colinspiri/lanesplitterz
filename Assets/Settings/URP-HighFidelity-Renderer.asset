@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2641180527862544652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1333213e5d3039d4f971b82f2ead2c13, type: 3}
+  m_Name: CustomBloomRenderPassFeature
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  m_BloomShader: {fileID: 4800000, guid: 5f1864addb451f54bae8c86d230f736e, type: 3}
+  m_CompShader: {fileID: -6465566751694194690, guid: e9eeeddafde7f1a4bac25c228c31553a,
+    type: 3}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +70,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 8144323264528570620}
-  m_RendererFeatureMap: adc0de57c6d2eee5fcd82ccedb720671
+  - {fileID: -2641180527862544652}
+  m_RendererFeatureMap: adc0de57c6d2eee5fcd82ccedb720671f40613b14da458db
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -113,4 +130,4 @@ MonoBehaviour:
   passMaterial: {fileID: 2100000, guid: e442e75c73010fd47943d8c35f6286f4, type: 2}
   injectionPoint: 450
   requirements: 7
-  passIndex: 1
+  passIndex: 0

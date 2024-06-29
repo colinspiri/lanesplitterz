@@ -17,6 +17,7 @@ public class Cannon : MonoBehaviour
         [SerializeField] private float minLaunchForce;*/
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Transform launchPoint;
+    [SerializeField] private Transform pivot;
 
     [SerializeField] private Rigidbody ball;
     [SerializeField] private AudioSource launchSound;
@@ -55,7 +56,8 @@ public class Cannon : MonoBehaviour
 
     private void Initialize()
     {
-        transform.rotation = Quaternion.identity;
+        //transform.rotation = Quaternion.identity;
+        pivot.rotation = Quaternion.identity;
 
         launched = false;
 
@@ -110,7 +112,8 @@ public class Cannon : MonoBehaviour
                 Vector3 target = transform.rotation.eulerAngles + diff;
                 target.x = Mathf.Clamp(RoundAngle(target.x), minPitch, maxPitch);
                 target.y = Mathf.Clamp(RoundAngle(target.y), minYaw, maxYaw);
-                transform.rotation = Quaternion.Euler(target);
+                //transform.rotation = Quaternion.Euler(target);
+                pivot.rotation = Quaternion.Euler(target);
                 trajectoryLine.SetPositions();
                 if (!moving /*&& target.x < maxPitch && target.x > minPitch*/)
                 {
