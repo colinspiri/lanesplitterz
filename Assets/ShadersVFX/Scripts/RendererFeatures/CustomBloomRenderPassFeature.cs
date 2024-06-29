@@ -1,26 +1,64 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Experimental.Rendering;
 
-public class CustomRenderPassFeature : ScriptableRendererFeature
+public class CustomBloomRenderPassFeature : ScriptableRendererFeature
 {
-    class CustomRenderPass : ScriptableRenderPass
+    class CustomBloomRenderPass : ScriptableRenderPass
     {
         private Material m_bloomMaterial;
         private Material m_compMaterial;
+        // Mipmap setup
+        const int k_MaxPyramidSize = 16;
+        int[] _BloomMipUp;
+        int[] _BloomMipDown;
+        RTHandle[] m_BloomMipDown;
+        RTHandle[] m_BloomMipUp;
+        GraphicsFormat m_DefaultHDRFormat;
         // Render texture settings used to create intermediate camera textures for rendering.
         RenderTextureDescriptor m_descriptor;
         // Render textures
         RTHandle m_cameraColorTarget;
         RTHandle m_cameraDepthTarget;
 
-        public CustomRenderPass(Material bloomMaterial, Material compMaterial)
+        public CustomBloomRenderPass(Material bloomMaterial, Material compMaterial)
         {
             m_bloomMaterial = bloomMaterial;
             m_compMaterial = compMaterial;
 
             // Configures where the render pass should be injected.
             renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
+
+            // Setup mipmap usage and color space
+            _BloomMipUp = new int[k_MaxPyramidSize];
+            _BloomMipDown = new int[k_MaxPyramidSize];
+            m_BloomMipDown = new RTHandle[k_MaxPyramidSize];
+            m_BloomMipUp = new RTHandle[k_MaxPyramidSize];
+
+            // Bloom pyramid shader ids - can't use a simple stackalloc in the bloom function as we
+            // unfortunately need to allocate strings
+            for (int i = 0; i < k_MaxPyramidSize; i++)
+            {
+                _BloomMipUp[i] = Shader.PropertyToID("_BloomMipUp" + i);
+                _BloomMipDown[i] = Shader.PropertyToID("_BloomMipDown" + i);
+                // Get name, will get Allocated with descriptor later
+                m_BloomMipUp[i] = RTHandles.Alloc(_BloomMipUp[i], name: "_BloomMipUp" + i);
+                m_BloomMipDown[i] = RTHandles.Alloc(_BloomMipDown[i], name: "_BloomMipDown" + i);
+            }
+
+            // Texture format pre-lookup
+            const FormatUsage usage = FormatUsage.Linear | FormatUsage.Render;
+            if (SystemInfo.IsFormatSupported(GraphicsFormat.B10G11R11_UFloatPack32, usage)) // HDR fallback
+            {
+                m_DefaultHDRFormat = GraphicsFormat.B10G11R11_UFloatPack32;
+            }
+            else
+            {
+                m_DefaultHDRFormat = QualitySettings.activeColorSpace == ColorSpace.Linear
+                    ? GraphicsFormat.R8G8B8A8_SRGB
+                    : GraphicsFormat.R8G8B8A8_UNorm;
+            }
         }
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
@@ -71,14 +109,14 @@ public class CustomRenderPassFeature : ScriptableRendererFeature
     private Material m_bloomMaterial;
     private Material m_compMaterial;
 
-    CustomRenderPass m_ScriptablePass;
+    CustomBloomRenderPass m_ScriptablePass;
 
     /// <inheritdoc/>
     public override void Create()
     {
         m_bloomMaterial = CoreUtils.CreateEngineMaterial(m_bloomShader);
         m_compMaterial = CoreUtils.CreateEngineMaterial(m_compShader);
-        m_ScriptablePass = new CustomRenderPass(m_bloomMaterial, m_compMaterial);
+        m_ScriptablePass = new CustomBloomRenderPass(m_bloomMaterial, m_compMaterial);
     }
 
     // Callback after render targets are initialized. 
