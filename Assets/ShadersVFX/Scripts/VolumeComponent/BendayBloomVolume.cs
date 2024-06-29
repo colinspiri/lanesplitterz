@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-[VolumeComponentMenuForRenderPipeline("Custom/Benday Bloom", typeof(UniversalRenderPipelineAsset))]
+[VolumeComponentMenuForRenderPipeline("Custom/Benday Bloom", typeof(UniversalRenderPipeline))]
 public class BendayBloomVolume : VolumeComponent, IPostProcessComponent
 {
     public bool IsActive() => true;
