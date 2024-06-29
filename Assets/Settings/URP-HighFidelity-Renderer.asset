@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1333213e5d3039d4f971b82f2ead2c13, type: 3}
   m_Name: CustomBloomRenderPassFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
-  m_bloomShader: {fileID: 4800000, guid: 660dcd3ec5cb92f4897086fba2ee1f52, type: 3}
-  m_compShader: {fileID: -6465566751694194690, guid: e9eeeddafde7f1a4bac25c228c31553a,
+  m_Active: 0
+  m_BloomShader: {fileID: 4800000, guid: 5f1864addb451f54bae8c86d230f736e, type: 3}
+  m_CompShader: {fileID: -6465566751694194690, guid: e9eeeddafde7f1a4bac25c228c31553a,
     type: 3}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d613f08f173d4dd895bb07b3230baa9, type: 3}
   m_Name: FullScreenPassRendererFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   passMaterial: {fileID: 2100000, guid: e442e75c73010fd47943d8c35f6286f4, type: 2}
   injectionPoint: 450
   requirements: 7
