@@ -65,7 +65,7 @@ public class RoundManager : MonoBehaviour {
         // then a little delay before end of throw (move delay here from end of track trigger)
         
         EndThrow();
-        ballAtEndOfTrack.Raise();
+        //ballAtEndOfTrack.Raise();
     }
 
     private void UpdateScoreboard() {
