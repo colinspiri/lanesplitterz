@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2230067935736706601}
   - component: {fileID: 3784979077182209227}
   - component: {fileID: 5302578503772003947}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: _BreakingObstacle
-  m_TagString: Untagged
+  m_TagString: Damage Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4892111646906039013}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.41365707, z: -0, w: 0.91043276}
-  m_LocalPosition: {x: 0.40974522, y: 28.085823, z: -40.667152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 4, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8593976186398371615}
-  m_LocalEulerAnglesHint: {x: 0, y: 48.87, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4592168251333118001
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e2f45dc5aa3a54ab421fda5d6b0c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMove: {fileID: 0}
   destroySound: {fileID: 2901997402136168276}
   fuelSub: 0.1
 --- !u!1 &5722094616131291581

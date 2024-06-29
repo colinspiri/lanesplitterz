@@ -8,7 +8,7 @@ public class breakableObstacle : MonoBehaviour
 
     [SerializeField] AudioSource destroySound;
     [Range(0.01f, 1f)]
-    [SerializeField] private float fuelSub = 0.1f;
+    public float fuelSub = 0.1f;
 
     void Start()
     {

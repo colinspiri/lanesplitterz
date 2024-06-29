@@ -5,7 +5,7 @@ using BehaviorDesigner.Runtime.Tasks.Unity.UnityTransform;
 using UnityEngine;
 
 public class CameraFollowObject : MonoBehaviour {
-    private GameObject _objectToFollow;
+    [SerializeField] private GameObject _objectToFollow;
     private Transform _myCamera;
     
     [SerializeField] private float moveSpeed;
@@ -20,7 +20,7 @@ public class CameraFollowObject : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _objectToFollow = PlayerMovement.Instance.gameObject;
+        // _objectToFollow = PlayerMovement.Instance.gameObject;
         _offset = transform.position - _objectToFollow.transform.position;
         _myCamera = transform.GetChild(0);
 
@@ -46,6 +46,9 @@ public class CameraFollowObject : MonoBehaviour {
     public void ResetForward(Vector3 newForward)
     {
         Vector3 xzForward = transform.forward;
+        xzForward.y = 0f;
+        newForward.y = 0f;
+        
         float angleDiff = Vector3.SignedAngle(xzForward, newForward, Vector3.up);
         Quaternion diffRot = Quaternion.AngleAxis(angleDiff, Vector3.up);
 

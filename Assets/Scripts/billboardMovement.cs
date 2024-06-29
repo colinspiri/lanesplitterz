@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class billboardMovement : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMove;
+    private PlayerMovement playerMove;
     [SerializeField] public GameObject billboard;
     [SerializeField] public GameObject movementPoint1;
     [SerializeField] public GameObject movementPoint2;
@@ -12,11 +12,14 @@ public class billboardMovement : MonoBehaviour
     [SerializeField] public float moveDuration = 5;
     //[SerializeField] private float slowDown = 0.01f;
     [Range(0.01f, 1.0f)]
-    [SerializeField] private float fuelSub = 0.1f;
+    public float fuelSub = 0.1f;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        playerMove = PlayerMovement.Instance;
+        
+        /* This is not the way. This code should be replaced and moved */
         while (true)
         {
             yield return StartCoroutine( MoveBillboardForward ( movementPoint2.transform.position ) );

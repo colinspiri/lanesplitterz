@@ -219,9 +219,9 @@ GameObject:
   - component: {fileID: 6337188026311268405}
   - component: {fileID: 5975502951689561551}
   - component: {fileID: 2540631444969628539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: billboardArt
-  m_TagString: Untagged
+  m_TagString: Damage Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c614b8b027b93d48bcfac8b0aaa7773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMove: {fileID: 0}
   billboard: {fileID: 0}
   movementPoint1: {fileID: 2760055243190176197}
   movementPoint2: {fileID: 8943246574405186823}
