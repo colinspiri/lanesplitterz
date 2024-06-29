@@ -205,14 +205,21 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
         }
     }
 
+    class CustomOutlineRenderPass : ScriptableRenderPass
+    {
+        public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
     [SerializeField]
     private Shader m_BloomShader;
     [SerializeField]
     private Shader m_CompShader;
-
     private Material m_BloomMaterial;
     private Material m_CompMaterial;
-
+    CustomOutlineRenderPass m_OutlinePass;
     CustomBloomRenderPass m_ScriptablePass;
 
     /// <inheritdoc/>
@@ -231,7 +238,6 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
         {
             m_ScriptablePass.ConfigureInput(ScriptableRenderPassInput.Depth);
             m_ScriptablePass.ConfigureInput(ScriptableRenderPassInput.Color);
-            // m_ScriptablePass.ConfigureTarget(renderer.cameraColorTargetHandle, renderer.cameraDepthTargetHandle);
             m_ScriptablePass.SetTarget(renderer.cameraColorTargetHandle, renderer.cameraDepthTargetHandle);
         }    
     }
@@ -242,7 +248,6 @@ public class CustomBloomRenderPassFeature : ScriptableRendererFeature
     {
         renderer.EnqueuePass(m_ScriptablePass);
     }
-
     
     protected override void Dispose(bool disposing)
     {
