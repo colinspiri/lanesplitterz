@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
     [SerializeField] AudioSource EngineSFX;
+    [SerializeField] AudioSource TurningSFX;
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
@@ -135,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         // Update camera inverse transform
         Quaternion camRotation = _myCam.rotation;
         _camInvRot = Quaternion.Inverse(new Quaternion(camRotation.x, 0f, camRotation.z, camRotation.w));
-        
+
         if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
             Initialize();
         }
@@ -145,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             _turnVal = Input.GetAxis("Turn");
 
             _accelVal = Input.GetAxis("Accelerate");
-            
+
             // Input value between 0 and -1 if decelerating
             if (_accelVal > 0f) _accelVal *= accelForce;
         }
@@ -154,12 +155,12 @@ public class PlayerMovement : MonoBehaviour
             _turnVal = 0f;
             _accelVal = 0f;
         }
-        
+
         // set public-accessible acceleration state
         if (_accelVal < 0) AccelerationDirection = -1;
         else if (_accelVal > 0) AccelerationDirection = 1;
         else AccelerationDirection = 0;
-                
+
         // set public-accessible turn state
         if (_turnVal < 0) TurnDirection = -1;
         else if (_turnVal > 0) TurnDirection = 1;
@@ -171,12 +172,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 isUsingFuel = true;
                 EngineSFX.Play();
+                if (Math.Abs(_turnVal) > Mathf.Epsilon)
+                {
+                    TurningSFX.Play();
+                }
             }
         }
         else
         {
             isUsingFuel = false;
             EngineSFX.Stop();
+            TurningSFX.Stop();
         }
     }
     
