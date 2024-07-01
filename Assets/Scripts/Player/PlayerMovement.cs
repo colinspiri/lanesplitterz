@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource BallRolling;
     [SerializeField] AudioSource EngineSFX;
     [SerializeField] AudioSource TurningSFX;
+    [SerializeField] AudioSource AccelSFX;
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
@@ -176,6 +177,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     TurningSFX.Play();
                 }
+                if (Math.Abs(_accelVal) > Mathf.Epsilon)
+                {
+                    AccelSFX.Play();
+                }
             }
         }
         else
@@ -183,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
             isUsingFuel = false;
             EngineSFX.Stop();
             TurningSFX.Stop();
+            AccelSFX.Stop();
         }
     }
     
