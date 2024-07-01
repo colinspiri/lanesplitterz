@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,34 +34,46 @@ public class EnemyBall : MonoBehaviour
 
     [Header("Force specifications")] [SerializeField]
     private float turnForce;
-    
+    [SerializeField] private float hookForceMultiplier;
+    [SerializeField] private float turnSpeedPerSecond = 0.1f;
+    [SerializeField] private float slipperyForce = 10f;
+
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while steering left or right")]
     [SerializeField] private float turnFuel;
+    [Tooltip("Amount of fuel expended per second while accelerating (not decelerating)")]
+    [SerializeField] private float accelFuel;
 
     #region Private State
-    
+
     private float currentFuel;
     // -1 for turning left, 0 for not turning, 1 for turning right
     private float _turnVal;
     private float _accelVal;
     private bool _turning;
     private float _fuelMeter = 1f;
-    
+    private float _currentSpin = 0f;
+    private GameObject _ground = null;
+
     #endregion
-    
+
     #region Start Caches
-    
+
     private Rigidbody _myBody;
     private Quaternion _parentInvRot;
     private Transform _myParent;
     private Bounds _laneBounds;
     private int _pinLayer;
     private int _obstacleLayer;
-    
+    private SphereCollider _myCollider;
+    private float _myRadius;
+
     #endregion
-    
+
     #region MonoBehaviour Event Functions
+
+    // misc
+    private int _groundMask;
 
     private void Start()
     {
@@ -73,7 +86,14 @@ public class EnemyBall : MonoBehaviour
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
 
         _valueCache = new();
-        
+
+        _myCollider = GetComponent<SphereCollider>();
+        _myCollider.hasModifiableContacts = true;
+
+        _myRadius = _myCollider.radius * transform.lossyScale.x;
+
+        _groundMask = LayerMask.GetMask("Ground");
+
         StartCoroutine(CheckPositions());
     }
 
@@ -81,6 +101,9 @@ public class EnemyBall : MonoBehaviour
     {
         Quaternion parentRotation = _myParent.rotation;
         _parentInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
+
+        UpdateGround();
+        Hook();
     }
     
     #endregion
@@ -104,6 +127,10 @@ public class EnemyBall : MonoBehaviour
         }
 
 
+        _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
+        if (_currentSpin > 100) _currentSpin = 100;
+        else if (_currentSpin < -100) _currentSpin = -100;
+
         Vector3 linForce = (_parentInvRot * _myParent.right) * turnVal;
         Vector3 rotForce = (_parentInvRot * _myParent.up) * turnVal;
 
@@ -122,7 +149,145 @@ public class EnemyBall : MonoBehaviour
         // Rotational acceleration
         _myBody.AddTorque(rotForce, ForceMode.Impulse);
     }
-    
+
+    // Emulate frictional movement to the side
+    private void Hook()
+    {
+        if (!Grounded() || IsIcy()) return;
+
+        float hookForceMagnitude = _currentSpin * hookForceMultiplier;
+        // I have absolutely no idea if what is in the parenthesis is correct (for player ball its _camInvRot * _myCam.right)
+        Vector3 hookForce = (_parentInvRot * _myParent.right) * hookForceMagnitude;
+
+        _myBody.AddForce(hookForce);
+
+        /*Vector3 camUp = _camInvRot * _myCam.up; 
+        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
+        Turn(force * hookMultiplier, false);*/
+    }
+
+    // accelVal is the force to accelerate with
+    public void Accelerate(float accelVal, bool expendFuel = true)
+    {
+        Vector3 linearForce;
+        Vector3 rotationalForce;
+
+        Vector3 parentForward = (_parentInvRot * _myParent.forward).normalized;
+        Vector3 parentRight = (_parentInvRot * _myParent.right).normalized;
+
+        // Put on the brakes
+        if (accelVal < 0)
+        {
+            Vector3 forwardLinVelocity = Vector3.Project(_myBody.velocity, parentForward);
+            linearForce = forwardLinVelocity * accelVal;
+
+            Vector3 forwardRotVelocity = Vector3.Project(_myBody.angularVelocity, parentRight);
+            rotationalForce = forwardRotVelocity * accelVal;
+        }
+        // Accelerate ahead
+        else
+        {
+            if (expendFuel)
+            {
+                float fuelReduction = accelFuel * Time.fixedDeltaTime;
+
+                if (_fuelMeter <= Mathf.Epsilon)
+                {
+                    return;
+                }
+                else
+                {
+                    ReduceFuel(fuelReduction);
+                }
+            }
+
+            linearForce = parentForward * accelVal;
+            rotationalForce = parentRight * accelVal;
+        }
+
+        // Skid if on ice (reduce acceleration)
+        if (IsIcy())
+        {
+            // Debug.Log("Acceleration skidding on ice");
+
+            linearForce /= slipperyForce;
+            rotationalForce /= slipperyForce;
+        }
+
+        // Linear acceleration
+        _myBody.AddForce(linearForce, ForceMode.Impulse);
+
+        // Rotational acceleration
+        _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
+    }
+
+    // Overload for acceleration in an arbitrary direction
+    // Forces velocity along new direction, then adds extra force
+    /* Can probably be split into multiple methods (See Steer() below) */
+    public void Accelerate(Vector3 accelForce, bool expendFuel = true)
+    {
+        if (expendFuel)
+        {
+            float fuelReduction = accelFuel * Time.fixedDeltaTime;
+
+            if (_fuelMeter <= Mathf.Epsilon)
+            {
+                return;
+            }
+            else
+            {
+                ReduceFuel(fuelReduction);
+            }
+        }
+
+        Vector3 camUp = (_parentInvRot * _myParent.up).normalized;
+        Vector3 linearForce = accelForce;
+        Vector3 rotationalForce = Vector3.Cross(accelForce, camUp);
+
+        // Skid if on ice (reduce acceleration)
+        if (IsIcy())
+        {
+            // Debug.Log("Acceleration skidding on ice");
+
+            linearForce /= slipperyForce;
+            rotationalForce /= slipperyForce;
+        }
+
+        // Steer existing velocity toward direction of force
+        _myBody.velocity = linearForce.normalized * _myBody.velocity.magnitude;
+        _myBody.angularVelocity = rotationalForce.normalized * _myBody.angularVelocity.magnitude;
+
+        // Linear acceleration 
+        _myBody.AddForce(linearForce, ForceMode.Impulse);
+
+        // Rotational acceleration
+        _myBody.AddTorque(rotationalForce, ForceMode.Impulse);
+    }
+
+    private void UpdateGround()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, (_parentInvRot * _myParent.up) * -1f, out hit,
+                _myCollider.radius + 1f, _groundMask))
+        {
+            _ground = hit.collider.gameObject;
+        }
+        else _ground = null;
+    }
+
+    // Returns true if on the ground, false otherwise
+    private bool Grounded()
+    {
+        return _ground;
+    }
+
+    //Returns true is on icy ground, false if not
+    private bool IsIcy()
+    {
+        return _ground && _ground.CompareTag("Icy");
+    }
+
     #endregion
 
     // Consider other possible positions to move towards

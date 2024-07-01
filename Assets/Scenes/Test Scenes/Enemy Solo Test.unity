@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 378412633}
   - component: {fileID: 378412632}
   - component: {fileID: 378412631}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightGutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2849,7 +2849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1020581035}
   - component: {fileID: 1020581036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lane Boundaries
   m_TagString: Lane Bounds
   m_Icon: {fileID: 0}
@@ -3232,7 +3232,7 @@ GameObject:
   - component: {fileID: 1156052314}
   - component: {fileID: 1156052313}
   - component: {fileID: 1156052312}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftGutter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4916,7 +4916,7 @@ GameObject:
   - component: {fileID: 2035363882}
   - component: {fileID: 2035363881}
   - component: {fileID: 2035363880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5893,7 +5893,11 @@ MonoBehaviour:
   speedWeight: 0
   pointWeight: 1
   turnForce: 2.5
+  hookForceMultiplier: 2
+  turnSpeedPerSecond: 0.1
+  slipperyForce: 10
   turnFuel: 0.0001
+  accelFuel: 0
 --- !u!54 &6057166134287014167
 Rigidbody:
   m_ObjectHideFlags: 0
