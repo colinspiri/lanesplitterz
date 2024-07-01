@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
+    [SerializeField] AudioSource EngineSFX;
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _ground = null;
     private bool _hasLaunched;
     private float _currentSpin = 0f;
+    private bool isUsingFuel = false;
 
     // misc
     private int _groundMask;
@@ -162,6 +164,20 @@ public class PlayerMovement : MonoBehaviour
         if (_turnVal < 0) TurnDirection = -1;
         else if (_turnVal > 0) TurnDirection = 1;
         else TurnDirection = 0;
+
+        if ((Math.Abs(_accelVal) > Mathf.Epsilon || Math.Abs(_turnVal) > Mathf.Epsilon) && _fuelMeter > 0.0f)
+        {
+            if (!isUsingFuel)
+            {
+                isUsingFuel = true;
+                EngineSFX.Play();
+            }
+        }
+        else
+        {
+            isUsingFuel = false;
+            EngineSFX.Stop();
+        }
     }
     
     private void FixedUpdate()
