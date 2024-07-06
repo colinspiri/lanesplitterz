@@ -54,6 +54,8 @@ public class EnemyBall : MonoBehaviour
     private float _fuelMeter = 1f;
     private float _currentSpin = 0f;
     private GameObject _ground = null;
+    private Vector3 _startPosition;
+    private Quaternion _startRotation;
 
     #endregion
 
@@ -94,7 +96,23 @@ public class EnemyBall : MonoBehaviour
 
         _groundMask = LayerMask.GetMask("Ground");
 
+        _startPosition = transform.position;
+        _startRotation = transform.rotation;
+
         StartCoroutine(CheckPositions());
+
+        RoundManager.OnNewThrow += Initialize;
+        RoundManager.OnNewRound += Initialize;
+
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        _myBody.constraints = RigidbodyConstraints.None;
+        transform.position = _startPosition;
+        transform.rotation = _startRotation;
+        gameObject.SetActive(true);
     }
 
     private void FixedUpdate()

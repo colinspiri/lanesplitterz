@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class ActionOnCollide : MonoBehaviour {
@@ -19,7 +18,8 @@ public abstract class ActionOnCollide : MonoBehaviour {
         _triggerCounter = triggerCount;
     }
 
-    protected abstract void DoAction();
+    protected virtual void DoAction() { }
+    protected virtual void DoAction(Collision collision = null) { }
 
     private void OnCollisionEnter(Collision collision) {
         if (_triggerCounter is > 0 or -1) {
@@ -47,6 +47,7 @@ public abstract class ActionOnCollide : MonoBehaviour {
             // If valid tag or layer is found, perform action
             if (hitValidObject) {
                 DoAction();
+                DoAction(collision);
 
                 if (_triggerCounter > 0) {
                     _triggerCounter--;

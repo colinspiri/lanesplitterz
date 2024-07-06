@@ -122,6 +122,8 @@ public class PlayerMovement : MonoBehaviour
         if (disableOnStart) gameObject.SetActive(false);
 
         sceneLoader.LoadNewLevel();
+
+        _myBody.constraints = RigidbodyConstraints.None;
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;
@@ -133,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentFuel.Value = 1;
         _fuelMeter = 1f;
+
     }
 
     private void Update()
@@ -408,7 +411,6 @@ public class PlayerMovement : MonoBehaviour
         //_myBody.AddTorque((_camInvRot * _myCam.forward) * spinVal, ForceMode.Impulse);
     }
 
-    
     #endregion
 
     #region Support Functions
