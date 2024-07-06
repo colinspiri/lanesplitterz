@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     // misc
     private int _groundMask;
+    [SerializeField] private SceneLoader sceneLoader;
 
     #region MonoBehaviour Functions
 
@@ -119,6 +120,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Initialize() {
         if (disableOnStart) gameObject.SetActive(false);
+
+        sceneLoader.LoadNewLevel();
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;

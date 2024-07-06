@@ -534,6 +534,51 @@ MonoBehaviour:
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
+--- !u!1 &3415461884440466104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8158453663892405684}
+  - component: {fileID: 6264939299629883757}
+  m_Layer: 0
+  m_Name: SceneLoaderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8158453663892405684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415461884440466104}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8500893530938471023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6264939299629883757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415461884440466104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b81b3f35645c2438a06b9a14438ae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevelIndex: {fileID: 11400000, guid: fcbe1af71c84569409d229560d3e0bad, type: 2}
 --- !u!1 &3886986884091025869
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +656,7 @@ Transform:
   - {fileID: 8159446023395520770}
   - {fileID: 98212294387673928}
   - {fileID: 8372731976383085208}
+  - {fileID: 8158453663892405684}
   - {fileID: 2050755588094689838}
   - {fileID: 558111682399319831}
   - {fileID: 8419766991365602407}
@@ -996,6 +1042,7 @@ MonoBehaviour:
   enemyPointsByThrow: 
   playerFinalScore: 0
   enemyFinalScore: 0
+  sceneLoader: {fileID: 0}
 --- !u!1 &7396798548552269009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1764,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: sceneLoader
+      value: 
+      objectReference: {fileID: 11400000, guid: e4be4f08e033c7d4784863d0cec404a9,
+        type: 2}
     - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: minimumSpeed
