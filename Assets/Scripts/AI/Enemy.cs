@@ -14,9 +14,11 @@ public class Enemy : MonoBehaviour
         RoundManager.OnNewRound += Initialize;
     }
 
-    private void Initialize() {
-        _myTree.enabled = false;
+    private void Initialize()
+    {
+        _myTree.SetVariable("launched", (SharedBool) false);
         Launched = false;
+        _myTree.enabled = false;
     }
 
     public void LaunchSequence()

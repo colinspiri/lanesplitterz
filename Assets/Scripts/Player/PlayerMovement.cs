@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource EngineSFX;
     [SerializeField] AudioSource TurningSFX;
     [SerializeField] AudioSource AccelSFX;
+    [SerializeField] AudioSource HitGutter;
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
@@ -227,6 +228,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
+        }
+
+        if (collision.collider.gameObject.tag == "Gutter")
+        {
+            HitGutter.Play();
         }
     }
 

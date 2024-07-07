@@ -72,6 +72,8 @@ public class EnemyCannon : MonoBehaviour
     {
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
+        ball.velocity = Vector3.zero;
+        ball.angularVelocity = Vector3.zero;
         
         launchForce = Mathf.Clamp(launchForce, MinLaunchForce, MaxLaunchForce);
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
