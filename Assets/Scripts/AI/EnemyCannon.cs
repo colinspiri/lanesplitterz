@@ -13,8 +13,8 @@ public class EnemyCannon : MonoBehaviour
     [field: SerializeField] public float MinLaunchForce{get; private set;}
     [field: SerializeField] public float DefaultLaunchForce{get; private set;}
     [field: SerializeField] public float DegreesPerSecond{get; private set;}
+    [field: SerializeField] public Transform LaunchPoint{get; private set;}
     
-    [SerializeField] private Transform launchPoint;
     [SerializeField] private AudioSource launchSound;
     [SerializeField] private Rigidbody ball;
 
@@ -70,10 +70,8 @@ public class EnemyCannon : MonoBehaviour
     }
     public void Launch(float launchForce)
     {
+        ball.WakeUp();
         ball.gameObject.SetActive(true);
-        ball.transform.position = launchPoint.position;
-        ball.velocity = Vector3.zero;
-        ball.angularVelocity = Vector3.zero;
         
         launchForce = Mathf.Clamp(launchForce, MinLaunchForce, MaxLaunchForce);
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);

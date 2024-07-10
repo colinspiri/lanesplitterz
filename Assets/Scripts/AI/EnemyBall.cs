@@ -45,8 +45,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float accelFuel;
 
     #region Private State
-
-    private float currentFuel;
+    
     // -1 for turning left, 0 for not turning, 1 for turning right
     private float _turnVal;
     private float _accelVal;
@@ -69,6 +68,7 @@ public class EnemyBall : MonoBehaviour
     private int _obstacleLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
+    private Coroutine _checkPositions = null;
 
     #endregion
 
@@ -112,7 +112,24 @@ public class EnemyBall : MonoBehaviour
         _myBody.constraints = RigidbodyConstraints.None;
         transform.position = _startPosition;
         transform.rotation = _startRotation;
+        //gameObject.SetActive(true);
+        //_checkPositions = StartCoroutine(CheckPositions());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnEnable()
+    {
+        //if (_checkPositions != null) _checkPositions = StartCoroutine(CheckPositions());
+    }
+
+    public void EnableBall()
+    {
         gameObject.SetActive(true);
+        _checkPositions = StartCoroutine(CheckPositions());
     }
 
     private void FixedUpdate()
@@ -517,11 +534,15 @@ public class EnemyBall : MonoBehaviour
             _fuelMeter -= Mathf.Clamp(fuelPercent, 0f, 1f);
 
             _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
-
-            currentFuel -= fuelPercent;
-
-            currentFuel = Mathf.Clamp(currentFuel, 0f, 1f);
         }
+    }
+    
+    // Increase the fuel meter by some percent (between 0 and 1)
+    public void RestoreFuel(float fuelPercent)
+    {
+        _fuelMeter += Mathf.Clamp(fuelPercent, 0f, 1f);
+        
+        _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
     }
 
     // Calculate the inverse squared distance from one position to another
