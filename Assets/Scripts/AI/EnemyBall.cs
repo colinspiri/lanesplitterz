@@ -66,6 +66,7 @@ public class EnemyBall : MonoBehaviour
     private int _obstacleLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
+    private Coroutine _checkPositions = null;
 
     #endregion
 
@@ -93,7 +94,17 @@ public class EnemyBall : MonoBehaviour
 
         _groundMask = LayerMask.GetMask("Ground");
 
-        StartCoroutine(CheckPositions());
+        _checkPositions = StartCoroutine(CheckPositions());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    private void OnEnable()
+    {
+        if (_checkPositions != null) _checkPositions = StartCoroutine(CheckPositions());
     }
 
     private void FixedUpdate()
