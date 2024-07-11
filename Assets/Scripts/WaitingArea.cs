@@ -6,7 +6,7 @@ public class WaitingArea : ActionOnCollide
 {
     [SerializeField] private float resetTime;
 
-    private int ballCount = 0;
+    private int ballCount = 10;
     private GameObject ballOne = null;
     private GameObject ballTwo = null;
     protected override void DoAction(Collision collision)
@@ -19,14 +19,16 @@ public class WaitingArea : ActionOnCollide
 
         if (ballCount == 2)
         {
+            ballCount++;
             StartCoroutine(ResetCoroutine());
-            ballCount = 0;
         }
     }
 
     private IEnumerator ResetCoroutine()
     {
         yield return new WaitForSeconds(resetTime);
+        ballOne.gameObject.SetActive(false);
+        ballTwo.gameObject.SetActive(false);
         ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         ballTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         RoundManager.Instance.NotifyBallsAtEndOfTrack();
@@ -39,4 +41,6 @@ public class WaitingArea : ActionOnCollide
         if (!ballOne) ballOne = ball;
         else if (!ballTwo) ballTwo = ball;
     }
+
+    public void ResetBallCount() => ballCount = 0;
 }

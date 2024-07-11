@@ -113,16 +113,16 @@ public class PlayerMovement : MonoBehaviour
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
+        RoundManager.OnNewRound += InitializeLevel;
         RoundManager.OnNewThrow += () => _hasLaunched = false;
         RoundManager.OnNewRound += () => _hasLaunched = false;
 
         Initialize();
+        InitializeLevel();
     }
 
     private void Initialize() {
         if (disableOnStart) gameObject.SetActive(false);
-
-        sceneLoader.LoadNewLevel();
 
         _myBody.constraints = RigidbodyConstraints.None;
         
@@ -138,6 +138,8 @@ public class PlayerMovement : MonoBehaviour
         _fuelMeter = 1f;
 
     }
+
+    private void InitializeLevel() => sceneLoader.LoadNewLevel();
 
     private void Update()
     {

@@ -8,7 +8,7 @@ public abstract class ActionOnCollide : MonoBehaviour {
     
     private int _triggerCounter;
 
-    private void Start() {
+    protected virtual void Start() {
         Initialize();
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
