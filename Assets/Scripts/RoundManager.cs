@@ -45,9 +45,9 @@ public class RoundManager : MonoBehaviour {
         currentRound.Value = 1;
         currentThrow.Value = 1;
 
-        if (_dialogueRunner && dialogueOnGameStart != "") {
+/*        if (_dialogueRunner && dialogueOnGameStart != "") {
             _dialogueRunner.StartDialogue(dialogueOnGameStart);
-        }
+        }*/
     }
 
     private void Update() {
@@ -56,6 +56,20 @@ public class RoundManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             EndThrowAndRound();
+        }
+    }
+
+    public void PlayStartDialogue()
+        {
+        if (_dialogueRunner && dialogueOnGameStart != "") {
+            _dialogueRunner.StartDialogue(dialogueOnGameStart);
+        }
+    }
+
+    public void PlayEndDialogue()
+            {
+        if (_dialogueRunner && dialogueOnGameEnd != "") {
+            _dialogueRunner.StartDialogue(dialogueOnGameEnd);
         }
     }
 
