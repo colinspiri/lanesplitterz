@@ -704,7 +704,19 @@ MonoBehaviour:
   useTypewriterEffect: 1
   onCharacterTyped:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1847679169552979436}
+        m_TargetAssemblyTypeName: VOPlayer, Assembly-CSharp
+        m_MethodName: PlayCharacterVO
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPauseStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -780,6 +792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b64d84f27eeccc468d29a2a000cacbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProtagVO: {fileID: 6229184116604087225}
+  frequency: 2
 --- !u!1 &2643913469076865957
 GameObject:
   m_ObjectHideFlags: 0

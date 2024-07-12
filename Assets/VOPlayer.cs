@@ -1,18 +1,29 @@
+using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class VOPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] AudioClipRandomizer ProtagVO;
+    public int frequency = 2;
+    private int stop;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        stop = frequency;
+    }
+    public void PlayCharacterVO()
+    {
+        if (stop == 1)
+        {
+            ProtagVO.PlaySFX();
+            stop = frequency;
+        }
+        else
+        {
+            stop--;
+        }
         
     }
 }

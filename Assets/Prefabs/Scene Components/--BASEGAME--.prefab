@@ -725,7 +725,7 @@ AudioSource:
   m_GameObject: {fileID: 4979255267530882314}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2978140294193931848, guid: 690fdda113763624ca6f76467a88c97e,
+  OutputAudioMixerGroup: {fileID: -1154079387732026358, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: af06e8c63dc6f2a4bafd0d86f09c0b17, type: 3}
   m_PlayOnAwake: 1
@@ -861,7 +861,7 @@ MonoBehaviour:
   _audioClips:
   - {fileID: 8300000, guid: 0f4235579a34abb4cae0e1411875b4c7, type: 3}
   - {fileID: 8300000, guid: 5ca1b12a9d8aa9544a7b352c4d274599, type: 3}
-  _mixerGroup: {fileID: -2978140294193931848, guid: 690fdda113763624ca6f76467a88c97e,
+  _mixerGroup: {fileID: -1154079387732026358, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   _overrideArcSettings: 1
   _noRepeats: 1
@@ -1058,7 +1058,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 2be133d254e0d074d91eda6ffce7b033,
+    type: 2}
   _event: {fileID: 11400000, guid: 2be133d254e0d074d91eda6ffce7b033, type: 2}
   _response:
     m_PersistentCalls:
