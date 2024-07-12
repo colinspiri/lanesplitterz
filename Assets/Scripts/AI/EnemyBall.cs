@@ -111,7 +111,7 @@ public class EnemyBall : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        if (debug) enemyPattern.Instantiate();
+        // if (debug) enemyPattern.Instantiate();
     }
 
     public void EnableBall()
