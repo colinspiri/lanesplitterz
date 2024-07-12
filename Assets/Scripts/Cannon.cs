@@ -33,6 +33,9 @@ public class Cannon : MonoBehaviour
     [SerializeField] private MeterDataGameEvent ConfirmedLaunchPower;
     [SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
 
+    [Header("Audio")]
+    [SerializeField] MusicController musicController;
+
     private bool launched;
     private Vector2 movementInput;
     //private float launchForce;
@@ -144,6 +147,8 @@ public class Cannon : MonoBehaviour
     private void Launch()
     {
         launched = true;
+
+        musicController.Launch();
 
         // Begin enemy launch sequence
         if (_enemy) _enemy.LaunchSequence();

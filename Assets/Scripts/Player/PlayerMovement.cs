@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     // misc
     private int _groundMask;
+    [SerializeField] private SceneLoader sceneLoader;
 
     #region MonoBehaviour Functions
 
@@ -112,14 +113,18 @@ public class PlayerMovement : MonoBehaviour
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
+        RoundManager.OnNewRound += InitializeLevel;
         RoundManager.OnNewThrow += () => _hasLaunched = false;
         RoundManager.OnNewRound += () => _hasLaunched = false;
 
         Initialize();
+        InitializeLevel();
     }
 
     private void Initialize() {
         if (disableOnStart) gameObject.SetActive(false);
+
+        _myBody.constraints = RigidbodyConstraints.None;
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;
@@ -131,7 +136,10 @@ public class PlayerMovement : MonoBehaviour
 
         currentFuel.Value = 1;
         _fuelMeter = 1f;
+
     }
+
+    private void InitializeLevel() => sceneLoader.LoadNewLevel();
 
     private void Update()
     {
@@ -411,7 +419,6 @@ public class PlayerMovement : MonoBehaviour
         //_myBody.AddTorque((_camInvRot * _myCam.forward) * spinVal, ForceMode.Impulse);
     }
 
-    
     #endregion
 
     #region Support Functions

@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
         _myBallBody.Sleep();
         _myBallBody.gameObject.SetActive(false);
         _myBallBody.transform.position = _myCannon.LaunchPoint.position;
+        _myBallBody.constraints = RigidbodyConstraints.None;
     }
 
     public void LaunchSequence()

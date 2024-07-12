@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -865,8 +865,63 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5343600368465149412, guid: aa900fc92cb838e43adca8b1e361c046, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8417044641770934574, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974994461}
   m_SourcePrefab: {fileID: 100100000, guid: aa900fc92cb838e43adca8b1e361c046, type: 3}
+--- !u!1 &974994459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8417044641770934574, guid: aa900fc92cb838e43adca8b1e361c046,
+    type: 3}
+  m_PrefabInstance: {fileID: 974994458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &974994460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+    type: 3}
+  m_PrefabInstance: {fileID: 974994458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddd036b4e9f34f489abd42cebd3886e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &974994461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974994459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6,
+    type: 2}
+  _event: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 974994460}
+        m_TargetAssemblyTypeName: EnemyBall, Assembly-CSharp
+        m_MethodName: EnableBall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1195211804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7763108689513927355, guid: 963310912e23156469bc5d0f5f57667f,
@@ -1361,7 +1416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1863772741
 Transform:
   m_ObjectHideFlags: 0

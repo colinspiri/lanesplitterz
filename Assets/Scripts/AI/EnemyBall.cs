@@ -102,20 +102,19 @@ public class EnemyBall : MonoBehaviour
 
         _groundMask = LayerMask.GetMask("Ground");
 
-        _checkPositions = StartCoroutine(CheckPositions());
+        StartCoroutine(CheckPositions());
     }
 
     private void OnDisable()
     {
         StopAllCoroutines();
-
         if (debug) enemyPattern.Instantiate();
     }
 
-    private void OnEnable()
+    public void EnableBall()
     {
-        if (_checkPositions != null) _checkPositions = StartCoroutine(CheckPositions());
-
+        gameObject.SetActive(true);
+        _checkPositions = StartCoroutine(CheckPositions());
         if (debug) enemyPattern.Instantiate();
     }
 
@@ -328,6 +327,8 @@ public class EnemyBall : MonoBehaviour
         return _ground && _ground.CompareTag("Icy");
     }
 
+    #endregion
+
     // Consider other possible positions to move towards
     private IEnumerator CheckPositions()
     {
@@ -468,7 +469,7 @@ public class EnemyBall : MonoBehaviour
             if (bestTime > Mathf.Epsilon)
             {
                 _targetPos = bestPos;
-                enemyPattern.AddPosition(_targetPos, gizmoObj);
+                enemyPattern.AddPosition(bestPos, gizmoObj);
                 // Debug.Log("Moving to position " + bestPos);
                 _turning = true;
                 StartCoroutine(TurnSequence(bestDir));
@@ -517,8 +518,6 @@ public class EnemyBall : MonoBehaviour
 
         _turning = false;
     }
-    
-    #endregion
     
     #region Helper Functions
 
