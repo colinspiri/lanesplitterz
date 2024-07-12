@@ -69,6 +69,14 @@ public class EnemyBall : MonoBehaviour
     private Coroutine _checkPositions = null;
 
     #endregion
+    
+    #region Debugging
+
+    [SerializeField] private bool debug = false;
+    [SerializeField] private EnemyPattern enemyPattern;
+    [SerializeField] private GameObject gizmoObj;
+    
+    #endregion
 
     #region MonoBehaviour Event Functions
 
@@ -100,11 +108,15 @@ public class EnemyBall : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+
+        if (debug) enemyPattern.Instantiate();
     }
 
     private void OnEnable()
     {
         if (_checkPositions != null) _checkPositions = StartCoroutine(CheckPositions());
+
+        if (debug) enemyPattern.Instantiate();
     }
 
     private void FixedUpdate()
@@ -114,6 +126,24 @@ public class EnemyBall : MonoBehaviour
 
         UpdateGround();
         Hook();
+    }
+    
+    private void OnDrawGizmos()
+    {
+        if (debug)
+        {
+            for (int i = 0; i < enemyPattern.GetCount(); i++)
+            {
+                Gizmos.color = Color.Lerp(Color.red, Color.blue, i / 100f);
+            
+                Gizmos.DrawSphere(enemyPattern.GetPosition(i), 1.5f);
+
+                if (i > 0)
+                {
+                    Gizmos.DrawLine(enemyPattern.GetPosition(i - 1), enemyPattern.GetPosition(i));
+                }
+            }
+        }
     }
     
     #endregion
@@ -298,8 +328,6 @@ public class EnemyBall : MonoBehaviour
         return _ground && _ground.CompareTag("Icy");
     }
 
-    #endregion
-
     // Consider other possible positions to move towards
     private IEnumerator CheckPositions()
     {
@@ -440,6 +468,7 @@ public class EnemyBall : MonoBehaviour
             if (bestTime > Mathf.Epsilon)
             {
                 _targetPos = bestPos;
+                enemyPattern.AddPosition(_targetPos, gizmoObj);
                 // Debug.Log("Moving to position " + bestPos);
                 _turning = true;
                 StartCoroutine(TurnSequence(bestDir));
@@ -488,6 +517,8 @@ public class EnemyBall : MonoBehaviour
 
         _turning = false;
     }
+    
+    #endregion
     
     #region Helper Functions
 

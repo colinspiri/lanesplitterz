@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6231270577809866729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8928485194575770581}
+  m_Layer: 0
+  m_Name: Empty Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8928485194575770581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231270577809866729}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.097562, y: -11.520338, z: 21.495703}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7530143624452184104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &9069830049168588663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,13 +123,23 @@ PrefabInstance:
     - {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
     - {fileID: 262683764499468453, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1539936243708487519, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 8928485194575770581}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 394013142470015375, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7901411319013317880}
   m_SourcePrefab: {fileID: 100100000, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
+--- !u!4 &7530143624452184104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1539936243708487519, guid: 27a3a13a5fa452a42b310974564d601d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9069830049168588663}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8694571530473555704 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 394013142470015375, guid: 27a3a13a5fa452a42b310974564d601d,
@@ -130,4 +171,10 @@ MonoBehaviour:
   speedWeight: 0
   pointWeight: 0.8
   turnForce: 2.5
+  hookForceMultiplier: 0
+  turnSpeedPerSecond: 0.1
+  slipperyForce: 10
   turnFuel: 0.01
+  accelFuel: 0
+  enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
+  gizmoObj: {fileID: 6231270577809866729}
