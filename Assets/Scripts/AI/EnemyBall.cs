@@ -400,7 +400,7 @@ public class EnemyBall : MonoBehaviour
                     GameObject obstacle = visibleObstacles[j].gameObject;
 
                     // Ignore unreachable obstacles from position
-                    if (obstacle.transform.position.z <= predictedPos.z) continue;
+                    if (predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
 
                     if (debug) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
 
@@ -467,8 +467,15 @@ public class EnemyBall : MonoBehaviour
                     // Scale obstacle value by cos of angle between obstacle and position
                     // An angle of 90 degrees means it's unreachable and is worthless
                     // An angle of 0 degrees means it's straight-ahead and worth its full value
-                    obsValue *= Vector3.Dot((obstacle.transform.position - predictedPos).normalized,
-                        (_parentInvRot * _myParent.forward).normalized);
+                    Vector3 posToObs = obstacle.transform.position - predictedPos;
+                    posToObs.y = 0f;
+                    posToObs = posToObs.normalized;
+
+                    Vector3 parentForward = _parentInvRot * _myParent.forward;
+                    parentForward.y = 0f;
+                    parentForward = parentForward.normalized;
+                    
+                    obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, Mathf.Infinity);
                     
                     if (debug) predictedString += "    Value accounting for angle: " + obsValue + "\n";
                     
