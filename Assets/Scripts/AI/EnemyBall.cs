@@ -101,6 +101,9 @@ public class EnemyBall : MonoBehaviour
         _myRadius = _myCollider.radius * transform.lossyScale.x;
 
         _groundMask = LayerMask.GetMask("Ground");
+        
+        // Clear enemy pattern object regardless of whether debugging is being used
+        enemyPattern.Instantiate();
 
         StartCoroutine(CheckPositions());
     }
