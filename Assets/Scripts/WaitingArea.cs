@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class WaitingArea : ActionOnCollide
 {
-    [SerializeField] private float resetTime;
+    //[SerializeField] private float resetTime;
+    [SerializeField] private FloatVariable levelResetTime;
+    [SerializeField] private GameEvent startLevelReset;
+    [SerializeField] private GameEvent endLevelReset;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
@@ -26,7 +30,8 @@ public class WaitingArea : ActionOnCollide
 
     private IEnumerator ResetCoroutine()
     {
-        yield return new WaitForSeconds(resetTime);
+        startLevelReset.Raise();
+        yield return new WaitForSeconds(levelResetTime.Value);
         ballOne.gameObject.SetActive(false);
         ballTwo.gameObject.SetActive(false);
         ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;

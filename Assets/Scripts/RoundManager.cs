@@ -83,8 +83,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void UpdateScoreboard() {
-        playerPointsByThrow.Add(playerCurrentPoints.Value);
-        enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+/*        playerPointsByThrow.Add(playerCurrentPoints.Value);
+        enemyPointsByThrow.Add(enemyCurrentPoints.Value);*/
         
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
@@ -92,7 +92,7 @@ public class RoundManager : MonoBehaviour {
         if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
     }
 
-    private void CalculateFinalScores() {
+    public void CalculateFinalScores() {
         playerFinalScore = 0;
         foreach (var playerPoint in playerPointsByThrow) {
             playerFinalScore += playerPoint;
