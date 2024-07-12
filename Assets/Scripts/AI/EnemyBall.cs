@@ -75,6 +75,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private bool debug = false;
     [SerializeField] private EnemyPattern enemyPattern;
     [SerializeField] private GameObject gizmoObj;
+    private int _posCount = 0;
     
     #endregion
 
@@ -350,13 +351,13 @@ public class EnemyBall : MonoBehaviour
             Vector3 bestPos = transform.position;
             float bestDir = 0f;
             float bestTime = 0f;
+            string bestString = null;
 
             // Measure different positions across different time steps (1.5 seconds left to 1.5 seconds right)
             for (float i = -1f * secondsToConsider; i < secondsToConsider + 0.1f; i += (secondsToConsider / considerTimeSteps))
             {
                 float time = Mathf.Abs(i);
                 float dir = Mathf.Sign(i);
-                
                 
                 // Calculate predicted position at time
 
@@ -379,6 +380,10 @@ public class EnemyBall : MonoBehaviour
                     continue;
                 }
 
+                string predictedString = "";
+                
+                if (debug) predictedString = "Predicted position " + _posCount + "\n";
+
                 // Quality of the position (more positive is better)
                 float posValue = 0f;
                 // Expected fuel loss to reach position
@@ -386,14 +391,18 @@ public class EnemyBall : MonoBehaviour
 
                 // Deduct expected fuel cost from quality
                 posValue -= expectedFuelLoss * fuelWeight;
+
+                if (debug) predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
                 
                 // Evaluate all visible obstacles for this position
                 for (int j = 0; j < visibleObstacles.Length; j++)
                 {
                     GameObject obstacle = visibleObstacles[j].gameObject;
 
-                    // Ignore obstacles behind position
-                    if (obstacle.transform.position.z < predictedPos.z) continue;
+                    // Ignore unreachable obstacles from position
+                    if (obstacle.transform.position.z <= predictedPos.z) continue;
+
+                    if (debug) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
 
                     // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
                     float obsValue;
@@ -448,15 +457,29 @@ public class EnemyBall : MonoBehaviour
                                     Debug.LogError("Enemy error: Invalid damaging obstacle " + obstacle.name + " found");
                                 }
                             }
-                        }
+                        } 
 
                         _valueCache.Add(obstacle, obsValue);
                     }
                     
+                    if (debug) predictedString += "    Unscaled value: " + obsValue + "\n";
+                    
+                    // Scale obstacle value by cos of angle between obstacle and position
+                    // An angle of 90 degrees means it's unreachable and is worthless
+                    // An angle of 0 degrees means it's straight-ahead and worth its full value
+                    obsValue *= Vector3.Dot((obstacle.transform.position - predictedPos).normalized,
+                        (_parentInvRot * _myParent.forward).normalized);
+                    
+                    if (debug) predictedString += "    Value accounting for angle: " + obsValue + "\n";
+                    
                     // Scale obstacle value by inverse squared distance from it to position
                     /* Might want to put an upper bound on the distance scalar so it can't get too large */
                     posValue += obsValue * InvSquareDistance(predictedPos, obstacle.transform.position);
+                    
+                    if (debug) predictedString += "    Value accounting for distance: " + obsValue * InvSquareDistance(predictedPos, obstacle.transform.position) + "\n";
                 }
+                
+                if (debug) predictedString += "Value of position " + _posCount + ": " + posValue;
 
                 // Update best positions if better position is found
                 if (posValue > bestValue)
@@ -465,13 +488,16 @@ public class EnemyBall : MonoBehaviour
                     bestPos = predictedPos;
                     bestDir = dir;
                     bestTime = time;
+                    if (debug) bestString = predictedString;
                 }
             }
 
             // If best position is elsewhere, move to it
             if (bestTime > Mathf.Epsilon)
             {
+                _posCount++;
                 _targetPos = bestPos;
+                if (debug) Debug.Log(bestString);
                 enemyPattern.AddPosition(bestPos, gizmoObj);
                 // Debug.Log("Moving to position " + bestPos);
                 _turning = true;
