@@ -188,6 +188,7 @@ namespace GameAudioScriptingEssentials
                 _sections[_newSection]._audioLayerACR[i].PlaySFX();
 
                 ///////////////
+                ///
 
                 if (_sections[_newSection].AudioLayerCount() <= _states[_currentState].StateAudioLayerVolumes.Length || i < _states[_currentState].StateAudioLayerVolumes.Length)
                 {
