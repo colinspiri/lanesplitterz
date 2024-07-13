@@ -469,7 +469,7 @@ public class EnemyBall : MonoBehaviour
                     if (showPossiblePositions) _possiblePositions.Add(predictedPos);
 
                     string predictedString = "";
-                    if (showActualPositions) predictedString = "Predicted position " + _posCount + "\n";
+                    if (showActualPositions) predictedString = "Target position " + _posCount + "\n";
 
                     // Quality of the position (more positive is better)
                     float posValue = 0f;
@@ -485,6 +485,10 @@ public class EnemyBall : MonoBehaviour
                     for (int k = 0; k < visibleObstacles.Length; k++)
                     {
                         GameObject obstacle = visibleObstacles[k].gameObject;
+                        
+                        // Ignore the ball itself as an obstacle
+                        if (obstacle == gameObject) continue;
+
                         Bounds obsBounds = visibleObstacles[k].bounds;
 
                         // Ignore unreachable obstacles from position
@@ -492,6 +496,8 @@ public class EnemyBall : MonoBehaviour
                         /* Assumes positive z is always forward */
                         if (obstacle.layer != _ballLayer &&
                             predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
+                        
+                        
 
                         if (showActualPositions) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
 
@@ -580,8 +586,20 @@ public class EnemyBall : MonoBehaviour
                         // Calculate inverse distance to obstacle
                         // Clamped to prevent value from ever exceeding 1
                         // Distance ceases to matter below 0.1 meters due to shift
-                        // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
-                        float invDist = InvDistanceBounds(predictedPos, obsBounds, 0.9f);
+
+                        float invDist;
+
+                        if (obsBounds.Contains(predictedPos))
+                        {
+                            invDist = 1f;
+                        }
+                        else
+                        {
+                            // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+                            // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
+                            invDist = InvDistanceBounds(predictedPos, obsBounds);
+                        }
+                        
                         invDist = Mathf.Clamp(invDist, 0f, 1f);
                         obsValue *= invDist;
                         if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
@@ -611,8 +629,11 @@ public class EnemyBall : MonoBehaviour
                 _posCount++;
                 _targetPos = bestPos;
                 _targetScore = bestValue;
-                if (showActualPositions) Debug.Log(bestString);
-                enemyPattern.AddPosition(bestPos, gizmoObj);
+                if (showActualPositions)
+                {
+                    Debug.Log(bestString);
+                    if (bestString != null) enemyPattern.AddPosition(bestPos, gizmoObj);
+                }
                 
                 if (_turnRoutine != null)
                 {
@@ -771,9 +792,9 @@ public class EnemyBall : MonoBehaviour
     }
 
     // Calculate the inverse squared distance from one position to another
-    private float InvSquareDistance(Vector3 from, Vector3 to)
+    private float InvSquareDistance(Vector3 from, Vector3 to, float shift = 0f)
     {
-        return Mathf.Pow(Vector3.Distance(from, to), -2);
+        return Mathf.Pow(Vector3.Distance(from, to) + shift, -2);
     }
     
     // Calculate the inverse distance from one position to another
@@ -783,9 +804,10 @@ public class EnemyBall : MonoBehaviour
     }
     
     // Calculate the inverse squared distance from one position to a bounding box
-    private float InvSquareDistanceBounds(Vector3 from, Bounds to)
+    private float InvSquareDistanceBounds(Vector3 from, Bounds to, float shift = 0f)
     {
-        return Mathf.Pow(to.SqrDistance(from), -1);
+        float distance = Mathf.Pow(to.SqrDistance(from), 0.5f);
+        return Mathf.Pow(distance + shift, -2);
     }
     
     // Calculate the inverse distance from one position to a bounding box
