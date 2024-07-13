@@ -5,6 +5,7 @@ using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class Cannon : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private AudioSource launchSound;
     [SerializeField] private AdaptiveMusicContainer turnSound;
 
+    public bool acceptingInputs;
     private bool launched;
     private Vector2 movementInput;
     //private float launchForce;
@@ -54,6 +56,7 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewRound += Initialize;
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
+        RoundManager.OnNewRound += () => DisableInputs();
         Initialize();
     }
 
@@ -78,7 +81,7 @@ public class Cannon : MonoBehaviour
 
         if (!launched)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (acceptingInputs == true && Input.GetKeyDown(KeyCode.Space))
             {
                 if (numSpacePressed == 0)
                 {
@@ -175,4 +178,10 @@ public class Cannon : MonoBehaviour
 
         launchSound.Play();
     }
+
+    [YarnCommand("EnableInputs")]
+    public bool EnableInputs() => acceptingInputs = true;
+
+    [YarnCommand("DisableInputs")]
+    public bool DisableInputs() => acceptingInputs = false;
 }

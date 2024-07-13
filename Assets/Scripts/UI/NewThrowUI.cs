@@ -14,6 +14,7 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent roundUIEndThree;
     [SerializeField] private GameEvent roundUIEndFour;
     [SerializeField] private GameEvent roundUIEndFive;
+    [SerializeField] private GameEvent endWinLoseUI;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private FloatVariable levelResetTime; // use this in Waiting Area script
@@ -90,6 +91,7 @@ public class NewThrowUI : MonoBehaviour
         yield return new WaitForSeconds(roundUITime);
 
         winLoseUI.SetActive(false);
+        endWinLoseUI.Raise();
     }
 
     public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());

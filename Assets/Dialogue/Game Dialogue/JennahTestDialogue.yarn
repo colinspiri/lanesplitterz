@@ -11,6 +11,7 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Hiro Protag: I need to remember my training... #line:09667e0 
 Boss: You're gonna need it, fella! #line:013f2c3 
 Hiro Protag: I know I've got what it takes.
@@ -19,6 +20,7 @@ Hiro Protag: Yes, trust me. I'm ready for this.
 Boss: This should be fun hehe.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: BossWin
@@ -26,6 +28,7 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Boss: Haha yes! I always win!. #line:09622a5 
 Hiro Protag: Well fought... #line:00105e8 
 Boss: You never had a chance, just admit it!
@@ -34,6 +37,7 @@ Boss: Ha! Yeah right!
 Hiro Protag: You'll see.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: PlayerWin
@@ -41,6 +45,7 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Boss: No! This can't be!
 Hiro Protag: But yes it can be.
 Boss: I can't believe this. This is a fluke I swear.
@@ -49,6 +54,7 @@ Boss: You'll never win again, mark my words.
 Hiro Protag: We'll see about that.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: RoundTwo
@@ -56,10 +62,12 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Boss: That's all you got? This will be a piece of cake.
 Hiro Protag: Just you wait.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: RoundThree
@@ -67,10 +75,12 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Hiro Protag: I am just warming up hehe.
 Boss: You have no chance.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: RoundFour
@@ -78,10 +88,12 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Boss: This is lightwork to be honest.
 Hiro Protag: I don't know about that mwahaha.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===
 
 title: RoundFive
@@ -89,8 +101,10 @@ tags:
 ---
 <<EnableBlur DialogueUI>>
 <<DisableHud DialogueUI>>
+<<DisableInputs Cannon>>
 Hiro Protag: This is it. The final round. Let's do this.
 Boss: I think we already know who is winning this one.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
+<<EnableInputs Cannon>>
 ===

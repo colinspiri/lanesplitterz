@@ -179,14 +179,17 @@ public class RoundManager : MonoBehaviour {
             CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
             endGame.Raise();
-            if (playerFinalScore > enemyFinalScore)
-                _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
-            else
-                _dialogueRunner.StartDialogue(dialogueOnBossWin);
-
             return;
         }
         
         OnNewRound?.Invoke();
+    }
+
+    public void PlayEndDialgue()
+    {
+       if (playerFinalScore > enemyFinalScore)
+            _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
+        else
+            _dialogueRunner.StartDialogue(dialogueOnBossWin);
     }
 }
