@@ -43,6 +43,13 @@ public class EnemyPattern : ScriptableObject
 
     public int GetCount()
     {
+        if (_positions == null)
+        {
+            Debug.LogWarning("EnemyPattern Warning: GetCount called before instantiation");
+            
+            Instantiate();
+        }
+        
         return _positions.Count;
     }
 }

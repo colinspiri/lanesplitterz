@@ -4015,23 +4015,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
   aiUpdateTime: 0.1
-  visibleLimit: 40
+  visibleLimit: 500
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1280
-  straightenSeconds: 1
+  straightenSeconds: 0.01
   secondsToConsider: 2
-  considerTimeSteps: 12
-  fuelWeight: 0
+  considerTimeSteps: 25
+  fuelWeight: 0.2
   speedWeight: 0
-  pointWeight: 1
+  pointWeight: 0.8
+  distWeight: 0.3
+  angleWeight: 0.7
   turnForce: 2.5
   hookForceMultiplier: 2
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
   turnFuel: 0.0001
   accelFuel: 0
-  debug: 1
+  showActualPositions: 1
+  showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 1477509083}
 --- !u!54 &6057166134287014167

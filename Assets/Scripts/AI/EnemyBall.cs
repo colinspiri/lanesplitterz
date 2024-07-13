@@ -5,6 +5,7 @@ using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class EnemyBall : MonoBehaviour
 {
@@ -27,10 +28,14 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float fuelWeight;
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
+    [SerializeField] private float distWeight;
+    [SerializeField] private float angleWeight;
     // The position being moved to
     private Vector3 _targetPos;
     // A dictionary caching object values
     private Dictionary<GameObject, float> _valueCache;
+    // The true update time for checking positions
+    private float _posUpdateTime;
 
     [Header("Force specifications")] [SerializeField]
     private float turnForce;
@@ -72,9 +77,11 @@ public class EnemyBall : MonoBehaviour
     
     #region Debugging
 
-    [SerializeField] private bool debug = false;
+    [SerializeField] private bool showActualPositions = false;
+    [SerializeField] private bool showPossiblePositions = false;
     [SerializeField] private EnemyPattern enemyPattern;
     [SerializeField] private GameObject gizmoObj;
+    private List<Vector3> _possiblePositions;
     private int _posCount = 0;
     
     #endregion
@@ -83,6 +90,12 @@ public class EnemyBall : MonoBehaviour
 
     // misc
     private int _groundMask;
+
+    private void Awake()
+    {
+        // Clear enemy pattern object regardless of whether debugging is being used
+        enemyPattern.Instantiate();
+    }
 
     private void Start()
     {
@@ -102,9 +115,10 @@ public class EnemyBall : MonoBehaviour
         _myRadius = _myCollider.radius * transform.lossyScale.x;
 
         _groundMask = LayerMask.GetMask("Ground");
-        
-        // Clear enemy pattern object regardless of whether debugging is being used
-        enemyPattern.Instantiate();
+
+        _posUpdateTime = Mathf.Max(aiUpdateTime, Time.fixedDeltaTime);
+
+        if (showPossiblePositions) _possiblePositions = new();
 
         StartCoroutine(CheckPositions());
     }
@@ -112,14 +126,14 @@ public class EnemyBall : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        // if (debug) enemyPattern.Instantiate();
+        // if (showActualPositions) enemyPattern.Instantiate();
     }
 
     public void EnableBall()
     {
         gameObject.SetActive(true);
         _checkPositions = StartCoroutine(CheckPositions());
-        if (debug) enemyPattern.Instantiate();
+        if (showActualPositions) enemyPattern.Instantiate();
     }
 
     private void FixedUpdate()
@@ -133,7 +147,7 @@ public class EnemyBall : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        if (debug)
+        if (showActualPositions)
         {
             for (int i = 0; i < enemyPattern.GetCount(); i++)
             {
@@ -145,6 +159,15 @@ public class EnemyBall : MonoBehaviour
                 {
                     Gizmos.DrawLine(enemyPattern.GetPosition(i - 1), enemyPattern.GetPosition(i));
                 }
+            }
+        }
+
+        if (showPossiblePositions && _possiblePositions != null)
+        {
+            Gizmos.color = Color.green;
+            for (int i = 0; i < _possiblePositions.Count; i++)
+            {
+                Gizmos.DrawSphere(_possiblePositions[i], 1.5f);
             }
         }
     }
@@ -338,7 +361,7 @@ public class EnemyBall : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(aiUpdateTime);
+            yield return new WaitForSeconds(_posUpdateTime);
             
             // Don't check positions while turning
             // if (_turning) continue;
@@ -348,187 +371,205 @@ public class EnemyBall : MonoBehaviour
                 new Vector3(50f, 50f, visibleLimit), _myParent.rotation, visibleLayers);
             
             float bestValue = Mathf.NegativeInfinity;
-            Vector3 bestPos = transform.position;
+            Vector3 bestPos = Vector3.zero;
             float bestDir = 0f;
-            float bestTime = 0f;
+            // float bestTime = 0f;
             string bestString = null;
+            float timeStep = secondsToConsider / considerTimeSteps;
 
-            // Measure different positions across different time steps (1.5 seconds left to 1.5 seconds right)
-            for (float i = -1f * secondsToConsider; i < secondsToConsider + 0.1f; i += (secondsToConsider / considerTimeSteps))
+            if (showPossiblePositions)
+            {
+                _possiblePositions.Clear();
+                // Debug.Log("Drawing possible positions for position " + _posCount + 1 + ":");
+            }
+
+            // Project positions horizontally in time
+            for (float i = -1f * secondsToConsider; i < secondsToConsider + 0.1f; i += timeStep)
             {
                 float time = Mathf.Abs(i);
+                // Negative going left, positive going right
                 float dir = Mathf.Sign(i);
                 
-                // Calculate predicted position at time
-
-                // a = Fdt / (m * dt)
-                Vector3 impulse = _parentInvRot * _myParent.right * (turnForce * dir);
-                Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
-                
-                Vector3 predictedPos = PredictPosition(time, in accel);
-
-                // Make sure new position isn't out-of-bounds
-                
-                // Bounds posBounds = new Bounds(predictedPos, _myBounds.size);
-                
-                // If out of bounds, skip to next position
-                if (predictedPos.x > _laneBounds.max.x ||
-                    predictedPos.z > _laneBounds.max.z ||
-                    predictedPos.x < _laneBounds.min.x ||
-                    predictedPos.z < _laneBounds.min.z)
+                // Project positions vertically in time
+                for (float j = time; j < secondsToConsider + 0.1f; j += timeStep)
                 {
-                    continue;
-                }
+                    float verticalTime = secondsToConsider - j;
 
-                string predictedString = "";
-                
-                if (debug) predictedString = "Predicted position " + _posCount + "\n";
-
-                // Quality of the position (more positive is better)
-                float posValue = 0f;
-                // Expected fuel loss to reach position
-                float expectedFuelLoss = turnFuel * time;
-
-                // Deduct expected fuel cost from quality
-                posValue -= expectedFuelLoss * fuelWeight;
-
-                if (debug) predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
-                
-                // Evaluate all visible obstacles for this position
-                for (int j = 0; j < visibleObstacles.Length; j++)
-                {
-                    GameObject obstacle = visibleObstacles[j].gameObject;
-
-                    // Ignore unreachable obstacles from position
-                    if (predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
-
-                    if (debug) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
-
-                    // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
-                    float obsValue;
+                    // Calculate predicted horizontal position
+                    // a = Fdt / (m * dt)
+                    Vector3 impulse = _parentInvRot * _myParent.right * (turnForce * dir);
+                    Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
+                    Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
                     
-                    /* We could precompute all obstacle values when the level loads as an alternative */
-
-                    // If value isn't cached, calculate it for the first time
-                    if (!_valueCache.TryGetValue(obstacle, out obsValue))
+                    // Calculate predicted final position
+                    Vector3 predictedPos = PredictPosition(verticalTime, horizontalPos);
+                    
+                    // If out of bounds, skip to next position
+                    if (predictedPos.x > _laneBounds.max.x ||
+                        predictedPos.z > _laneBounds.max.z ||
+                        predictedPos.x < _laneBounds.min.x ||
+                        predictedPos.z < _laneBounds.min.z)
                     {
-                        obsValue = 0f;
+                        continue;
+                    }
+                    
+                    if (showPossiblePositions) _possiblePositions.Add(predictedPos);
 
-                        // Pin
-                        if (obstacle.layer == _pinLayer)
+                    string predictedString = "";
+                    if (showActualPositions) predictedString = "Predicted position " + _posCount + "\n";
+
+                    // Quality of the position (more positive is better)
+                    float posValue = 0f;
+                    
+                    // Expected fuel loss to reach position
+                    float expectedFuelLoss = turnFuel * time;
+                    // Deduct expected fuel cost from quality
+                    posValue -= expectedFuelLoss * fuelWeight;
+
+                    if (showActualPositions) predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
+
+                    // Evaluate all visible obstacles relative to this position
+                    for (int k = 0; k < visibleObstacles.Length; k++)
+                    {
+                        GameObject obstacle = visibleObstacles[k].gameObject;
+
+                        // Ignore unreachable obstacles from position
+                        /* Assumes positive z is always forward */
+                        if (predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
+
+                        if (showActualPositions) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
+
+                        // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
+                        /* We could precompute all obstacle values when the level loads as an alternative */
+                        float obsValue;
+
+                        // If value isn't cached, calculate it for the first time
+                        if (!_valueCache.TryGetValue(obstacle, out obsValue))
                         {
-                            Pin pin = obstacle.GetComponent<Pin>();
-                            if (pin.pinState == Pin.PinState.Untouched)
-                            {
-                                obsValue = pointWeight * obstacle.GetComponent<Pin>().PointValue;
-                            }
-                            else
-                            {
-                                obsValue = 0f;
-                            }
-                        }
-                        // Obstacle
-                        else if (obstacle.layer == _obstacleLayer)
-                        {
-                            if (obstacle.CompareTag("Speed Pad"))
-                            {
-                                // ds = ||dv|| = ||Fdt/m||
+                            obsValue = 0f;
 
-                                SpeedPlane speedPlane = obstacle.GetComponent<SpeedPlane>();
-
-                                float speedChange = speedPlane.speedMultiplier / _myBody.mass;
-
-                                obsValue = speedWeight * speedChange;
-                            }
-                            else if (obstacle.CompareTag("Damage Obstacle"))
+                            // Pin
+                            if (obstacle.layer == _pinLayer)
                             {
-                                breakableObstacle breakableObs;
-                                billboardMovement billboardMove;
-                                if (obstacle.TryGetComponent(out breakableObs))
+                                Pin pin = obstacle.GetComponent<Pin>();
+                                if (pin.pinState == Pin.PinState.Untouched)
                                 {
-                                    obsValue = -1f * fuelWeight * breakableObs.fuelSub;
-                                }
-                                else if (obstacle.TryGetComponent(out billboardMove))
-                                {
-                                    obsValue = -1f * fuelWeight * billboardMove.fuelSub;
+                                    obsValue = pointWeight * pin.PointValue;
                                 }
                                 else
                                 {
-                                    Debug.LogError("Enemy error: Invalid damaging obstacle " + obstacle.name + " found");
+                                    obsValue = 0f;
                                 }
                             }
-                        } 
+                            // Obstacle
+                            else if (obstacle.layer == _obstacleLayer)
+                            {
+                                if (obstacle.CompareTag("Speed Pad"))
+                                {
+                                    // ds = ||dv|| = ||Fdt/m||
 
-                        _valueCache.Add(obstacle, obsValue);
+                                    SpeedPlane speedPlane = obstacle.GetComponent<SpeedPlane>();
+
+                                    float speedChange = speedPlane.speedMultiplier / _myBody.mass;
+
+                                    obsValue = speedWeight * speedChange;
+                                }
+                                else if (obstacle.CompareTag("Damage Obstacle"))
+                                {
+                                    breakableObstacle breakableObs;
+                                    billboardMovement billboardMove;
+                                    if (obstacle.TryGetComponent(out breakableObs))
+                                    {
+                                        obsValue = -1f * fuelWeight * breakableObs.fuelSub;
+                                    }
+                                    else if (obstacle.TryGetComponent(out billboardMove))
+                                    {
+                                        obsValue = -1f * fuelWeight * billboardMove.fuelSub;
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError("Enemy error: Invalid damaging obstacle " +
+                                                       obstacle.name + " found");
+                                    }
+                                }
+                            }
+
+                            _valueCache.Add(obstacle, obsValue);
+                        }
+
+                        if (showActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
+
+                        // Scale obstacle value by cos of angle between obstacle and position
+                        // An angle of 90 degrees means it's unreachable and is worthless
+                        // An angle of 0 degrees means it's straight-ahead and worth its full value
+                        Vector3 posToObs = obstacle.transform.position - predictedPos;
+                        posToObs.y = 0f;
+                        posToObs = posToObs.normalized;
+
+                        Vector3 parentForward = _parentInvRot * _myParent.forward;
+                        parentForward.y = 0f;
+                        parentForward = parentForward.normalized;
+
+                        obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, Mathf.Infinity) * angleWeight;
+
+                        if (showActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
+
+                        // Scale obstacle value by inverse distance from it to position
+
+                        // Calculate inverse distance to obstacle
+                        // Clamped to prevent value from ever exceeding 1
+                        // Distance ceases to matter below 0.1 meters due to shift
+                        float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+                        invDist = Mathf.Clamp(invDist, 0f, 1f);
+                        obsValue *= invDist;
+                        if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
+                        obsValue *= distWeight;
+
+                        posValue += obsValue;
                     }
-                    
-                    if (debug) predictedString += "    Unscaled value: " + obsValue + "\n";
-                    
-                    // Scale obstacle value by cos of angle between obstacle and position
-                    // An angle of 90 degrees means it's unreachable and is worthless
-                    // An angle of 0 degrees means it's straight-ahead and worth its full value
-                    Vector3 posToObs = obstacle.transform.position - predictedPos;
-                    posToObs.y = 0f;
-                    posToObs = posToObs.normalized;
 
-                    Vector3 parentForward = _parentInvRot * _myParent.forward;
-                    parentForward.y = 0f;
-                    parentForward = parentForward.normalized;
-                    
-                    obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, Mathf.Infinity);
-                    
-                    if (debug) predictedString += "    Value accounting for angle: " + obsValue + "\n";
-                    
-                    // Scale obstacle value by inverse squared distance from it to position
-                    /* Might want to put an upper bound on the distance scalar so it can't get too large */
-                    posValue += obsValue * InvSquareDistance(predictedPos, obstacle.transform.position);
-                    
-                    if (debug) predictedString += "    Value accounting for distance: " + obsValue * InvSquareDistance(predictedPos, obstacle.transform.position) + "\n";
-                }
-                
-                if (debug) predictedString += "Value of position " + _posCount + ": " + posValue;
+                    if (showActualPositions) predictedString += "Value of position " + _posCount + ": " + posValue;
 
-                // Update best positions if better position is found
-                if (posValue > bestValue)
-                {
-                    bestValue = posValue;
-                    bestPos = predictedPos;
-                    bestDir = dir;
-                    bestTime = time;
-                    if (debug) bestString = predictedString;
+                    // Update best positions if better position is found
+                    if (posValue > bestValue)
+                    {
+                        bestValue = posValue;
+                        bestPos = predictedPos;
+                        bestDir = dir;
+                        // bestTime = time;
+                        if (showActualPositions) bestString = predictedString;
+                    }
                 }
             }
 
-            // If best position is elsewhere, move to it
-            if (bestTime > Mathf.Epsilon)
-            {
-                _posCount++;
-                _targetPos = bestPos;
-                if (debug) Debug.Log(bestString);
-                enemyPattern.AddPosition(bestPos, gizmoObj);
-                // Debug.Log("Moving to position " + bestPos);
-                _turning = true;
-                StartCoroutine(TurnSequence(bestDir));
-            }
+            // Move to best position
+            _posCount++;
+            _targetPos = bestPos;
+            if (showActualPositions) Debug.Log(bestString);
+            enemyPattern.AddPosition(bestPos, gizmoObj);
+            StartCoroutine(TurnSequence(bestDir));
         }
     }
 
     // Turn, then straighten out
     private IEnumerator TurnSequence(float dir)
     {
+        _turning = true;
+        
         float initialDiffSign = Mathf.Sign(_targetPos.x - transform.position.x);
         
         /* This will need to be refactored to account for turns */
         // Keep turning until you're at the new position
-        while (Mathf.Sign(_targetPos.x - transform.position.x) - initialDiffSign < Mathf.Epsilon)
+        float posDiff = _targetPos.x - transform.position.x;
+        while (Mathf.Abs(posDiff) > Mathf.Epsilon &&
+            Mathf.Sign(posDiff) - initialDiffSign < Mathf.Epsilon)
         {
             yield return new WaitForFixedUpdate();
             
             Turn(dir * turnForce);
         }
 
-        Vector3 lastForwardVelocity = Vector3.Project(_myBody.velocity,
-            (_parentInvRot * _myParent.forward).normalized);
+        Vector3 lastForwardVelocity = ForwardVelocity();
         
         // Straighten out once you're done turning
         StartCoroutine(Straighten(lastForwardVelocity));
@@ -558,13 +599,30 @@ public class EnemyBall : MonoBehaviour
     #region Helper Functions
 
     // Calculate a future position based on time and constant acceleration
-    private Vector3 PredictPosition(float time, in Vector3 turnAccel)
+    private Vector3 PredictPosition(float time, in Vector3 turnAccel, in Vector3 initialPos)
     {
         // p = 0.5a(t^2) + v0*t + p0
         
-        Vector3 pos = (turnAccel * (0.5f * Mathf.Pow(time, 2))) + (_myBody.velocity * time) + (transform.position);
+        Vector3 pos = (turnAccel * (0.5f * Mathf.Pow(time, 2))) + (ForwardVelocity() * time) + (initialPos);
 
         return pos;
+    }
+    
+    // Calculate a future position based on time and no acceleration
+    private Vector3 PredictPosition(float time, in Vector3 initialPos)
+    {
+        // p = 0.5a(t^2) + v0*t + p0
+        
+        Vector3 pos = (ForwardVelocity() * time) + initialPos;
+
+        return pos;
+    }
+    
+    // Returns the forward linear velocity
+    private Vector3 ForwardVelocity()
+    {
+        return Vector3.Project(_myBody.velocity,
+            (_parentInvRot * _myParent.forward).normalized);
     }
     
     // Deplete the fuel meter by some percent (between 0 and 1)
@@ -590,6 +648,12 @@ public class EnemyBall : MonoBehaviour
     private float InvSquareDistance(Vector3 from, Vector3 to)
     {
         return Mathf.Pow(Vector3.Distance(from, to), -2);
+    }
+    
+    // Calculate the inverse distance from one position to another
+    private float InvDistance(Vector3 from, Vector3 to, float shift = 0f)
+    {
+        return Mathf.Pow(Vector3.Distance(from, to) + shift, -1);
     }
     
     #endregion
