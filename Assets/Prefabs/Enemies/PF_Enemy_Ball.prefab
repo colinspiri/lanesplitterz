@@ -169,11 +169,12 @@ MonoBehaviour:
   visibleLimit: 80
   visibleLayers:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 1288
   straightenSeconds: 0
   secondsToConsider: 2
   considerTimeSteps: 25
   changePosDiff: 0.1
+  playerFuelLoss: 0.1
   fuelWeight: 0.2
   speedWeight: 0
   pointWeight: 0.8

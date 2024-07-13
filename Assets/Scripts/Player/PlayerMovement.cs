@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float accelFuel;
     [Tooltip("Amount of fuel expended per second while steering left or right")]
     [SerializeField] private float turnFuel;
+    [Tooltip("Percentage of fuel lost on hitting an enemy ball")]
+    [SerializeField] private float enemyFuelLoss;
     
     [Header("Events")]
     [SerializeField] private FloatVariableGameEvent fuelChanged;
@@ -237,10 +239,13 @@ public class PlayerMovement : MonoBehaviour
                 _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
         }
-
-        if (collision.collider.gameObject.tag == "Gutter")
+        else if (collision.collider.gameObject.tag == "Gutter")
         {
             HitGutter.Play();
+        }
+        else if (collision.gameObject.CompareTag("Enemy Ball"))
+        {
+            ReduceFuel(enemyFuelLoss);
         }
     }
 

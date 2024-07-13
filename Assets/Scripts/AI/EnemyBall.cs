@@ -5,6 +5,7 @@ using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class EnemyBall : MonoBehaviour
@@ -27,6 +28,8 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float considerTimeSteps;
     [Tooltip("The difference in two potential positions needed to choose a new one (Prevents thrashing)")]
     [SerializeField] private float changePosDiff;
+    [Tooltip("Percent of fuel lost on hitting the player")]
+    [SerializeField] private float playerFuelLoss;
     [SerializeField] private float fuelWeight;
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
@@ -74,6 +77,7 @@ public class EnemyBall : MonoBehaviour
     private Bounds _laneBounds;
     private int _pinLayer;
     private int _obstacleLayer;
+    private int _ballLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
 
@@ -110,6 +114,7 @@ public class EnemyBall : MonoBehaviour
 
         _pinLayer = LayerMask.NameToLayer("Pins");
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
+        _ballLayer = LayerMask.NameToLayer("Balls");
 
         _valueCache = new();
 
@@ -173,6 +178,14 @@ public class EnemyBall : MonoBehaviour
             {
                 Gizmos.DrawSphere(_possiblePositions[i], 1.5f);
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            ReduceFuel(playerFuelLoss);
         }
     }
     
@@ -394,8 +407,6 @@ public class EnemyBall : MonoBehaviour
         return _ground && _ground.CompareTag("Icy");
     }
 
-    #endregion
-
     // Consider other possible positions to move towards
     private IEnumerator CheckPositions()
     {
@@ -474,8 +485,10 @@ public class EnemyBall : MonoBehaviour
                         GameObject obstacle = visibleObstacles[k].gameObject;
 
                         // Ignore unreachable obstacles from position
+                        // Doesn't ignore the player, since they can catch up
                         /* Assumes positive z is always forward */
-                        if (predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
+                        if (obstacle.layer != _ballLayer &&
+                            predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
 
                         if (showActualPositions) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
 
@@ -532,6 +545,11 @@ public class EnemyBall : MonoBehaviour
                                                        obstacle.name + " found");
                                     }
                                 }
+                            }
+                            // Player ball
+                            else if (obstacle.layer == _ballLayer)
+                            {
+                                obsValue = -1f * playerFuelLoss * fuelWeight;
                             }
 
                             _valueCache.Add(obstacle, obsValue);
@@ -684,6 +702,8 @@ public class EnemyBall : MonoBehaviour
         
         StartCoroutine(CheckPositions());
     }
+    
+    #endregion
     
     #region Helper Functions
 
