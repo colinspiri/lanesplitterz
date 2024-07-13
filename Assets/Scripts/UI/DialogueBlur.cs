@@ -8,6 +8,8 @@ public class DialogueBlur : MonoBehaviour
 {
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
+    [SerializeField] private GameObject playerArt;
+    [SerializeField] private GameObject enemyArt;
     private Transform _myCam;
 
     void Start()
@@ -37,5 +39,29 @@ public class DialogueBlur : MonoBehaviour
     public void DisableBlur()
     {
         blur.gameObject.SetActive(false);
+    }
+
+    [YarnCommand("EnablePlayerArt")]
+    public void EnablePlayerArt()
+    {
+        playerArt.SetActive(true);
+    }
+
+    [YarnCommand("DisablePlayerArt")]
+    public void DisablePlayerArt()
+    {
+        playerArt.SetActive(false);
+    }
+
+    [YarnCommand("EnableEnemyArt")]
+    public void EnableEnemyArt()
+    {
+        enemyArt.SetActive(true);
+    }
+
+    [YarnCommand("DisableEnemyArt")]
+    public void DisableEnemyArt()
+    {
+        enemyArt.SetActive(false);
     }
 }

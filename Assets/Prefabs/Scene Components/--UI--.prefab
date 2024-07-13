@@ -5716,13 +5716,24 @@ PrefabInstance:
       propertyPath: startNode
       value: TestDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 3820460718995980114, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: hud
       value: 
       objectReference: {fileID: 4119810549153023293}
+    - target: {fileID: 7212035904130755417, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3820460718995980114, guid: e643afb93c9b5604ab6f9be571b50507, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e643afb93c9b5604ab6f9be571b50507, type: 3}
