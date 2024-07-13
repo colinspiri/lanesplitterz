@@ -119,6 +119,12 @@ PrefabInstance:
       propertyPath: _response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 9095661317396777986, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6e50edcee19c89a4dbfddaae23382e60,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
     - {fileID: 262683764499468453, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
@@ -160,21 +166,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
   aiUpdateTime: 0.05
-  visibleLimit: 40
+  visibleLimit: 80
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1280
-  straightenSeconds: 1
-  secondsToConsider: 3
-  considerTimeSteps: 12
+  straightenSeconds: 0
+  secondsToConsider: 2
+  considerTimeSteps: 25
+  changePosDiff: 0.1
   fuelWeight: 0.2
   speedWeight: 0
   pointWeight: 0.8
+  distWeight: 0.3
+  angleWeight: 0.7
   turnForce: 2.5
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
   turnFuel: 0.01
   accelFuel: 0
+  showActualPositions: 0
+  showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 6231270577809866729}

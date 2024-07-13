@@ -142,6 +142,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_GoldenPin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5264718845464563505, guid: 1f0ed9cfbf586504f9f88b819d5df217,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6970977308044126502, guid: 1f0ed9cfbf586504f9f88b819d5df217,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2251,6 +2256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Pin (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 4760851470008906924, guid: 963310912e23156469bc5d0f5f57667f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7763108689513927355, guid: 963310912e23156469bc5d0f5f57667f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2701,6 +2711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_GoldenPin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5264718845464563505, guid: 1f0ed9cfbf586504f9f88b819d5df217,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6970977308044126502, guid: 1f0ed9cfbf586504f9f88b819d5df217,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3102,6 +3117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_GoldenPin (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264718845464563505, guid: 1f0ed9cfbf586504f9f88b819d5df217,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6970977308044126502, guid: 1f0ed9cfbf586504f9f88b819d5df217,
         type: 3}
@@ -3730,7 +3750,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6519864363749705614}
-  m_Material: {fileID: 13400000, guid: c9eb0d22ec5cab54db8254c7ea7bb2cc, type: 2}
+  m_Material: {fileID: 13400000, guid: 6e50edcee19c89a4dbfddaae23382e60, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4019,9 +4039,10 @@ MonoBehaviour:
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1280
-  straightenSeconds: 0.01
+  straightenSeconds: 0
   secondsToConsider: 2
   considerTimeSteps: 25
+  changePosDiff: 0.1
   fuelWeight: 0.2
   speedWeight: 0
   pointWeight: 0.8
@@ -4047,7 +4068,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 0
-  m_AngularDrag: 0.01
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

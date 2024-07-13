@@ -25,6 +25,8 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float secondsToConsider;
     [Tooltip("The sampling rate of the time to consider")]
     [SerializeField] private float considerTimeSteps;
+    [Tooltip("The difference in two potential positions needed to choose a new one (Prevents thrashing)")]
+    [SerializeField] private float changePosDiff;
     [SerializeField] private float fuelWeight;
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
@@ -32,6 +34,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float angleWeight;
     // The position being moved to
     private Vector3 _targetPos;
+    private float _targetScore;
     // A dictionary caching object values
     private Dictionary<GameObject, float> _valueCache;
     // The true update time for checking positions
@@ -58,6 +61,8 @@ public class EnemyBall : MonoBehaviour
     private float _fuelMeter = 1f;
     private float _currentSpin = 0f;
     private GameObject _ground = null;
+    private Coroutine _turnRoutine = null;
+    private Coroutine _straightenRoutine = null;
 
     #endregion
 
@@ -71,7 +76,6 @@ public class EnemyBall : MonoBehaviour
     private int _obstacleLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
-    private Coroutine _checkPositions = null;
 
     #endregion
     
@@ -132,7 +136,7 @@ public class EnemyBall : MonoBehaviour
     public void EnableBall()
     {
         gameObject.SetActive(true);
-        _checkPositions = StartCoroutine(CheckPositions());
+        StartCoroutine(CheckPositions());
         if (showActualPositions) enemyPattern.Instantiate();
     }
 
@@ -142,7 +146,7 @@ public class EnemyBall : MonoBehaviour
         _parentInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
 
         UpdateGround();
-        Hook();
+        // Hook();
     }
     
     private void OnDrawGizmos()
@@ -176,6 +180,46 @@ public class EnemyBall : MonoBehaviour
     
     #region Movement Functions
     
+    // public void Turn(float turnVal, bool expendFuel = true)
+    // {
+    //     if (expendFuel)
+    //     {
+    //         float fuelReduction = turnFuel * Time.fixedDeltaTime;
+    //
+    //         if (_fuelMeter <= Mathf.Epsilon)
+    //         {
+    //             return;
+    //         }
+    //         else
+    //         {
+    //             ReduceFuel(fuelReduction);
+    //         }
+    //     }
+    //
+    //
+    //     _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
+    //     if (_currentSpin > 100) _currentSpin = 100;
+    //     else if (_currentSpin < -100) _currentSpin = -100;
+    //
+    //     Vector3 linForce = (_parentInvRot * _myParent.right) * turnVal;
+    //     Vector3 rotForce = (_parentInvRot * _myParent.up) * turnVal;
+    //
+    //     // Skid if on ice (reduce acceleration)
+    //     // if (IsIcy())
+    //     // {
+    //     //     Debug.Log("Turning skidding on ice");
+    //     //     
+    //     //     linForce /= slipperyForce;
+    //     //     rotForce /= slipperyForce;
+    //     // }
+    //
+    //     // Linear acceleration
+    //     _myBody.AddForce(linForce, ForceMode.Impulse);
+    //
+    //     // Rotational acceleration
+    //     _myBody.AddTorque(rotForce, ForceMode.Impulse);
+    // }
+    
     public void Turn(float turnVal, bool expendFuel = true)
     {
         if (expendFuel)
@@ -192,10 +236,6 @@ public class EnemyBall : MonoBehaviour
             }
         }
 
-
-        _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
-        if (_currentSpin > 100) _currentSpin = 100;
-        else if (_currentSpin < -100) _currentSpin = -100;
 
         Vector3 linForce = (_parentInvRot * _myParent.right) * turnVal;
         Vector3 rotForce = (_parentInvRot * _myParent.up) * turnVal;
@@ -542,12 +582,23 @@ public class EnemyBall : MonoBehaviour
                 }
             }
 
-            // Move to best position
-            _posCount++;
-            _targetPos = bestPos;
-            if (showActualPositions) Debug.Log(bestString);
-            enemyPattern.AddPosition(bestPos, gizmoObj);
-            StartCoroutine(TurnSequence(bestDir));
+            // Move to best position if it's better than current target or you've passed the current target
+            /* Assumes positive z is forward */
+            if (bestValue - _targetScore >= changePosDiff || transform.position.z > _targetPos.z)
+            {
+                _posCount++;
+                _targetPos = bestPos;
+                _targetScore = bestValue;
+                if (showActualPositions) Debug.Log(bestString);
+                enemyPattern.AddPosition(bestPos, gizmoObj);
+                
+                if (_turnRoutine != null)
+                {
+                    StopCoroutine(_turnRoutine);
+                }
+            
+                _turnRoutine = StartCoroutine(TurnSequence(bestDir));
+            }
         }
     }
 
@@ -556,23 +607,31 @@ public class EnemyBall : MonoBehaviour
     {
         _turning = true;
         
+        if (_straightenRoutine != null)
+        {
+            StopCoroutine(_straightenRoutine);
+        }
+        
         float initialDiffSign = Mathf.Sign(_targetPos.x - transform.position.x);
         
         /* This will need to be refactored to account for turns */
         // Keep turning until you're at the new position
         float posDiff = _targetPos.x - transform.position.x;
         while (Mathf.Abs(posDiff) > Mathf.Epsilon &&
-            Mathf.Sign(posDiff) - initialDiffSign < Mathf.Epsilon)
+            Mathf.Abs(Mathf.Sign(posDiff) + initialDiffSign) > Mathf.Epsilon)
         {
             yield return new WaitForFixedUpdate();
             
             Turn(dir * turnForce);
+            
+            posDiff = _targetPos.x - transform.position.x;
         }
-
-        Vector3 lastForwardVelocity = ForwardVelocity();
         
         // Straighten out once you're done turning
-        StartCoroutine(Straighten(lastForwardVelocity));
+        _straightenRoutine = StartCoroutine(Straighten(ForwardLinVelocity()));
+        
+        // LinForceToVelocity(ForwardLinVelocity());
+        // RotForceToVelocity(ForwardRotVelocity());
     }
     
     // Adjust velocity to forward
@@ -592,7 +651,7 @@ public class EnemyBall : MonoBehaviour
             
             yield return new WaitForFixedUpdate();
         }
-
+        
         _turning = false;
     }
     
@@ -603,7 +662,7 @@ public class EnemyBall : MonoBehaviour
     {
         // p = 0.5a(t^2) + v0*t + p0
         
-        Vector3 pos = (turnAccel * (0.5f * Mathf.Pow(time, 2))) + (ForwardVelocity() * time) + (initialPos);
+        Vector3 pos = (turnAccel * (0.5f * Mathf.Pow(time, 2))) + (ForwardLinVelocity() * time) + (initialPos);
 
         return pos;
     }
@@ -613,16 +672,23 @@ public class EnemyBall : MonoBehaviour
     {
         // p = 0.5a(t^2) + v0*t + p0
         
-        Vector3 pos = (ForwardVelocity() * time) + initialPos;
+        Vector3 pos = (ForwardLinVelocity() * time) + initialPos;
 
         return pos;
     }
     
     // Returns the forward linear velocity
-    private Vector3 ForwardVelocity()
+    private Vector3 ForwardLinVelocity()
     {
         return Vector3.Project(_myBody.velocity,
             (_parentInvRot * _myParent.forward).normalized);
+    }
+    
+    // Returns the forward rotational velocity
+    private Vector3 ForwardRotVelocity()
+    {
+        return Vector3.Project(_myBody.angularVelocity,
+            (_parentInvRot * _myParent.right).normalized);
     }
     
     // Deplete the fuel meter by some percent (between 0 and 1)
@@ -654,6 +720,35 @@ public class EnemyBall : MonoBehaviour
     private float InvDistance(Vector3 from, Vector3 to, float shift = 0f)
     {
         return Mathf.Pow(Vector3.Distance(from, to) + shift, -1);
+    }
+    
+    // Applies the impulse needed for a desired linear velocity change
+    private void LinForceToVelocity(Vector3 newVelocity)
+    {
+        // Add linear force to match change in parent linear acceleration
+        // F = ma, F = mdv/dt
+        // Fdt = mdv
+        Vector3 velocityDiff = newVelocity - _myBody.velocity;
+        _myBody.AddForce(_myBody.mass * velocityDiff, ForceMode.Impulse);
+    }
+    
+    // Applies the impulse needed for a desired rotational velocity change
+    private void RotForceToVelocity(Vector3 newVelocity)
+    {
+        // Add rotational force to match change in parent linear acceleration
+        // T = Ia, T = Idv/dt
+        // Tdt = Idv
+        Vector3 velocityDiff = newVelocity - _myBody.velocity;
+        // Debug.Log("PinCollider: Angular Velocity Diff is " + velocityDiff.magnitude);
+        Vector3 inertia = _myBody.inertiaTensorRotation * _myBody.inertiaTensor;
+        Vector3 Idv = MatVecProduct(inertia, velocityDiff);
+        _myBody.AddTorque(Idv, ForceMode.Impulse);
+    }
+    
+    // Treats 'diagonal' as the diagonal values of a diagonal 3x3 matrix
+    private Vector3 MatVecProduct(Vector3 diagonal, Vector3 vec)
+    {
+        return new Vector3(diagonal.x * vec.x, diagonal.y * vec.y, diagonal.z * vec.z);
     }
     
     #endregion
