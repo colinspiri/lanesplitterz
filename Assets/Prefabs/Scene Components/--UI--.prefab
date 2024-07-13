@@ -5623,7 +5623,7 @@ PrefabInstance:
     - target: {fileID: 1416345399420254055, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_Name
-      value: Dialogue UI
+      value: DialogueUI
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
@@ -5638,7 +5638,7 @@ PrefabInstance:
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 470
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
@@ -5705,11 +5705,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2858585572723773190, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2889005097192983678, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: startNode
       value: TestDialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 4119810549153023293}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

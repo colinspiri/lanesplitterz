@@ -186,11 +186,6 @@ public class RoundManager : MonoBehaviour {
 
             return;
         }
-
-        if (currentRound.Value == 2) _dialogueRunner.StartDialogue(dialogueOnRoundTwo);
-        if (currentRound.Value == 3) _dialogueRunner.StartDialogue(dialogueOnRoundThree);
-        if (currentRound.Value == 4) _dialogueRunner.StartDialogue(dialogueOnRoundFour);
-        if (currentRound.Value == 5) _dialogueRunner.StartDialogue(dialogueOnRoundFive);
         
         OnNewRound?.Invoke();
     }
