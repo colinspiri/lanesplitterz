@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
+using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,8 +21,6 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Transform pivot;
 
     [SerializeField] private Rigidbody ball;
-    [SerializeField] private AudioSource launchSound;
-    [SerializeField] private AudioSource turnSound;
 
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
@@ -35,6 +34,8 @@ public class Cannon : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] MusicController musicController;
+    [SerializeField] private AudioSource launchSound;
+    [SerializeField] private AdaptiveMusicContainer turnSound;
 
     private bool launched;
     private Vector2 movementInput;
@@ -42,6 +43,7 @@ public class Cannon : MonoBehaviour
     private Enemy _enemy;
     private int numSpacePressed = 0;
     private bool moving = false;
+    private bool firstMoving = true;
 
     private void Awake()
     {
@@ -120,14 +122,24 @@ public class Cannon : MonoBehaviour
                 trajectoryLine.SetPositions();
                 if (!moving /*&& target.x < maxPitch && target.x > minPitch*/)
                 {
+                    if (firstMoving)
+                    {
+                        turnSound.RunContainer();
+                        firstMoving = false;
+                    }
+                    else
+                    {
+                        turnSound.TransitionSection(0);
+                    }
                     moving = true;
-                    turnSound.Play();
+                    
+                    
                 }
             }
             else if (moving)
             {
                 moving = false;
-                turnSound.Stop();
+                turnSound.TransitionSection(0);
             }
             /*if (transform.rotation.x > maxPitch || transform.rotation.x < minPitch)
             {

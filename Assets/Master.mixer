@@ -30,6 +30,7 @@ AudioMixerGroupController:
   m_GroupID: b6746847b8e162842bc0d55ea6c0b2d3
   m_Children:
   - {fileID: -1154079387732026358}
+  - {fileID: 5973679299008610706}
   m_Volume: 236bf079edd0f234aac9ac1c3752f742
   m_Pitch: c745318a1b650544fb9aa9c4007fe694
   m_Send: 00000000000000000000000000000000
@@ -94,6 +95,7 @@ AudioMixerController:
     - 906c95b36dbed17479cdacb6a98a4f4f
     - b6746847b8e162842bc0d55ea6c0b2d3
     - c45cd7a94cee5454391b5869d777852c
+    - bdea23d8a0fd40b4a9bdbcc9accb588f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -107,8 +109,8 @@ AudioMixerGroupController:
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: a865988dd244e4f459166a5c34769f81
   m_Children:
-  - {fileID: -2978140294193931848}
   - {fileID: -6511731023181483466}
+  - {fileID: -2978140294193931848}
   m_Volume: f12b1710e15d8b0468b64f9e1c93663e
   m_Pitch: 7d08ee93129c36549bdda0989578947c
   m_Send: 00000000000000000000000000000000
@@ -143,8 +145,23 @@ AudioMixerSnapshotController:
   m_SnapshotID: 35452f3c82b3081448c448d47504042f
   m_FloatValues:
     102c962498d484f40a4cbe3ad3129da6: -14.96685
+    daa1d40b25bcedb499ed207fc497d8e5: -11.400904
     e622642b2ff0ffb468f9488e57f75101: -9.960266
   m_TransitionOverrides: {}
+--- !u!244 &2291142834838180714
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 182e51cd536dd874795f0f8eeba660ff
+  m_EffectName: Attenuation
+  m_MixLevel: eb08784de2675204094e9d89966d08a3
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &4542745932841234033
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -159,6 +176,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &5973679299008610706
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ball SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: bdea23d8a0fd40b4a9bdbcc9accb588f
+  m_Children: []
+  m_Volume: daa1d40b25bcedb499ed207fc497d8e5
+  m_Pitch: e498b0650bc99634e89dfb9bd7a90641
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2291142834838180714}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &9218682442700560905
 AudioMixerEffectController:
   m_ObjectHideFlags: 3

@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2229455351927497514}
-  - component: {fileID: 1333834950015935910}
+  - component: {fileID: 4506624815162782775}
   m_Layer: 0
   m_Name: Cannon Moving
   m_TagString: Untagged
@@ -63,103 +63,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3339318133075123443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1333834950015935910
-AudioSource:
+--- !u!114 &4506624815162782775
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820491963764985640}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2978140294193931848, guid: 690fdda113763624ca6f76467a88c97e,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: e56a47f6b9c8417408d524fed4de9d3a, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae20871896b029c4ba10f2e8c21e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playType: 1
+  _isOneShot: 0
+  _trackBPM: 120
+  _timeSignatureTop: 4
+  _timeSignatureBottom: 4
+  _sections:
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 1c0c9c26b68f95b41a7b6f0562926bce, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 2
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 0.5
+    - _transitionInto: 1
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 0
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 78deaff68b34b1f4fa95570c174bea3a, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 2
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 0.5
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: d3dda54f8687eb54e87ea18a365eda96, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 0
+      _triggerType: 1
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 0
+  _initialSection: 0
+  _states:
+  - _stateAudioLayerVolumes: []
+    _gradualStateChange: 1
+    _gradualStateChangeTime: 1
+  _initialState: 0
+  _ignoreWarnings: 0
 --- !u!1 &2964230283014334401
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,9 +420,8 @@ MonoBehaviour:
   maxPitch: 0
   rotateSpeed: 25
   launchPoint: {fileID: 4616034963602659771}
+  pivot: {fileID: 0}
   ball: {fileID: 0}
-  launchSound: {fileID: 8524329879732035813}
-  turnSound: {fileID: 1333834950015935910}
   powerMeterData: {fileID: 11400000, guid: 810baa691876bb64a8945b2c155adf67, type: 2}
   spinMeterData: {fileID: 11400000, guid: 78135003dbf290843a12d0bfe3fe697d, type: 2}
   trajectoryLine: {fileID: 8747488377704882150}
@@ -464,6 +432,9 @@ MonoBehaviour:
     type: 2}
   ConfirmedInitialSpin: {fileID: 11400000, guid: 976ef52061c92f54c9e5047e97bb8e3d,
     type: 2}
+  musicController: {fileID: 0}
+  launchSound: {fileID: 8524329879732035813}
+  turnSound: {fileID: 4506624815162782775}
 --- !u!82 &8524329879732035813
 AudioSource:
   m_ObjectHideFlags: 0
