@@ -98,13 +98,13 @@ namespace GameAudioScriptingEssentials
         [Tooltip("Note value of the beats")]
         [Range(1, 32)]
         [SerializeField] int _timeSignatureBottom = 4;
-        bool _isPlaying = false;
+        public bool _isPlaying = false;
 
         [Header("Sections")]
         [SerializeField] Section[] _sections;
         [Tooltip("Initial section of the track")]
         [SerializeField] int _initialSection = 0;
-        int _currentSection = 0;
+        public int _currentSection = 0;
         bool _isRunningCrossfade, _isRunningCrossfadeCheck, _isRunningQuantize, _isRunningQuantizeCheck = false;
 
         [Header("States")]
@@ -620,7 +620,11 @@ namespace GameAudioScriptingEssentials
                         }
                         else if (_states[_currentState].StateAudioLayerVolumes.Length <= i)
                         {
-                            _sections[_newSection]._audioLayerACR[i].SFXVolume = Mathf.Lerp(0.0f, 1.0f * _sections[_currentSection].AudioLayers[i]._audioLayerVolumes, _currentTime / _crossfadeTime);
+                            if (_sections[_newSection]._audioLayerACR[i] != null)
+                            {
+                                _sections[_newSection]._audioLayerACR[i].SFXVolume = Mathf.Lerp(0.0f, 1.0f * _sections[_currentSection].AudioLayers[i]._audioLayerVolumes, _currentTime / _crossfadeTime);
+                            }
+                            
 
                             if (_sections[_currentSection]._layerObject[i].GetComponent<AudioSource>())
                             {

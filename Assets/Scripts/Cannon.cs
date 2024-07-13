@@ -42,8 +42,6 @@ public class Cannon : MonoBehaviour
     //private float launchForce;
     private Enemy _enemy;
     private int numSpacePressed = 0;
-    private bool moving = false;
-    private bool firstMoving = true;
 
     private void Awake()
     {
@@ -120,25 +118,17 @@ public class Cannon : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(target);
                 pivot.rotation = Quaternion.Euler(target);
                 trajectoryLine.SetPositions();
-                if (!moving /*&& target.x < maxPitch && target.x > minPitch*/)
+                if (!turnSound._isPlaying)
                 {
-                    if (firstMoving)
-                    {
-                        turnSound.RunContainer();
-                        firstMoving = false;
-                    }
-                    else
-                    {
-                        turnSound.TransitionSection(0);
-                    }
-                    moving = true;
-                    
-                    
+                    turnSound.RunContainer();   
+                }
+                else if (turnSound._currentSection == 2)
+                {
+                    turnSound.TransitionSection(0);
                 }
             }
-            else if (moving)
+            else if (turnSound._currentSection != 2)
             {
-                moving = false;
                 turnSound.TransitionSection(0);
             }
             /*if (transform.rotation.x > maxPitch || transform.rotation.x < minPitch)

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94ee00c9f24b3bc44976a64350dcfbd6, type: 3}
-  m_Name: Music Main
+  m_Name: Engine End
   m_EditorClassIdentifier: 
   _audioClips:
-  - {fileID: 8300000, guid: 66b20388e16025c4d914fd0130ca64e7, type: 3}
-  _mixerGroup: {fileID: -6511731023181483466, guid: 690fdda113763624ca6f76467a88c97e,
+  - {fileID: 8300000, guid: 85e2998fadf163a408ba6d5742f477f4, type: 3}
+  _mixerGroup: {fileID: 6251026785540689023, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   _noRepeats: 0
   _randomPitch: 0
   _minPitch: 0.5
   _maxPitch: 1.5
-  _volume: 0.646
-  _loop: 1
+  _volume: 1
+  _loop: 0
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0

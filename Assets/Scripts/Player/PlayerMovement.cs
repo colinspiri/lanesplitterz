@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
@@ -59,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
-    [SerializeField] AudioSource EngineSFX;
+    [SerializeField] AdaptiveMusicContainer EngineSFX;
     [SerializeField] AudioSource TurningSFX;
     [SerializeField] AudioSource AccelSFX;
     [SerializeField] AudioSource HitGutter;
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _hasLaunched;
     private float _currentSpin = 0f;
     private bool isUsingFuel = false;
+    private bool firstUseFuel = true;
 
     // misc
     private int _groundMask;
@@ -178,26 +180,30 @@ public class PlayerMovement : MonoBehaviour
 
         if ((Math.Abs(_accelVal) > Mathf.Epsilon || Math.Abs(_turnVal) > Mathf.Epsilon) && _fuelMeter > 0.0f)
         {
-            if (!isUsingFuel)
+
+            if (!EngineSFX._isPlaying)
             {
-                isUsingFuel = true;
-                EngineSFX.Play();
-                if (Math.Abs(_turnVal) > Mathf.Epsilon)
-                {
-                    TurningSFX.Play();
-                }
-                if (Math.Abs(_accelVal) > Mathf.Epsilon)
-                {
-                    AccelSFX.Play();
-                }
+                EngineSFX.RunContainer();
             }
+            else if (EngineSFX._currentSection == 2)
+            {
+                EngineSFX.TransitionSection(0);
+            }
+                
+            /*if (Math.Abs(_turnVal) > Mathf.Epsilon)
+            {
+                TurningSFX.Play();
+            }
+            if (Math.Abs(_accelVal) > Mathf.Epsilon)
+            {
+                AccelSFX.Play();
+            }*/
         }
-        else
+        else if (EngineSFX._currentSection != 2)
         {
-            isUsingFuel = false;
-            EngineSFX.Stop();
-            TurningSFX.Stop();
-            AccelSFX.Stop();
+            EngineSFX.TransitionSection(0);
+            /*TurningSFX.Stop();
+            AccelSFX.Stop(); */
         }
     }
     

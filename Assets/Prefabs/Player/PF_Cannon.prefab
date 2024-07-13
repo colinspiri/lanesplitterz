@@ -80,6 +80,7 @@ MonoBehaviour:
   _trackBPM: 120
   _timeSignatureTop: 4
   _timeSignatureBottom: 4
+  _isPlaying: 0
   _sections:
   - _audioLayerACR: []
     _layerObject: []
@@ -90,7 +91,7 @@ MonoBehaviour:
     _sectionTransitions:
     - _transitionInto: 2
       _triggerType: 1
-      _fadeType: 1
+      _fadeType: 0
       _quantization: 0
       _crossfadeTime: 0.5
     - _transitionInto: 1
@@ -107,7 +108,7 @@ MonoBehaviour:
     _sectionTransitions:
     - _transitionInto: 2
       _triggerType: 1
-      _fadeType: 1
+      _fadeType: 0
       _quantization: 0
       _crossfadeTime: 0.5
   - _audioLayerACR: []
@@ -123,6 +124,7 @@ MonoBehaviour:
       _quantization: 0
       _crossfadeTime: 0
   _initialSection: 0
+  _currentSection: 0
   _states:
   - _stateAudioLayerVolumes: []
     _gradualStateChange: 1
