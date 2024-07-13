@@ -60,7 +60,7 @@ public class EnemyBall : MonoBehaviour
     // -1 for turning left, 0 for not turning, 1 for turning right
     private float _turnVal;
     private float _accelVal;
-    private bool _turning;
+    // private bool _turning;
     private float _fuelMeter = 1f;
     private float _currentSpin = 0f;
     private GameObject _ground = null;
@@ -483,6 +483,7 @@ public class EnemyBall : MonoBehaviour
                     for (int k = 0; k < visibleObstacles.Length; k++)
                     {
                         GameObject obstacle = visibleObstacles[k].gameObject;
+                        Bounds obsBounds = visibleObstacles[k].bounds;
 
                         // Ignore unreachable obstacles from position
                         // Doesn't ignore the player, since they can catch up
@@ -577,7 +578,8 @@ public class EnemyBall : MonoBehaviour
                         // Calculate inverse distance to obstacle
                         // Clamped to prevent value from ever exceeding 1
                         // Distance ceases to matter below 0.1 meters due to shift
-                        float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+                        // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+                        float invDist = InvDistanceBounds(predictedPos, obsBounds, 0.9f);
                         invDist = Mathf.Clamp(invDist, 0f, 1f);
                         obsValue *= invDist;
                         if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
@@ -623,7 +625,7 @@ public class EnemyBall : MonoBehaviour
     // Turn, then straighten out
     private IEnumerator TurnSequence(float dir)
     {
-        _turning = true;
+        // _turning = true;
         
         if (_straightenRoutine != null)
         {
@@ -670,7 +672,7 @@ public class EnemyBall : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         
-        _turning = false;
+        // _turning = false;
     }
     
     // Temporarily relieve the ball of control
@@ -770,6 +772,20 @@ public class EnemyBall : MonoBehaviour
     private float InvDistance(Vector3 from, Vector3 to, float shift = 0f)
     {
         return Mathf.Pow(Vector3.Distance(from, to) + shift, -1);
+    }
+    
+    // Calculate the inverse squared distance from one position to a bounding box
+    private float InvSquareDistanceBounds(Vector3 from, Bounds to)
+    {
+        return Mathf.Pow(to.SqrDistance(from), -1);
+    }
+    
+    // Calculate the inverse distance from one position to a bounding box
+    /* This is inefficient and should be rewritten with a custom bound parsing method */
+    private float InvDistanceBounds(Vector3 from, Bounds to, float shift = 0f)
+    {
+        float distance = Mathf.Pow(to.SqrDistance(from), 0.5f);
+        return Mathf.Pow(distance + shift, -1);
     }
     
     // Applies the impulse needed for a desired linear velocity change

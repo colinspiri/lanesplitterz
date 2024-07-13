@@ -14,14 +14,23 @@ public class breakableObstacle : MonoBehaviour
     {
         _playerMove = PlayerMovement.Instance;
 
-        if (!_playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
+        if (!_playerMove) Debug.LogWarning("SpeedPlane Error: No PlayerMovement found");
     }
 
     void OnTriggerEnter( Collider collider )
     {
-        gameObject.SetActive(false);
-        _playerMove.ReduceFuel(fuelSub);
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            _playerMove.ReduceFuel(fuelSub);
+        }
+        else if (collider.gameObject.CompareTag("Enemy Ball"))
+        {
+            EnemyBall enemyBall = collider.gameObject.GetComponent<EnemyBall>();
+            
+            enemyBall.ReduceFuel(fuelSub);
+        }
 
+        gameObject.SetActive(false);
         destroySound.Play();
     }
 
