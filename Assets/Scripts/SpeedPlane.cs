@@ -58,13 +58,16 @@ public class SpeedPlane : MonoBehaviour
             {
                 EnemyBall enemyBall = collision.gameObject.GetComponent<EnemyBall>();
                 
-                enemyBall.Stun(1f);
-
+                // enemyBall.Stun(1f);
+                
+                // Accelerate and reset ball forward
                 if (speedMultiplier > Mathf.Epsilon && updatePlayerForward)
                 {
                     // I think the forward is pointing backwards by default?
                     enemyBall.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                    enemyBall.ResetParentForward(transform.forward * -1f);
                 }
+                // Accelerate or decelerate
                 else
                 {
                     enemyBall.Accelerate(speedMultiplier, false);

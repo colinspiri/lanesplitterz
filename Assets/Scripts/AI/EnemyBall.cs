@@ -72,8 +72,9 @@ public class EnemyBall : MonoBehaviour
     #region Start Caches
 
     private Rigidbody _myBody;
-    private Quaternion _parentInvRot;
-    private Transform _myParent;
+    private Quaternion _refInvRot;
+    [SerializeField] private Transform rotationRef;
+    private Enemy _myParentScript;
     private Bounds _laneBounds;
     private int _pinLayer;
     private int _obstacleLayer;
@@ -107,7 +108,6 @@ public class EnemyBall : MonoBehaviour
 
     private void Start()
     {
-        _myParent = transform.parent;
         _myBody = GetComponent<Rigidbody>();
         
         _laneBounds = GameObject.FindWithTag("Lane Bounds").GetComponent<Collider>().bounds;
@@ -126,6 +126,8 @@ public class EnemyBall : MonoBehaviour
         _groundMask = LayerMask.GetMask("Ground");
 
         _posUpdateTime = Mathf.Max(aiUpdateTime, Time.fixedDeltaTime);
+
+        _myParentScript = transform.parent.GetComponent<Enemy>();
 
         if (showPossiblePositions) _possiblePositions = new();
 
@@ -147,8 +149,8 @@ public class EnemyBall : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Quaternion parentRotation = _myParent.rotation;
-        _parentInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
+        Quaternion parentRotation = rotationRef.rotation;
+        _refInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
 
         UpdateGround();
         // Hook();
@@ -214,8 +216,8 @@ public class EnemyBall : MonoBehaviour
     //     if (_currentSpin > 100) _currentSpin = 100;
     //     else if (_currentSpin < -100) _currentSpin = -100;
     //
-    //     Vector3 linForce = (_parentInvRot * _myParent.right) * turnVal;
-    //     Vector3 rotForce = (_parentInvRot * _myParent.up) * turnVal;
+    //     Vector3 linForce = (_refInvRot * rotationRef.right) * turnVal;
+    //     Vector3 rotForce = (_refInvRot * rotationRef.up) * turnVal;
     //
     //     // Skid if on ice (reduce acceleration)
     //     // if (IsIcy())
@@ -250,8 +252,8 @@ public class EnemyBall : MonoBehaviour
         }
 
 
-        Vector3 linForce = (_parentInvRot * _myParent.right) * turnVal;
-        Vector3 rotForce = (_parentInvRot * _myParent.up) * turnVal;
+        Vector3 linForce = (_refInvRot * rotationRef.right) * turnVal;
+        Vector3 rotForce = (_refInvRot * rotationRef.up) * turnVal;
 
         // Skid if on ice (reduce acceleration)
         // if (IsIcy())
@@ -276,7 +278,7 @@ public class EnemyBall : MonoBehaviour
 
         float hookForceMagnitude = _currentSpin * hookForceMultiplier;
         // I have absolutely no idea if what is in the parenthesis is correct (for player ball its _camInvRot * _myCam.right)
-        Vector3 hookForce = (_parentInvRot * _myParent.right) * hookForceMagnitude;
+        Vector3 hookForce = (_refInvRot * rotationRef.right) * hookForceMagnitude;
 
         _myBody.AddForce(hookForce);
 
@@ -291,8 +293,8 @@ public class EnemyBall : MonoBehaviour
         Vector3 linearForce;
         Vector3 rotationalForce;
 
-        Vector3 parentForward = (_parentInvRot * _myParent.forward).normalized;
-        Vector3 parentRight = (_parentInvRot * _myParent.right).normalized;
+        Vector3 parentForward = (_refInvRot * rotationRef.forward).normalized;
+        Vector3 parentRight = (_refInvRot * rotationRef.right).normalized;
 
         // Put on the brakes
         if (accelVal < 0)
@@ -359,7 +361,7 @@ public class EnemyBall : MonoBehaviour
             }
         }
 
-        Vector3 camUp = (_parentInvRot * _myParent.up).normalized;
+        Vector3 camUp = (_refInvRot * rotationRef.up).normalized;
         Vector3 linearForce = accelForce;
         Vector3 rotationalForce = Vector3.Cross(accelForce, camUp);
 
@@ -387,7 +389,7 @@ public class EnemyBall : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, (_parentInvRot * _myParent.up) * -1f, out hit,
+        if (Physics.Raycast(transform.position, (_refInvRot * rotationRef.up) * -1f, out hit,
                 _myCollider.radius + 1f, _groundMask))
         {
             _ground = hit.collider.gameObject;
@@ -419,7 +421,7 @@ public class EnemyBall : MonoBehaviour
             
             // Box cast to find objects ahead
             Collider[] visibleObstacles = Physics.OverlapBox(transform.position,
-                new Vector3(50f, 50f, visibleLimit), _myParent.rotation, visibleLayers);
+                new Vector3(50f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
             
             float bestValue = Mathf.NegativeInfinity;
             Vector3 bestPos = Vector3.zero;
@@ -448,7 +450,7 @@ public class EnemyBall : MonoBehaviour
 
                     // Calculate predicted horizontal position
                     // a = Fdt / (m * dt)
-                    Vector3 impulse = _parentInvRot * _myParent.right * (turnForce * dir);
+                    Vector3 impulse = _refInvRot * rotationRef.right * (turnForce * dir);
                     Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
                     Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
                     
@@ -565,7 +567,7 @@ public class EnemyBall : MonoBehaviour
                         posToObs.y = 0f;
                         posToObs = posToObs.normalized;
 
-                        Vector3 parentForward = _parentInvRot * _myParent.forward;
+                        Vector3 parentForward = _refInvRot * rotationRef.forward;
                         parentForward.y = 0f;
                         parentForward = parentForward.normalized;
 
@@ -704,6 +706,12 @@ public class EnemyBall : MonoBehaviour
         
         StartCoroutine(CheckPositions());
     }
+
+    // Reset forward of parent
+    public void ResetParentForward(Vector3 newForward)
+    {
+        _myParentScript.ResetForward(newForward);
+    }
     
     #endregion
     
@@ -733,14 +741,14 @@ public class EnemyBall : MonoBehaviour
     private Vector3 ForwardLinVelocity()
     {
         return Vector3.Project(_myBody.velocity,
-            (_parentInvRot * _myParent.forward).normalized);
+            (_refInvRot * rotationRef.forward).normalized);
     }
     
     // Returns the forward rotational velocity
     private Vector3 ForwardRotVelocity()
     {
         return Vector3.Project(_myBody.angularVelocity,
-            (_parentInvRot * _myParent.right).normalized);
+            (_refInvRot * rotationRef.right).normalized);
     }
     
     // Deplete the fuel meter by some percent (between 0 and 1)

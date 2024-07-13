@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using UnityEngine;
 
@@ -7,6 +9,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody _myBallBody;
     private EnemyBall _myBall;
     private EnemyCannon _myCannon;
+    private EnemyRotation _myRotation;
     public bool Launched { get; set; }
 
     private void Start()
@@ -15,6 +18,7 @@ public class Enemy : MonoBehaviour
         _myBallBody = GetComponentInChildren<Rigidbody>(true);
         _myBall = GetComponentInChildren<EnemyBall>(true);
         _myCannon = GetComponentInChildren<EnemyCannon>(true);
+        _myRotation = GetComponentInChildren<EnemyRotation>(true);
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
@@ -36,5 +40,10 @@ public class Enemy : MonoBehaviour
     public void LaunchSequence()
     {
         _myTree.enabled = true;
+    }
+    
+    public void ResetForward(Vector3 newForward)
+    {
+        _myRotation.ResetForward(newForward);
     }
 }
