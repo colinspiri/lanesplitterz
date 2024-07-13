@@ -10,6 +10,7 @@ public class DialogueBlur : MonoBehaviour
     [SerializeField] private GameObject blur;
     [SerializeField] private GameObject playerArt;
     [SerializeField] private GameObject enemyArt;
+    [SerializeField] private GameObject gameOverUI;
     private Transform _myCam;
 
     void Start()
@@ -63,5 +64,11 @@ public class DialogueBlur : MonoBehaviour
     public void DisableEnemyArt()
     {
         enemyArt.SetActive(false);
+    }
+
+    [YarnCommand("EnableGameOverUI")]
+    public void EnableGameOverUI()
+    {
+        gameOverUI.SetActive(true);
     }
 }
