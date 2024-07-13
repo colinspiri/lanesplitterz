@@ -424,6 +424,7 @@ namespace GameAudioScriptingEssentials
         //If no transition state at that index exists, it will not transition. 
         public void TransitionSection(int _transitionIndex)
         {
+            
             if (_sections.Length == 0 ^ _sections[_currentSection]._layerObject.Length == 0)
             {
                 if (!_ignoreWarnings)
@@ -539,6 +540,8 @@ namespace GameAudioScriptingEssentials
             {
                 IEnumerator NoFadeOnEnd()
                 {
+                    int _oldCurrentSection = _currentSection;
+                    //Debug.Log("Entering into OnEnd IEnumerator. Current section is " + _currentSection + " which has " + _sections[_currentSection].SectionTransitions.Length + " transitions. This is transition " + _transitionIndex + " to section " + _newSection);
                     float _longestLength = 0.0f;
                     int _index = 0;
 
@@ -553,12 +556,17 @@ namespace GameAudioScriptingEssentials
                     //Checks the longest layer to see if it is playing
                     while (_sections[_currentSection].AudioLayerACR[_index].IsSFXPlaying())
                     {
+                        if (_oldCurrentSection != _currentSection)
+                        {
+                            yield break;
+                        }
                         yield return null;
                     }
 
                     if (!_ignoreWarnings)
                     {
-                        Debug.Log("NoFade, OnEnd, Any Quantization.");
+                        Debug.Log("Transitioning from section " + _currentSection + " with transition number " + _transitionIndex + " to section " + _newSection);
+                       Debug.Log("NoFade, OnEnd, Any Quantization.");
                     }
 
                     InitializeSection(_newSection);
