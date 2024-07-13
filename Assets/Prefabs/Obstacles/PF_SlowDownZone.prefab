@@ -142,9 +142,9 @@ GameObject:
   - component: {fileID: 106447218752366167}
   - component: {fileID: 6808068387448963179}
   - component: {fileID: 6932473684525562073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PF_SlowDownZone
-  m_TagString: Untagged
+  m_TagString: Speed Pad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,3 +250,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: -2
+  updatePlayerForward: 1
+  updateCameraForward: 1

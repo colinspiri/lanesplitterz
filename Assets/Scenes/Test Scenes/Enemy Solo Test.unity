@@ -4039,13 +4039,13 @@ MonoBehaviour:
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1280
-  straightenSeconds: 0
+  straightenSeconds: 0.25
   secondsToConsider: 2
   considerTimeSteps: 25
   changePosDiff: 0.1
-  fuelWeight: 0.2
-  speedWeight: 0
-  pointWeight: 0.8
+  fuelWeight: 0
+  speedWeight: 1
+  pointWeight: 0
   distWeight: 0.3
   angleWeight: 0.7
   turnForce: 2.5
@@ -4054,7 +4054,7 @@ MonoBehaviour:
   slipperyForce: 10
   turnFuel: 0.0001
   accelFuel: 0
-  showActualPositions: 1
+  showActualPositions: 0
   showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 1477509083}

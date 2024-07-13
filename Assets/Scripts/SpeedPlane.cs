@@ -14,7 +14,7 @@ public class SpeedPlane : MonoBehaviour
     {
         _playerMove = PlayerMovement.Instance;
 
-        if (!_playerMove) Debug.LogError("SpeedPlane Error: No PlayerMovement found");
+        if (!_playerMove) Debug.LogWarning("SpeedPlane Warning: No PlayerMovement found");
 
         _audioSource = GetComponent<AudioSource>();
         
@@ -24,41 +24,56 @@ public class SpeedPlane : MonoBehaviour
     private void OnTriggerEnter( Collider collision )
     {
         // _rigid.AddForce(Vector3.forward * speedMultiplier, ForceMode.Impulse);
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Balls") && collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Balls"))
         {
-            // Slowdown should be a separate object / script, adding this if statement for now
-            
-            // Speed up
-            if (speedMultiplier > Mathf.Epsilon)
+            if (collision.gameObject.CompareTag("Player"))
             {
-                if (updatePlayerForward)
+                // Slowdown should be a separate object / script, adding this if statement for now
+            
+                // Speed up
+                if (speedMultiplier > Mathf.Epsilon)
                 {
-                    // I think the forward is pointing backwards by default?
-                    _playerMove.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                    if (updatePlayerForward)
+                    {
+                        // I think the forward is pointing backwards by default?
+                        _playerMove.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                    }
+                    else
+                    {
+                        _playerMove.Accelerate(speedMultiplier, false);
+                    }
+
+                    if (updateCameraForward)
+                    {
+                        _playerCam.ResetForward(transform.forward * -1f);
+                    }
                 }
+                // Slow down
                 else
                 {
                     _playerMove.Accelerate(speedMultiplier, false);
                 }
+            }
+            else if (collision.gameObject.CompareTag("Enemy Ball"))
+            {
+                EnemyBall enemyBall = collision.gameObject.GetComponent<EnemyBall>();
+                
+                enemyBall.Stun(1f);
 
-                if (updateCameraForward)
+                if (speedMultiplier > Mathf.Epsilon && updatePlayerForward)
                 {
-                    _playerCam.ResetForward(transform.forward * -1f);
+                    // I think the forward is pointing backwards by default?
+                    enemyBall.Accelerate(speedMultiplier * transform.forward * -1f, false);
+                }
+                else
+                {
+                    enemyBall.Accelerate(speedMultiplier, false);
                 }
             }
-            // Slow down
-            else
-            {
-                _playerMove.Accelerate(speedMultiplier, false);
-            }
+
             
             if (_audioSource) _audioSource.Play();
         }
-        else if (collision.gameObject.CompareTag("Enemy Ball"))
-        {
-            // Code for enemy boosting here
-        }
-
 
         // Debug.Log("BOOOOOOOOST");
         // Debug.Log("Speed of Ball: " + speedOfBall.speed.ToString("F2"));

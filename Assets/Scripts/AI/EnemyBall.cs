@@ -124,19 +124,19 @@ public class EnemyBall : MonoBehaviour
 
         if (showPossiblePositions) _possiblePositions = new();
 
-        StartCoroutine(CheckPositions());
+        StartMovement();
     }
 
     private void OnDisable()
     {
-        StopAllCoroutines();
+        HaltMovement();
         // if (showActualPositions) enemyPattern.Instantiate();
     }
 
     public void EnableBall()
     {
         gameObject.SetActive(true);
-        StartCoroutine(CheckPositions());
+        StartMovement();
         if (showActualPositions) enemyPattern.Instantiate();
     }
 
@@ -653,6 +653,36 @@ public class EnemyBall : MonoBehaviour
         }
         
         _turning = false;
+    }
+    
+    // Temporarily relieve the ball of control
+    public void Stun(float seconds)
+    {
+        StartCoroutine(StunRoutine(seconds));
+    }
+
+    private IEnumerator StunRoutine(float seconds)
+    {
+        HaltMovement();
+
+        yield return new WaitForSeconds(seconds);
+
+        StartMovement();
+    }
+
+    // Halt all control
+    private void HaltMovement()
+    {
+        StopAllCoroutines();
+    }
+
+    // Resume or begin control
+    private void StartMovement()
+    {
+        _targetPos = transform.position;
+        _targetScore = Mathf.NegativeInfinity;
+        
+        StartCoroutine(CheckPositions());
     }
     
     #region Helper Functions
