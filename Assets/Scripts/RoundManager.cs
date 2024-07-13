@@ -22,7 +22,12 @@ public class RoundManager : MonoBehaviour {
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
-    [SerializeField] private string dialogueOnGameEnd;
+    [SerializeField] private string dialogueOnPlayerWin;
+    [SerializeField] private string dialogueOnBossWin;
+    [SerializeField] private string dialogueOnRoundTwo;
+    [SerializeField] private string dialogueOnRoundThree;
+    [SerializeField] private string dialogueOnRoundFour;
+    [SerializeField] private string dialogueOnRoundFive;
     private DialogueRunner _dialogueRunner;
 
     [Space] 
@@ -67,10 +72,45 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    public void PlayEndDialogue()
+    public void PlayPlayerWinDialogue()
             {
-        if (_dialogueRunner && dialogueOnGameEnd != "") {
-            _dialogueRunner.StartDialogue(dialogueOnGameEnd);
+        if (_dialogueRunner && dialogueOnPlayerWin != "") {
+            _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
+        }
+    }
+
+    public void PlayBossWinDialogue()
+            {
+        if (_dialogueRunner && dialogueOnBossWin != "") {
+            _dialogueRunner.StartDialogue(dialogueOnBossWin);
+        }
+    }
+
+    public void PlayRoundTwoDialogue()
+            {
+        if (_dialogueRunner && dialogueOnRoundTwo != "") {
+            _dialogueRunner.StartDialogue(dialogueOnRoundTwo);
+        }
+    }
+
+    public void PlayRoundThreeDialogue()
+            {
+        if (_dialogueRunner && dialogueOnRoundThree != "") {
+            _dialogueRunner.StartDialogue(dialogueOnRoundThree);
+        }
+    }
+
+    public void PlayRoundFourDialogue()
+            {
+        if (_dialogueRunner && dialogueOnRoundFour != "") {
+            _dialogueRunner.StartDialogue(dialogueOnRoundFour);
+        }
+    }
+
+    public void PlayRoundFiveDialogue()
+            {
+        if (_dialogueRunner && dialogueOnRoundFive != "") {
+            _dialogueRunner.StartDialogue(dialogueOnRoundFive);
         }
     }
 
@@ -139,8 +179,18 @@ public class RoundManager : MonoBehaviour {
             CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
             endGame.Raise();
-            _dialogueRunner.StartDialogue(dialogueOnGameEnd);
+            if (playerFinalScore > enemyFinalScore)
+                _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
+            else
+                _dialogueRunner.StartDialogue(dialogueOnBossWin);
+
+            return;
         }
+
+        if (currentRound.Value == 2) _dialogueRunner.StartDialogue(dialogueOnRoundTwo);
+        if (currentRound.Value == 3) _dialogueRunner.StartDialogue(dialogueOnRoundThree);
+        if (currentRound.Value == 4) _dialogueRunner.StartDialogue(dialogueOnRoundFour);
+        if (currentRound.Value == 5) _dialogueRunner.StartDialogue(dialogueOnRoundFive);
         
         OnNewRound?.Invoke();
     }

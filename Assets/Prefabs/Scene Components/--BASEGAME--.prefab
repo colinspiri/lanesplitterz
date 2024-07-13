@@ -240,6 +240,7 @@ MonoBehaviour:
   _trackBPM: 120
   _timeSignatureTop: 4
   _timeSignatureBottom: 4
+  _isPlaying: 0
   _sections:
   - _audioLayerACR: []
     _layerObject: []
@@ -261,6 +262,7 @@ MonoBehaviour:
       _audioLayerVolumes: 1
     _sectionTransitions: []
   _initialSection: 0
+  _currentSection: 0
   _states:
   - _stateAudioLayerVolumes:
     - 1
@@ -1001,8 +1003,13 @@ MonoBehaviour:
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
   endGame: {fileID: 11400000, guid: 94ede9a4d80304548847c316c930258d, type: 2}
-  dialogueOnGameStart: ElvisStart
-  dialogueOnGameEnd: ElvisEnd
+  dialogueOnGameStart: BossStart
+  dialogueOnPlayerWin: PlayerWin
+  dialogueOnBossWin: BossWin
+  dialogueOnRoundTwo: RoundTwo
+  dialogueOnRoundThree: RoundThree
+  dialogueOnRoundFour: RoundFour
+  dialogueOnRoundFive: RoundFive
   playerPointsByThrow: 
   enemyPointsByThrow: 
   playerFinalScore: 0

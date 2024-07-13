@@ -9,7 +9,11 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject roundUI;
     [SerializeField] private TextMeshProUGUI roundText;
     [SerializeField] private float roundUITime;
-    [SerializeField] private GameEvent roundUIEnd;
+    [SerializeField] private GameEvent roundUIEndOne;
+    [SerializeField] private GameEvent roundUIEndTwo;
+    [SerializeField] private GameEvent roundUIEndThree;
+    [SerializeField] private GameEvent roundUIEndFour;
+    [SerializeField] private GameEvent roundUIEndFive;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private FloatVariable levelResetTime; // use this in Waiting Area script
@@ -41,7 +45,11 @@ public class NewThrowUI : MonoBehaviour
             yield return new WaitForSeconds(roundUITime);
             roundUI.SetActive(false);
 
-            if (currentRound == 1) roundUIEnd.Raise(); // should start dialogue
+            if (currentRound == 1) roundUIEndOne.Raise(); // should start dialogue
+            if (currentRound == 2) roundUIEndTwo.Raise();
+            if (currentRound == 3) roundUIEndThree.Raise();
+            if (currentRound == 4) roundUIEndFour.Raise();
+            if (currentRound == 5) roundUIEndFive.Raise();
         }
     }
 
