@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
+    [SerializeField] private GameEvent endGame;
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
@@ -137,6 +138,7 @@ public class RoundManager : MonoBehaviour {
         if (currentRound.Value > totalRounds) {
             CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
+            endGame.Raise();
             _dialogueRunner.StartDialogue(dialogueOnGameEnd);
         }
         

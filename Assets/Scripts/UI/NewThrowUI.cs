@@ -16,6 +16,9 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
+    [SerializeField] private GameObject winLoseUI;
+    [SerializeField] private GameObject winTextObject;
+    [SerializeField] private GameObject loseTextObject;
 
     private int currentRound = 0;
     private int currentThrow = 1;
@@ -69,7 +72,21 @@ public class NewThrowUI : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayWinLoseUI()
+    {
+        winLoseUI.SetActive(true);
+
+        if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore) loseTextObject.SetActive(false);
+        else winTextObject.SetActive(false);
+
+        yield return new WaitForSeconds(roundUITime);
+
+        winLoseUI.SetActive(false);
+    }
+
     public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
 
     public void CallDisplayCurrentScores() => StartCoroutine(DisplayCurrentScores());
+
+    public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
 }
