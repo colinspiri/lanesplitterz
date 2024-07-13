@@ -165,19 +165,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
-  aiUpdateTime: 0.05
-  visibleLimit: 80
+  aiUpdateTime: 0.1
+  visibleLimit: 200
   visibleLayers:
     serializedVersion: 2
     m_Bits: 1288
   straightenSeconds: 0
-  secondsToConsider: 2
-  considerTimeSteps: 25
+  secondsToConsider: 2.5
+  considerTimeSteps: 50
   changePosDiff: 0.1
   playerFuelLoss: 0.1
-  fuelWeight: 0.2
-  speedWeight: 0
-  pointWeight: 0.8
+  fuelWeight: 0.4
+  speedWeight: 0.2
+  pointWeight: 0.4
   distWeight: 0.3
   angleWeight: 0.7
   turnForce: 2.5
@@ -186,6 +186,7 @@ MonoBehaviour:
   slipperyForce: 10
   turnFuel: 0.01
   accelFuel: 0
+  rotationRef: {fileID: 0}
   showActualPositions: 0
   showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
