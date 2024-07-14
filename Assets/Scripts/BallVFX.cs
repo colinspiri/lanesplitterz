@@ -1,14 +1,15 @@
 ﻿using System;
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class BallVFX : MonoBehaviour {
     [SerializeField] private FloatVariable ballFuel;
     
-    [SerializeField] private ParticleSystem ballSmokeLeft;
-    [SerializeField] private ParticleSystem ballSmokeRight;
-    [SerializeField] private ParticleSystem ballSmokeBack;
-    [SerializeField] private ParticleSystem ballSmokeFront;
+    [SerializeField] private VisualEffect ballSmokeLeft;
+    [SerializeField] private VisualEffect ballSmokeRight;
+    [SerializeField] private VisualEffect ballSmokeBack;
+    [SerializeField] private VisualEffect ballSmokeFront;
 
     private void Update() {
         if (PlayerMovement.Instance == null || ballFuel.Value <= Mathf.Epsilon) return;
@@ -27,27 +28,27 @@ public class BallVFX : MonoBehaviour {
         int turnDirection = PlayerMovement.Instance.TurnDirection;
 
         if (turnDirection == 1) {
-            if(!ballSmokeLeft.isPlaying) ballSmokeLeft.Play();
+            ballSmokeLeft.SetUInt("SmokeRate", 10);
         }
-        else ballSmokeLeft.Stop();
+        else ballSmokeLeft.SetUInt("SmokeRate", 0);
         
         if (turnDirection == -1) {
-            if(!ballSmokeRight.isPlaying) ballSmokeRight.Play();
+            ballSmokeRight.SetUInt("SmokeRate", 10);
         }
-        else ballSmokeRight.Stop();
+        else ballSmokeRight.SetUInt("SmokeRate", 0);
     }
 
     private void CheckAccelerationDirection() {
         int accelerationDirection = PlayerMovement.Instance.AccelerationDirection;
 
         if (accelerationDirection == 1) {
-            if(!ballSmokeBack.isPlaying) ballSmokeBack.Play();
+            ballSmokeBack.SetUInt("SmokeRate", 10);
         }
-        else ballSmokeBack.Stop();
+        else ballSmokeBack.SetUInt("SmokeRate", 0);
         
         if (accelerationDirection == -1) {
-            if(!ballSmokeFront.isPlaying) ballSmokeFront.Play();
+            ballSmokeFront.SetUInt("SmokeRate", 10);
         }
-        else ballSmokeFront.Stop();
+        else ballSmokeFront.SetUInt("SmokeRate", 0);
     }
 }

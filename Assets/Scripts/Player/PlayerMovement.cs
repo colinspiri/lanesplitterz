@@ -245,6 +245,8 @@ public class PlayerMovement : MonoBehaviour
         // Negate force of collision against pin
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
         {
+            // TODO: Add impact VFX
+
             ContactPoint[] contactList = new ContactPoint[collision.contactCount];
         
             collision.GetContacts(contactList);
@@ -286,6 +288,8 @@ public class PlayerMovement : MonoBehaviour
     // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal, bool expendFuel = true)
     {
+        // TODO: Add smoke VFX
+        
         if (expendFuel)
         {
             float fuelReduction = turnFuel * Time.fixedDeltaTime;
