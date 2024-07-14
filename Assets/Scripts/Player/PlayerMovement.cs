@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource BallRolling;
     [SerializeField] AdaptiveMusicContainer EngineSFX;
     [SerializeField] AudioSource TurningSFX;
-    [SerializeField] AudioSource AccelSFX;
+    [SerializeField] AdaptiveMusicContainer AccelSFX;
     [SerializeField] AudioSource HitGutter;
 
     // public properties
@@ -151,7 +151,8 @@ public class PlayerMovement : MonoBehaviour
         Quaternion camRotation = _myCam.rotation;
         _camInvRot = Quaternion.Inverse(new Quaternion(camRotation.x, 0f, camRotation.z, camRotation.w));
 
-        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0)) {
+        if (Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Alpha0))
+        {
             Initialize();
         }
 
@@ -191,21 +192,35 @@ public class PlayerMovement : MonoBehaviour
             {
                 EngineSFX.TransitionSection(0);
             }
-                
+
             /*if (Math.Abs(_turnVal) > Mathf.Epsilon)
             {
                 TurningSFX.Play();
-            }
+            } */
             if (Math.Abs(_accelVal) > Mathf.Epsilon)
             {
-                AccelSFX.Play();
-            }*/
+                if (!AccelSFX._isPlaying)
+                {
+                    AccelSFX.RunContainer();
+                }
+                else if (AccelSFX._currentSection == 2)
+                {
+                    AccelSFX.TransitionSection(0);
+                }
+            }
         }
-        else if (EngineSFX._currentSection != 2)
+        else
         {
-            EngineSFX.TransitionSection(0);
-            /*TurningSFX.Stop();
-            AccelSFX.Stop(); */
+            if (EngineSFX._currentSection != 2)
+            {
+                EngineSFX.TransitionSection(0);
+                /*TurningSFX.Stop();
+                AccelSFX.Stop(); */
+            }
+            if (AccelSFX._currentSection != 2)
+            {
+                AccelSFX.TransitionSection(0);
+            }
         }
     }
     

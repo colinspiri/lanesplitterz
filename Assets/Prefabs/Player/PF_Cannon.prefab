@@ -130,7 +130,7 @@ MonoBehaviour:
     _gradualStateChange: 1
     _gradualStateChangeTime: 1
   _initialState: 0
-  _ignoreWarnings: 0
+  _ignoreWarnings: 1
 --- !u!1 &2964230283014334401
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +437,7 @@ MonoBehaviour:
   musicController: {fileID: 0}
   launchSound: {fileID: 8524329879732035813}
   turnSound: {fileID: 4506624815162782775}
+  acceptingInputs: 0
 --- !u!82 &8524329879732035813
 AudioSource:
   m_ObjectHideFlags: 0
