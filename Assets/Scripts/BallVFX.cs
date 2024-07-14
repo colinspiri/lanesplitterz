@@ -28,27 +28,39 @@ public class BallVFX : MonoBehaviour {
         int turnDirection = PlayerMovement.Instance.TurnDirection;
 
         if (turnDirection == 1) {
-            ballSmokeLeft.SetUInt("SmokeRate", 10);
+            ballSmokeLeft.Play();
+            ballSmokeLeft.SetUInt("SmokeRate", 100);
         }
-        else ballSmokeLeft.SetUInt("SmokeRate", 0);
+        else {
+            ballSmokeLeft.Stop();
+        } 
         
         if (turnDirection == -1) {
-            ballSmokeRight.SetUInt("SmokeRate", 10);
+            ballSmokeRight.Play();
+            ballSmokeRight.SetUInt("SmokeRate", 100);
         }
-        else ballSmokeRight.SetUInt("SmokeRate", 0);
+        else {
+            ballSmokeRight.Stop();
+        }
     }
 
     private void CheckAccelerationDirection() {
         int accelerationDirection = PlayerMovement.Instance.AccelerationDirection;
 
         if (accelerationDirection == 1) {
-            ballSmokeBack.SetUInt("SmokeRate", 10);
+            ballSmokeBack.Play();
+            ballSmokeBack.SetUInt("SmokeRate", 100);
         }
-        else ballSmokeBack.SetUInt("SmokeRate", 0);
-        
+        else {
+            ballSmokeBack.Stop();
+        }
+
         if (accelerationDirection == -1) {
-            ballSmokeFront.SetUInt("SmokeRate", 10);
+            ballSmokeFront.Play();
+            ballSmokeFront.SetUInt("SmokeRate", 100);
         }
-        else ballSmokeFront.SetUInt("SmokeRate", 0);
+        else {
+            ballSmokeFront.Stop();
+        }
     }
 }

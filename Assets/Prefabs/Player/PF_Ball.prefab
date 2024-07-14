@@ -161,7 +161,7 @@ MonoBehaviour:
   turnForce: 2.5
   slipperyForce: 10
   brakeDelay: 15
-  minimumSpeed: 0
+  minimumSpeed: 25
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   accelFuel: 0.25
@@ -170,6 +170,7 @@ MonoBehaviour:
   fuelChanged: {fileID: 11400000, guid: 27be1206cb6324b4384256b436293067, type: 2}
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
+  impactVFX: {fileID: 0}
   BallRolling: {fileID: 6862339446579452368}
   EngineSFX: {fileID: 3361003169039779749}
   TurningSFX: {fileID: 5668910245762303565}

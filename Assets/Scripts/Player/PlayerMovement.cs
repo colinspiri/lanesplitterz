@@ -6,6 +6,7 @@ using ScriptableObjectArchitecture;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -59,6 +60,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
     [SerializeField] private float maxAngularVelocity = 50f;
+
+    [Header("Impact VFX")]
+    [SerializeField] private VisualEffect impactVFX;
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
@@ -253,6 +257,8 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (ContactPoint contact in contactList)
             {
+                impactVFX.transform.position = contact.point;
+                impactVFX.Play();
                 _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
         }
