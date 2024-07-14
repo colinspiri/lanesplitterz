@@ -71,4 +71,18 @@ public class DialogueBlur : MonoBehaviour
     {
         gameOverUI.SetActive(true);
     }
+
+    [YarnCommand("EnableMouse")]
+    public void EnableMouse()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    
+    [YarnCommand("DisableMouse")]
+    public void DisableMouse()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

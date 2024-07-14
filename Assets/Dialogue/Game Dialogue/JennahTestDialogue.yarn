@@ -24,12 +24,17 @@ Hiro Protag: I know I've got what it takes.
 <<EnableEnemyArt DialogueUI>>
 Boss: You sure? I have a feeling you're going to be terrible.
 <<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
-Hiro Protag: Yes, trust me. I'm ready for this.
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
-Boss: This should be fun hehe.
-<<DisableEnemyArt DialogueUI>>
+<<EnableMouse DialogueUI>>
+-> Yes, trust me. I'm ready for this.
+    <<DisableMouse DialogueUI>>
+    <<EnableEnemyArt DialogueUI>>
+    Boss: This should be fun hehe.
+    <<DisableEnemyArt DialogueUI>>
+-> I'll defeat you with one strike!
+    <<DisableMouse DialogueUI>> 
+    <<EnableEnemyArt DialogueUI>>
+    Boss: You impudent, insolent, naive fool, you'll regret messing with me!
+    <<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
