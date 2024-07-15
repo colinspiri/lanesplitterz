@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
     [SerializeField] AdaptiveMusicContainer EngineSFX;
-    [SerializeField] AudioSource TurningSFX;
+    [SerializeField] AudioClipRandomizer TurnSFX;
     [SerializeField] AdaptiveMusicContainer AccelSFX;
     [SerializeField] AudioSource HitGutter;
 
@@ -84,8 +84,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _ground = null;
     private bool _hasLaunched;
     private float _currentSpin = 0f;
-    private bool isUsingFuel = false;
-    private bool firstUseFuel = true;
+    private bool turning = false;
 
     // misc
     private int _groundMask;
@@ -197,10 +196,15 @@ public class PlayerMovement : MonoBehaviour
                 EngineSFX.TransitionSection(0);
             }
 
-            /*if (Math.Abs(_turnVal) > Mathf.Epsilon)
+            if (Math.Abs(_turnVal) > Mathf.Epsilon && !turning)
             {
-                TurningSFX.Play();
-            } */
+                TurnSFX.PlaySFX();
+                turning = true;
+            } 
+            if (Math.Abs(_turnVal) < Mathf.Epsilon)
+            {
+                turning = false;
+            }
             if (Math.Abs(_accelVal) > Mathf.Epsilon)
             {
                 if (!AccelSFX._isPlaying)
@@ -218,13 +222,12 @@ public class PlayerMovement : MonoBehaviour
             if (EngineSFX._currentSection != 2)
             {
                 EngineSFX.TransitionSection(0);
-                /*TurningSFX.Stop();
-                AccelSFX.Stop(); */
             }
             if (AccelSFX._currentSection != 2)
             {
                 AccelSFX.TransitionSection(0);
             }
+            turning = false;
         }
     }
     
