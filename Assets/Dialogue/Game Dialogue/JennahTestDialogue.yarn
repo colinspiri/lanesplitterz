@@ -13,28 +13,40 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnablePlayerArt DialogueUI>>
+<<EnableEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
 Hiro Protag: I need to remember my training... #line:09667e0 
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: You're gonna need it, fella! #line:013f2c3 
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: I know I've got what it takes.
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: You sure? I have a feeling you're going to be terrible.
 <<DisableEnemyArt DialogueUI>>
+<<DisablePlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
 -> Yes, trust me. I'm ready for this.
     <<DisableMouse DialogueUI>>
     <<EnableEnemyArt DialogueUI>>
+    <<EnablePlayerArt DialogueUI>>
+    <<FadeInEnemyArt DialogueUI>>
+    <<FadeOutPlayerArt DialogueUI>>
     Boss: This should be fun hehe.
     <<DisableEnemyArt DialogueUI>>
+    <<DisablePlayerArt DialogueUI>>
 -> I'll defeat you with one strike!
     <<DisableMouse DialogueUI>> 
     <<EnableEnemyArt DialogueUI>>
+    <<EnablePlayerArt DialogueUI>>
+    <<FadeInEnemyArt DialogueUI>>
+    <<FadeOutPlayerArt DialogueUI>>
     Boss: You impudent, insolent, naive fool, you'll regret messing with me!
     <<DisableEnemyArt DialogueUI>>
+    <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
@@ -47,23 +59,27 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnableEnemyArt DialogueUI>>
+<<EnablePlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
 Boss: Haha yes! I always win!. #line:09622a5 
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: Well fought... #line:00105e8 
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: You never had a chance, just admit it!
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: You're wrong. I can do better.
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: Ha! Yeah right!
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: You'll see.
 <<DisablePlayerArt DialogueUI>>
+<<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
@@ -77,22 +93,26 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnableEnemyArt DialogueUI>>
+<<EnablePlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
 Boss: No! This can't be!
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: But yes it can be.
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: I can't believe this. This is a fluke I swear.
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: You keep telling yourself that buddy
-<<DisablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: You'll never win again, mark my words.
-<<DisableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: We'll see about that.
+<<DisablePlayerArt DialogueUI>>
 <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
@@ -107,11 +127,15 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnableEnemyArt DialogueUI>>
-Boss: That's all you got? This will be a piece of cake.
-<<DisableEnemyArt DialogueUI>>
 <<EnablePlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+Boss: That's all you got? This will be a piece of cake.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: Just you wait.
 <<DisablePlayerArt DialogueUI>>
+<<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
@@ -124,11 +148,15 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnablePlayerArt DialogueUI>>
-Hiro Protag: I am just warming up hehe.
-<<DisablePlayerArt DialogueUI>>
 <<EnableEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+Hiro Protag: I am just warming up hehe.
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: You have no chance.
 <<DisableEnemyArt DialogueUI>>
+<<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
@@ -141,11 +169,15 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnableEnemyArt DialogueUI>>
-Boss: This is light work to be honest.
-<<DisableEnemyArt DialogueUI>>
 <<EnablePlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+<<FadeOutPlayerArt DialogueUI>>
+Boss: This is light work to be honest.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 Hiro Protag: I don't know about that mwahaha.
 <<DisablePlayerArt DialogueUI>>
+<<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
@@ -158,11 +190,15 @@ tags:
 <<DisableHud DialogueUI>>
 <<DisableInputs Cannon>>
 <<EnablePlayerArt DialogueUI>>
-Hiro Protag: This is it. The final round. Let's do this.
-<<DisablePlayerArt DialogueUI>>
 <<EnableEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+Hiro Protag: This is it. The final round. Let's do this.
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
 Boss: I think we already know who is winning this one.
 <<DisableEnemyArt DialogueUI>>
+<<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>

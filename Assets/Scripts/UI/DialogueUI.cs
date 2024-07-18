@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using Yarn.Unity;
+using UnityEngine.UI;
 
-public class DialogueBlur : MonoBehaviour
+public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
@@ -64,6 +65,38 @@ public class DialogueBlur : MonoBehaviour
     public void DisableEnemyArt()
     {
         enemyArt.SetActive(false);
+    }
+
+    [YarnCommand("FadeInPlayerArt")]
+    public void FadeInPlayerArt()
+    {
+        Color tempColor = playerArt.GetComponent<Image>().color;
+        tempColor.a = 1f;
+        playerArt.GetComponent<Image>().color = tempColor;
+    }
+
+    [YarnCommand("FadeOutPlayerArt")]
+    public void FadeOutPlayerArt()
+    {
+        Color tempColor = playerArt.GetComponent<Image>().color;
+        tempColor.a = 0.1f;
+        playerArt.GetComponent<Image>().color = tempColor;
+    }
+
+    [YarnCommand("FadeInEnemyArt")]
+    public void FadeInEnemyArt()
+    {
+        Color tempColor = enemyArt.GetComponent<Image>().color;
+        tempColor.a = 1f;
+        enemyArt.GetComponent<Image>().color = tempColor;
+    }
+
+    [YarnCommand("FadeOutEnemyArt")]
+    public void FadeOutEnemyArt()
+    {
+        Color tempColor = enemyArt.GetComponent<Image>().color;
+        tempColor.a = 0.1f;
+        enemyArt.GetComponent<Image>().color = tempColor;
     }
 
     [YarnCommand("EnableGameOverUI")]
