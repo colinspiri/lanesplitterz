@@ -17,7 +17,8 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent endWinLoseUI;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private FloatVariable levelResetTime; // use this in Waiting Area script
+    [SerializeField] private FloatVariable clearingPinsTime; // use this in Waiting Area script
+    [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -54,18 +55,36 @@ public class NewThrowUI : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayEndThrowUI()
+    {
+        RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
+        RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+
+        if (currentThrow % 2 == 0)
+        {
+            RoundManager.Instance.CalculateFinalScores();
+            currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
+            currentScoresUI.SetActive(true);
+            yield return new WaitForSeconds(currentScoresTime.Value);
+            StartCoroutine(DisplayClearingPinsUI());
+        }
+        else StartCoroutine(DisplayClearingPinsUI());
+
+        //currentThrow++;
+    }
     private IEnumerator DisplayClearingPinsUI()
     {
-        if (currentThrow % 2 == 1)
-        {
+/*        if (currentThrow % 2 == 1)
+        {*/
             clearingPinsUI.SetActive(true);
-            yield return new WaitForSeconds(levelResetTime.Value);
+            yield return new WaitForSeconds(clearingPinsTime.Value);
             clearingPinsUI.SetActive(false);
+            currentScoresUI.SetActive(false);
             currentThrow++;
-        }
+        //}
     }
 
-    private IEnumerator DisplayCurrentScores()
+/*    private IEnumerator DisplayCurrentScores()
     {
         RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
         RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
@@ -75,11 +94,12 @@ public class NewThrowUI : MonoBehaviour
             RoundManager.Instance.CalculateFinalScores();
             currentScoresText.text = "Player current score: " + RoundManager.Instance.playerFinalScore + "\nEnemy current score: " + RoundManager.Instance.enemyFinalScore;
             currentScoresUI.SetActive(true);
-            yield return new WaitForSeconds(levelResetTime.Value);
-            currentScoresUI.SetActive(false);
+            yield return new WaitForSeconds(currentScoresTime);
+            //yield return new WaitForSeconds(levelResetTime.Value);
+            //currentScoresUI.SetActive(false);
             currentThrow++;
         }
-    }
+    }*/
 
     private IEnumerator DisplayWinLoseUI()
     {
@@ -94,9 +114,10 @@ public class NewThrowUI : MonoBehaviour
         endWinLoseUI.Raise();
     }
 
-    public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
+    //public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
 
-    public void CallDisplayCurrentScores() => StartCoroutine(DisplayCurrentScores());
+    //public void CallDisplayCurrentScores() => StartCoroutine(DisplayCurrentScores());
+    public void CallDisplayEndThrowUI() => StartCoroutine(DisplayEndThrowUI());
 
     public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
 }

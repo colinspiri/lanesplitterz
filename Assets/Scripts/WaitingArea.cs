@@ -7,8 +7,11 @@ public class WaitingArea : ActionOnCollide
 {
     //[SerializeField] private float resetTime;
     [SerializeField] private FloatVariable levelResetTime;
+    [SerializeField] private IntVariable currentThrow;
     [SerializeField] private GameEvent startLevelReset;
     [SerializeField] private GameEvent endLevelReset;
+    [SerializeField] private FloatVariable clearingPinsTime;
+    [SerializeField] private FloatVariable currentScoresTime;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
@@ -31,7 +34,11 @@ public class WaitingArea : ActionOnCollide
     private IEnumerator ResetCoroutine()
     {
         startLevelReset.Raise();
-        yield return new WaitForSeconds(levelResetTime.Value);
+        if (currentThrow.Value % 2 == 0)
+            yield return new WaitForSeconds(clearingPinsTime.Value + currentScoresTime.Value);
+        else 
+            yield return new WaitForSeconds(clearingPinsTime.Value);
+        //yield return new WaitForSeconds(levelResetTime.Value);
         ballOne.gameObject.SetActive(false);
         ballTwo.gameObject.SetActive(false);
         ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
