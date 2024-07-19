@@ -16,6 +16,7 @@ tags:
 <<EnableEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Hiro Protag: I need to remember my training... #line:09667e0 
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
@@ -30,7 +31,6 @@ Boss: You sure? I have a feeling you're going to be terrible.
 <<DisablePlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
 -> Yes, trust me. I'm ready for this.
-    <<DisableMouse DialogueUI>>
     <<EnableEnemyArt DialogueUI>>
     <<EnablePlayerArt DialogueUI>>
     <<FadeInEnemyArt DialogueUI>>
@@ -39,7 +39,6 @@ Boss: You sure? I have a feeling you're going to be terrible.
     <<DisableEnemyArt DialogueUI>>
     <<DisablePlayerArt DialogueUI>>
 -> I'll defeat you with one strike!
-    <<DisableMouse DialogueUI>> 
     <<EnableEnemyArt DialogueUI>>
     <<EnablePlayerArt DialogueUI>>
     <<FadeInEnemyArt DialogueUI>>
@@ -50,6 +49,7 @@ Boss: You sure? I have a feeling you're going to be terrible.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
+<<DisableMouse DialogueUI>> 
 ===
 
 title: BossWin
@@ -62,6 +62,7 @@ tags:
 <<EnablePlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Boss: Haha yes! I always win!. #line:09622a5 
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
@@ -84,6 +85,7 @@ Hiro Protag: You'll see.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
+<<DisableMouse DialogueUI>>
 ===
 
 title: PlayerWin
@@ -96,6 +98,7 @@ tags:
 <<EnablePlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Boss: No! This can't be!
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
@@ -118,6 +121,7 @@ Hiro Protag: We'll see about that.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
+<<DisableMouse DialogueUI>>
 ===
 
 title: RoundTwo
@@ -130,6 +134,7 @@ tags:
 <<EnablePlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Boss: That's all you got? This will be a piece of cake.
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
@@ -139,6 +144,7 @@ Hiro Protag: Just you wait.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
+<<DisableMouse DialogueUI>>
 ===
 
 title: RoundThree
@@ -151,6 +157,7 @@ tags:
 <<EnableEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Hiro Protag: I am just warming up hehe.
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
@@ -160,6 +167,7 @@ Boss: You have no chance.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
+<<DisableMouse DialogueUI>>
 ===
 
 title: RoundFour
@@ -172,6 +180,7 @@ tags:
 <<EnablePlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Boss: This is light work to be honest.
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
@@ -181,6 +190,7 @@ Hiro Protag: I don't know about that mwahaha.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
+<<DisableMouse DialogueUI>>
 ===
 
 title: RoundFive
@@ -193,6 +203,7 @@ tags:
 <<EnableEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
+<<EnableMouse DialogueUI>>
 Hiro Protag: This is it. The final round. Let's do this.
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
@@ -202,4 +213,5 @@ Boss: I think we already know who is winning this one.
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
+<<DisableMouse DialogueUI>>
 ===
