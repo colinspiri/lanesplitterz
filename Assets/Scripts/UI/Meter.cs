@@ -16,14 +16,23 @@ public class Meter : MonoBehaviour
         DisableMeter();
     }
 
-    public void EnableMeter()
+    public virtual void EnableMeter()
     {
         meterUI.SetActive(true);
         isEnabled = true;
     }
-    public void DisableMeter()
+    public virtual void DisableMeter()
     {
         meterUI.SetActive(false);
         isEnabled = false;
+    }
+
+    public void CalculateForce(MeterData meterData)
+    {
+        float sliderValue = slider.value;
+        float difference = meterData.maxValue - meterData.minValue;
+
+        float diffPercent = sliderValue * difference;
+        meterData.meterValue = diffPercent + meterData.minValue;
     }
 }

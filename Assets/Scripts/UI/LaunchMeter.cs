@@ -18,12 +18,12 @@ public class LaunchMeter : Meter
         }
     }
 
-    public void CalculateForce(MeterData meterData)
+/*    public void CalculateForce(MeterData meterData)
     {
         float sliderValue = slider.value;
         float difference = meterData.maxValue - meterData.minValue;
 
         float diffPercent = sliderValue * difference;
         meterData.meterValue = diffPercent + meterData.minValue;
-    }
+    }*/
 }
