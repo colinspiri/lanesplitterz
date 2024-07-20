@@ -29,7 +29,7 @@ public class BallVFX : MonoBehaviour {
 
         if (turnDirection == 1) {
             ballSmokeLeft.Play();
-            ballSmokeLeft.SetUInt("SmokeRate", 100);
+            // ballSmokeLeft.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeLeft.Stop();
@@ -37,7 +37,7 @@ public class BallVFX : MonoBehaviour {
         
         if (turnDirection == -1) {
             ballSmokeRight.Play();
-            ballSmokeRight.SetUInt("SmokeRate", 100);
+            // ballSmokeRight.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeRight.Stop();
@@ -49,7 +49,7 @@ public class BallVFX : MonoBehaviour {
 
         if (accelerationDirection == 1) {
             ballSmokeBack.Play();
-            ballSmokeBack.SetUInt("SmokeRate", 100);
+            // ballSmokeBack.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeBack.Stop();
@@ -57,7 +57,7 @@ public class BallVFX : MonoBehaviour {
 
         if (accelerationDirection == -1) {
             ballSmokeFront.Play();
-            ballSmokeFront.SetUInt("SmokeRate", 100);
+            // ballSmokeFront.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeFront.Stop();
