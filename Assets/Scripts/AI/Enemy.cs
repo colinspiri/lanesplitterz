@@ -9,15 +9,25 @@ public class Enemy : MonoBehaviour
     private Rigidbody _myBallBody;
     private EnemyBall _myBall;
     private EnemyCannon _myCannon;
+    private Transform _myCannonObj;
     private EnemyRotation _myRotation;
+
+    private Quaternion _startCannonRot;
+    
     public bool Launched { get; set; }
 
     private void Start()
     {
         _myTree = GetComponent<BehaviorTree>();
+        
         _myBallBody = GetComponentInChildren<Rigidbody>(true);
+        
         _myBall = GetComponentInChildren<EnemyBall>(true);
+        
         _myCannon = GetComponentInChildren<EnemyCannon>(true);
+        _myCannonObj = _myCannon.transform;
+        _startCannonRot = _myCannonObj.rotation;
+        
         _myRotation = GetComponentInChildren<EnemyRotation>(true);
 
         RoundManager.OnNewThrow += Initialize;
@@ -35,6 +45,8 @@ public class Enemy : MonoBehaviour
         _myBallBody.gameObject.SetActive(false);
         _myBallBody.transform.position = _myCannon.LaunchPoint.position;
         _myBallBody.constraints = RigidbodyConstraints.None;
+
+        _myCannonObj.transform.rotation = _startCannonRot;
     }
 
     public void LaunchSequence()

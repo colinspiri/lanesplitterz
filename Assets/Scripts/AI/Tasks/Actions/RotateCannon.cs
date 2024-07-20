@@ -26,6 +26,8 @@ namespace BehaviorDesigner.Runtime.Tasks
         public override void OnStart()
         {
             _myCannon = gameObject.GetComponentInChildren<EnemyCannon>(true);
+
+            _startedRotation = false;
         }
 
         public override TaskStatus OnUpdate()
