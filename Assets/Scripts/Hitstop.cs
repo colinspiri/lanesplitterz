@@ -28,10 +28,11 @@ public class Hitstop : MonoBehaviour
 
         var timer = 0f;
         while (timer < hitstopTime) {
-            if(!GameManager.Instance.GamePaused) timer += Time.unscaledDeltaTime;
+            // do not countdown hitstop if game is stopped for some reason
+            if(!GameManager.Instance.GamePaused && !TimeManager.Instance.pausedForTutorial) timer += Time.unscaledDeltaTime;
             yield return null;
         }
         
-        TimeManager.Instance.SetTimeScale(1);
+        TimeManager.Instance.ResumeTime();
     }
 }
