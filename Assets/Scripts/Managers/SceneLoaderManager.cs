@@ -19,6 +19,17 @@ public class SceneLoaderManager : MonoBehaviour
     {
         StartCoroutine(LoadLevelCoroutine());
     }
+
+    public void LoadTutorialLevel()
+    {
+        StartCoroutine(LoadTutorialLeveCoroutine());
+    }
+
+    public IEnumerator LoadTutorialLeveCoroutine()
+    {
+        yield return SceneManager.UnloadSceneAsync("Level 0");
+        SceneManager.LoadScene("Level 0", LoadSceneMode.Additive);
+    }
     public IEnumerator LoadLevelCoroutine()
     {
         yield return SceneManager.UnloadSceneAsync("Level " + currentLevelIndex.Value.ToString());

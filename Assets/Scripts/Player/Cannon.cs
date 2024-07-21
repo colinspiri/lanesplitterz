@@ -26,6 +26,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
     [SerializeField] private TrajectoryLine trajectoryLine;
+    [SerializeField] private BoolVariable isPracticing;
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
@@ -56,7 +57,7 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewRound += Initialize;
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
-        RoundManager.OnNewRound += () => DisableInputs();
+        RoundManager.OnNewRound += () => DetermineDisableInputs();
         Initialize();
     }
 
@@ -184,4 +185,9 @@ public class Cannon : MonoBehaviour
 
     [YarnCommand("DisableInputs")]
     public bool DisableInputs() => acceptingInputs = false;
+
+    public void DetermineDisableInputs()
+    {
+        if (isPracticing == false) DisableInputs();
+    }
 }

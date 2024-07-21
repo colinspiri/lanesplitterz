@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     // private state
     [SerializeField] private FloatVariable currentFuel;
+    [SerializeField] private BoolVariable isPracticing;
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
@@ -125,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         RoundManager.OnNewRound += () => _hasLaunched = false;
 
         Initialize();
-        InitializeLevel();
+        //InitializeLevel();
     }
 
     private void Initialize() {
@@ -143,10 +144,13 @@ public class PlayerMovement : MonoBehaviour
 
         currentFuel.Value = 1;
         _fuelMeter = 1f;
-
     }
 
-    private void InitializeLevel() => sceneLoader.LoadNewLevel();
+    private void InitializeLevel()
+    {
+        if (isPracticing.Value == true) SceneLoaderManager.Instance.LoadTutorialLevel();
+        else sceneLoader.LoadNewLevel();
+    }
 
     private void Update()
     {

@@ -16,6 +16,7 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
+    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
@@ -39,6 +40,8 @@ public class RoundManager : MonoBehaviour {
     public static Action OnNewThrow;
     public static Action OnNewRound;
 
+    private bool isFirstRound;
+
 
     private void Awake() {
         Instance = this;
@@ -50,6 +53,8 @@ public class RoundManager : MonoBehaviour {
 
         currentRound.Value = 1;
         currentThrow.Value = 1;
+
+        isFirstRound = true;
 
 /*        if (_dialogueRunner && dialogueOnGameStart != "") {
             _dialogueRunner.StartDialogue(dialogueOnGameStart);
@@ -172,7 +177,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextRound() {
-        currentRound.Value++;
+        if (isPracticing.Value == false && !isFirstRound) currentRound.Value++;
+        if (isPracticing.Value == false) isFirstRound = false;
         currentThrow.Value = 1;
 
         if (currentRound.Value > totalRounds) {
