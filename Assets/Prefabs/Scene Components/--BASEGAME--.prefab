@@ -143,6 +143,124 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &75998796647780606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4890256700462206379}
+  - component: {fileID: 4790987069443387978}
+  - component: {fileID: 3724141157199275565}
+  - component: {fileID: 1881342081594561612}
+  m_Layer: 0
+  m_Name: Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4890256700462206379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75998796647780606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8500893530938471023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4790987069443387978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75998796647780606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4b5be1b13984e42ab02432b698922c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sequence: {fileID: 11400000, guid: dcd653823562fce4d977ccb1fad66804, type: 2}
+  waitBeforeSteerPrompt: 0.25
+  waitBeforeAcceleratePrompt: 0.1
+  waitWhenObstacleHit: 3
+  waitWhenAtGoldenPins: 3
+  zThresholdForGoldenPinsPrompt: 110
+--- !u!114 &3724141157199275565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75998796647780606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6,
+    type: 2}
+  _event: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4790987069443387978}
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: BeginTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1881342081594561612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75998796647780606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: ed1813a3d06bec9418b5878f5925efed,
+    type: 2}
+  _event: {fileID: 11400000, guid: ed1813a3d06bec9418b5878f5925efed, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4790987069443387978}
+        m_TargetAssemblyTypeName: Tutorial, Assembly-CSharp
+        m_MethodName: OnPlayerHitObstacle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &190630542078749311
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85702634768f4a468625837b7c05516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausedForTutorial: 0
 --- !u!1 &4478742880529064818
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,6 +864,7 @@ Transform:
   - {fileID: 1518812678695142261}
   - {fileID: 7070231436455063471}
   - {fileID: 6878639608186257463}
+  - {fileID: 4890256700462206379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4979255267530882314
@@ -2010,6 +2130,24 @@ PrefabInstance:
       propertyPath: musicController
       value: 
       objectReference: {fileID: 3969420013275282217}
+    - target: {fileID: 189042919913237823, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: ConfirmedInitialSpinTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: 82a1abf1d0240a5469f9c890f3b1c07a,
+        type: 2}
+    - target: {fileID: 189042919913237823, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: ConfirmedLaunchPowerTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: 53a69e5461622484aaaab49fec23cbb7,
+        type: 2}
+    - target: {fileID: 189042919913237823, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: ConfirmedCannonPositionTutorial
+      value: 
+      objectReference: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c,
+        type: 2}
     - target: {fileID: 1954470329152901676, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -30,9 +30,12 @@ public class Cannon : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
+    [SerializeField] private GameEvent ConfirmedCannonPositionTutorial;
     [SerializeField] private GameEvent LaunchedBall;
     [SerializeField] private MeterDataGameEvent ConfirmedLaunchPower;
+    [SerializeField] private GameEvent ConfirmedLaunchPowerTutorial;
     [SerializeField] private MeterDataGameEvent ConfirmedInitialSpin;
+    [SerializeField] private GameEvent ConfirmedInitialSpinTutorial;
 
     [Header("Audio")]
     [SerializeField] MusicController musicController;
@@ -45,11 +48,14 @@ public class Cannon : MonoBehaviour
     //private float launchForce;
     private Enemy _enemy;
     private int numSpacePressed = 0;
+    private bool _isFirstThrow;
 
     private void Awake()
     {
         _enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
         if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
+
+        _isFirstThrow = true;
     }
     private void Start()
     {
@@ -87,14 +93,22 @@ public class Cannon : MonoBehaviour
                 if (numSpacePressed == 0)
                 {
                     ConfirmedCannonPosition.Raise();
+                    if (_isFirstThrow) ConfirmedCannonPositionTutorial.Raise();
                 }
                 else if (numSpacePressed == 1)
                 {
                     ConfirmedLaunchPower.Raise(powerMeterData);
+                    if (_isFirstThrow) ConfirmedLaunchPowerTutorial.Raise();
                 }
                 else if (numSpacePressed == 2)
                 {
                     ConfirmedInitialSpin.Raise(spinMeterData);
+                    if (_isFirstThrow)
+                    {
+                        ConfirmedInitialSpinTutorial.Raise();
+                        _isFirstThrow = false;
+                    }
+
                     Launch();
                     numSpacePressed = 0;
                     return;

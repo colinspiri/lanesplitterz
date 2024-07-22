@@ -22,6 +22,7 @@ public class TextDisplayPrompt : MonoBehaviour
 
             RoundManager.OnNewRound += EnableBackground;
             RoundManager.OnNewThrow += EnableBackground;
+
         }
 
         if (showAtBeginning)
@@ -34,6 +35,8 @@ public class TextDisplayPrompt : MonoBehaviour
             ClearText();
             DisableBackground();
         }
+        
+        //ShowTextWithBackground(firstPrompt);
     }
     
     public void ShowTextWithBackground(TextAreaVariable newText)

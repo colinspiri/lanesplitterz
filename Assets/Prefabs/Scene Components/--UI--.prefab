@@ -532,6 +532,9 @@ GameObject:
   - component: {fileID: 7564942067848679798}
   - component: {fileID: 2824802593643761357}
   - component: {fileID: 1899577734006348286}
+  - component: {fileID: 5641031258569579185}
+  - component: {fileID: 4334262260392312118}
+  - component: {fileID: 5106972669982531216}
   m_Layer: 5
   m_Name: Center Prompt Text
   m_TagString: Untagged
@@ -672,7 +675,7 @@ MonoBehaviour:
   promptText: {fileID: 2340251429597598098}
   background: {fileID: 1198975941683953327}
   firstPrompt: {fileID: 11400000, guid: 6c4225d73c318c0488e0ed69e31b2f25, type: 2}
-  showOnEveryThrow: 1
+  showOnEveryThrow: 0
   showAtBeginning: 1
 --- !u!114 &7564942067848679798
 MonoBehaviour:
@@ -681,7 +684,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837103596738420421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
   m_Name: 
@@ -715,7 +718,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837103596738420421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
   m_Name: 
@@ -749,7 +752,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837103596738420421}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
   m_Name: 
@@ -760,6 +763,116 @@ MonoBehaviour:
   _previouslyRegisteredEvent: {fileID: 11400000, guid: 976ef52061c92f54c9e5047e97bb8e3d,
     type: 2}
   _event: {fileID: 11400000, guid: 976ef52061c92f54c9e5047e97bb8e3d, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6490860701929019346}
+        m_TargetAssemblyTypeName: TextDisplayPrompt, Assembly-CSharp
+        m_MethodName: ClearText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6490860701929019346}
+        m_TargetAssemblyTypeName: TextDisplayPrompt, Assembly-CSharp
+        m_MethodName: DisableBackground
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5641031258569579185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837103596738420421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6490860701929019346}
+        m_TargetAssemblyTypeName: TextDisplayPrompt, Assembly-CSharp
+        m_MethodName: ChangeText
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 53626d150413470419c63ccadb2b4699,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: TextAreaVariable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4334262260392312118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837103596738420421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 53a69e5461622484aaaab49fec23cbb7, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6490860701929019346}
+        m_TargetAssemblyTypeName: TextDisplayPrompt, Assembly-CSharp
+        m_MethodName: ChangeText
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 896a645f0d9830543827ed29d56b34b6,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: TextAreaVariable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5106972669982531216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837103596738420421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 82a1abf1d0240a5469f9c890f3b1c07a, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
@@ -1817,7 +1930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2111216258517862587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2646,7 +2759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8178042870575653187}
-  - component: {fileID: 2676546957149201266}
+  - component: {fileID: 6543553374392472533}
   m_Layer: 5
   m_Name: Tutorial Prompts
   m_TagString: Untagged
@@ -2677,7 +2790,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2676546957149201266
+--- !u!114 &6543553374392472533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2686,7 +2799,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3567306268252291444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77baa90fcac4ed649beab787ff793be3, type: 3}
+  m_Script: {fileID: 11500000, guid: e21abf418fd4bc540932c7ced1c79d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sequence: {fileID: 11400000, guid: dcd653823562fce4d977ccb1fad66804, type: 2}
@@ -4796,7 +4909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6165976897643341533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6139,7 +6252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7139136229612384423
 RectTransform:
   m_ObjectHideFlags: 0
