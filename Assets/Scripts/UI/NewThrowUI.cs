@@ -31,6 +31,10 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject loseTextObject;
     [SerializeField] private GameObject replayTutorialButton;
     [SerializeField] private GameObject playGameButton;
+    [SerializeField] private GameObject EndFirstThrowTutorialUI;
+    [SerializeField] private GameObject EndSecondThrowTutorialUI;
+    private bool _isFirstThrow;
+    private bool _isSecondThrow;
 
 /*    private int currentRound = 0;
     private int currentThrow = 1;*/
@@ -45,6 +49,8 @@ public class NewThrowUI : MonoBehaviour
     {
         RoundManager.OnNewRound += () => StartCoroutine(NextRoundUI());
         StartCoroutine(NextRoundUI());
+        _isFirstThrow = true;
+        _isSecondThrow = false;
     }
 
     private IEnumerator NextRoundUI()
@@ -93,17 +99,24 @@ public class NewThrowUI : MonoBehaviour
     }
     private IEnumerator DisplayClearingPinsUI()
     {
-        if (isPracticing.Value == true && currentThrow.Value % 2 == 0)
-        {
-            DisplayTutorialButtons();
-            //currentThrow.Value = 0;
-        }
+        if (isPracticing.Value == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
+
+        if (isPracticing.Value == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
+        if (isPracticing.Value == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
 
         clearingPinsUI.SetActive(true);
         yield return new WaitForSeconds(clearingPinsTime.Value);
         clearingPinsUI.SetActive(false);
         currentScoresUI.SetActive(false);
-        //currentThrow++;
+
+        if (isPracticing.Value == true && _isSecondThrow) _isSecondThrow = false;
+
+        if (isPracticing.Value == true && _isFirstThrow)
+        {
+            EndFirstThrowTutorialUI.SetActive(false);
+            _isFirstThrow = false;
+            _isSecondThrow = true;
+        }
     }
 
     // call when player wants to play tutorial again
@@ -155,6 +168,7 @@ public class NewThrowUI : MonoBehaviour
         DisableMouse();
         replayTutorialButton.SetActive(false);
         playGameButton.SetActive(false);
+        EndSecondThrowTutorialUI.SetActive(false);
     }
 
     //public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
