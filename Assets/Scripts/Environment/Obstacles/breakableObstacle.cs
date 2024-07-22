@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 public class breakableObstacle : MonoBehaviour
@@ -7,6 +8,8 @@ public class breakableObstacle : MonoBehaviour
     private PlayerMovement _playerMove;
 
     [SerializeField] AudioSource destroySound;
+    [SerializeField] private GameEvent onPlayerHitObstacle;
+    
     [Range(0.01f, 1f)]
     public float fuelSub = 0.1f;
 
@@ -22,6 +25,8 @@ public class breakableObstacle : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             _playerMove.ReduceFuel(fuelSub);
+            if (onPlayerHitObstacle)               
+                onPlayerHitObstacle.Raise();
         }
         else if (collider.gameObject.CompareTag("Enemy Ball"))
         {

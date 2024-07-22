@@ -10,16 +10,35 @@ public class TextDisplayPrompt : MonoBehaviour
     [SerializeField] private TextMeshProUGUI promptText;
     [SerializeField] private Image background;
     [SerializeField] private TextAreaVariable firstPrompt;
+    [SerializeField] private bool showOnEveryThrow;
+    [SerializeField] private bool showAtBeginning;
 
-    void Start()
+    private void Start()
     {
-        RoundManager.OnNewRound += () => ChangeText(firstPrompt);
-        RoundManager.OnNewThrow += () => ChangeText(firstPrompt);
+        if (showOnEveryThrow)
+        {
+            RoundManager.OnNewRound += () => ChangeText(firstPrompt);
+            RoundManager.OnNewThrow += () => ChangeText(firstPrompt);
 
-        RoundManager.OnNewRound += () => EnableBackground();
-        RoundManager.OnNewThrow += () => EnableBackground();
+            RoundManager.OnNewRound += EnableBackground;
+            RoundManager.OnNewThrow += EnableBackground;
+        }
 
-        ChangeText(firstPrompt);
+        if (showAtBeginning)
+        {
+            ChangeText(firstPrompt);
+            EnableBackground();            
+        }
+        else
+        {
+            ClearText();
+            DisableBackground();
+        }
+    }
+    
+    public void ShowTextWithBackground(TextAreaVariable newText)
+    {
+        promptText.text = newText.text;
         EnableBackground();
     }
 
@@ -41,5 +60,11 @@ public class TextDisplayPrompt : MonoBehaviour
     public void DisableBackground()
     {
         background.gameObject.SetActive(false);
+    }
+
+    public void Clear()
+    {
+        ClearText();
+        DisableBackground();
     }
 }

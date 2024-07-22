@@ -15,19 +15,30 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent roundUIEndFour;
     [SerializeField] private GameEvent roundUIEndFive;
     [SerializeField] private GameEvent endWinLoseUI;
+    [SerializeField] private GameEvent tutorialReset;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
+    [SerializeField] private IntVariable currentThrow;
+    [SerializeField] private IntVariable currentRound;
     [SerializeField] private FloatVariable clearingPinsTime; // use this in Waiting Area script
     [SerializeField] private FloatVariable currentScoresTime;
+    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
     [SerializeField] private GameObject winLoseUI;
     [SerializeField] private GameObject winTextObject;
     [SerializeField] private GameObject loseTextObject;
+    [SerializeField] private GameObject replayTutorialButton;
+    [SerializeField] private GameObject playGameButton;
 
-    private int currentRound = 0;
-    private int currentThrow = 1;
+/*    private int currentRound = 0;
+    private int currentThrow = 1;*/
+
+    private void Awake()
+    {
+        isPracticing.Value = true;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -38,29 +49,37 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator NextRoundUI()
     {
-        currentRound++;
+        if (isPracticing.Value == true) yield break;
 
-        if (currentRound <= 5)
+        //currentRound++;
+
+        if (currentRound.Value <= 5)
         {
-            roundText.text = "Round " + currentRound;
+            roundText.text = "Round " + currentRound.Value;
             roundUI.SetActive(true);
             yield return new WaitForSeconds(roundUITime);
             roundUI.SetActive(false);
 
-            if (currentRound == 1) roundUIEndOne.Raise(); // should start dialogue
-            if (currentRound == 2) roundUIEndTwo.Raise();
-            if (currentRound == 3) roundUIEndThree.Raise();
-            if (currentRound == 4) roundUIEndFour.Raise();
-            if (currentRound == 5) roundUIEndFive.Raise();
+            if (currentRound.Value == 1) roundUIEndOne.Raise(); // should start dialogue
+            if (currentRound.Value == 2) roundUIEndTwo.Raise();
+            if (currentRound.Value == 3) roundUIEndThree.Raise();
+            if (currentRound.Value == 4) roundUIEndFour.Raise();
+            if (currentRound.Value == 5) roundUIEndFive.Raise();
         }
     }
 
     private IEnumerator DisplayEndThrowUI()
     {
+        if (isPracticing.Value == true)
+        {
+            StartCoroutine(DisplayClearingPinsUI());
+            yield break;
+        }
+
         RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
         RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
 
-        if (currentThrow % 2 == 0)
+        if (currentThrow.Value % 2 == 0)
         {
             RoundManager.Instance.CalculateFinalScores();
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
@@ -74,32 +93,42 @@ public class NewThrowUI : MonoBehaviour
     }
     private IEnumerator DisplayClearingPinsUI()
     {
-/*        if (currentThrow % 2 == 1)
-        {*/
-            clearingPinsUI.SetActive(true);
-            yield return new WaitForSeconds(clearingPinsTime.Value);
-            clearingPinsUI.SetActive(false);
-            currentScoresUI.SetActive(false);
-            currentThrow++;
-        //}
+        if (isPracticing.Value == true && currentThrow.Value % 2 == 0)
+        {
+            DisplayTutorialButtons();
+            //currentThrow.Value = 0;
+        }
+
+        clearingPinsUI.SetActive(true);
+        yield return new WaitForSeconds(clearingPinsTime.Value);
+        clearingPinsUI.SetActive(false);
+        currentScoresUI.SetActive(false);
+        //currentThrow++;
     }
 
-/*    private IEnumerator DisplayCurrentScores()
+    // call when player wants to play tutorial again
+    public void NotifyTutorialReset()
     {
-        RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-        RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+        tutorialReset.Raise();
+        clearingPinsUI.SetActive(false);
+    }
 
-        if (currentThrow % 2 == 0)
+    /*    private IEnumerator DisplayCurrentScores()
         {
-            RoundManager.Instance.CalculateFinalScores();
-            currentScoresText.text = "Player current score: " + RoundManager.Instance.playerFinalScore + "\nEnemy current score: " + RoundManager.Instance.enemyFinalScore;
-            currentScoresUI.SetActive(true);
-            yield return new WaitForSeconds(currentScoresTime);
-            //yield return new WaitForSeconds(levelResetTime.Value);
-            //currentScoresUI.SetActive(false);
-            currentThrow++;
-        }
-    }*/
+            RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
+            RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+
+            if (currentThrow % 2 == 0)
+            {
+                RoundManager.Instance.CalculateFinalScores();
+                currentScoresText.text = "Player current score: " + RoundManager.Instance.playerFinalScore + "\nEnemy current score: " + RoundManager.Instance.enemyFinalScore;
+                currentScoresUI.SetActive(true);
+                yield return new WaitForSeconds(currentScoresTime);
+                //yield return new WaitForSeconds(levelResetTime.Value);
+                //currentScoresUI.SetActive(false);
+                currentThrow++;
+            }
+        }*/
 
     private IEnumerator DisplayWinLoseUI()
     {
@@ -114,10 +143,46 @@ public class NewThrowUI : MonoBehaviour
         endWinLoseUI.Raise();
     }
 
+    public void DisplayTutorialButtons()
+    {
+        EnableMouse();
+        replayTutorialButton.SetActive(true);
+        playGameButton.SetActive(true);
+    }
+
+    public void HideTutorialButtons()
+    {
+        DisableMouse();
+        replayTutorialButton.SetActive(false);
+        playGameButton.SetActive(false);
+    }
+
     //public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
 
     //public void CallDisplayCurrentScores() => StartCoroutine(DisplayCurrentScores());
     public void CallDisplayEndThrowUI() => StartCoroutine(DisplayEndThrowUI());
 
     public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
+
+    public void EndTutorial()
+    {
+        isPracticing.Value = false;
+        CallNotifyBallsAtEndOfTrack();
+        StopCoroutine(DisplayClearingPinsUI());
+        clearingPinsUI.SetActive(false);
+    }
+
+    public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();
+
+    public void EnableMouse()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void DisableMouse()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

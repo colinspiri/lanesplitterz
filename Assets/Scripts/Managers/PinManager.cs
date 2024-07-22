@@ -79,10 +79,10 @@ public class PinManager : MonoBehaviour {
         allPins.DestroyAll();
         
         // instantiate new pins at starting positions
-        foreach (var pinSpawn in _pinSpawns) {
+/*        foreach (var pinSpawn in _pinSpawns) {
             var spawnedPin = Instantiate(pinSpawn.pinPrefab, pinSpawn.startingPosition, pinSpawn.startingRotation);
             pinSpawn.spawnedPinReference = spawnedPin;
-        }
+        }*/
     }
 
     public void AddPin(Pin newPin) {

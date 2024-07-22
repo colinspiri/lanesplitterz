@@ -18,6 +18,7 @@ public class SceneLoader : ScriptableObject {
     public void LoadGameScene() {
         ResetTime();
         SceneManager.LoadScene(gameScene.ScenePath);
+        LoadTutorial();
         currentLevelIndex.Value = 0;
     }
 
@@ -25,14 +26,16 @@ public class SceneLoader : ScriptableObject {
     public void LoadNewLevel()
     {
         // only game scene is loaded so we can just add the first level
-        if (currentLevelIndex.Value < firstLevelIndex)
+/*        if (currentLevelIndex.Value < firstLevelIndex)
         {
             SceneManager.LoadScene("Level " + firstLevelIndex.ToString(), LoadSceneMode.Additive);
             currentLevelIndex.Value++;
-        }
-        else if (currentLevelIndex.Value == 5) return; // replace with win/lose screen
+        }*/
+        if (currentLevelIndex.Value == 5) return; // replace with win/lose screen
         else SceneLoaderManager.Instance.LoadNextLevel();
     }
+
+    public void LoadTutorial()=> SceneManager.LoadScene("Level 0", LoadSceneMode.Additive);
 
     public void Restart()
     {
