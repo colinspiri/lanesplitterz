@@ -5,6 +5,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 
 public class FuelMeter : Meter {
+    [SerializeField] private GameObject emptyUI;
     [SerializeField] private float remainTime = 1;
     private float _remainTimer;
     
@@ -21,6 +22,8 @@ public class FuelMeter : Meter {
         slider.value = fuel.Value;
         
         EnableMeter();
+        if (slider.value == slider.minValue) emptyUI.SetActive(true);
+
         _remainTimer = remainTime;
     }
 
@@ -30,6 +33,7 @@ public class FuelMeter : Meter {
         }
         else {
             DisableMeter();
+            emptyUI.SetActive(false);
         }
     }
 }

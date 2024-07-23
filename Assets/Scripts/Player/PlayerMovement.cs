@@ -306,15 +306,7 @@ public class PlayerMovement : MonoBehaviour
         if (expendFuel)
         {
             float fuelReduction = turnFuel * Time.fixedDeltaTime;
-
-            if (_fuelMeter <= Mathf.Epsilon)
-            {
-                return;
-            }
-            else
-            { 
-                ReduceFuel(fuelReduction);
-            }
+            ReduceFuel(fuelReduction);
         }
 
         _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
@@ -367,15 +359,7 @@ public class PlayerMovement : MonoBehaviour
             if (expendFuel)
             {
                 float fuelReduction = accelFuel * Time.fixedDeltaTime;
-
-                if (_fuelMeter <= Mathf.Epsilon)
-                {
-                    return;
-                }
-                else
-                {
-                    ReduceFuel(fuelReduction);
-                }
+                ReduceFuel(fuelReduction);
             }
         
             linearForce = camForward * accelVal;
@@ -406,15 +390,7 @@ public class PlayerMovement : MonoBehaviour
         if (expendFuel)
         {
             float fuelReduction = accelFuel * Time.fixedDeltaTime;
-
-            if (_fuelMeter <= Mathf.Epsilon)
-            {
-                return;
-            }
-            else
-            {
-                ReduceFuel(fuelReduction);
-            }
+            ReduceFuel(fuelReduction);
         }
         
         Vector3 camUp = (_camInvRot * _myCam.up).normalized;
