@@ -8,7 +8,8 @@ public class HitPinSound : MonoBehaviour
 {
     // components
     [SerializeField] private IntReference pinsKnockedDown;
-    [SerializeField] private AudioSource pinHit;
+    [SerializeField] private AudioSource pinHitSlow;
+    [SerializeField] private AudioSource pinHitNormal;
     [SerializeField] private AudioSource bigFall;
     [SerializeField] private AudioSource smallFall;
     
@@ -21,6 +22,7 @@ public class HitPinSound : MonoBehaviour
     [SerializeField] private int pinNumber = 5;
 
     private int currentlyKnockedDown = 0;
+    private bool slow = true;
     
     private void Start() {
         PinManager.OnPinHitByBall += PlayPinHitSound;
@@ -28,7 +30,15 @@ public class HitPinSound : MonoBehaviour
     }
 
     private void PlayPinHitSound() {
-        pinHit.Play();
+        if (slow)
+        {
+            pinHitSlow.Play();
+            slow = false;
+        }
+        else
+        {
+            pinHitNormal.Play();
+        }
         StartCoroutine(PinsFall());
 
         // remove callback so it only happens the first time you hit a pin
@@ -38,6 +48,7 @@ public class HitPinSound : MonoBehaviour
     private void ResetThrow()
     {
         currentlyKnockedDown = 0;
+        slow = true;
     }
 
     private IEnumerator PinsFall()
