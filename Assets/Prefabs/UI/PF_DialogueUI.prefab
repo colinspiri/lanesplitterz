@@ -346,6 +346,80 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &856889738377087020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933446313917324318}
+  - component: {fileID: 7422598717863578272}
+  m_Layer: 0
+  m_Name: UI SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1933446313917324318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856889738377087020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483077954241843733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7422598717863578272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856889738377087020}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: 3430289ceb781824b8db7b872173a2e5, type: 3}
+  - {fileID: 8300000, guid: dcfc64ea396e33e4b90fd9dec9db7dcc, type: 3}
+  - {fileID: 8300000, guid: 2bd3f66c043d6a74eaa0cb85567ec8c9, type: 3}
+  - {fileID: 8300000, guid: 7b2eb77576ee9b1498fb061e4319a9b8, type: 3}
+  - {fileID: 8300000, guid: aea497a6402eb2f48852e37fc057153a, type: 3}
+  - {fileID: 8300000, guid: 2ca20b3d66438df40bfcd9aee407f8d0, type: 3}
+  - {fileID: 8300000, guid: 6843ee7c16d06394fb88c74c91ff3e09, type: 3}
+  - {fileID: 8300000, guid: c49ae34e998740d4bbba882dc636e970, type: 3}
+  - {fileID: 8300000, guid: 58198e0e1fd0f7d4a91600a06448514f, type: 3}
+  - {fileID: 8300000, guid: 923b52ecb56150f46a65922021144768, type: 3}
+  - {fileID: 8300000, guid: 7b98675d20075f74fae6d147473525ed, type: 3}
+  - {fileID: 8300000, guid: 0d157c4be17015645afcedf3854cba9a, type: 3}
+  - {fileID: 8300000, guid: 2661fa53cb8ebea47a04cf4948daa7d1, type: 3}
+  - {fileID: 8300000, guid: 84c9d491880e4d74ab1edf5daa255b6d, type: 3}
+  - {fileID: 8300000, guid: 1d9e7c32ce325a6418e81c6d2cbc6c58, type: 3}
+  - {fileID: 8300000, guid: 57a117a3831d6324dbd5a2aa38efcc87, type: 3}
+  _mixerGroup: {fileID: -2978140294193931848, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
+  _overrideArcSettings: 1
+  _noRepeats: 1
+  _randomPitch: 0
+  _minPitch: 0.5
+  _maxPitch: 1.5
+  _volume: 1
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
 --- !u!1 &1334409341775234597
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +585,7 @@ Transform:
   - {fileID: 3730370764083726874}
   - {fileID: 3349120562033363576}
   - {fileID: 1241744125926853418}
+  - {fileID: 1933446313917324318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2889005097192983678
@@ -582,6 +657,7 @@ MonoBehaviour:
   playerArt: {fileID: 7212035904130755417}
   enemyArt: {fileID: 7001050445070524407}
   gameOverUI: {fileID: 0}
+  textBoxAppear: {fileID: 7422598717863578272}
 --- !u!1 &2643913468082973684
 GameObject:
   m_ObjectHideFlags: 0

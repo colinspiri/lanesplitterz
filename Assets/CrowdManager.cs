@@ -16,9 +16,12 @@ public class CrowdManager : MonoBehaviour
 
     private void CrowdRoar()
     {
-        PinManager.OnPinHitByBall -= CrowdRoar;
-        crowdRoar.PlaySFX();
-        StartCoroutine(Wait());
+        if (PinManager.Instance.player)
+        {
+            PinManager.OnPinHitByBall -= CrowdRoar;
+            crowdRoar.PlaySFX();
+            StartCoroutine(Wait());
+        }
     }
 
     private IEnumerator Wait()

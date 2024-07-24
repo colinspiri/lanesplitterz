@@ -25,6 +25,8 @@ public class PinManager : MonoBehaviour {
     // state
     private List<PinSpawn> _pinSpawns = new List<PinSpawn>();
 
+    public bool player;
+
     // public static Action OnPinKnockedDown;
     public static Action OnPinHitByBall;
 
@@ -59,6 +61,14 @@ public class PinManager : MonoBehaviour {
 
     public void NotifyPinHitByBall(Pin pin)
     {
+        if (pin.LastTouchedBy == Pin.LastTouched.PlayerBall)
+        {
+            player = true;
+        }
+        else if (pin.LastTouchedBy == Pin.LastTouched.EnemyBall)
+        {
+            player = false;
+        }
         OnPinHitByBall?.Invoke();
     }
     

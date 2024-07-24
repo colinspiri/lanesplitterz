@@ -12,6 +12,7 @@ public class HitPinSound : MonoBehaviour
     [SerializeField] private AudioSource pinHitNormal;
     [SerializeField] private AudioSource bigFall;
     [SerializeField] private AudioSource smallFall;
+    [SerializeField] bool isPlayer;
     
     // parameters
 
@@ -27,22 +28,28 @@ public class HitPinSound : MonoBehaviour
     private void Start() {
         PinManager.OnPinHitByBall += PlayPinHitSound;
         RoundManager.OnNewThrow += ResetThrow;
+        RoundManager.OnNewRound += ResetThrow;
     }
 
     private void PlayPinHitSound() {
-        if (slow)
+        Debug.Log("Was player hit: " + PinManager.Instance.player);
+        if (PinManager.Instance.player == isPlayer)
         {
-            pinHitSlow.Play();
-            slow = false;
-        }
-        else
-        {
-            pinHitNormal.Play();
-        }
-        StartCoroutine(PinsFall());
+            if (slow && isPlayer)
+            {
+                pinHitSlow.Play();
+                slow = false;
+            }
+            else
+            {
+                pinHitNormal.Play();
+            }
+            StartCoroutine(PinsFall());
 
-        // remove callback so it only happens the first time you hit a pin
-        PinManager.OnPinHitByBall -= PlayPinHitSound;
+            // remove callback so it only happens the first time you hit a pin
+            PinManager.OnPinHitByBall -= PlayPinHitSound;
+        }
+        
     }
 
     private void ResetThrow()

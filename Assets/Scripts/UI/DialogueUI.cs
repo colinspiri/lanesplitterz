@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using Yarn.Unity;
 using UnityEngine.UI;
+using GameAudioScriptingEssentials;
 
 public class DialogueUI : MonoBehaviour
 {
