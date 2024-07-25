@@ -76,18 +76,20 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator DisplayEndThrowUI()
     {
+        RoundManager.Instance.CalculateFinalScores();
+
         if (isPracticing.Value == true)
         {
             StartCoroutine(DisplayClearingPinsUI());
             yield break;
         }
 
-        RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-        RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+/*        RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
+        RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);*/
+
 
         if (currentThrow.Value % 2 == 0)
         {
-            RoundManager.Instance.CalculateFinalScores();
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
             currentScoresUI.SetActive(true);
             yield return new WaitForSeconds(currentScoresTime.Value);
@@ -108,6 +110,10 @@ public class NewThrowUI : MonoBehaviour
         yield return new WaitForSeconds(clearingPinsTime.Value);
         clearingPinsUI.SetActive(false);
         currentScoresUI.SetActive(false);
+
+        RoundManager.Instance.UpdateScoreboard();
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
 
         if (isPracticing.Value == true && _isSecondThrow) _isSecondThrow = false;
 

@@ -37,6 +37,11 @@ public class RoundManager : MonoBehaviour {
     public int playerFinalScore;
     public int enemyFinalScore;
 
+    [HideInInspector]
+    public int playerPointsByRound;
+    [HideInInspector]
+    public int enemyPointsByRound;
+
     public static Action OnNewThrow;
     public static Action OnNewRound;
 
@@ -120,7 +125,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void NotifyBallsAtEndOfTrack() {
-        UpdateScoreboard();
+        //UpdateScoreboard();
         
         // then a little delay before end of throw (move delay here from end of track trigger)
         
@@ -128,14 +133,28 @@ public class RoundManager : MonoBehaviour {
         //ballAtEndOfTrack.Raise();
     }
 
-    private void UpdateScoreboard() {
-/*        playerPointsByThrow.Add(playerCurrentPoints.Value);
-        enemyPointsByThrow.Add(enemyCurrentPoints.Value);*/
-        
+    public void UpdateScoreboard() {
+        playerPointsByThrow.Add(playerCurrentPoints.Value);
+        enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+
+        if (playerPointsByThrow.Count == 2)
+        {
+            playerPointsByRound = CalculatePointsByRound(playerPointsByThrow);
+            enemyPointsByRound = CalculatePointsByRound(enemyPointsByThrow);
+        }
+
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
 
         if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
+    }
+
+    public int CalculatePointsByRound(List<int> points)
+    {
+        int totalPoints = 0;
+        foreach (var point in points) totalPoints += point;
+
+        return totalPoints;
     }
 
     public void CalculateFinalScores() {
@@ -166,7 +185,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void EndThrowAndRound() {
-        UpdateScoreboard();
+        //UpdateScoreboard();
         NextRound();
     }
 
