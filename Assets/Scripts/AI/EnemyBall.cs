@@ -66,6 +66,7 @@ public class EnemyBall : MonoBehaviour
     private GameObject _ground = null;
     private Coroutine _turnRoutine = null;
     private Coroutine _straightenRoutine = null;
+    private bool _moving = false;
 
     #endregion
 
@@ -716,16 +717,26 @@ public class EnemyBall : MonoBehaviour
     // Halt all control
     private void HaltMovement()
     {
-        StopAllCoroutines();
+        if (_moving)
+        {
+            _moving = false;
+        
+            StopAllCoroutines();
+        }
     }
 
     // Resume or begin control
     private void StartMovement()
     {
-        _targetPos = transform.position;
-        _targetScore = Mathf.NegativeInfinity;
+        if (!_moving)
+        {
+            _moving = true;
         
-        StartCoroutine(CheckPositions());
+            _targetPos = transform.position;
+            _targetScore = Mathf.NegativeInfinity;
+        
+            StartCoroutine(CheckPositions());
+        }
     }
 
     // Reset forward of parent
