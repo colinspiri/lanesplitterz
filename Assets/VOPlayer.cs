@@ -28,11 +28,11 @@ public class VOPlayer : MonoBehaviour
                 ElvisVO.PlaySFX();
                 if (swing == false)
                 {
-                    stop = frequency * 4;
+                    stop = frequency * 6;
                 }
                 else
                 {
-                    stop = frequency * 2;
+                    stop = frequency * 3;
                 }
                 swing = !swing;
             }
