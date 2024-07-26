@@ -28,16 +28,19 @@ public class MusicController : MonoBehaviour
 
     public void NextLevel(int level)
     {
-        if (level == 1)
-        {
-            tutorialMusic.SetState(1);
+        if (level <= gameMusic.Length) {
+            if (level == 1)
+            {
+                tutorialMusic.SetState(1);
+            }
+            else
+            {
+                gameMusic[currentLevel - 1].SetState(1);
+            }
+            currentLevel = level;
+            gameMusic[currentLevel - 1].RunContainer();
         }
-        else
-        {
-            gameMusic[currentLevel].SetState(1);
-        }
-        currentLevel = level;
-        gameMusic[currentLevel-1].RunContainer();
+        
         
     }
 }

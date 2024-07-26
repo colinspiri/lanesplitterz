@@ -449,7 +449,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit,
-                _myCollider.radius + 1f, _groundMask))
+                _myCollider.radius + 1f, _groundMask) && _currentSpeed > Mathf.Epsilon)
         {
             if (!Grounded())
             {
