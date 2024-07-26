@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using Yarn.Unity;
@@ -20,6 +21,8 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
+    [SerializeField] private AdaptiveMusicContainer gameMusic;
+    [SerializeField] private CrowdManager crowdManager;
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
@@ -124,6 +127,14 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
+    public void PlayCrowdBoo()
+    {
+        if (playerCurrentPoints == 0)
+        {
+            crowdManager.CrowdBoo();
+        }
+    }
+
     public void NotifyBallsAtEndOfTrack() {
         //UpdateScoreboard();
         
@@ -213,8 +224,16 @@ public class RoundManager : MonoBehaviour {
     public void PlayEndDialgue()
     {
        if (playerFinalScore > enemyFinalScore)
+        {
             _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
+            gameMusic.TransitionSection(0);
+        }
+            
         else
+        {
             _dialogueRunner.StartDialogue(dialogueOnBossWin);
+            gameMusic.TransitionSection(1);
+        }
+            
     }
 }

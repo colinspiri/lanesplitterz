@@ -7,6 +7,7 @@ public class CrowdManager : MonoBehaviour
 {
 
     [SerializeField] private AudioClipRandomizer crowdRoar;
+    [SerializeField] private AudioSource crowdBoo;
     public float crowdWait = 10.0f;
     
     void Start()
@@ -16,9 +17,17 @@ public class CrowdManager : MonoBehaviour
 
     private void CrowdRoar()
     {
-        PinManager.OnPinHitByBall -= CrowdRoar;
-        crowdRoar.PlaySFX();
-        StartCoroutine(Wait());
+        if (PinManager.Instance.player)
+        {
+            PinManager.OnPinHitByBall -= CrowdRoar;
+            crowdRoar.PlaySFX();
+            StartCoroutine(Wait());
+        }
+    }
+
+    public void CrowdBoo()
+    {
+        crowdBoo.Play();
     }
 
     private IEnumerator Wait()

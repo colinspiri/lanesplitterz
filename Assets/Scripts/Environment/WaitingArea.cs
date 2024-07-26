@@ -29,6 +29,7 @@ public class WaitingArea : ActionOnCollide
         if (ballCount == 2)
         {
             ballCount++;
+            RoundManager.Instance.PlayCrowdBoo();
             StartCoroutine(ResetCoroutine());
         }
     }
