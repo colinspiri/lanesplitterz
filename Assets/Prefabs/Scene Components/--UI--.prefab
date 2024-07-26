@@ -8260,6 +8260,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: NewThrowUI, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3567306268252291444
 GameObject:
   m_ObjectHideFlags: 0
@@ -16164,9 +16176,6 @@ MonoBehaviour:
   currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
   currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
   isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
-  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
-    type: 2}
-  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
 --- !u!1 &5923554210708229366
 GameObject:
   m_ObjectHideFlags: 0

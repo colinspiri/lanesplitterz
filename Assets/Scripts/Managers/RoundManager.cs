@@ -50,7 +50,6 @@ public class RoundManager : MonoBehaviour {
 
     private bool isFirstRound;
 
-
     private void Awake() {
         Instance = this;
         _dialogueRunner = FindObjectOfType<DialogueRunner>();
@@ -148,7 +147,7 @@ public class RoundManager : MonoBehaviour {
         playerPointsByThrow.Add(playerCurrentPoints.Value);
         enemyPointsByThrow.Add(enemyCurrentPoints.Value);
 
-        if (playerPointsByThrow.Count == 2)
+        if (playerPointsByThrow.Count % 2 == 0)
         {
             playerPointsByRound = CalculatePointsByRound(playerPointsByThrow);
             enemyPointsByRound = CalculatePointsByRound(enemyPointsByThrow);
@@ -163,7 +162,7 @@ public class RoundManager : MonoBehaviour {
     public int CalculatePointsByRound(List<int> points)
     {
         int totalPoints = 0;
-        foreach (var point in points) totalPoints += point;
+        for (int i = points.Count - 1; i > points.Count - 3; i--) totalPoints += points[i];
 
         return totalPoints;
     }

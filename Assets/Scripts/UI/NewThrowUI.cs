@@ -111,10 +111,6 @@ public class NewThrowUI : MonoBehaviour
         clearingPinsUI.SetActive(false);
         currentScoresUI.SetActive(false);
 
-        RoundManager.Instance.UpdateScoreboard();
-        playerCurrentPoints.Value = 0;
-        enemyCurrentPoints.Value = 0;
-
         if (isPracticing.Value == true && _isSecondThrow) _isSecondThrow = false;
 
         if (isPracticing.Value == true && _isFirstThrow)
@@ -130,6 +126,8 @@ public class NewThrowUI : MonoBehaviour
     {
         tutorialReset.Raise();
         clearingPinsUI.SetActive(false);
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
     }
 
     /*    private IEnumerator DisplayCurrentScores()
@@ -190,6 +188,8 @@ public class NewThrowUI : MonoBehaviour
         CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());
         clearingPinsUI.SetActive(false);
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
     }
 
     public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();

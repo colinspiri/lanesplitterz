@@ -35,6 +35,11 @@ public class ScoreboardUI : MonoBehaviour {
         enemyScoreText.text = "";
     }
 
+    private string ChangeScoreboardRoundText(List<int> pointsByThrow)
+    {
+        return pointsByThrow[^1].ToString();
+    }
+
     public void UpdateScoreboardUI() {
 /*        playerScoreText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
         enemyScoreText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);*/
@@ -45,8 +50,8 @@ public class ScoreboardUI : MonoBehaviour {
             case 1:
                 if (currentThrow.Value == 1)
                 {
-                    playerRoundOneText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
-                    enemyRoundOneText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
+                    playerRoundOneText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
+                    enemyRoundOneText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
                 }
                 else
                 {
@@ -57,8 +62,8 @@ public class ScoreboardUI : MonoBehaviour {
             case 2:
                 if (currentThrow.Value == 1)
                 {
-                    playerRoundTwoText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
-                    enemyRoundTwoText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
+                    playerRoundTwoText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
+                    enemyRoundTwoText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
                 }
                 else
                 {
@@ -69,8 +74,8 @@ public class ScoreboardUI : MonoBehaviour {
             case 3:
                 if (currentThrow.Value == 1)
                 {
-                    playerRoundThreeText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
-                    enemyRoundThreeText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
+                    playerRoundThreeText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
+                    enemyRoundThreeText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
                 }
                 else
                 {
@@ -81,8 +86,8 @@ public class ScoreboardUI : MonoBehaviour {
             case 4:
                 if (currentThrow.Value == 1)
                 {
-                    playerRoundFourText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
-                    enemyRoundFourText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
+                    playerRoundFourText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
+                    enemyRoundFourText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
                 }
                 else
                 {
@@ -93,8 +98,8 @@ public class ScoreboardUI : MonoBehaviour {
             case 5:
                 if (currentThrow.Value == 1)
                 {
-                    playerRoundFiveText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
-                    enemyRoundFiveText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);
+                    playerRoundFiveText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
+                    enemyRoundFiveText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
                 }
                 else
                 {
@@ -103,6 +108,9 @@ public class ScoreboardUI : MonoBehaviour {
                 }
                 break;
         }
+
+        RoundManager.Instance.playerPointsByRound = 0;
+        RoundManager.Instance.enemyPointsByRound = 0;
     }
 
     public void ShowFinalScores() {

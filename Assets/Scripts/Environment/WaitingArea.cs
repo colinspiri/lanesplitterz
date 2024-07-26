@@ -8,6 +8,8 @@ public class WaitingArea : ActionOnCollide
     //[SerializeField] private float resetTime;
     [SerializeField] private FloatVariable levelResetTime;
     [SerializeField] private IntVariable currentThrow;
+    [SerializeField] private IntVariable playerCurrentPoints;
+    [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private GameEvent startLevelReset;
     [SerializeField] private GameEvent endLevelReset;
     [SerializeField] private FloatVariable clearingPinsTime;
@@ -43,21 +45,28 @@ public class WaitingArea : ActionOnCollide
         if (currentThrow.Value % 2 == 0 && isPracticing.Value == false)
         {
             yield return new WaitForSeconds(clearingPinsTime.Value + currentScoresTime.Value);
+            RoundManager.Instance.UpdateScoreboard();
+            playerCurrentPoints.Value = 0;
+            enemyCurrentPoints.Value = 0;
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
         }
         else if (currentThrow.Value % 2 == 1)
         {
             yield return new WaitForSeconds(clearingPinsTime.Value);
+            if (isPracticing == false) RoundManager.Instance.UpdateScoreboard();
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
+            playerCurrentPoints.Value = 0;
+            enemyCurrentPoints.Value = 0;
         }
 
         //yield return new WaitForSeconds(levelResetTime.Value);
-/*        ballOne.gameObject.SetActive(false);
-        ballTwo.gameObject.SetActive(false);
-        ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        ballTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;*/
+        /*        ballOne.gameObject.SetActive(false);
+                ballTwo.gameObject.SetActive(false);
+                ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                ballTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;*/
+
     }
 
     // for tutorial call when player clicks button to replay tutorial
@@ -70,6 +79,12 @@ public class WaitingArea : ActionOnCollide
     }
 
     public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();
+
+    public void CallResetPoints()
+    {
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
+    }
 
     public void Freeze(GameObject ball)
     {
