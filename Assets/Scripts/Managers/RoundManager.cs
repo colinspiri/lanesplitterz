@@ -144,9 +144,6 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void UpdateScoreboard() {
-        playerPointsByThrow.Add(playerCurrentPoints.Value);
-        enemyPointsByThrow.Add(enemyCurrentPoints.Value);
-
         if (playerPointsByThrow.Count % 2 == 0)
         {
             playerPointsByRound = CalculatePointsByRound(playerPointsByThrow);
@@ -184,7 +181,6 @@ public class RoundManager : MonoBehaviour {
         if (pinsStanding.Count == 0) {
             playerPointsByThrow.Add(0);
             enemyPointsByThrow.Add(0);
-            if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
 
             NextRound();
         }

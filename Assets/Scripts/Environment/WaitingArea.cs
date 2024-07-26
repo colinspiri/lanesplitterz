@@ -15,6 +15,7 @@ public class WaitingArea : ActionOnCollide
     [SerializeField] private FloatVariable clearingPinsTime;
     [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private BoolVariable isClearingPins;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
@@ -39,6 +40,7 @@ public class WaitingArea : ActionOnCollide
     private IEnumerator ResetCoroutine()
     {
         startLevelReset.Raise();
+        SetIsClearingPins();
 
     // when player is still in tutorial, we want reset everything based on the button click, not a wait time
 
@@ -48,6 +50,7 @@ public class WaitingArea : ActionOnCollide
             RoundManager.Instance.UpdateScoreboard();
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
+            isClearingPins.Value = false;
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
         }
@@ -59,6 +62,7 @@ public class WaitingArea : ActionOnCollide
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
+            isClearingPins.Value = false;
         }
 
         //yield return new WaitForSeconds(levelResetTime.Value);
@@ -85,6 +89,8 @@ public class WaitingArea : ActionOnCollide
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
     }
+
+    public void SetIsClearingPins() => isClearingPins.Value = true;
 
     public void Freeze(GameObject ball)
     {
