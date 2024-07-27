@@ -48,6 +48,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float hookForceMultiplier;
     [SerializeField] private float turnSpeedPerSecond = 0.1f;
     [SerializeField] private float slipperyForce = 10f;
+    [SerializeField] private float minimumSpeed;
 
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while steering left or right")]
@@ -152,6 +153,11 @@ public class EnemyBall : MonoBehaviour
     {
         Quaternion parentRotation = rotationRef.rotation;
         _refInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
+
+        Vector3 parentForward = (_refInvRot * rotationRef.forward).normalized;
+        float forwardLinVelocity = Vector3.Project(_myBody.velocity, parentForward).magnitude;
+        if (forwardLinVelocity < minimumSpeed) Accelerate(1f, false);
+
 
         UpdateGround();
         // Hook();
