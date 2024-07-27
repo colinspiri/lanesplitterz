@@ -5,6 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 using Yarn.Unity;
 using UnityEngine.UI;
 using GameAudioScriptingEssentials;
+using ScriptableObjectArchitecture;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject playerArt;
     [SerializeField] private GameObject enemyArt;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private BoolVariable isScoreboardEnabled;
     private Transform _myCam;
 
     void Start()
@@ -104,6 +106,12 @@ public class DialogueUI : MonoBehaviour
     public void EnableGameOverUI()
     {
         gameOverUI.SetActive(true);
+    }
+
+    [YarnCommand("EnableScoreboard")]
+    public void EnableScoreboard()
+    {
+        isScoreboardEnabled.Value = true;
     }
 
     [YarnCommand("EnableMouse")]

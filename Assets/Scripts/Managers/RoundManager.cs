@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private BoolVariable isScoreboardEnabled;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
@@ -136,8 +137,9 @@ public class RoundManager : MonoBehaviour {
 
     public void NotifyBallsAtEndOfTrack() {
         //UpdateScoreboard();
-        
+
         // then a little delay before end of throw (move delay here from end of track trigger)
+        if (currentThrow.Value == 2) isScoreboardEnabled.Value = false;
         
         EndThrow();
         //ballAtEndOfTrack.Raise();

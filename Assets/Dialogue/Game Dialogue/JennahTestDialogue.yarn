@@ -50,6 +50,7 @@ Boss: You sure? I have a feeling you're going to be terrible.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>> 
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: BossWin
@@ -86,6 +87,7 @@ Hiro Protag: You'll see.
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: PlayerWin
@@ -122,6 +124,7 @@ Hiro Protag: We'll see about that.
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: RoundTwo
@@ -145,6 +148,7 @@ Hiro Protag: Just you wait.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: RoundThree
@@ -168,6 +172,7 @@ Boss: You have no chance.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: RoundFour
@@ -191,6 +196,7 @@ Hiro Protag: I don't know about that mwahaha.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===
 
 title: RoundFive
@@ -214,4 +220,5 @@ Boss: I think we already know who is winning this one.
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>>
+<<EnableScoreboard DialogueUI>>
 ===

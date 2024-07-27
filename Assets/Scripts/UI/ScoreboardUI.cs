@@ -25,6 +25,9 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private IntVariable currentThrow;
     [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private BoolVariable isScoreboardEnabled;
+
+    [SerializeField] private GameObject scoreboardUI;
 
     private void Awake() {
         Instance = this;
@@ -33,6 +36,12 @@ public class ScoreboardUI : MonoBehaviour {
     private void Start() {
         playerScoreText.text = "";
         enemyScoreText.text = "";
+    }
+
+    private void Update()
+    {
+        if (isPracticing.Value == false && Input.GetKeyDown(KeyCode.Tab) && isScoreboardEnabled.Value == true) scoreboardUI.SetActive(true);
+        if (isPracticing.Value == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
     }
 
     private string ChangeScoreboardRoundText(List<int> pointsByThrow)
