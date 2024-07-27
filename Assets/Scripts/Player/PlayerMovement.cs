@@ -277,6 +277,10 @@ public class PlayerMovement : MonoBehaviour
         {
             ReduceFuel(enemyFuelLoss);
         }
+        else if (collision.gameObject.CompareTag("Lane Bounds"))
+        {
+            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+        }
     }
 
     #endregion

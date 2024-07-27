@@ -190,6 +190,10 @@ public class EnemyBall : MonoBehaviour
         {
             ReduceFuel(playerFuelLoss);
         }
+        else if (collider.gameObject.CompareTag("Lane Bounds"))
+        {
+            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+        }
     }
     
     #endregion
