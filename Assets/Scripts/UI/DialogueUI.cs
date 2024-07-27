@@ -14,6 +14,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject playerArt;
     [SerializeField] private GameObject enemyArt;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject doublePointsUI;
+    [SerializeField] private float doublePointsUITime;
     [SerializeField] private BoolVariable isScoreboardEnabled;
     private Transform _myCam;
 
@@ -112,6 +114,14 @@ public class DialogueUI : MonoBehaviour
     public void EnableScoreboard()
     {
         isScoreboardEnabled.Value = true;
+    }
+
+    [YarnCommand("EnableDoublePointsUI")]
+    public IEnumerator EnableDoublePointsUI()
+    {
+        doublePointsUI.SetActive(true);
+        yield return new WaitForSeconds(doublePointsUITime);
+        doublePointsUI.SetActive(false);
     }
 
     [YarnCommand("EnableMouse")]

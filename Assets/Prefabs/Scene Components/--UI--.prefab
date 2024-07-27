@@ -24281,6 +24281,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 539930848858105935, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 539930848858105935, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.5803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 539930848858105935, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5803922
+      objectReference: {fileID: 0}
     - target: {fileID: 626572899820801001, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -24481,6 +24496,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5361671952832222652, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5560650825445626103, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -24498,10 +24518,9 @@ PrefabInstance:
       objectReference: {fileID: 8348022543544618882}
     - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
-      propertyPath: isScoreboardEnabled
-      value: 
-      objectReference: {fileID: 11400000, guid: 8a282a0506043f14788025e372c2f19e,
-        type: 2}
+      propertyPath: doublePointsUITime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7001050445070524407, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_IsActive

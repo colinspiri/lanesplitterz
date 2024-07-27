@@ -19,11 +19,15 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isScoreboardEnabled;
+    [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
     [SerializeField] private AdaptiveMusicContainer gameMusic;
     [SerializeField] private CrowdManager crowdManager;
+    [SerializeField] private LaneComponents lane;
+    [SerializeField] private Material blueLane;
+    [SerializeField] private Material greyLane;
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
@@ -198,6 +202,12 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextThrow() {
+        if ((currentRound.Value == 2 || currentRound.Value == 4) && isDoublePointsRound.Value == true && currentThrow.Value == 1)
+        {
+            lane.ground.GetComponent<Renderer>().material = greyLane;
+            lane.waitingArea.GetComponent<Renderer>().material = greyLane;
+            isDoublePointsRound.Value = false;
+        }
         currentThrow.Value++;
         
         OnNewThrow?.Invoke();

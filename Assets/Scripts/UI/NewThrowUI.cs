@@ -84,12 +84,6 @@ public class NewThrowUI : MonoBehaviour
                 lane.waitingArea.GetComponent<Renderer>().material = blueLane;
                 isDoublePointsRound.Value = true;
             }
-            else
-            {
-                lane.ground.GetComponent<Renderer>().material = greyLane;
-                lane.waitingArea.GetComponent<Renderer>().material = greyLane;
-                isDoublePointsRound.Value = false;
-            }
         }
     }
 

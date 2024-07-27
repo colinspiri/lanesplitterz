@@ -800,7 +800,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelIndex: {fileID: 11400000, guid: fcbe1af71c84569409d229560d3e0bad, type: 2}
   musicController: {fileID: 6764594138453727965}
-  currentRound: {fileID: 0}
 --- !u!1 &3886986884091025869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,11 +1282,16 @@ MonoBehaviour:
   isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
   isScoreboardEnabled: {fileID: 11400000, guid: 8a282a0506043f14788025e372c2f19e,
     type: 2}
+  isDoublePointsRound: {fileID: 11400000, guid: be1015ba4160f724c8541027733e3092,
+    type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
   endGame: {fileID: 11400000, guid: 94ede9a4d80304548847c316c930258d, type: 2}
   gameMusic: {fileID: 6660178748321575947}
   crowdManager: {fileID: 4899293681437575515}
+  lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
+  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
+  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
   dialogueOnGameStart: BossStart
   dialogueOnPlayerWin: PlayerWin
   dialogueOnBossWin: BossWin
