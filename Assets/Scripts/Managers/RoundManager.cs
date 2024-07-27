@@ -18,6 +18,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private BoolVariable isScoreboardEnabled;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
@@ -40,11 +41,15 @@ public class RoundManager : MonoBehaviour {
     public int playerFinalScore;
     public int enemyFinalScore;
 
+    [HideInInspector]
+    public int playerPointsByRound;
+    [HideInInspector]
+    public int enemyPointsByRound;
+
     public static Action OnNewThrow;
     public static Action OnNewRound;
 
     private bool isFirstRound;
-
 
     private void Awake() {
         Instance = this;
@@ -131,23 +136,34 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void NotifyBallsAtEndOfTrack() {
-        
-        UpdateScoreboard();
-        
+        //UpdateScoreboard();
+
         // then a little delay before end of throw (move delay here from end of track trigger)
+        if (currentThrow.Value == 2) isScoreboardEnabled.Value = false;
         
         EndThrow();
         //ballAtEndOfTrack.Raise();
     }
 
-    private void UpdateScoreboard() {
-/*        playerPointsByThrow.Add(playerCurrentPoints.Value);
-        enemyPointsByThrow.Add(enemyCurrentPoints.Value);*/
-        
+    public void UpdateScoreboard() {
+        if (playerPointsByThrow.Count % 2 == 0)
+        {
+            playerPointsByRound = CalculatePointsByRound(playerPointsByThrow);
+            enemyPointsByRound = CalculatePointsByRound(enemyPointsByThrow);
+        }
+
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
 
         if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
+    }
+
+    public int CalculatePointsByRound(List<int> points)
+    {
+        int totalPoints = 0;
+        for (int i = points.Count - 1; i > points.Count - 3; i--) totalPoints += points[i];
+
+        return totalPoints;
     }
 
     public void CalculateFinalScores() {
@@ -167,7 +183,6 @@ public class RoundManager : MonoBehaviour {
         if (pinsStanding.Count == 0) {
             playerPointsByThrow.Add(0);
             enemyPointsByThrow.Add(0);
-            if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
 
             NextRound();
         }
@@ -178,7 +193,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void EndThrowAndRound() {
-        UpdateScoreboard();
+        //UpdateScoreboard();
         NextRound();
     }
 

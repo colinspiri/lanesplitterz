@@ -23,6 +23,7 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private FloatVariable clearingPinsTime; // use this in Waiting Area script
     [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -76,18 +77,18 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator DisplayEndThrowUI()
     {
+        if (isPracticing.Value == false) RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
+        if (isPracticing.Value == false) RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+        RoundManager.Instance.CalculateFinalScores();
+
         if (isPracticing.Value == true)
         {
             StartCoroutine(DisplayClearingPinsUI());
             yield break;
         }
 
-        RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-        RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
-
         if (currentThrow.Value % 2 == 0)
         {
-            RoundManager.Instance.CalculateFinalScores();
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
             currentScoresUI.SetActive(true);
             yield return new WaitForSeconds(currentScoresTime.Value);
@@ -99,7 +100,6 @@ public class NewThrowUI : MonoBehaviour
     }
     private IEnumerator DisplayClearingPinsUI()
     {
-        if (isPracticing.Value == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
 
         if (isPracticing.Value == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
         if (isPracticing.Value == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
@@ -117,6 +117,8 @@ public class NewThrowUI : MonoBehaviour
             _isFirstThrow = false;
             _isSecondThrow = true;
         }
+
+        if (isPracticing.Value == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
     }
 
     // call when player wants to play tutorial again
@@ -124,6 +126,9 @@ public class NewThrowUI : MonoBehaviour
     {
         tutorialReset.Raise();
         clearingPinsUI.SetActive(false);
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
+        isClearingPins.Value = false;
     }
 
     /*    private IEnumerator DisplayCurrentScores()
@@ -184,6 +189,9 @@ public class NewThrowUI : MonoBehaviour
         CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());
         clearingPinsUI.SetActive(false);
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
+        isClearingPins.Value = false;
     }
 
     public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();

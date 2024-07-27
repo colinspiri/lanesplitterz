@@ -621,6 +621,7 @@ MonoBehaviour:
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
+  isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
   player: 0
 --- !u!1 &2152114690493040708
 GameObject:
@@ -1277,6 +1278,8 @@ MonoBehaviour:
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
+  isScoreboardEnabled: {fileID: 11400000, guid: 8a282a0506043f14788025e372c2f19e,
+    type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
   endGame: {fileID: 11400000, guid: 94ede9a4d80304548847c316c930258d, type: 2}
@@ -1293,6 +1296,8 @@ MonoBehaviour:
   enemyPointsByThrow: 
   playerFinalScore: 0
   enemyFinalScore: 0
+  playerPointsByRound: 0
+  enemyPointsByRound: 0
 --- !u!114 &2008918619432813383
 MonoBehaviour:
   m_ObjectHideFlags: 0
