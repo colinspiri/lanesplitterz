@@ -16,10 +16,19 @@ public class WaitingArea : ActionOnCollide
     [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isClearingPins;
+    [SerializeField] private LaneComponents lane;
+    [SerializeField] private GameObject ground;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
     private GameObject ballTwo = null;
+    private GameObject _lane;
+
+    private void Awake()
+    {
+        lane.ground = ground;
+        lane.waitingArea = gameObject;
+    }
 
     protected override void DoAction(Collision collision)
     {

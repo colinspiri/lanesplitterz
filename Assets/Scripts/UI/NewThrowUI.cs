@@ -24,6 +24,7 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isClearingPins;
+    [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -34,6 +35,10 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject playGameButton;
     [SerializeField] private GameObject EndFirstThrowTutorialUI;
     [SerializeField] private GameObject EndSecondThrowTutorialUI;
+    [SerializeField] private LaneComponents lane;
+    [SerializeField] private Material blueLane;
+    [SerializeField] private Material greyLane;
+
     private bool _isFirstThrow;
     private bool _isSecondThrow;
 
@@ -72,6 +77,19 @@ public class NewThrowUI : MonoBehaviour
             if (currentRound.Value == 3) roundUIEndThree.Raise();
             if (currentRound.Value == 4) roundUIEndFour.Raise();
             if (currentRound.Value == 5) roundUIEndFive.Raise();
+
+            if (currentRound.Value == 2 || currentRound.Value == 4)
+            {
+                lane.ground.GetComponent<Renderer>().material = blueLane;
+                lane.waitingArea.GetComponent<Renderer>().material = blueLane;
+                isDoublePointsRound.Value = true;
+            }
+            else
+            {
+                lane.ground.GetComponent<Renderer>().material = greyLane;
+                lane.waitingArea.GetComponent<Renderer>().material = greyLane;
+                isDoublePointsRound.Value = false;
+            }
         }
     }
 

@@ -6621,6 +6621,8 @@ MonoBehaviour:
   currentScoresTime: {fileID: 11400000, guid: 31adfd789b186e741ae6052211ecd437, type: 2}
   isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
   isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
+  isDoublePointsRound: {fileID: 11400000, guid: be1015ba4160f724c8541027733e3092,
+    type: 2}
   clearingPinsUI: {fileID: 6501112475288437994}
   currentScoresUI: {fileID: 8776244600317082531}
   currentScoresText: {fileID: 5365146762723250321}
@@ -6631,6 +6633,9 @@ MonoBehaviour:
   playGameButton: {fileID: 6838857467605894041}
   EndFirstThrowTutorialUI: {fileID: 506159445758813143}
   EndSecondThrowTutorialUI: {fileID: 4242408435272304895}
+  lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
+  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
+  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
 --- !u!114 &3245869635864142511
 MonoBehaviour:
   m_ObjectHideFlags: 0
