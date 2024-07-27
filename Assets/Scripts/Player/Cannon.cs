@@ -122,8 +122,8 @@ public class Cannon : MonoBehaviour
             bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
             bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
             movementInput = Vector2.zero;
-            if (up) movementInput += Vector2.up;
-            if (down) movementInput += Vector2.down;
+/*            if (up) movementInput += Vector2.up;
+            if (down) movementInput += Vector2.down;*/
             if (left) movementInput += Vector2.left;
             if (right) movementInput += Vector2.right;
 
