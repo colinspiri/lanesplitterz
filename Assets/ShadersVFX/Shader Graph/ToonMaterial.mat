@@ -78,6 +78,26 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_16d06fb1870c4a10876e41143a9c6b47_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: df264368ea3084546a846a06c6e39465, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_422f4429ff984f3991db932cb2d3d858_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b6c6d1cc7cc7cd448aee6770e6f5dfd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_809019b155954694bf67b57d0d505955_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 9025962c262c24f4d9ec436dbe0c1682, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_84279fe6d7d843a3bd4a6467eacd7605_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b6c6d1cc7cc7cd448aee6770e6f5dfd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_9e6a61aee26145d3879fc1cbdd622e9b_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b6c6d1cc7cc7cd448aee6770e6f5dfd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -110,6 +130,7 @@ Material:
     - _ColorThickness: 1
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DepthFarMultiply: 5
     - _DepthLineThickness: 0.003
     - _DepthMinThreshold: 1
     - _DepthNormalThreshold: 3
@@ -121,10 +142,12 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
+    - _FarDepth: 200
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NearDepth: 0.01
     - _NoiseDensity: 10
     - _NoiseOffset: 2
     - _NormalFarDepth: 100
@@ -148,8 +171,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FarColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+    - _NearColor: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
