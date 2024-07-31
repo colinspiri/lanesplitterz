@@ -62,6 +62,7 @@ public class RoundManager : MonoBehaviour {
 
         gameState.currentRound = 1;
         gameState.currentThrow = 1;
+        gameState.isClearingPins = false;
 
         isFirstRound = true;
     }
