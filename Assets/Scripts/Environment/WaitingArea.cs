@@ -5,7 +5,6 @@ using ScriptableObjectArchitecture;
 
 public class WaitingArea : ActionOnCollide
 {
-    [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private GameEvent startLevelReset;
@@ -49,7 +48,7 @@ public class WaitingArea : ActionOnCollide
 
     // when player is still in tutorial, we want reset everything based on the button click, not a wait time
 
-        if (currentThrow.Value % 2 == 0 && playerInfo.isPracticing == false)
+        if (gameState.currentThrow % 2 == 0 && playerInfo.isPracticing == false)
         {
             yield return new WaitForSeconds(uiConstants.clearingPinsTime + uiConstants.currentScoresTime);
             RoundManager.Instance.UpdateScoreboard();
@@ -59,7 +58,7 @@ public class WaitingArea : ActionOnCollide
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
         }
-        else if (currentThrow.Value % 2 == 1)
+        else if (gameState.currentThrow % 2 == 1)
         {
             yield return new WaitForSeconds(uiConstants.clearingPinsTime);
             if (playerInfo.isPracticing == false) RoundManager.Instance.UpdateScoreboard();

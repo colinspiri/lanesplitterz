@@ -12,7 +12,6 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private int totalRounds = -1;
     [SerializeField] private int throwsPerRound = 1;
     [SerializeField] private IntVariable currentRound;
-    [SerializeField] private IntVariable currentThrow;
     
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
@@ -63,7 +62,7 @@ public class RoundManager : MonoBehaviour {
         enemyCurrentPoints.Value = 0;
 
         currentRound.Value = 1;
-        currentThrow.Value = 1;
+        gameState.currentThrow = 1;
 
         isFirstRound = true;
     }
@@ -137,7 +136,7 @@ public class RoundManager : MonoBehaviour {
     public void NotifyBallsAtEndOfTrack() {
         // then a little delay before end of throw (move delay here from end of track trigger)
 
-        if (currentThrow.Value == 2) gameState.isScoreboardEnabled = false;
+        if (gameState.currentThrow == 2) gameState.isScoreboardEnabled = false;
         
         EndThrow();
     }
@@ -183,7 +182,7 @@ public class RoundManager : MonoBehaviour {
 
             NextRound();
         }
-        else if (currentThrow.Value < throwsPerRound) {
+        else if (gameState.currentThrow < throwsPerRound) {
             NextThrow();
         }
         else NextRound();
@@ -194,13 +193,13 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextThrow() {
-        if ((currentRound.Value == 2 || currentRound.Value == 4) && gameState.isDoublePointsThrow == true && currentThrow.Value == 1)
+        if ((currentRound.Value == 2 || currentRound.Value == 4) && gameState.isDoublePointsThrow == true && gameState.currentThrow == 1)
         {
             lane.ground.GetComponent<Renderer>().material = greyLane;
             lane.waitingArea.GetComponent<Renderer>().material = greyLane;
             gameState.isDoublePointsThrow = false;
         }
-        currentThrow.Value++;
+        gameState.currentThrow++;
         
         OnNewThrow?.Invoke();
     }
@@ -208,7 +207,7 @@ public class RoundManager : MonoBehaviour {
     private void NextRound() {
         if (playerInfo.isPracticing == false && !isFirstRound) currentRound.Value++;
         if (playerInfo.isPracticing == false) isFirstRound = false;
-        currentThrow.Value = 1;
+        gameState.currentThrow = 1;
 
         if (currentRound.Value > totalRounds) {
             CalculateFinalScores();

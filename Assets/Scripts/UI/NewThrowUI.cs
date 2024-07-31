@@ -18,7 +18,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent tutorialReset;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
@@ -93,7 +92,7 @@ public class NewThrowUI : MonoBehaviour
             yield break;
         }
 
-        if (currentThrow.Value % 2 == 0)
+        if (gameState.currentThrow % 2 == 0)
         {
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
             currentScoresUI.SetActive(true);
@@ -122,7 +121,7 @@ public class NewThrowUI : MonoBehaviour
             _isSecondThrow = true;
         }
 
-        if (playerInfo.isPracticing == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
+        if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 0) DisplayTutorialButtons();
     }
 
     // call when player wants to play tutorial again

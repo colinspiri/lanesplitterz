@@ -23,7 +23,6 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI enemyRoundFiveText;
 
     [SerializeField] private IntVariable currentRound;
-    [SerializeField] private IntVariable currentThrow;
 
     [SerializeField] private GameObject scoreboardUI;
     [SerializeField] private PlayerInfo playerInfo;
@@ -57,7 +56,7 @@ public class ScoreboardUI : MonoBehaviour {
 
         switch(currentRound.Value) {
             case 1:
-                if (currentThrow.Value == 1)
+                if (gameState.currentThrow == 1)
                 {
                     playerRoundOneText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
                     enemyRoundOneText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
@@ -69,7 +68,7 @@ public class ScoreboardUI : MonoBehaviour {
                 }
                 break;
             case 2:
-                if (currentThrow.Value == 1)
+                if (gameState.currentThrow == 1)
                 {
                     playerRoundTwoText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
                     enemyRoundTwoText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
@@ -81,7 +80,7 @@ public class ScoreboardUI : MonoBehaviour {
                 }
                 break;
             case 3:
-                if (currentThrow.Value == 1)
+                if (gameState.currentThrow == 1)
                 {
                     playerRoundThreeText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
                     enemyRoundThreeText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
@@ -93,7 +92,7 @@ public class ScoreboardUI : MonoBehaviour {
                 }
                 break;
             case 4:
-                if (currentThrow.Value == 1)
+                if (gameState.currentThrow == 1)
                 {
                     playerRoundFourText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
                     enemyRoundFourText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
@@ -105,7 +104,7 @@ public class ScoreboardUI : MonoBehaviour {
                 }
                 break;
             case 5:
-                if (currentThrow.Value == 1)
+                if (gameState.currentThrow == 1)
                 {
                     playerRoundFiveText.text = ChangeScoreboardRoundText(RoundManager.Instance.playerPointsByThrow);
                     enemyRoundFiveText.text = ChangeScoreboardRoundText(RoundManager.Instance.enemyPointsByThrow);
