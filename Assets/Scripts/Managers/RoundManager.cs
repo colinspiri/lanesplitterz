@@ -11,7 +11,6 @@ public class RoundManager : MonoBehaviour {
     [Tooltip("Rounds to play before a winner is decided. If -1, game never ends.")]
     [SerializeField] private int totalRounds = -1;
     [SerializeField] private int throwsPerRound = 1;
-    [SerializeField] private IntVariable currentRound;
     
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
@@ -61,7 +60,7 @@ public class RoundManager : MonoBehaviour {
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
 
-        currentRound.Value = 1;
+        gameState.currentRound = 1;
         gameState.currentThrow = 1;
 
         isFirstRound = true;
@@ -193,7 +192,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextThrow() {
-        if ((currentRound.Value == 2 || currentRound.Value == 4) && gameState.isDoublePointsThrow == true && gameState.currentThrow == 1)
+        if ((gameState.currentRound == 2 || gameState.currentRound == 4) && gameState.isDoublePointsThrow == true && gameState.currentThrow == 1)
         {
             lane.ground.GetComponent<Renderer>().material = greyLane;
             lane.waitingArea.GetComponent<Renderer>().material = greyLane;
@@ -205,11 +204,11 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextRound() {
-        if (playerInfo.isPracticing == false && !isFirstRound) currentRound.Value++;
+        if (playerInfo.isPracticing == false && !isFirstRound) gameState.currentRound++;
         if (playerInfo.isPracticing == false) isFirstRound = false;
         gameState.currentThrow = 1;
 
-        if (currentRound.Value > totalRounds) {
+        if (gameState.currentRound > totalRounds) {
             CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
             endGame.Raise();

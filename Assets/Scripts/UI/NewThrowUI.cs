@@ -18,7 +18,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent tutorialReset;
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private IntVariable currentRound;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -58,20 +57,20 @@ public class NewThrowUI : MonoBehaviour
     {
         if (playerInfo.isPracticing == true) yield break;
 
-        if (currentRound.Value <= 5)
+        if (gameState.currentRound <= 5)
         {
-            roundText.text = "Round " + currentRound.Value;
+            roundText.text = "Round " + gameState.currentRound;
             roundUI.SetActive(true);
             yield return new WaitForSeconds(roundUITime);
             roundUI.SetActive(false);
 
-            if (currentRound.Value == 1) roundUIEndOne.Raise(); // should start dialogue
-            if (currentRound.Value == 2) roundUIEndTwo.Raise();
-            if (currentRound.Value == 3) roundUIEndThree.Raise();
-            if (currentRound.Value == 4) roundUIEndFour.Raise();
-            if (currentRound.Value == 5) roundUIEndFive.Raise();
+            if (gameState.currentRound == 1) roundUIEndOne.Raise(); // should start dialogue
+            if (gameState.currentRound == 2) roundUIEndTwo.Raise();
+            if (gameState.currentRound == 3) roundUIEndThree.Raise();
+            if (gameState.currentRound == 4) roundUIEndFour.Raise();
+            if (gameState.currentRound == 5) roundUIEndFive.Raise();
 
-            if (currentRound.Value == 2 || currentRound.Value == 4)
+            if (gameState.currentRound == 2 || gameState.currentRound == 4)
             {
                 lane.ground.GetComponent<Renderer>().material = blueLane;
                 lane.waitingArea.GetComponent<Renderer>().material = blueLane;

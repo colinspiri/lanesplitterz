@@ -22,8 +22,6 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI enemyRoundFourText;
     [SerializeField] private TextMeshProUGUI enemyRoundFiveText;
 
-    [SerializeField] private IntVariable currentRound;
-
     [SerializeField] private GameObject scoreboardUI;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
@@ -54,7 +52,7 @@ public class ScoreboardUI : MonoBehaviour {
 
         if (playerInfo.isPracticing) return;
 
-        switch(currentRound.Value) {
+        switch(gameState.currentRound) {
             case 1:
                 if (gameState.currentThrow == 1)
                 {
