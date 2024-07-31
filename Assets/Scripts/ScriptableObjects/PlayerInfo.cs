@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerInfo", menuName = "PlayerInfo")]
 public class PlayerInfo : ScriptableObject
 {
-    [HideInInspector]
-    public int playerCurrentPoints;
+    // not including playerCurrentPoints because it uses TextDisplayInt.cs which requires it to be an IntVariable scriptable object
+    // it felt kinda useless to nest the scriptable objects in this case
+
     [HideInInspector]
     public float currentFuel;
     [HideInInspector]
