@@ -6692,8 +6692,6 @@ MonoBehaviour:
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
   currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
-  clearingPinsTime: {fileID: 11400000, guid: be19d82e67423144d814c154248b3557, type: 2}
-  currentScoresTime: {fileID: 11400000, guid: 31adfd789b186e741ae6052211ecd437, type: 2}
   isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
   isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
   isDoublePointsRound: {fileID: 11400000, guid: be1015ba4160f724c8541027733e3092,
@@ -6711,6 +6709,7 @@ MonoBehaviour:
   lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
   blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
   greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
+  uiConstants: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8, type: 2}
 --- !u!114 &3245869635864142511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14108,7 +14107,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolume: {fileID: 11400000, guid: 395c49376c27fd246b77b9f2edbdfb6e, type: 2}
   volumeSliderValue: {fileID: 11400000, guid: e49cf917e773c7048ae635ecc56dff41, type: 2}
-  isMainMenuSlider: 0
 --- !u!1 &5033910571381049281
 GameObject:
   m_ObjectHideFlags: 0

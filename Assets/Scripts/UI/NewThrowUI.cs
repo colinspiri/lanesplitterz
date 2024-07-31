@@ -20,8 +20,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable currentRound;
-    [SerializeField] private FloatVariable clearingPinsTime; // use this in Waiting Area script
-    [SerializeField] private FloatVariable currentScoresTime;
     [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private BoolVariable isDoublePointsRound;
@@ -39,11 +37,10 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private Material blueLane;
     [SerializeField] private Material greyLane;
 
+    [SerializeField] private UIConstants uiConstants;
+
     private bool _isFirstThrow;
     private bool _isSecondThrow;
-
-/*    private int currentRound = 0;
-    private int currentThrow = 1;*/
 
     private void Awake()
     {
@@ -62,8 +59,6 @@ public class NewThrowUI : MonoBehaviour
     private IEnumerator NextRoundUI()
     {
         if (isPracticing.Value == true) yield break;
-
-        //currentRound++;
 
         if (currentRound.Value <= 5)
         {
@@ -103,12 +98,10 @@ public class NewThrowUI : MonoBehaviour
         {
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
             currentScoresUI.SetActive(true);
-            yield return new WaitForSeconds(currentScoresTime.Value);
+            yield return new WaitForSeconds(uiConstants.currentScoresTime);
             StartCoroutine(DisplayClearingPinsUI());
         }
         else StartCoroutine(DisplayClearingPinsUI());
-
-        //currentThrow++;
     }
     private IEnumerator DisplayClearingPinsUI()
     {
@@ -117,7 +110,7 @@ public class NewThrowUI : MonoBehaviour
         if (isPracticing.Value == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
 
         clearingPinsUI.SetActive(true);
-        yield return new WaitForSeconds(clearingPinsTime.Value);
+        yield return new WaitForSeconds(uiConstants.clearingPinsTime);
         clearingPinsUI.SetActive(false);
         currentScoresUI.SetActive(false);
 
@@ -188,9 +181,6 @@ public class NewThrowUI : MonoBehaviour
         EndSecondThrowTutorialUI.SetActive(false);
     }
 
-    //public void CallDisplayClearingPins() => StartCoroutine(DisplayClearingPinsUI());
-
-    //public void CallDisplayCurrentScores() => StartCoroutine(DisplayCurrentScores());
     public void CallDisplayEndThrowUI() => StartCoroutine(DisplayEndThrowUI());
 
     public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
