@@ -17,9 +17,9 @@ public class FuelMeter : Meter {
         RoundManager.OnNewRound += () => slider.value = 1;
         RoundManager.OnNewThrow += () => slider.value = 1;
     }
-    public void UpdateFuelMeter(FloatVariable fuel)
+    public void UpdateFuelMeter(float fuel)
     {
-        slider.value = fuel.Value;
+        slider.value = fuel;
         
         EnableMeter();
         if (slider.value == slider.minValue) emptyUI.SetActive(true);

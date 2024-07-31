@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float enemyFuelLoss;
     
     [Header("Events")]
-    [SerializeField] private FloatVariableGameEvent fuelChanged;
+    [SerializeField] private FloatGameEvent fuelChanged;
 
     [Header("Rigidbody configuration")]
     [SerializeField] private float maxLinearVelocity = 1e+16f;
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
 
     // private state
-    [SerializeField] private FloatVariable currentFuel;
+    [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private BoolVariable isPracticing;
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
         _startingPosition = transform.position;
         _startingRotation = transform.rotation;
-        currentFuel.Value = 1;
+        playerInfo.currentFuel = 1;
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
         _myCamHandle.DefaultForward();
 
-        currentFuel.Value = 1;
+        playerInfo.currentFuel = 1;
         _fuelMeter = 1f;
     }
 
@@ -489,11 +489,11 @@ public class PlayerMovement : MonoBehaviour
 
             _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
 
-            currentFuel.Value -= fuelPercent;
+            playerInfo.currentFuel -= fuelPercent;
 
-            currentFuel.Value = Mathf.Clamp(currentFuel.Value, 0f, 1f);
+            playerInfo.currentFuel = Mathf.Clamp(playerInfo.currentFuel, 0f, 1f);
 
-            fuelChanged.Raise(currentFuel);
+            fuelChanged.Raise(playerInfo.currentFuel);
         }
     }
 
@@ -504,9 +504,9 @@ public class PlayerMovement : MonoBehaviour
         
         _fuelMeter = Mathf.Clamp(_fuelMeter, 0f, 1f);
 
-        currentFuel.Value += fuelPercent;
+        playerInfo.currentFuel += fuelPercent;
 
-        fuelChanged.Raise(currentFuel);
+        fuelChanged.Raise(playerInfo.currentFuel);
     }
 
     public void SetBallLaunched() { StartCoroutine(BallLaunchedCoroutine()); }

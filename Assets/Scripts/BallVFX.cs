@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.VFX;
 
 public class BallVFX : MonoBehaviour {
-    [SerializeField] private FloatVariable ballFuel;
+    [SerializeField] private PlayerInfo playerInfo;
     
     [SerializeField] private VisualEffect ballSmokeLeft;
     [SerializeField] private VisualEffect ballSmokeRight;
@@ -12,7 +12,7 @@ public class BallVFX : MonoBehaviour {
     [SerializeField] private VisualEffect ballSmokeFront;
 
     private void Update() {
-        if (PlayerMovement.Instance == null || ballFuel.Value <= Mathf.Epsilon) return;
+        if (PlayerMovement.Instance == null || playerInfo.currentFuel <= Mathf.Epsilon) return;
         
         SnapToBall();
 

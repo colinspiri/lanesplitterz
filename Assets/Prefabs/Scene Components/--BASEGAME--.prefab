@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 756b61e6db124fa8a17b037ccf9ed9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballFuel: {fileID: 11400000, guid: bb603df81b5ebc845902757dd6a21c6a, type: 2}
+  playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   ballSmokeLeft: {fileID: 4904195924731250994}
   ballSmokeRight: {fileID: 1490224216870921514}
   ballSmokeBack: {fileID: 3259516008293906476}
@@ -2025,6 +2025,18 @@ PrefabInstance:
       propertyPath: impactVFX
       value: 
       objectReference: {fileID: 3528884139619698084}
+    - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: playerInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c,
+        type: 2}
+    - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: fuelChanged
+      value: 
+      objectReference: {fileID: 11400000, guid: 905b4608ae60f2540b1fb26e95214467,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
