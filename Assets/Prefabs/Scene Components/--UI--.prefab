@@ -16372,10 +16372,9 @@ MonoBehaviour:
   enemyRoundFiveText: {fileID: 638079383954711767}
   currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
   currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
-  isScoreboardEnabled: {fileID: 11400000, guid: 8a282a0506043f14788025e372c2f19e,
-    type: 2}
   scoreboardUI: {fileID: 235461834100685176}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
+  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
 --- !u!1 &5923554210708229366
 GameObject:
   m_ObjectHideFlags: 0
@@ -24958,6 +24957,12 @@ PrefabInstance:
       propertyPath: hud
       value: 
       objectReference: {fileID: 4119810549153023293}
+    - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920,
+        type: 2}
     - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: gameOverUI

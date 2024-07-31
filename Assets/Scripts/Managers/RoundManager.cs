@@ -17,7 +17,6 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private BoolVariable isScoreboardEnabled;
     [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
@@ -28,6 +27,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private Material blueLane;
     [SerializeField] private Material greyLane;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private GameState gameState;
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
@@ -67,10 +67,6 @@ public class RoundManager : MonoBehaviour {
         currentThrow.Value = 1;
 
         isFirstRound = true;
-
-/*        if (_dialogueRunner && dialogueOnGameStart != "") {
-            _dialogueRunner.StartDialogue(dialogueOnGameStart);
-        }*/
     }
 
     private void Update() {
@@ -140,13 +136,11 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void NotifyBallsAtEndOfTrack() {
-        //UpdateScoreboard();
-
         // then a little delay before end of throw (move delay here from end of track trigger)
-        if (currentThrow.Value == 2) isScoreboardEnabled.Value = false;
+
+        if (currentThrow.Value == 2) gameState.isScoreboardEnabled = false;
         
         EndThrow();
-        //ballAtEndOfTrack.Raise();
     }
 
     public void UpdateScoreboard() {
@@ -197,7 +191,6 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void EndThrowAndRound() {
-        //UpdateScoreboard();
         NextRound();
     }
 
@@ -240,7 +233,6 @@ public class RoundManager : MonoBehaviour {
         {
             _dialogueRunner.StartDialogue(dialogueOnBossWin);
             gameMusic.TransitionSection(1);
-        }
-            
+        }    
     }
 }

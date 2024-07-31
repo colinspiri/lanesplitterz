@@ -24,10 +24,10 @@ public class ScoreboardUI : MonoBehaviour {
 
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private IntVariable currentThrow;
-    [SerializeField] private BoolVariable isScoreboardEnabled;
 
     [SerializeField] private GameObject scoreboardUI;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private GameState gameState;
 
     private void Awake() {
         Instance = this;
@@ -40,7 +40,7 @@ public class ScoreboardUI : MonoBehaviour {
 
     private void Update()
     {
-        if (playerInfo.isPracticing == false && Input.GetKeyDown(KeyCode.Tab) && isScoreboardEnabled.Value == true) scoreboardUI.SetActive(true);
+        if (playerInfo.isPracticing == false && Input.GetKeyDown(KeyCode.Tab) && gameState.isScoreboardEnabled == true) scoreboardUI.SetActive(true);
         if (playerInfo.isPracticing == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
     }
 

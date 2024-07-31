@@ -16,7 +16,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject doublePointsUI;
     [SerializeField] private float doublePointsUITime;
-    [SerializeField] private BoolVariable isScoreboardEnabled;
+    [SerializeField] private GameState gameState;
     private Transform _myCam;
 
     void Start()
@@ -113,7 +113,7 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableScoreboard")]
     public void EnableScoreboard()
     {
-        isScoreboardEnabled.Value = true;
+        gameState.isScoreboardEnabled = true;
     }
 
     [YarnCommand("EnableDoublePointsUI")]
