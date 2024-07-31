@@ -10,11 +10,11 @@ public class WaitingArea : ActionOnCollide
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private GameEvent startLevelReset;
     [SerializeField] private GameEvent endLevelReset;
-    [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private LaneComponents lane;
     [SerializeField] private GameObject ground;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private GameState gameState;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
@@ -55,7 +55,7 @@ public class WaitingArea : ActionOnCollide
             RoundManager.Instance.UpdateScoreboard();
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
-            isClearingPins.Value = false;
+            gameState.isClearingPins = false;
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
         }
@@ -67,7 +67,7 @@ public class WaitingArea : ActionOnCollide
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
-            isClearingPins.Value = false;
+            gameState.isClearingPins = false;
         }
     }
 
@@ -88,7 +88,7 @@ public class WaitingArea : ActionOnCollide
         enemyCurrentPoints.Value = 0;
     }
 
-    public void SetIsClearingPins() => isClearingPins.Value = true;
+    public void SetIsClearingPins() => gameState.isClearingPins = true;
 
     public void Freeze(GameObject ball)
     {

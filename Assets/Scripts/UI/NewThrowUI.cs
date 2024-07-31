@@ -20,7 +20,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable currentRound;
-    [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -133,7 +132,7 @@ public class NewThrowUI : MonoBehaviour
         clearingPinsUI.SetActive(false);
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
-        isClearingPins.Value = false;
+        gameState.isClearingPins = false;
     }
 
     /*    private IEnumerator DisplayCurrentScores()
@@ -193,7 +192,7 @@ public class NewThrowUI : MonoBehaviour
         clearingPinsUI.SetActive(false);
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
-        isClearingPins.Value = false;
+        gameState.isClearingPins = false;
     }
 
     public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();
