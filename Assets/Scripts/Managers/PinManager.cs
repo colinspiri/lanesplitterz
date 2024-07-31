@@ -22,7 +22,7 @@ public class PinManager : MonoBehaviour {
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private BoolVariable isClearingPins;
-    [SerializeField] private BoolVariable isDoublePointsRound;
+    [SerializeField] private GameState gameState;
     
     // state
     private List<PinSpawn> _pinSpawns = new List<PinSpawn>();
@@ -57,7 +57,7 @@ public class PinManager : MonoBehaviour {
             playerCurrentPoints.Value += pin.PointValue;
         }
         else if (pin.LastTouchedBy == Pin.LastTouched.EnemyBall && isClearingPins.Value == false) {
-            if (isDoublePointsRound.Value == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
+            if (gameState.isDoublePointsThrow == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
             else enemyCurrentPoints.Value += pin.PointValue;
         }
     }

@@ -21,7 +21,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private BoolVariable isClearingPins;
-    [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
     [SerializeField] private TextMeshProUGUI currentScoresText;
@@ -38,6 +37,7 @@ public class NewThrowUI : MonoBehaviour
 
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private GameState gameState;
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
@@ -77,7 +77,7 @@ public class NewThrowUI : MonoBehaviour
             {
                 lane.ground.GetComponent<Renderer>().material = blueLane;
                 lane.waitingArea.GetComponent<Renderer>().material = blueLane;
-                isDoublePointsRound.Value = true;
+                gameState.isDoublePointsThrow = true;
             }
         }
     }

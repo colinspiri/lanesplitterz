@@ -6693,8 +6693,6 @@ MonoBehaviour:
   currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
   currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
   isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
-  isDoublePointsRound: {fileID: 11400000, guid: be1015ba4160f724c8541027733e3092,
-    type: 2}
   clearingPinsUI: {fileID: 6501112475288437994}
   currentScoresUI: {fileID: 8776244600317082531}
   currentScoresText: {fileID: 5365146762723250321}
@@ -6710,6 +6708,7 @@ MonoBehaviour:
   greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
   uiConstants: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
+  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
 --- !u!114 &3245869635864142511
 MonoBehaviour:
   m_ObjectHideFlags: 0

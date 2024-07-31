@@ -17,7 +17,6 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private GameEvent ballAtEndOfTrack;
     [SerializeField] private GameEvent endGame;
@@ -195,11 +194,11 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextThrow() {
-        if ((currentRound.Value == 2 || currentRound.Value == 4) && isDoublePointsRound.Value == true && currentThrow.Value == 1)
+        if ((currentRound.Value == 2 || currentRound.Value == 4) && gameState.isDoublePointsThrow == true && currentThrow.Value == 1)
         {
             lane.ground.GetComponent<Renderer>().material = greyLane;
             lane.waitingArea.GetComponent<Renderer>().material = greyLane;
-            isDoublePointsRound.Value = false;
+            gameState.isDoublePointsThrow = false;
         }
         currentThrow.Value++;
         
