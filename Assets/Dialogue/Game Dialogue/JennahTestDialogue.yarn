@@ -17,40 +17,82 @@ tags:
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Hiro Protag: I need to remember my training... #line:09667e0 
+Hiro:  Woah! I’ve seen you playing on Fremont Street. Could I have your autograph? You rock! #line:09667e0 
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: You're gonna need it, fella! #line:013f2c3 
+???: Thank you very much. Your chance of success is 0.0132%. #line:013f2c3 
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: I know I've got what it takes.
+Hiro: Um...
+Hiro: Thanks, but-
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: You sure? I have a feeling you're going to be terrible.
+???: You are welcome. I am simply preparing you for your failure.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: Oh, no need, I'm gonna win this thing!
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+???: You are not. Still want an autograph, baby?
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: Yup!
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+??: What is your name, son?
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: My name is Hiro Protag. And yours?
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: E1-V15. Here.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
+Hiro: Thanks! Elvis? I thought your name was E1-V15?
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: Indeed, I signed with the name of the King.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: King? You mean Ceasar?
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: !!!
+E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: What is he? Some kind of magician?
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: ...
+E1-V15: No.
+E1-V15: You should prepare yourself, son. You will not make it past the opener.
 <<DisableEnemyArt DialogueUI>>
 <<DisablePlayerArt DialogueUI>>
-<<EnableMouse DialogueUI>>
--> Yes, trust me. I'm ready for this.
-    <<EnableEnemyArt DialogueUI>>
-    <<EnablePlayerArt DialogueUI>>
-    <<FadeInEnemyArt DialogueUI>>
-    <<FadeOutPlayerArt DialogueUI>>
-    Boss: This should be fun hehe.
-    <<DisableEnemyArt DialogueUI>>
-    <<DisablePlayerArt DialogueUI>>
--> I'll defeat you with one strike!
-    <<EnableEnemyArt DialogueUI>>
-    <<EnablePlayerArt DialogueUI>>
-    <<FadeInEnemyArt DialogueUI>>
-    <<FadeOutPlayerArt DialogueUI>>
-    Boss: You impudent, insolent, naive fool, you'll regret messing with me!
-    <<DisableEnemyArt DialogueUI>>
-    <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
 <<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<DisableMouse DialogueUI>> 
 <<EnableScoreboard DialogueUI>>
+
+//<<EnableMouse DialogueUI>>
+//-> Yes, trust me. I'm ready for this. 
+ //   <<EnableEnemyArt DialogueUI>>
+  //  <<EnablePlayerArt DialogueUI>>
+  //  <<FadeInEnemyArt DialogueUI>>
+  //  <<FadeOutPlayerArt DialogueUI>>
+ //   Boss: This should be fun hehe.
+ //   <<DisableEnemyArt DialogueUI>>
+  //  <<DisablePlayerArt DialogueUI>>
+//-> I'll defeat you with one strike!
+    //<<EnableEnemyArt DialogueUI>>
+   // <<EnablePlayerArt DialogueUI>>
+   // <<FadeInEnemyArt DialogueUI>>
+   // <<FadeOutPlayerArt DialogueUI>>
+   // Boss: You impudent, insolent, naive fool, you'll regret messing with me!
+  //  <<DisableEnemyArt DialogueUI>>
+ //   <<DisablePlayerArt DialogueUI>>
 ===
 
 title: BossWin
@@ -64,22 +106,14 @@ tags:
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Boss: Haha yes! I always win!. #line:09622a5 
+E1-V15: It seems my predictions were correct. Spirit had no bearing on the outcome. #line:09622a5 
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: Well fought... #line:00105e8 
+Hiro: Dang it! I'll be back next time.  #line:00105e8 
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: You never had a chance, just admit it!
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-Hiro Protag: You're wrong. I can do better.
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
-Boss: Ha! Yeah right!
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-Hiro Protag: You'll see.
+E1-V15: By then, Elvis will sit on Caesar's throne. 
+E1-V15: Btw, father jinn gotchyo ass.
 <<DisablePlayerArt DialogueUI>>
 <<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
@@ -98,25 +132,48 @@ tags:
 <<DisableInputs Cannon>>
 <<EnableEnemyArt DialogueUI>>
 <<EnablePlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
-<<FadeOutPlayerArt DialogueUI>>
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Boss: No! This can't be!
-<<FadeOutEnemyArt DialogueUI>>
+Hiro: I won? Wait… I won??? Holy-
+<<FadeOutPlayerArt DialogueUI>>
+//Needs Character Art
+Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
+//Needs Character Art
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: But yes it can be.
+Hiro: Wait, you didn’t think I'd win?
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: I can't believe this. This is a fluke I swear.
+E1-V15: It is no surprise, baby.
+E1-V15: Spirit is far more valuable a predictor than I thought.
 <<FadeOutEnemyArt DialogueUI>>
+//Needs Character Art
+Emiliana: He's a real special kid, our Hiro.
+//Needs Character Art
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: You keep telling yourself that buddy
+Hiro: Thanks, E1. It was an honor to roll with you.
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: You'll never win again, mark my words.
+E1-V15: ...
+E1-V15: I will not revive him anymore.
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: We'll see about that.
+Hiro: Elvis the Pelvis?
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: It is time to put the past to rest.
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: Cool. And E1?
+Hiro: Good luck out there.
+<<FadeOutPlayerArt DialogueUI>>
+<<FadeInEnemyArt DialogueUI>>
+E1-V15: Thank you, thank you very much.
+E1-V15: And before I leave, may I have your autograph?
+<<FadeOutEnemyArt DialogueUI>>
+<<FadeInPlayerArt DialogueUI>>
+Hiro: !!!
+Hiro: Sure!
 <<DisablePlayerArt DialogueUI>>
 <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
@@ -138,10 +195,10 @@ tags:
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Boss: That's all you got? This will be a piece of cake.
+E1-V15: You are far better than expected. You will fail nonetheless, baby.
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: Just you wait.
+Hiro: Just you wait!
 <<DisablePlayerArt DialogueUI>>
 <<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
@@ -163,10 +220,10 @@ tags:
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Hiro Protag: I am just warming up hehe.
+Hiro: I am just warming up hehe.
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: You have no chance.
+E1-V15: You have no chance.
 <<DisableEnemyArt DialogueUI>>
 <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
@@ -187,10 +244,10 @@ tags:
 <<FadeInEnemyArt DialogueUI>>
 <<FadeOutPlayerArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Boss: This is light work to be honest.
+E1-V15: Give up, son. Your concert ends now.
 <<FadeOutEnemyArt DialogueUI>>
 <<FadeInPlayerArt DialogueUI>>
-Hiro Protag: I don't know about that mwahaha.
+Hiro: I still got an encore!
 <<DisablePlayerArt DialogueUI>>
 <<DisableEnemyArt DialogueUI>>
 <<DisableBlur DialogueUI>>
@@ -212,10 +269,10 @@ tags:
 <<FadeInPlayerArt DialogueUI>>
 <<FadeOutEnemyArt DialogueUI>>
 <<EnableMouse DialogueUI>>
-Hiro Protag: This is it. The final round. Let's do this.
+Hiro: I can't let you do this, E1.
 <<FadeOutPlayerArt DialogueUI>>
 <<FadeInEnemyArt DialogueUI>>
-Boss: I think we already know who is winning this one.
+E1-V15: ...
 <<DisableEnemyArt DialogueUI>>
 <<DisablePlayerArt DialogueUI>>
 <<DisableBlur DialogueUI>>
