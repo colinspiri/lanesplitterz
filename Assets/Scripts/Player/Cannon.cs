@@ -15,8 +15,6 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float maxYaw;
     [SerializeField] private float minPitch;
     [SerializeField] private float maxPitch;
-    /*    [SerializeField] private float maxLaunchForce;
-        [SerializeField] private float minLaunchForce;*/
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Transform launchPoint;
     [SerializeField] private Transform pivot;
@@ -26,7 +24,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
     [SerializeField] private TrajectoryLine trajectoryLine;
-    [SerializeField] private BoolVariable isPracticing;
+    [SerializeField] private PlayerInfo playerInfo;
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
@@ -202,6 +200,6 @@ public class Cannon : MonoBehaviour
 
     public void DetermineDisableInputs()
     {
-        if (isPracticing == false) DisableInputs();
+        if (playerInfo.isPracticing == false) DisableInputs();
     }
 }

@@ -17,7 +17,6 @@ public class RoundManager : MonoBehaviour {
     [Space]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isScoreboardEnabled;
     [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private PinCollection pinsStanding;
@@ -28,6 +27,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private LaneComponents lane;
     [SerializeField] private Material blueLane;
     [SerializeField] private Material greyLane;
+    [SerializeField] private PlayerInfo playerInfo;
 
     [Space] 
     [SerializeField] private string dialogueOnGameStart;
@@ -214,8 +214,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextRound() {
-        if (isPracticing.Value == false && !isFirstRound) currentRound.Value++;
-        if (isPracticing.Value == false) isFirstRound = false;
+        if (playerInfo.isPracticing == false && !isFirstRound) currentRound.Value++;
+        if (playerInfo.isPracticing == false) isFirstRound = false;
         currentThrow.Value = 1;
 
         if (currentRound.Value > totalRounds) {

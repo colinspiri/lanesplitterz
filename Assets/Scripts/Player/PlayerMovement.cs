@@ -77,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
 
     // private state
     [SerializeField] private PlayerInfo playerInfo;
-    [SerializeField] private BoolVariable isPracticing;
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
@@ -148,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void InitializeLevel()
     {
-        if (isPracticing.Value == true) SceneLoaderManager.Instance.LoadTutorialLevel();
+        if (playerInfo.isPracticing == true) SceneLoaderManager.Instance.LoadTutorialLevel();
         else sceneLoader.LoadNewLevel();
     }
 

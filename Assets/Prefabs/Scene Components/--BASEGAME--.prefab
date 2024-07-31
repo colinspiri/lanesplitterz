@@ -1279,7 +1279,6 @@ MonoBehaviour:
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
-  isPracticing: {fileID: 11400000, guid: 2e90c8b652eda614f8bc4d3d139dd612, type: 2}
   isScoreboardEnabled: {fileID: 11400000, guid: 8a282a0506043f14788025e372c2f19e,
     type: 2}
   isDoublePointsRound: {fileID: 11400000, guid: be1015ba4160f724c8541027733e3092,
@@ -1292,6 +1291,7 @@ MonoBehaviour:
   lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
   blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
   greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
+  playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   dialogueOnGameStart: BossStart
   dialogueOnPlayerWin: PlayerWin
   dialogueOnBossWin: BossWin
@@ -1960,6 +1960,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8500893530938471023}
     m_Modifications:
+    - target: {fileID: 189042919913237823, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: playerInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c,
+        type: 2}
     - target: {fileID: 189042919913237823, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: musicController

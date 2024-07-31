@@ -20,7 +20,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private IntVariable currentThrow;
     [SerializeField] private IntVariable currentRound;
-    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private BoolVariable isDoublePointsRound;
     [SerializeField] private GameObject clearingPinsUI;
@@ -38,13 +37,14 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private Material greyLane;
 
     [SerializeField] private UIConstants uiConstants;
+    [SerializeField] private PlayerInfo playerInfo;
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
 
     private void Awake()
     {
-        isPracticing.Value = true;
+        playerInfo.isPracticing = true;
     }
 
     // Start is called before the first frame update
@@ -58,7 +58,7 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator NextRoundUI()
     {
-        if (isPracticing.Value == true) yield break;
+        if (playerInfo.isPracticing == true) yield break;
 
         if (currentRound.Value <= 5)
         {
@@ -84,11 +84,11 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator DisplayEndThrowUI()
     {
-        if (isPracticing.Value == false) RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-        if (isPracticing.Value == false) RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+        if (playerInfo.isPracticing == false) RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
+        if (playerInfo.isPracticing == false) RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
         RoundManager.Instance.CalculateFinalScores();
 
-        if (isPracticing.Value == true)
+        if (playerInfo.isPracticing == true)
         {
             StartCoroutine(DisplayClearingPinsUI());
             yield break;
@@ -106,24 +106,24 @@ public class NewThrowUI : MonoBehaviour
     private IEnumerator DisplayClearingPinsUI()
     {
 
-        if (isPracticing.Value == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
-        if (isPracticing.Value == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
+        if (playerInfo.isPracticing == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
+        if (playerInfo.isPracticing == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
 
         clearingPinsUI.SetActive(true);
         yield return new WaitForSeconds(uiConstants.clearingPinsTime);
         clearingPinsUI.SetActive(false);
         currentScoresUI.SetActive(false);
 
-        if (isPracticing.Value == true && _isSecondThrow) _isSecondThrow = false;
+        if (playerInfo.isPracticing == true && _isSecondThrow) _isSecondThrow = false;
 
-        if (isPracticing.Value == true && _isFirstThrow)
+        if (playerInfo.isPracticing == true && _isFirstThrow)
         {
             EndFirstThrowTutorialUI.SetActive(false);
             _isFirstThrow = false;
             _isSecondThrow = true;
         }
 
-        if (isPracticing.Value == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
+        if (playerInfo.isPracticing == true && currentThrow.Value % 2 == 0) DisplayTutorialButtons();
     }
 
     // call when player wants to play tutorial again
@@ -187,7 +187,7 @@ public class NewThrowUI : MonoBehaviour
 
     public void EndTutorial()
     {
-        isPracticing.Value = false;
+        playerInfo.isPracticing = false;
         CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());
         clearingPinsUI.SetActive(false);

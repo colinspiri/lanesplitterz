@@ -10,11 +10,11 @@ public class WaitingArea : ActionOnCollide
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private GameEvent startLevelReset;
     [SerializeField] private GameEvent endLevelReset;
-    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isClearingPins;
     [SerializeField] private LaneComponents lane;
     [SerializeField] private GameObject ground;
     [SerializeField] private UIConstants uiConstants;
+    [SerializeField] private PlayerInfo playerInfo;
 
     private int ballCount = 10;
     private GameObject ballOne = null;
@@ -49,7 +49,7 @@ public class WaitingArea : ActionOnCollide
 
     // when player is still in tutorial, we want reset everything based on the button click, not a wait time
 
-        if (currentThrow.Value % 2 == 0 && isPracticing.Value == false)
+        if (currentThrow.Value % 2 == 0 && playerInfo.isPracticing == false)
         {
             yield return new WaitForSeconds(uiConstants.clearingPinsTime + uiConstants.currentScoresTime);
             RoundManager.Instance.UpdateScoreboard();
@@ -62,7 +62,7 @@ public class WaitingArea : ActionOnCollide
         else if (currentThrow.Value % 2 == 1)
         {
             yield return new WaitForSeconds(uiConstants.clearingPinsTime);
-            if (isPracticing == false) RoundManager.Instance.UpdateScoreboard();
+            if (playerInfo.isPracticing == false) RoundManager.Instance.UpdateScoreboard();
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
             playerCurrentPoints.Value = 0;

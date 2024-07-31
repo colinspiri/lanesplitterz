@@ -24,10 +24,10 @@ public class ScoreboardUI : MonoBehaviour {
 
     [SerializeField] private IntVariable currentRound;
     [SerializeField] private IntVariable currentThrow;
-    [SerializeField] private BoolVariable isPracticing;
     [SerializeField] private BoolVariable isScoreboardEnabled;
 
     [SerializeField] private GameObject scoreboardUI;
+    [SerializeField] private PlayerInfo playerInfo;
 
     private void Awake() {
         Instance = this;
@@ -40,8 +40,8 @@ public class ScoreboardUI : MonoBehaviour {
 
     private void Update()
     {
-        if (isPracticing.Value == false && Input.GetKeyDown(KeyCode.Tab) && isScoreboardEnabled.Value == true) scoreboardUI.SetActive(true);
-        if (isPracticing.Value == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
+        if (playerInfo.isPracticing == false && Input.GetKeyDown(KeyCode.Tab) && isScoreboardEnabled.Value == true) scoreboardUI.SetActive(true);
+        if (playerInfo.isPracticing == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
     }
 
     private string ChangeScoreboardRoundText(List<int> pointsByThrow)
@@ -53,7 +53,7 @@ public class ScoreboardUI : MonoBehaviour {
 /*        playerScoreText.text = PointsByThrowToString(RoundManager.Instance.playerPointsByThrow);
         enemyScoreText.text = PointsByThrowToString(RoundManager.Instance.enemyPointsByThrow);*/
 
-        if (isPracticing.Value) return;
+        if (playerInfo.isPracticing) return;
 
         switch(currentRound.Value) {
             case 1:
