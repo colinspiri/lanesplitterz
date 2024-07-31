@@ -9,8 +9,8 @@ using UnityEngine.SceneManagement;
 public class SceneLoaderManager : MonoBehaviour
 {
     public static SceneLoaderManager Instance;
-    [SerializeField] private IntVariable currentLevelIndex;
     [SerializeField] MusicController musicController;
+    [SerializeField] private GameState gameState;
     
     private void Awake()
     {
@@ -33,9 +33,9 @@ public class SceneLoaderManager : MonoBehaviour
     }
     public IEnumerator LoadLevelCoroutine()
     {
-        yield return SceneManager.UnloadSceneAsync("Level " + currentLevelIndex.Value.ToString());
-        SceneManager.LoadScene("Level " + (currentLevelIndex.Value + 1).ToString(), LoadSceneMode.Additive);
-        currentLevelIndex.Value++;
-        musicController.NextLevel(currentLevelIndex.Value);
+        yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());
+        SceneManager.LoadScene("Level " + (gameState.currentLevelIndex + 1).ToString(), LoadSceneMode.Additive);
+        gameState.currentLevelIndex++;
+        musicController.NextLevel(gameState.currentLevelIndex);
     }
 }
