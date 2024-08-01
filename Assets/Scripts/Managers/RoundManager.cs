@@ -12,21 +12,19 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private int totalRounds = -1;
     [SerializeField] private int throwsPerRound = 1;
     
-    [Space]
+    [Header("Game Events")]
+    [SerializeField] private GameEvent ballAtEndOfTrack;
+    [SerializeField] private GameEvent endGame;
+
+    [Header("Scriptable Objects")]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private PinCollection pinsStanding;
-    [SerializeField] private GameEvent ballAtEndOfTrack;
-    [SerializeField] private GameEvent endGame;
-    [SerializeField] private AdaptiveMusicContainer gameMusic;
-    [SerializeField] private CrowdManager crowdManager;
     [SerializeField] private LaneComponents lane;
-    [SerializeField] private Material blueLane;
-    [SerializeField] private Material greyLane;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
 
-    [Space] 
+    [Header("Dialogue")] 
     [SerializeField] private string dialogueOnGameStart;
     [SerializeField] private string dialogueOnPlayerWin;
     [SerializeField] private string dialogueOnBossWin;
@@ -36,16 +34,19 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private string dialogueOnRoundFive;
     private DialogueRunner _dialogueRunner;
 
-    [Space] 
-    public List<int> playerPointsByThrow = new();
-    public List<int> enemyPointsByThrow = new();
-    public int playerFinalScore;
-    public int enemyFinalScore;
+    [Space]
+    [SerializeField] private AdaptiveMusicContainer gameMusic;
+    [SerializeField] private CrowdManager crowdManager;
+    [SerializeField] private Material blueLane;
+    [SerializeField] private Material greyLane;
 
-    [HideInInspector]
-    public int playerPointsByRound;
-    [HideInInspector]
-    public int enemyPointsByRound;
+    [Space]
+    [HideInInspector] public List<int> playerPointsByThrow = new();
+    [HideInInspector] public List<int> enemyPointsByThrow = new();
+    [HideInInspector] public int playerFinalScore;
+    [HideInInspector] public int enemyFinalScore;
+    [HideInInspector] public int playerPointsByRound;
+    [HideInInspector] public int enemyPointsByRound;
 
     public static Action OnNewThrow;
     public static Action OnNewRound;

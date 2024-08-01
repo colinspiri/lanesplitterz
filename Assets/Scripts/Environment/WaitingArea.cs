@@ -5,19 +5,23 @@ using ScriptableObjectArchitecture;
 
 public class WaitingArea : ActionOnCollide
 {
-    [SerializeField] private IntVariable playerCurrentPoints;
-    [SerializeField] private IntVariable enemyCurrentPoints;
+    [Header("Game Events")]
     [SerializeField] private GameEvent startLevelReset;
     [SerializeField] private GameEvent endLevelReset;
+
+    [Header("Scriptable Objects")]
+    [SerializeField] private IntVariable playerCurrentPoints;
+    [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private LaneComponents lane;
-    [SerializeField] private GameObject ground;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
 
-    private int ballCount = 10;
+    [Space]
+    [SerializeField] private GameObject ground;
     private GameObject ballOne = null;
     private GameObject ballTwo = null;
+    private int ballCount = 10;
 
     private void Awake()
     {

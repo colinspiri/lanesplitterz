@@ -6,9 +6,7 @@ using ScriptableObjectArchitecture;
 
 public class NewThrowUI : MonoBehaviour
 {
-    [SerializeField] private GameObject roundUI;
-    [SerializeField] private TextMeshProUGUI roundText;
-    [SerializeField] private float roundUITime;
+    [Header("Game Events")]
     [SerializeField] private GameEvent roundUIEndOne;
     [SerializeField] private GameEvent roundUIEndTwo;
     [SerializeField] private GameEvent roundUIEndThree;
@@ -16,11 +14,11 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent roundUIEndFive;
     [SerializeField] private GameEvent endWinLoseUI;
     [SerializeField] private GameEvent tutorialReset;
-    [SerializeField] private IntVariable playerCurrentPoints;
-    [SerializeField] private IntVariable enemyCurrentPoints;
+
+    [Header("UI Elements")]
+    [SerializeField] private GameObject roundUI;
     [SerializeField] private GameObject clearingPinsUI;
     [SerializeField] private GameObject currentScoresUI;
-    [SerializeField] private TextMeshProUGUI currentScoresText;
     [SerializeField] private GameObject winLoseUI;
     [SerializeField] private GameObject winTextObject;
     [SerializeField] private GameObject loseTextObject;
@@ -28,13 +26,22 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject playGameButton;
     [SerializeField] private GameObject EndFirstThrowTutorialUI;
     [SerializeField] private GameObject EndSecondThrowTutorialUI;
-    [SerializeField] private LaneComponents lane;
-    [SerializeField] private Material blueLane;
-    [SerializeField] private Material greyLane;
 
+    [Header("Text Elements")]
+    [SerializeField] private TextMeshProUGUI roundText;
+    [SerializeField] private TextMeshProUGUI currentScoresText;
+
+    [Header("Scriptable Objects")]
+    [SerializeField] private IntVariable playerCurrentPoints;
+    [SerializeField] private IntVariable enemyCurrentPoints;
+    [SerializeField] private LaneComponents lane;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
+
+    [Space]
+    [SerializeField] private Material blueLane;
+    [SerializeField] private Material greyLane;
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
@@ -61,7 +68,7 @@ public class NewThrowUI : MonoBehaviour
         {
             roundText.text = "Round " + gameState.currentRound;
             roundUI.SetActive(true);
-            yield return new WaitForSeconds(roundUITime);
+            yield return new WaitForSeconds(uiConstants.roundUITime);
             roundUI.SetActive(false);
 
             if (gameState.currentRound == 1) roundUIEndOne.Raise(); // should start dialogue
@@ -157,7 +164,7 @@ public class NewThrowUI : MonoBehaviour
         if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore) loseTextObject.SetActive(false);
         else winTextObject.SetActive(false);
 
-        yield return new WaitForSeconds(roundUITime);
+        yield return new WaitForSeconds(uiConstants.roundUITime);
 
         winLoseUI.SetActive(false);
         endWinLoseUI.Raise();

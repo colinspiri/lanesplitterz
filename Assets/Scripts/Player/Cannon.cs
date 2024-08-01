@@ -10,7 +10,6 @@ using Yarn.Unity;
 public class Cannon : MonoBehaviour
 {
     [Header("Launch parameters")]
-
     [SerializeField] private float minYaw;
     [SerializeField] private float maxYaw;
     [SerializeField] private float minPitch;
@@ -19,11 +18,9 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Transform launchPoint;
     [SerializeField] private Transform pivot;
 
-    [SerializeField] private Rigidbody ball;
-
+    [Header("Scriptable Objects")]
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
-    [SerializeField] private TrajectoryLine trajectoryLine;
     [SerializeField] private PlayerInfo playerInfo;
 
     [Header("Events")]
@@ -40,10 +37,13 @@ public class Cannon : MonoBehaviour
     [SerializeField] private AudioSource launchSound;
     [SerializeField] private AdaptiveMusicContainer turnSound;
 
+    [Space]
+    [SerializeField] private Rigidbody ball;
+    [SerializeField] private TrajectoryLine trajectoryLine;
+
     public bool acceptingInputs;
     private bool launched;
     private Vector2 movementInput;
-    //private float launchForce;
     private Enemy _enemy;
     private int numSpacePressed = 0;
     private bool _isFirstThrow;

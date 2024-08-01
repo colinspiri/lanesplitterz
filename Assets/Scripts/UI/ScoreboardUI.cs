@@ -7,21 +7,25 @@ using UnityEngine;
 public class ScoreboardUI : MonoBehaviour {
     public static ScoreboardUI Instance;
 
+    [Header("Score Text")]
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private TextMeshProUGUI enemyScoreText;
 
+    [Header("Player Scoreboard Score Text")]
     [SerializeField] private TextMeshProUGUI playerRoundOneText;
     [SerializeField] private TextMeshProUGUI playerRoundTwoText;
     [SerializeField] private TextMeshProUGUI playerRoundThreeText;
     [SerializeField] private TextMeshProUGUI playerRoundFourText;
     [SerializeField] private TextMeshProUGUI playerRoundFiveText;
 
+    [Header("Enemy Scoreboard Score Text")]
     [SerializeField] private TextMeshProUGUI enemyRoundOneText;
     [SerializeField] private TextMeshProUGUI enemyRoundTwoText;
     [SerializeField] private TextMeshProUGUI enemyRoundThreeText;
     [SerializeField] private TextMeshProUGUI enemyRoundFourText;
     [SerializeField] private TextMeshProUGUI enemyRoundFiveText;
 
+    [Space]
     [SerializeField] private GameObject scoreboardUI;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;

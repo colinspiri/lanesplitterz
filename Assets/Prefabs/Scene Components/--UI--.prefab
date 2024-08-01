@@ -6677,9 +6677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8967e3d64cccdc545b1c083631a90edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundUI: {fileID: 192959175889986804}
-  roundText: {fileID: 6446794090032196939}
-  roundUITime: 2
   roundUIEndOne: {fileID: 11400000, guid: 2be133d254e0d074d91eda6ffce7b033, type: 2}
   roundUIEndTwo: {fileID: 11400000, guid: 90078335c08236f4eb35806a16701969, type: 2}
   roundUIEndThree: {fileID: 11400000, guid: a2a02768dd6858a45b4e3b46b091a898, type: 2}
@@ -6687,15 +6684,9 @@ MonoBehaviour:
   roundUIEndFive: {fileID: 11400000, guid: b4384d9298723ab49945b2640a1732d7, type: 2}
   endWinLoseUI: {fileID: 11400000, guid: 7564d2bb1c12c704a81e9bafa122f4ec, type: 2}
   tutorialReset: {fileID: 11400000, guid: 4301fd6bf70e4be4da5d9035cf8e0c37, type: 2}
-  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
-    type: 2}
-  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
-  currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
-  currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
-  isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
+  roundUI: {fileID: 192959175889986804}
   clearingPinsUI: {fileID: 6501112475288437994}
   currentScoresUI: {fileID: 8776244600317082531}
-  currentScoresText: {fileID: 5365146762723250321}
   winLoseUI: {fileID: 1456869678002973592}
   winTextObject: {fileID: 158945163032935596}
   loseTextObject: {fileID: 4227903313538230577}
@@ -6703,12 +6694,17 @@ MonoBehaviour:
   playGameButton: {fileID: 6838857467605894041}
   EndFirstThrowTutorialUI: {fileID: 506159445758813143}
   EndSecondThrowTutorialUI: {fileID: 4242408435272304895}
+  roundText: {fileID: 6446794090032196939}
+  currentScoresText: {fileID: 5365146762723250321}
+  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
+    type: 2}
+  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
-  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
-  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
   uiConstants: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
+  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
+  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
 --- !u!114 &3245869635864142511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16369,8 +16365,6 @@ MonoBehaviour:
   enemyRoundThreeText: {fileID: 5977781363848869300}
   enemyRoundFourText: {fileID: 143319366358606911}
   enemyRoundFiveText: {fileID: 638079383954711767}
-  currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
-  currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
   scoreboardUI: {fileID: 235461834100685176}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
@@ -24967,6 +24961,12 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 8348022543544618882}
+    - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: uiConstants
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8,
+        type: 2}
     - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: doublePointsUITime

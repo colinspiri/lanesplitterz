@@ -18,4 +18,6 @@ public class UIConstants : ScriptableObject
     [Header("Time to display specific UI elements")]
     public float clearingPinsTime;
     public float currentScoresTime;
+    public float roundUITime;
+    public float doublePointsUITime;
 }

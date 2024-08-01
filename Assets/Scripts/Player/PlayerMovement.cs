@@ -76,7 +76,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public int AccelerationDirection; // -1 is decelerating, 1 is accelerating, 0 is no acceleration
 
     // private state
-    [SerializeField] private PlayerInfo playerInfo;
     private Vector3 _startingPosition;
     private Quaternion _startingRotation;
     private float _fuelMeter = 1f;
@@ -87,8 +86,10 @@ public class PlayerMovement : MonoBehaviour
     private bool turning = false;
 
     // misc
-    private int _groundMask;
+    [Space]
+    [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private SceneLoader sceneLoader;
+    private int _groundMask;
 
     #region MonoBehaviour Functions
 

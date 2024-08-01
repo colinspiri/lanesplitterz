@@ -9,14 +9,18 @@ using ScriptableObjectArchitecture;
 
 public class DialogueUI : MonoBehaviour
 {
+    [Header("UI Elements")]
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
     [SerializeField] private GameObject playerArt;
     [SerializeField] private GameObject enemyArt;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject doublePointsUI;
-    [SerializeField] private float doublePointsUITime;
+
+    [Header("Scriptable Objects")]
     [SerializeField] private GameState gameState;
+    [SerializeField] private UIConstants uiConstants;
+
     private Transform _myCam;
 
     void Start()
@@ -120,7 +124,7 @@ public class DialogueUI : MonoBehaviour
     public IEnumerator EnableDoublePointsUI()
     {
         doublePointsUI.SetActive(true);
-        yield return new WaitForSeconds(doublePointsUITime);
+        yield return new WaitForSeconds(uiConstants.doublePointsUITime);
         doublePointsUI.SetActive(false);
     }
 
