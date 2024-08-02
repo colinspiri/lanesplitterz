@@ -9,8 +9,8 @@ public class RoundManager : MonoBehaviour {
     public static RoundManager Instance;
 
     [Tooltip("Rounds to play before a winner is decided. If -1, game never ends.")]
-    [SerializeField] private int totalRounds = -1;
-    [SerializeField] private int throwsPerRound = 1;
+    public int totalRounds = -1;
+    public int throwsPerRound = 1;
     
     [Header("Game Events")]
     [SerializeField] private GameEvent ballAtEndOfTrack;
@@ -22,6 +22,7 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private PinCollection pinsStanding;
     [SerializeField] private LaneComponents lane;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private ElvisInfo elvisInfo;
     [SerializeField] private GameState gameState;
 
     [Header("Dialogue")] 
@@ -193,15 +194,30 @@ public class RoundManager : MonoBehaviour {
         NextRound();
     }
 
-    private void NextThrow() {
-        if ((gameState.currentRound == 2 || gameState.currentRound == 4) && gameState.isDoublePointsThrow == true && gameState.currentThrow == 1)
+    public void CheckElvisAbility()
+    {
+        if (elvisInfo.doublePointsThrows.ContainsKey(gameState.currentRound))
         {
-            lane.ground.GetComponent<Renderer>().material = greyLane;
-            lane.waitingArea.GetComponent<Renderer>().material = greyLane;
-            gameState.isDoublePointsThrow = false;
+            if (elvisInfo.doublePointsThrows[gameState.currentRound] == gameState.currentThrow)
+            {
+                ChangeLaneMaterial(blueLane);
+                gameState.isDoublePointsThrow = true;
+                return;
+            }
         }
+
+        ChangeLaneMaterial(greyLane);
+        gameState.isDoublePointsThrow = false;
+    }
+
+    private void ChangeLaneMaterial(Material material)
+    {
+        lane.ground.GetComponent<Renderer>().material = material;
+        lane.waitingArea.GetComponent<Renderer>().material = material;
+    }
+
+    private void NextThrow() {
         gameState.currentThrow++;
-        
         OnNewThrow?.Invoke();
     }
 

@@ -621,7 +621,6 @@ MonoBehaviour:
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
-  isClearingPins: {fileID: 11400000, guid: 6aee43155f87f3843968dcdd5f7fcd38, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   player: 0
 --- !u!1 &2152114690493040708
@@ -1273,20 +1272,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalRounds: 5
   throwsPerRound: 2
-  currentRound: {fileID: 11400000, guid: fef7fb3ba1285724ca90ddfca440329e, type: 2}
-  currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
+  ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
+  endGame: {fileID: 11400000, guid: 94ede9a4d80304548847c316c930258d, type: 2}
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
-  ballAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
-  endGame: {fileID: 11400000, guid: 94ede9a4d80304548847c316c930258d, type: 2}
-  gameMusic: {fileID: 6660178748321575947}
-  crowdManager: {fileID: 4899293681437575515}
   lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
-  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
-  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
+  elvisInfo: {fileID: 11400000, guid: 5092dbf9bbd63174280e3096d89b1966, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   dialogueOnGameStart: BossStart
   dialogueOnPlayerWin: PlayerWin
@@ -1295,6 +1289,10 @@ MonoBehaviour:
   dialogueOnRoundThree: RoundThree
   dialogueOnRoundFour: RoundFour
   dialogueOnRoundFive: RoundFive
+  gameMusic: {fileID: 6660178748321575947}
+  crowdManager: {fileID: 4899293681437575515}
+  blueLane: {fileID: 2100000, guid: 79f4d49bb1d7d9c448faebdfa5b70f30, type: 2}
+  greyLane: {fileID: 2100000, guid: 0a892c9268708a44e939f030c3983667, type: 2}
   playerPointsByThrow: 
   enemyPointsByThrow: 
   playerFinalScore: 0

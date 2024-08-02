@@ -34,14 +34,9 @@ public class NewThrowUI : MonoBehaviour
     [Header("Scriptable Objects")]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private LaneComponents lane;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
-
-    [Space]
-    [SerializeField] private Material blueLane;
-    [SerializeField] private Material greyLane;
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
@@ -64,25 +59,19 @@ public class NewThrowUI : MonoBehaviour
     {
         if (playerInfo.isPracticing == true) yield break;
 
-        if (gameState.currentRound <= 5)
+        if (gameState.currentRound <= RoundManager.Instance.totalRounds)
         {
             roundText.text = "Round " + gameState.currentRound;
             roundUI.SetActive(true);
             yield return new WaitForSeconds(uiConstants.roundUITime);
             roundUI.SetActive(false);
 
-            if (gameState.currentRound == 1) roundUIEndOne.Raise(); // should start dialogue
+            // events to start round dialogue
+            if (gameState.currentRound == 1) roundUIEndOne.Raise();
             if (gameState.currentRound == 2) roundUIEndTwo.Raise();
             if (gameState.currentRound == 3) roundUIEndThree.Raise();
             if (gameState.currentRound == 4) roundUIEndFour.Raise();
             if (gameState.currentRound == 5) roundUIEndFive.Raise();
-
-            if (gameState.currentRound == 2 || gameState.currentRound == 4)
-            {
-                lane.ground.GetComponent<Renderer>().material = blueLane;
-                lane.waitingArea.GetComponent<Renderer>().material = blueLane;
-                gameState.isDoublePointsThrow = true;
-            }
         }
     }
 

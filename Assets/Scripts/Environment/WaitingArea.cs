@@ -27,6 +27,7 @@ public class WaitingArea : ActionOnCollide
     {
         lane.ground = ground;
         lane.waitingArea = gameObject;
+        RoundManager.Instance.CheckElvisAbility();
     }
 
     protected override void DoAction(Collision collision)
