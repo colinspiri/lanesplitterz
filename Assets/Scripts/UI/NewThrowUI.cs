@@ -33,8 +33,6 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentScoresText;
 
     [Header("Scriptable Objects")]
-    [SerializeField] private IntVariable playerCurrentPoints;
-    [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
@@ -95,7 +93,6 @@ public class NewThrowUI : MonoBehaviour
     }
     private IEnumerator DisplayClearingPinsUI()
     {
-
         if (playerInfo.isPracticing == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
         if (playerInfo.isPracticing == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
 
@@ -121,8 +118,6 @@ public class NewThrowUI : MonoBehaviour
     {
         tutorialReset.Raise();
         clearingPinsUI.SetActive(false);
-        playerCurrentPoints.Value = 0;
-        enemyCurrentPoints.Value = 0;
         gameState.isClearingPins = false;
     }
 
@@ -181,8 +176,7 @@ public class NewThrowUI : MonoBehaviour
         CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());
         clearingPinsUI.SetActive(false);
-        playerCurrentPoints.Value = 0;
-        enemyCurrentPoints.Value = 0;
+        RoundManager.Instance.ClearPlayerCurrentPoints();
         gameState.isClearingPins = false;
     }
 

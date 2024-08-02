@@ -66,6 +66,8 @@ public class RoundManager : MonoBehaviour {
         gameState.currentThrow = 1;
         gameState.isClearingPins = false;
 
+        ChangeLaneMaterial(greyLane);
+
         isFirstRound = true;
     }
 
@@ -135,6 +137,7 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
+    // This is specifically after the waiting period finishes
     public void NotifyBallsAtEndOfTrack() {
         // then a little delay before end of throw (move delay here from end of track trigger)
 
@@ -254,5 +257,11 @@ public class RoundManager : MonoBehaviour {
             _dialogueRunner.StartDialogue(dialogueOnBossWin);
             gameMusic.TransitionSection(1);
         }    
+    }
+
+    public void ClearPlayerCurrentPoints()
+    {
+        playerCurrentPoints.Value = 0;
+        enemyCurrentPoints.Value = 0;
     }
 }
