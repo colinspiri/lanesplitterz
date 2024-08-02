@@ -11,14 +11,28 @@ public class SceneLoaderManager : MonoBehaviour
     public static SceneLoaderManager Instance;
     [SerializeField] MusicController musicController;
     [SerializeField] private GameState gameState;
+    [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private SceneLoader sceneLoader;
     
     private void Awake()
     {
         Instance = this;
     }
+
+    private void Start()
+    {
+        RoundManager.OnNewRound += InitializeLevel;
+    }
+
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevelCoroutine());
+    }
+
+    private void InitializeLevel()
+    {
+        if (playerInfo.isPracticing == true) LoadTutorialLevel();
+        else sceneLoader.LoadNewLevel();
     }
 
     public void LoadTutorialLevel()
@@ -31,6 +45,7 @@ public class SceneLoaderManager : MonoBehaviour
         yield return SceneManager.UnloadSceneAsync("Level 0");
         SceneManager.LoadScene("Level 0", LoadSceneMode.Additive);
     }
+
     public IEnumerator LoadLevelCoroutine()
     {
         yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());

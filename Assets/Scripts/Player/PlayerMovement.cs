@@ -121,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
 
         RoundManager.OnNewThrow += Initialize;
         RoundManager.OnNewRound += Initialize;
-        RoundManager.OnNewRound += InitializeLevel;
         RoundManager.OnNewThrow += () => _hasLaunched = false;
         RoundManager.OnNewRound += () => _hasLaunched = false;
 
@@ -144,12 +143,6 @@ public class PlayerMovement : MonoBehaviour
 
         playerInfo.currentFuel = 1;
         _fuelMeter = 1f;
-    }
-
-    private void InitializeLevel()
-    {
-        if (playerInfo.isPracticing == true) SceneLoaderManager.Instance.LoadTutorialLevel();
-        else sceneLoader.LoadNewLevel();
     }
 
     private void Update()
