@@ -80,20 +80,18 @@ public class NewThrowUI : MonoBehaviour
     {
         ballsAtEndOfTrack.Raise();
 
-        if (playerInfo.isPracticing == true)
+        if (playerInfo.isPracticing == true || gameState.currentThrow == 1)
         {
             StartCoroutine(DisplayClearingPinsUI());
             yield break;
         }
-
-        if (gameState.currentThrow % 2 == 0)
+        else if (gameState.currentThrow % 2 == 0)
         {
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
             currentScoresUI.SetActive(true);
             yield return new WaitForSeconds(uiConstants.currentScoresTime);
             StartCoroutine(DisplayClearingPinsUI());
         }
-        else StartCoroutine(DisplayClearingPinsUI());
     }
     private IEnumerator DisplayClearingPinsUI()
     {

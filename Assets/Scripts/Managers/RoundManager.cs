@@ -223,6 +223,7 @@ public class RoundManager : MonoBehaviour {
 
     private void NextThrow() {
         gameState.currentThrow++;
+        CheckElvisAbility();
         OnNewThrow?.Invoke();
     }
 
