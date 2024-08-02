@@ -165,6 +165,11 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void CalculateFinalScores() {
+        if (playerInfo.isPracticing == true) return;
+        
+        playerPointsByThrow.Add(playerCurrentPoints.Value);
+        enemyPointsByThrow.Add(enemyCurrentPoints.Value);
+
         playerFinalScore = 0;
         foreach (var playerPoint in playerPointsByThrow) {
             playerFinalScore += playerPoint;
@@ -227,7 +232,6 @@ public class RoundManager : MonoBehaviour {
         gameState.currentThrow = 1;
 
         if (gameState.currentRound > totalRounds) {
-            CalculateFinalScores();
             ScoreboardUI.Instance.ShowFinalScores();
             endGame.Raise();
             return;

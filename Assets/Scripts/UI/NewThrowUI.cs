@@ -14,6 +14,7 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent roundUIEndFive;
     [SerializeField] private GameEvent endWinLoseUI;
     [SerializeField] private GameEvent tutorialReset;
+    [SerializeField] private GameEvent ballsAtEndOfTrack;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject roundUI;
@@ -77,9 +78,7 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator DisplayEndThrowUI()
     {
-        if (playerInfo.isPracticing == false) RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-        if (playerInfo.isPracticing == false) RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
-        RoundManager.Instance.CalculateFinalScores();
+        ballsAtEndOfTrack.Raise();
 
         if (playerInfo.isPracticing == true)
         {
