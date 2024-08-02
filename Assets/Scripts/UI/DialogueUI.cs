@@ -134,11 +134,47 @@ public class DialogueUI : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
-    
+
     [YarnCommand("DisableMouse")]
     public void DisableMouse()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    [YarnCommand("EnableDialogue")]
+    public void EnableDialogue()
+    {
+        DisableHUD();
+        EnableBlur();
+        EnablePlayerArt();
+        EnableEnemyArt();
+        EnableMouse();
+    }
+
+    // only call after art is enabled
+    [YarnCommand("EnablePlayerDialogueElvis")]
+    public void EnablePlayerDialogueElvis()
+    {
+        FadeInPlayerArt();
+        FadeOutEnemyArt();
+    }
+
+    // only call after art is enabled
+    [YarnCommand("EnableElvisDialogue")]
+    public void EnableElvisDialogue()
+    {
+        FadeInEnemyArt();
+        FadeOutPlayerArt();
+    }
+
+    [YarnCommand("DisableDialogue")]
+    public void DisableDialogue()
+    {
+        EnableHUD();
+        DisableBlur();
+        DisablePlayerArt();
+        DisableEnemyArt();
+        DisableMouse();
     }
 }

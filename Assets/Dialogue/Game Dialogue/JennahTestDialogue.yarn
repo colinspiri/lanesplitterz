@@ -9,71 +9,47 @@ Character 1: Yep. #line:0a8fa76
 title: BossStart
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-<<FadeOutEnemyArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro:  Woah! I’ve seen you playing on Fremont Street. Could I have your autograph? You rock! #line:09667e0 
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 ???: Thank you very much. Your chance of success is 0.0132%. #line:013f2c3 
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Um...
 Hiro: Thanks, but-
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 ???: You are welcome. I am simply preparing you for your failure.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Oh, no need, I'm gonna win this thing!
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 ???: You are not. Still want an autograph, baby?
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Yup!
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 ??: What is your name, son?
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: My name is Hiro Protag. And yours?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: E1-V15. Here.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
 Hiro: Thanks! Elvis? I thought your name was E1-V15?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: Indeed, I signed with the name of the King.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: King? You mean Ceasar?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: !!!
 E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: What is he? Some kind of magician?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: ...
 E1-V15: No.
 E1-V15: You should prepare yourself, son. You will not make it past the opener.
-<<DisableEnemyArt DialogueUI>>
-<<DisablePlayerArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
+<<DisableDialogue DialogueUI>>
 <<EnableInputs Cannon>>
-<<DisableMouse DialogueUI>> 
 <<EnableScoreboard DialogueUI>>
 
 //<<EnableMouse DialogueUI>>
@@ -98,186 +74,122 @@ E1-V15: You should prepare yourself, son. You will not make it past the opener.
 title: BossWin
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
-<<FadeOutPlayerArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: It seems my predictions were correct. Spirit had no bearing on the outcome. #line:09622a5 
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Dang it! I'll be back next time.  #line:00105e8 
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: By then, Elvis will sit on Caesar's throne. 
 E1-V15: Btw, father jinn gotchyo ass.
-<<DisablePlayerArt DialogueUI>>
-<<DisableEnemyArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 ===
 
 title: PlayerWin
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: I won? Wait… I won??? Holy-
 <<FadeOutPlayerArt DialogueUI>>
 //Needs Character Art
 Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 //Needs Character Art
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Wait, you didn’t think I'd win?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: It is no surprise, baby.
 E1-V15: Spirit is far more valuable a predictor than I thought.
 <<FadeOutEnemyArt DialogueUI>>
 //Needs Character Art
 Emiliana: He's a real special kid, our Hiro.
 //Needs Character Art
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Thanks, E1. It was an honor to roll with you.
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: ...
 E1-V15: I will not revive him anymore.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Elvis the Pelvis?
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: It is time to put the past to rest.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Cool. And E1?
 Hiro: Good luck out there.
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: Thank you, thank you very much.
 E1-V15: And before I leave, may I have your autograph?
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: !!!
 Hiro: Sure!
-<<DisablePlayerArt DialogueUI>>
-<<DisablePlayerArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 ===
 
 title: RoundTwo
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
-<<FadeOutPlayerArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: You are far better than expected. You will fail nonetheless, baby.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: Just you wait!
-<<DisablePlayerArt DialogueUI>>
-<<DisableEnemyArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 <<EnableDoublePointsUI DialogueUI>>
 ===
 
 title: RoundThree
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-<<FadeOutEnemyArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: I am just warming up hehe.
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: You have no chance.
-<<DisableEnemyArt DialogueUI>>
-<<DisablePlayerArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 ===
 
 title: RoundFour
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnableEnemyArt DialogueUI>>
-<<EnablePlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
-<<FadeOutPlayerArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: Give up, son. Your concert ends now.
-<<FadeOutEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: I still got an encore!
 <<DisablePlayerArt DialogueUI>>
 <<DisableEnemyArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
 <<EnableInputs Cannon>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 <<EnableDoublePointsUI DialogueUI>>
 ===
 
 title: RoundFive
 tags:
 ---
-<<EnableBlur DialogueUI>>
-<<DisableHud DialogueUI>>
+<<EnableDialogue DialogueUI>>
 <<DisableInputs Cannon>>
-<<EnablePlayerArt DialogueUI>>
-<<EnableEnemyArt DialogueUI>>
-<<FadeInPlayerArt DialogueUI>>
-<<FadeOutEnemyArt DialogueUI>>
-<<EnableMouse DialogueUI>>
+<<EnablePlayerDialogueElvis DialogueUI>>
 Hiro: I can't let you do this, E1.
-<<FadeOutPlayerArt DialogueUI>>
-<<FadeInEnemyArt DialogueUI>>
+<<EnableElvisDialogue DialogueUI>>
 E1-V15: ...
-<<DisableEnemyArt DialogueUI>>
-<<DisablePlayerArt DialogueUI>>
-<<DisableBlur DialogueUI>>
-<<EnableHud DialogueUI>>
+
 <<EnableInputs Cannon>>
-<<DisableMouse DialogueUI>>
 <<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 ===
