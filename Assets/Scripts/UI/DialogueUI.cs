@@ -114,18 +114,18 @@ public class DialogueUI : MonoBehaviour
         artTwo.transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    // used for emiliana
+/*    // used for emiliana
     [YarnCommand("EnableOneArt")]
     public void EnableOneArt(GameObject art)
     {
         art.SetActive(true);
-    }
+    }*/
 
     // used for emiliana
     [YarnCommand("DisableOneArt")]
     public void DisableOneArt(GameObject art)
     {
-        art.SetActive(false);
+        art.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     [YarnCommand("EnableFadeArt")]
