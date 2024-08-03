@@ -12,8 +12,8 @@ public class DialogueUI : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
-    [SerializeField] private GameObject playerArt;
-    [SerializeField] private GameObject enemyArt;
+/*    [SerializeField] private GameObject playerArt;
+    [SerializeField] private GameObject enemyArt;*/
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject doublePointsUI;
 
@@ -27,6 +27,8 @@ public class DialogueUI : MonoBehaviour
     {
         _myCam = GameObject.FindWithTag("MainCamera").transform;
     }
+
+    #region Utility Dialogue Functions
 
     [YarnCommand("DisableHud")]
     public void DisableHUD()
@@ -52,61 +54,6 @@ public class DialogueUI : MonoBehaviour
         blur.gameObject.SetActive(false);
     }
 
-    [YarnCommand("EnablePlayerArt")]
-    public void EnablePlayerArt()
-    {
-        playerArt.SetActive(true);
-    }
-
-    [YarnCommand("DisablePlayerArt")]
-    public void DisablePlayerArt()
-    {
-        playerArt.SetActive(false);
-    }
-
-    [YarnCommand("EnableEnemyArt")]
-    public void EnableEnemyArt()
-    {
-        enemyArt.SetActive(true);
-    }
-
-    [YarnCommand("DisableEnemyArt")]
-    public void DisableEnemyArt()
-    {
-        enemyArt.SetActive(false);
-    }
-
-    [YarnCommand("FadeInPlayerArt")]
-    public void FadeInPlayerArt()
-    {
-        Color tempColor = playerArt.GetComponent<Image>().color;
-        tempColor.a = 1f;
-        playerArt.GetComponent<Image>().color = tempColor;
-    }
-
-    [YarnCommand("FadeOutPlayerArt")]
-    public void FadeOutPlayerArt()
-    {
-        Color tempColor = playerArt.GetComponent<Image>().color;
-        tempColor.a = 0.1f;
-        playerArt.GetComponent<Image>().color = tempColor;
-    }
-
-    [YarnCommand("FadeInEnemyArt")]
-    public void FadeInEnemyArt()
-    {
-        Color tempColor = enemyArt.GetComponent<Image>().color;
-        tempColor.a = 1f;
-        enemyArt.GetComponent<Image>().color = tempColor;
-    }
-
-    [YarnCommand("FadeOutEnemyArt")]
-    public void FadeOutEnemyArt()
-    {
-        Color tempColor = enemyArt.GetComponent<Image>().color;
-        tempColor.a = 0.1f;
-        enemyArt.GetComponent<Image>().color = tempColor;
-    }
 
     [YarnCommand("EnableGameOverUI")]
     public void EnableGameOverUI()
@@ -142,30 +89,75 @@ public class DialogueUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    #endregion
+
+    #region Character Art Functions
+
     [YarnCommand("EnableDialogue")]
     public void EnableDialogue()
     {
-        DisableHUD();
         EnableBlur();
-        EnablePlayerArt();
-        EnableEnemyArt();
+        DisableHUD();
         EnableMouse();
     }
 
-    // only call after art is enabled
-    [YarnCommand("EnablePlayerDialogueElvis")]
-    public void EnablePlayerDialogueElvis()
+    [YarnCommand("EnableArt")]
+    public void EnableArt(GameObject art)
     {
-        FadeInPlayerArt();
-        FadeOutEnemyArt();
+        art.transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    // only call after art is enabled
-    [YarnCommand("EnableElvisDialogue")]
-    public void EnableElvisDialogue()
+    [YarnCommand("DisableArt")]
+    public void DisableArt(GameObject artOne, GameObject artTwo)
     {
-        FadeInEnemyArt();
-        FadeOutPlayerArt();
+        artOne.transform.GetChild(0).gameObject.SetActive(false);
+        artTwo.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    // used for emiliana
+    [YarnCommand("EnableOneArt")]
+    public void EnableOneArt(GameObject art)
+    {
+        art.SetActive(true);
+    }
+
+    // used for emiliana
+    [YarnCommand("DisableOneArt")]
+    public void DisableOneArt(GameObject art)
+    {
+        art.SetActive(false);
+    }
+
+    [YarnCommand("EnableFadeArt")]
+    public void EnableFadeArt(GameObject artOne, GameObject artTwo)
+    {
+        EnableArt(artOne);
+        EnableArt(artTwo);
+        FadeArt(artOne, artTwo);
+    }
+
+    [YarnCommand("FadeArt")]
+    public void FadeArt(GameObject fadeIn, GameObject fadeOut)
+    {
+        Color tempColor = fadeIn.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.a = 1f;
+        fadeIn.transform.GetChild(0).GetComponent<Image>().color = tempColor;
+
+        tempColor = fadeOut.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.a = 0.1f;
+        fadeOut.transform.GetChild(0).GetComponent<Image>().color = tempColor;
+    }
+
+    [YarnCommand("FadeOutBothArt")]
+    public void FadeOutBothArt(GameObject artOne, GameObject artTwo)
+    {
+        Color tempColor = artOne.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.a = 0.1f;
+        artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
+
+        tempColor = artTwo.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.a = 0.1f;
+        artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
     }
 
     [YarnCommand("DisableDialogue")]
@@ -173,8 +165,13 @@ public class DialogueUI : MonoBehaviour
     {
         EnableHUD();
         DisableBlur();
-        DisablePlayerArt();
-        DisableEnemyArt();
         DisableMouse();
     }
+
+    // EnableArt
+    // DisableArt
+    // FadeArt
+    // EnableFadeArt
+
+    #endregion
 }
