@@ -39,16 +39,23 @@ Hiro: Thanks! Elvis? I thought your name was E1-V15?
 E1-V15: Indeed, I signed with the name of the King.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: King? You mean Ceasar?
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableArt DialogueUI EnemyArtSad>>
+<<DisableOneArt DialogueUI EnemyArtDefault>>
+<<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
 E1-V15: !!!
 E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
 Hiro: What is he? Some kind of magician?
+<<EnableArt DialogueUI EnemyArtDefault>>
+<<DisableOneArt DialogueUI EnemyArtSad>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: ...
+<<DisableOneArt DialogueUI EnemyArtDefault>>
+<<EnableArt DialogueUI EnemyArtAngry>>
+<<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
 E1-V15: No.
 E1-V15: You should prepare yourself, son. You will not make it past the opener.
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
