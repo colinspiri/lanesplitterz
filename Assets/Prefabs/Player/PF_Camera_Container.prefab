@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6587ccb7464dc6819e2849ae6c98a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToFollow: {fileID: 0}
   moveSpeed: 20
 --- !u!1 &2836745742289992277
 GameObject:
@@ -99,7 +100,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 6.19
+  m_FocalLength: 6.4266663
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -114,7 +115,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 72.03273
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
