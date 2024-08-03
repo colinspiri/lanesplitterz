@@ -6697,9 +6697,6 @@ MonoBehaviour:
   EndSecondThrowTutorialUI: {fileID: 4242408435272304895}
   roundText: {fileID: 6446794090032196939}
   currentScoresText: {fileID: 5365146762723250321}
-  playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
-    type: 2}
-  enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   uiConstants: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
@@ -24802,6 +24799,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771112786154542, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1239.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2397771112786154542, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -953.95
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468082973685, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
