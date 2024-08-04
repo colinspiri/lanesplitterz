@@ -12,8 +12,6 @@ public class DialogueUI : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
-/*    [SerializeField] private GameObject playerArt;
-    [SerializeField] private GameObject enemyArt;*/
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject doublePointsUI;
 
@@ -101,8 +99,8 @@ public class DialogueUI : MonoBehaviour
         EnableMouse();
     }
 
-    [YarnCommand("EnableArt")]
-    public void EnableArt(GameObject art)
+    [YarnCommand("EnableOneArt")]
+    public void EnableOneArt(GameObject art)
     {
         art.transform.GetChild(0).gameObject.SetActive(true);
     }
@@ -114,14 +112,6 @@ public class DialogueUI : MonoBehaviour
         artTwo.transform.GetChild(0).gameObject.SetActive(false);
     }
 
-/*    // used for emiliana
-    [YarnCommand("EnableOneArt")]
-    public void EnableOneArt(GameObject art)
-    {
-        art.SetActive(true);
-    }*/
-
-    // used for emiliana
     [YarnCommand("DisableOneArt")]
     public void DisableOneArt(GameObject art)
     {
@@ -131,8 +121,8 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableFadeArt")]
     public void EnableFadeArt(GameObject artOne, GameObject artTwo)
     {
-        EnableArt(artOne);
-        EnableArt(artTwo);
+        EnableOneArt(artOne);
+        EnableOneArt(artTwo);
         FadeArt(artOne, artTwo);
     }
 
@@ -167,11 +157,6 @@ public class DialogueUI : MonoBehaviour
         DisableBlur();
         DisableMouse();
     }
-
-    // EnableArt
-    // DisableArt
-    // FadeArt
-    // EnableFadeArt
 
     #endregion
 }

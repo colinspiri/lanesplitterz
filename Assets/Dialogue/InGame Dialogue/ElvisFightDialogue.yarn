@@ -39,19 +39,19 @@ Hiro: Thanks! Elvis? I thought your name was E1-V15?
 E1-V15: Indeed, I signed with the name of the King.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: King? You mean Ceasar?
-<<EnableArt DialogueUI EnemyArtSad>>
+<<EnableOneArt DialogueUI EnemyArtSad>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
 E1-V15: !!!
 E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
 Hiro: What is he? Some kind of magician?
-<<EnableArt DialogueUI EnemyArtDefault>>
+<<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtSad>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: ...
 <<DisableOneArt DialogueUI EnemyArtDefault>>
-<<EnableArt DialogueUI EnemyArtAngry>>
+<<EnableOneArt DialogueUI EnemyArtAngry>>
 <<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
 E1-V15: No.
 E1-V15: You should prepare yourself, son. You will not make it past the opener.
@@ -114,6 +114,13 @@ Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 Hiro: Wait, you didn't think I'd win?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: It is no surprise, baby.
+<<EnableOneArt DialogueUI EnemyArtHappy>>
+<<DisableOneArt DialogueUI EnemyArtDefault>>
+<<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
+E1-V15: You were great out there, son. You’re the toughest I’ve ever rolled against.
+<<EnableOneArt DialogueUI EnemyArtDefault>>
+<<DisableOneArt DialogueUI EnemyArtHappy>>
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: Spirit is far more valuable a predictor than I thought.
 <<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 //Needs Character Art
@@ -122,8 +129,13 @@ Emiliana: He's a real special kid, our Hiro.
 //Disable Emiliana Art
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Thanks, E1. It was an honor to roll with you.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI EnemyArtSurprised>>
+<<DisableOneArt DialogueUI EnemyArtDefault>>
+<<FadeArt DialogueUI EnemyArtSurprised PlayerArtDefault>>
 E1-V15: ...
+<<EnableOneArt DialogueUI EnemyArtDefault>>
+<<DisableOneArt DialogueUI EnemyArtSurprised>>
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: I will not revive him anymore.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Elvis the Pelvis?
