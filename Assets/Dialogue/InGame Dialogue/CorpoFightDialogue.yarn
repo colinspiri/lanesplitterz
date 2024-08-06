@@ -1,20 +1,12 @@
-﻿title: BossIntro
-tags:
----
-Character 1: hello! #line:0bf57b3 
-Character 2: hello there, young Lanesplitter. Are you ready? #line:0fb27a8 
-Character 1: Yep. #line:0a8fa76 
-===
-
-title: ElvisRoundOne
+﻿title: CorpoRoundOne
 tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro:  Woah! I've seen you playing on Fremont Street. Could I have your autograph? You rock! 
+Hiro: Hey there new opponent 
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-???: Thank you very much. Your chance of success is 0.0132%. 
+???: Ew. I already despise you 
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Um...
 Hiro: Thanks, but-
@@ -31,30 +23,30 @@ Hiro: Yup!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: E1-V15. Here.
+Corpo: Corpo. Here.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
-Hiro: Thanks! Elvis? I thought your name was E1-V15?
+Hiro: Thanks! Elvis? I thought your name was Corpo?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Indeed, I signed with the name of the King.
+Corpo: Indeed, I signed with the name of the King.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: King? You mean Ceasar?
 <<EnableOneArt DialogueUI EnemyArtSad>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
-E1-V15: !!!
-E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
+Corpo: !!!
+Corpo: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
 Hiro: What is he? Some kind of magician?
 <<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtSad>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: ...
+Corpo: ...
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<EnableOneArt DialogueUI EnemyArtAngry>>
 <<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
-E1-V15: No.
-E1-V15: You should prepare yourself, son. You will not make it past the opener.
+Corpo: No.
+Corpo: You should prepare yourself, son. You will not make it past the opener.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -79,18 +71,18 @@ E1-V15: You should prepare yourself, son. You will not make it past the opener.
  //   <<DisablePlayerArt DialogueUI>>
 ===
 
-title: ElvisPlayerLoss
+title: CorpoPlayerLoss
 tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: It seems my predictions were correct. Spirit had no bearing on the outcome. 
+Corpo: It seems my predictions were correct. Spirit had no bearing on the outcome. 
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Dang it! I'll be back next time. 
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: By then, Elvis will sit on Caesar's throne. 
-E1-V15: Btw, father jinn gotchyo ass.
+Corpo: By then, Elvis will sit on Caesar's throne. 
+Corpo: Btw, father jinn gotchyo ass.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
@@ -98,7 +90,7 @@ E1-V15: Btw, father jinn gotchyo ass.
 <<DisableDialogue DialogueUI>>
 ===
 
-title: ElvisPlayerWin
+title: CorpoPlayerWin
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -113,15 +105,15 @@ Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Wait, you didn't think I'd win?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: It is no surprise, baby.
+Corpo: It is no surprise, baby.
 <<EnableOneArt DialogueUI EnemyArtHappy>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
-E1-V15: You were great out there, son. You’re the toughest I’ve ever rolled against.
+Corpo: You were great out there, son. You’re the toughest I’ve ever rolled against.
 <<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtHappy>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Spirit is far more valuable a predictor than I thought.
+Corpo: Spirit is far more valuable a predictor than I thought.
 <<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 //Needs Character Art
 Emiliana: He's a real special kid, our Hiro.
@@ -132,21 +124,21 @@ Hiro: Thanks, E1. It was an honor to roll with you.
 <<EnableOneArt DialogueUI EnemyArtSurprised>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtSurprised PlayerArtDefault>>
-E1-V15: ...
+Corpo: ...
 <<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtSurprised>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: I will not revive him anymore.
+Corpo: I will not revive him anymore.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Elvis the Pelvis?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: It is time to put the past to rest.
+Corpo: It is time to put the past to rest.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Cool. And E1?
 Hiro: Good luck out there.
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Thank you, thank you very much.
-E1-V15: And before I leave, may I have your autograph?
+Corpo: Thank you, thank you very much.
+Corpo: And before I leave, may I have your autograph?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: !!!
 Hiro: Sure!
@@ -157,13 +149,13 @@ Hiro: Sure!
 <<DisableDialogue DialogueUI>>
 ===
 
-title: ElvisRoundTwo
+title: CorpoRoundTwo
 tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: You are far better than expected. You will fail nonetheless, baby.
+Corpo: You are far better than expected. You will fail nonetheless, baby.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Just you wait!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -173,7 +165,7 @@ Hiro: Just you wait!
 <<EnableDoublePointsUI DialogueUI>>
 ===
 
-title: ElvisRoundThree
+title: CorpoRoundThree
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -181,20 +173,20 @@ tags:
 <<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: I am just warming up hehe.
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: You have no chance.
+Corpo: You have no chance.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
 ===
 
-title: ElvisRoundFour
+title: CorpoRoundFour
 tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Give up, son. Your concert ends now.
+Corpo: Give up, son. Your concert ends now.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: I still got an encore!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -204,7 +196,7 @@ Hiro: I still got an encore!
 <<EnableDoublePointsUI DialogueUI>>
 ===
 
-title: ElvisRoundFive
+title: CorpoRoundFive
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -212,7 +204,7 @@ tags:
 <<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: I can't let you do this, E1.
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: ...
+Corpo: ...
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>

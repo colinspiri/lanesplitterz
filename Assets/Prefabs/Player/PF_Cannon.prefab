@@ -423,20 +423,25 @@ MonoBehaviour:
   rotateSpeed: 25
   launchPoint: {fileID: 4616034963602659771}
   pivot: {fileID: 0}
-  ball: {fileID: 0}
   powerMeterData: {fileID: 11400000, guid: 810baa691876bb64a8945b2c155adf67, type: 2}
   spinMeterData: {fileID: 11400000, guid: 78135003dbf290843a12d0bfe3fe697d, type: 2}
-  trajectoryLine: {fileID: 8747488377704882150}
+  playerInfo: {fileID: 0}
+  gameState: {fileID: 0}
   ConfirmedCannonPosition: {fileID: 11400000, guid: d53c11a61649d5247b95799940393d91,
     type: 2}
+  ConfirmedCannonPositionTutorial: {fileID: 0}
   LaunchedBall: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6, type: 2}
   ConfirmedLaunchPower: {fileID: 11400000, guid: 3c3e4f355dde26046927e67514a0ed21,
     type: 2}
+  ConfirmedLaunchPowerTutorial: {fileID: 0}
   ConfirmedInitialSpin: {fileID: 11400000, guid: 976ef52061c92f54c9e5047e97bb8e3d,
     type: 2}
+  ConfirmedInitialSpinTutorial: {fileID: 0}
   musicController: {fileID: 0}
   launchSound: {fileID: 8524329879732035813}
   turnSound: {fileID: 4506624815162782775}
+  ball: {fileID: 0}
+  trajectoryLine: {fileID: 8747488377704882150}
   acceptingInputs: 0
 --- !u!82 &8524329879732035813
 AudioSource:

@@ -33,13 +33,14 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private string dialogueOnRoundThree;
     [SerializeField] private string dialogueOnRoundFour;
     [SerializeField] private string dialogueOnRoundFive;
-    private DialogueRunner _dialogueRunner;
+    //private DialogueRunner _dialogueRunner;
 
     [Space]
     [SerializeField] private AdaptiveMusicContainer gameMusic;
     [SerializeField] private CrowdManager crowdManager;
     [SerializeField] private Material blueLane;
     [SerializeField] private Material greyLane;
+    [SerializeField] private int maxLevels;
 
     [Space]
     [HideInInspector] public List<int> playerPointsByThrow = new();
@@ -56,7 +57,7 @@ public class RoundManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
-        _dialogueRunner = FindObjectOfType<DialogueRunner>();
+        //_dialogueRunner = FindObjectOfType<DialogueRunner>();
     }
     private void Start() {
         playerCurrentPoints.Value = 0;
@@ -77,55 +78,6 @@ public class RoundManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha0)) {
             EndThrowAndRound();
-        }
-    }
-
-    public void PlayStartDialogue()
-        {
-        if (_dialogueRunner && dialogueOnGameStart != "") {
-            _dialogueRunner.StartDialogue(dialogueOnGameStart);
-        }
-    }
-
-    public void PlayPlayerWinDialogue()
-            {
-        if (_dialogueRunner && dialogueOnPlayerWin != "") {
-            _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
-        }
-    }
-
-    public void PlayBossWinDialogue()
-            {
-        if (_dialogueRunner && dialogueOnBossWin != "") {
-            _dialogueRunner.StartDialogue(dialogueOnBossWin);
-        }
-    }
-
-    public void PlayRoundTwoDialogue()
-            {
-        if (_dialogueRunner && dialogueOnRoundTwo != "") {
-            _dialogueRunner.StartDialogue(dialogueOnRoundTwo);
-        }
-    }
-
-    public void PlayRoundThreeDialogue()
-            {
-        if (_dialogueRunner && dialogueOnRoundThree != "") {
-            _dialogueRunner.StartDialogue(dialogueOnRoundThree);
-        }
-    }
-
-    public void PlayRoundFourDialogue()
-            {
-        if (_dialogueRunner && dialogueOnRoundFour != "") {
-            _dialogueRunner.StartDialogue(dialogueOnRoundFour);
-        }
-    }
-
-    public void PlayRoundFiveDialogue()
-            {
-        if (_dialogueRunner && dialogueOnRoundFive != "") {
-            _dialogueRunner.StartDialogue(dialogueOnRoundFive);
         }
     }
 
@@ -237,14 +189,16 @@ public class RoundManager : MonoBehaviour {
 
         if (gameState.currentRound > totalRounds) {
             ScoreboardUI.Instance.ShowFinalScores();
+            gameState.currentRound = 1;
             endGame.Raise();
             return;
         }
+
         
         OnNewRound?.Invoke();
     }
 
-    public void PlayEndDialgue()
+/*    public void PlayEndDialgue()
     {
        if (playerFinalScore > enemyFinalScore)
         {
@@ -257,7 +211,7 @@ public class RoundManager : MonoBehaviour {
             _dialogueRunner.StartDialogue(dialogueOnBossWin);
             gameMusic.TransitionSection(1);
         }    
-    }
+    }*/
 
     public void ClearPlayerCurrentPoints()
     {

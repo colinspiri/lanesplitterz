@@ -7,12 +7,28 @@ using ScriptableObjectArchitecture;
 public class NewThrowUI : MonoBehaviour
 {
     [Header("Game Events")]
-    [SerializeField] private GameEvent roundUIEndOne;
-    [SerializeField] private GameEvent roundUIEndTwo;
-    [SerializeField] private GameEvent roundUIEndThree;
-    [SerializeField] private GameEvent roundUIEndFour;
-    [SerializeField] private GameEvent roundUIEndFive;
-    [SerializeField] private GameEvent endWinLoseUI;
+    [SerializeField] private GameEvent elvisStartDialogueRoundOne;
+    [SerializeField] private GameEvent elvisStartDialogueRoundTwo;
+    [SerializeField] private GameEvent elvisStartDialogueRoundThree;
+    [SerializeField] private GameEvent elvisStartDialogueRoundFour;
+    [SerializeField] private GameEvent elvisStartDialogueRoundFive;
+    [Space]
+    [SerializeField] private GameEvent corpoStartDialogueRoundOne;
+    [SerializeField] private GameEvent corpoStartDialogueRoundTwo;
+    [SerializeField] private GameEvent corpoStartDialogueRoundThree;
+    [SerializeField] private GameEvent corpoStartDialogueRoundFour;
+    [SerializeField] private GameEvent corpoStartDialogueRoundFive;
+    [Space]
+    [SerializeField] private GameEvent caesarStartDialogueRoundOne;
+    [SerializeField] private GameEvent caesarStartDialogueRoundTwo;
+    [SerializeField] private GameEvent caesarStartDialogueRoundThree;
+    [SerializeField] private GameEvent caesarStartDialogueRoundFour;
+    [SerializeField] private GameEvent caesarStartDialogueRoundFive;
+    [Space]
+    [SerializeField] private GameEvent roundUIEnd;
+    [SerializeField] private GameEvent ElvisEndWinLoseUI;
+    [SerializeField] private GameEvent CorpoEndWinLoseUI;
+    [SerializeField] private GameEvent CaesarEndWinLoseUI;
     [SerializeField] private GameEvent tutorialReset;
     [SerializeField] private GameEvent ballsAtEndOfTrack;
 
@@ -65,12 +81,36 @@ public class NewThrowUI : MonoBehaviour
             yield return new WaitForSeconds(uiConstants.roundUITime);
             roundUI.SetActive(false);
 
-            // events to start round dialogue
-            if (gameState.currentRound == 1) roundUIEndOne.Raise();
-            if (gameState.currentRound == 2) roundUIEndTwo.Raise();
-            if (gameState.currentRound == 3) roundUIEndThree.Raise();
-            if (gameState.currentRound == 4) roundUIEndFour.Raise();
-            if (gameState.currentRound == 5) roundUIEndFive.Raise();
+            // enables cannon input
+            roundUIEnd.Raise();
+
+            // TODO: events to start round dialogue for elvis
+            if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds)
+            {
+                if (gameState.currentRound == 1) elvisStartDialogueRoundOne.Raise();
+                if (gameState.currentRound == 2) elvisStartDialogueRoundTwo.Raise();
+                if (gameState.currentRound == 3) elvisStartDialogueRoundThree.Raise();
+                if (gameState.currentRound == 4) elvisStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 5) elvisStartDialogueRoundFive.Raise();
+            }
+            // TODO: events to start dialogue for corpo
+            else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 2)
+            {
+                if (gameState.currentRound == 1) corpoStartDialogueRoundOne.Raise();
+                if (gameState.currentRound == 2) corpoStartDialogueRoundTwo.Raise();
+                if (gameState.currentRound == 3) corpoStartDialogueRoundThree.Raise();
+                if (gameState.currentRound == 4) corpoStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 5) corpoStartDialogueRoundFive.Raise();
+            }
+            // TODO: events to start dialogue for ceasar
+            else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 3)
+            {
+/*                if (gameState.currentRound == 1) caesarStartDialogueRoundOne.Raise();
+                if (gameState.currentRound == 2) caesarStartDialogueRoundTwo.Raise();
+                if (gameState.currentRound == 3) caesarStartDialogueRoundThree.Raise();
+                if (gameState.currentRound == 4) caesarStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 5) caesarStartDialogueRoundFive.Raise();*/
+            }
         }
     }
 
@@ -119,6 +159,7 @@ public class NewThrowUI : MonoBehaviour
         tutorialReset.Raise();
         clearingPinsUI.SetActive(false);
         gameState.isClearingPins = false;
+        RoundManager.OnNewRound.Invoke();
     }
 
     /*    private IEnumerator DisplayCurrentScores()
@@ -148,7 +189,10 @@ public class NewThrowUI : MonoBehaviour
         yield return new WaitForSeconds(uiConstants.roundUITime);
 
         winLoseUI.SetActive(false);
-        endWinLoseUI.Raise();
+
+        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
+        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
+        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) CaesarEndWinLoseUI.Raise();
     }
 
     public void DisplayTutorialButtons()

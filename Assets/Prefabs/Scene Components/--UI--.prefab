@@ -6677,12 +6677,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8967e3d64cccdc545b1c083631a90edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundUIEndOne: {fileID: 11400000, guid: 2be133d254e0d074d91eda6ffce7b033, type: 2}
-  roundUIEndTwo: {fileID: 11400000, guid: 90078335c08236f4eb35806a16701969, type: 2}
-  roundUIEndThree: {fileID: 11400000, guid: a2a02768dd6858a45b4e3b46b091a898, type: 2}
-  roundUIEndFour: {fileID: 11400000, guid: adc362458a9f87142a92767558c26147, type: 2}
-  roundUIEndFive: {fileID: 11400000, guid: b4384d9298723ab49945b2640a1732d7, type: 2}
-  endWinLoseUI: {fileID: 11400000, guid: 7564d2bb1c12c704a81e9bafa122f4ec, type: 2}
+  elvisStartDialogueRoundOne: {fileID: 11400000, guid: 2be133d254e0d074d91eda6ffce7b033,
+    type: 2}
+  elvisStartDialogueRoundTwo: {fileID: 11400000, guid: 90078335c08236f4eb35806a16701969,
+    type: 2}
+  elvisStartDialogueRoundThree: {fileID: 11400000, guid: a2a02768dd6858a45b4e3b46b091a898,
+    type: 2}
+  elvisStartDialogueRoundFour: {fileID: 11400000, guid: adc362458a9f87142a92767558c26147,
+    type: 2}
+  elvisStartDialogueRoundFive: {fileID: 11400000, guid: b4384d9298723ab49945b2640a1732d7,
+    type: 2}
+  corpoStartDialogueRoundOne: {fileID: 11400000, guid: f917cddd97fccec4ab82f409bdaca98d,
+    type: 2}
+  corpoStartDialogueRoundTwo: {fileID: 11400000, guid: 251ce4b0fed2ab14ca794ae985bfc940,
+    type: 2}
+  corpoStartDialogueRoundThree: {fileID: 11400000, guid: a9ff6e7a70fd2794b83d81b538fc7030,
+    type: 2}
+  corpoStartDialogueRoundFour: {fileID: 11400000, guid: fad6fcd8b8119c04fbf4b425af55c1f7,
+    type: 2}
+  corpoStartDialogueRoundFive: {fileID: 11400000, guid: e67502475d06ea745971f8a7e5a32928,
+    type: 2}
+  caesarStartDialogueRoundOne: {fileID: 11400000, guid: 97889f9b0f6ead8499dc262776d8ca3f,
+    type: 2}
+  caesarStartDialogueRoundTwo: {fileID: 11400000, guid: 0640eafd633f0cd4291d6adec8a18287,
+    type: 2}
+  caesarStartDialogueRoundThree: {fileID: 11400000, guid: 1c8904d561efe3b41ba54819f7c4e2dc,
+    type: 2}
+  caesarStartDialogueRoundFour: {fileID: 11400000, guid: 16f4f020c66ce7542aac1a408eeecfb6,
+    type: 2}
+  caesarStartDialogueRoundFive: {fileID: 11400000, guid: 884338dddeea9db479581723e010dc64,
+    type: 2}
+  roundUIEnd: {fileID: 11400000, guid: e230fdc05eb910240ad944ee8e1d9187, type: 2}
+  ElvisEndWinLoseUI: {fileID: 11400000, guid: 7564d2bb1c12c704a81e9bafa122f4ec, type: 2}
+  CorpoEndWinLoseUI: {fileID: 11400000, guid: 48bb0c4d8b49f944797fa5d8dfd0196c, type: 2}
+  CaesarEndWinLoseUI: {fileID: 11400000, guid: 517710af1d094624f8791852a3ee627c, type: 2}
   tutorialReset: {fileID: 11400000, guid: 4301fd6bf70e4be4da5d9035cf8e0c37, type: 2}
   ballsAtEndOfTrack: {fileID: 11400000, guid: f3c89e22c9d28aa42be4b030c2c51043, type: 2}
   roundUI: {fileID: 192959175889986804}

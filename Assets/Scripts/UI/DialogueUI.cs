@@ -56,8 +56,18 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableGameOverUI")]
     public void EnableGameOverUI()
     {
-        gameOverUI.SetActive(true);
+        StartCoroutine(EnableGameOverUICoroutine());
     }
+
+    public IEnumerator EnableGameOverUICoroutine()
+    {
+        gameOverUI.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        gameOverUI.SetActive(false);
+        StartNewRound();
+    }
+
+    public void StartNewRound() => RoundManager.OnNewRound.Invoke();
 
     [YarnCommand("EnableScoreboard")]
     public void EnableScoreboard()

@@ -22,6 +22,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private MeterData powerMeterData;
     [SerializeField] private MeterData spinMeterData;
     [SerializeField] private PlayerInfo playerInfo;
+    [SerializeField] private GameState gameState;
 
     [Header("Events")]
     [SerializeField] private GameEvent ConfirmedCannonPosition;
@@ -202,4 +203,10 @@ public class Cannon : MonoBehaviour
     {
         if (playerInfo.isPracticing == false) DisableInputs();
     }
+
+/*    // used temporarily until corpo dialogue is implemented (we can enable inputs in the yarn file instead)
+    public void DetermineEnableInputs()
+    {
+        if (playerInfo.isPracticing == false && gameState.currentLevelIndex >= 6) EnableInputs();
+    }*/
 }
