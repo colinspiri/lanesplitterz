@@ -9,8 +9,9 @@ public class VOPlayer : MonoBehaviour
 {
     [SerializeField] AudioClipRandomizer ProtagVO;
     [SerializeField] AudioClipRandomizer ElvisVO;
+    [SerializeField] AudioClipRandomizer CorpoVO;
     [SerializeField] TextMeshProUGUI characterName;
-    [SerializeField] string elvisName;
+    [SerializeField] string[] elvisNames;
     public int frequency = 2;
     private bool swing = false;
     private int stop;
@@ -21,18 +22,18 @@ public class VOPlayer : MonoBehaviour
     }
     public void PlayCharacterVO()
     {
-        if (characterName.text == elvisName)
+        if (characterName.text == elvisNames[0] || characterName.text == elvisNames[1])
         {
             if (stop == 1)
             {
                 ElvisVO.PlaySFX();
                 if (swing == false)
                 {
-                    stop = frequency * 6;
+                    stop = frequency * 4;
                 }
                 else
                 {
-                    stop = frequency * 3;
+                    stop = frequency * 2;
                 }
                 swing = !swing;
             }
@@ -41,14 +42,29 @@ public class VOPlayer : MonoBehaviour
                 stop--;
             }
         }
-        if (stop == 1)
+        /*else if (characterName.text == elvisNames[1])
         {
-            ProtagVO.PlaySFX();
-            stop = frequency;
-        }
+            if (stop == 1)
+            {
+                CorpoVO.PlaySFX();
+                stop = frequency * 2;
+            }
+            else
+            {
+                stop--;
+            }
+        }*/
         else
         {
-            stop--;
+            if (stop == 1)
+            {
+                ProtagVO.PlaySFX();
+                stop = frequency;
+            }
+            else
+            {
+                stop--;
+            }
         }
         
     }
