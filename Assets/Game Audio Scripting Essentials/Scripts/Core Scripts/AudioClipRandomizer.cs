@@ -45,6 +45,8 @@ namespace GameAudioScriptingEssentials
         [Range(0.0f, 1.0f)]
         [SerializeField] float _spatialBlend = 0.0f;
 
+        [SerializeField] bool _ignoreListenerPause = false;
+
         int _lastIndex = -1;
         bool _arcObjExists = false;
         bool _initVolumeOverwritten = false;
@@ -129,6 +131,7 @@ namespace GameAudioScriptingEssentials
             _newAudioSource.priority = _priority;
             _newAudioSource.panStereo = _stereoPan;
             _newAudioSource.spatialBlend = _spatialBlend;
+            _newAudioSource.ignoreListenerPause = _ignoreListenerPause;
             _newAudioSource.Play();
 
             if (!_loop)

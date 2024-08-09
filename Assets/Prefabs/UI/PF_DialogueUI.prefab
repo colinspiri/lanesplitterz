@@ -495,6 +495,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &1179065823310119323
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +761,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &1416345399420254055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,6 +2143,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &3820460718995980114
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,11 +2474,12 @@ MonoBehaviour:
   _randomPitch: 1
   _minPitch: 0.82
   _maxPitch: 1.19
-  _volume: 0.194
+  _volume: 1
   _loop: 0
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &6362500021860819412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,51 +2913,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61439a317f055dd4e87ed454db37a950, type: 3}
   - {fileID: 8300000, guid: 17e7cc8a1b02a564d96bea17ff3db55d, type: 3}
   - {fileID: 8300000, guid: d89c56ef224ff3a4b958894413e4365a, type: 3}
-  - {fileID: 8300000, guid: f48f6ecc80af33245898a94878b5e3dd, type: 3}
-  - {fileID: 8300000, guid: 73f82aa21b06f4b4484c83e433fff464, type: 3}
-  - {fileID: 8300000, guid: 2573f7b6a79717f4ca68678111f9b8c2, type: 3}
-  - {fileID: 8300000, guid: 72359bca52103cd479b3db6bda1e3bfc, type: 3}
-  - {fileID: 8300000, guid: 0bad4143ac4296c49896bd1dd4bf9c8b, type: 3}
-  - {fileID: 8300000, guid: 2693015c09ca3ee4298b1c8c699a762d, type: 3}
-  - {fileID: 8300000, guid: f4868b81b89f4584b9d5eb090b501faf, type: 3}
-  - {fileID: 8300000, guid: f8d94c7a36388004f95e6d9a938f8ce3, type: 3}
-  - {fileID: 8300000, guid: 5992431e4ea3bc142867ab2724e5cadb, type: 3}
-  - {fileID: 8300000, guid: 239cc994d1a431148ab13bf99533d9df, type: 3}
-  - {fileID: 8300000, guid: 1c590ff51df9dad499bd175670d66ba8, type: 3}
-  - {fileID: 8300000, guid: 357a730b2e44f4f45a9437fae2f89429, type: 3}
-  - {fileID: 8300000, guid: 3710ca24b61b7704d9e76a22a00a131a, type: 3}
-  - {fileID: 8300000, guid: 2d8cc6e83d264ce41bd01a4dbe4b2a7a, type: 3}
-  - {fileID: 8300000, guid: 934f2bb7a21ad2e43b297bd7ae52e500, type: 3}
-  - {fileID: 8300000, guid: b0fbf7db86504ae4b9d61942aa00f849, type: 3}
-  - {fileID: 8300000, guid: 8c0240f875f90714994070d628559d41, type: 3}
-  - {fileID: 8300000, guid: 30ddf2338c35d0b45a344569eda92ca8, type: 3}
-  - {fileID: 8300000, guid: 1132a52ddf4c94c41b8cb3dd763e1b49, type: 3}
-  - {fileID: 8300000, guid: 7d2f2bcd68f2a4c4e84ea99559d60352, type: 3}
-  - {fileID: 8300000, guid: 4334d694f5c856f438f4ac2689418b33, type: 3}
-  - {fileID: 8300000, guid: f427edb2a37338142b3d1af4c4022a5f, type: 3}
-  - {fileID: 8300000, guid: 112d7b4880040ad419be6156f08f7f29, type: 3}
-  - {fileID: 8300000, guid: 762b3b02fddd7bc4f9b831550f3269e8, type: 3}
-  - {fileID: 8300000, guid: c81dd97e83c67a64593fb1e4553305c5, type: 3}
-  - {fileID: 8300000, guid: 46227105603177046b23216ccef06dde, type: 3}
-  - {fileID: 8300000, guid: f2c19a9fd1fbd074a80249ffc68a988a, type: 3}
-  - {fileID: 8300000, guid: 6f6087e838371434fadca500517c6467, type: 3}
-  - {fileID: 8300000, guid: b1feca52be72dfd4ab4635adaa6dfb8e, type: 3}
-  - {fileID: 8300000, guid: c4565618b7dbd95439d927d2a948603e, type: 3}
-  - {fileID: 8300000, guid: 1686fcdd5d278ae499cda0eb4683c86c, type: 3}
-  - {fileID: 8300000, guid: 89aa25d0a13deb149a7dc3c7afb062b0, type: 3}
-  - {fileID: 8300000, guid: e098d48a52f2f3f488fa1f0c1f68615d, type: 3}
-  - {fileID: 8300000, guid: efbfc4c79192ffb41907b0c3a1c4a86a, type: 3}
-  - {fileID: 8300000, guid: 288527190e3231641b551c567e72ba78, type: 3}
-  - {fileID: 8300000, guid: 588699ec0b1eb7e4c882775b0028b675, type: 3}
-  - {fileID: 8300000, guid: 768e76cf89a32a14aa5a06dc98688481, type: 3}
-  - {fileID: 8300000, guid: b551c4a8da74e8c4c82fc6ca3b381d48, type: 3}
-  - {fileID: 8300000, guid: d8664907664f2d34d87ee3702358f5f8, type: 3}
-  - {fileID: 8300000, guid: 1a5e9b9e7f54a7d48b159be617fa2b6d, type: 3}
-  - {fileID: 8300000, guid: 24d43008e3036f44e94c009f4f9dbdad, type: 3}
-  - {fileID: 8300000, guid: 392235fd83f1ca644b410991aa08757b, type: 3}
-  - {fileID: 8300000, guid: 60876e2d363d361409500e7d6e8660b2, type: 3}
-  - {fileID: 8300000, guid: 788dfddf16bac54488567e1980c3b549, type: 3}
-  - {fileID: 8300000, guid: 4b7b126062ecb5a4d9b4de7edea83559, type: 3}
   _mixerGroup: {fileID: -6563393907147125349, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   _overrideArcSettings: 1
@@ -2961,11 +2920,12 @@ MonoBehaviour:
   _randomPitch: 0
   _minPitch: 0.5
   _maxPitch: 1.5
-  _volume: 1
+  _volume: 0.507
   _loop: 0
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &8103697147140438452
 GameObject:
   m_ObjectHideFlags: 0
