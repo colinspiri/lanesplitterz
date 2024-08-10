@@ -18,6 +18,24 @@ Hiro:  Woah! I've seen you playing on Fremont Street. Could I have your autograp
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Um...
 Hiro: Thanks, but-
+
+???: TEST INTERMISSION
+???: Q1 or Q4?
+-> Q1
+    ???: Curious. But would you rather Q2 or Q4?
+    -> Q2
+        ???: Fascinating. Not even Q3?
+        -> Q3
+            ???: It seems I have underestimated you.
+            ???: Well played.
+        -> Q4
+            ???: lmaooo gotchaaa
+    -> Q4
+        ???: Ah, so there are limits.
+-> Q4
+    ???: Understandable, have a nice day.
+???: Well, that about wraps up the intermission. Toodles!
+
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 ???: You are welcome. I am simply preparing you for your failure.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -186,6 +204,8 @@ E1-V15: You have no chance.
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
+
+
 ===
 
 title: ElvisRoundFour

@@ -159,17 +159,21 @@ MonoBehaviour:
   acceptingInputs: 1
   disableOnStart: 1
   enableFuelLoss: 1
+  enableExtraGravity: 1
   accelForce: 5
   turnForce: 7
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
+  extraGravity: -50
+  explosionUpwards: 2
+  explosionRadius: 0.25
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   accelFuel: 0.2
   turnFuel: 0.3
   enemyFuelLoss: 0.1
-  fuelChanged: {fileID: 11400000, guid: 27be1206cb6324b4384256b436293067, type: 2}
+  fuelChanged: {fileID: 0}
   maxLinearVelocity: 1e+16
   maxAngularVelocity: 20
   impactVFX: {fileID: 0}
@@ -522,6 +526,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &6729461249166894038
 GameObject:
   m_ObjectHideFlags: 0
