@@ -160,14 +160,14 @@ MonoBehaviour:
   disableOnStart: 1
   enableFuelLoss: 1
   accelForce: 5
-  turnForce: 5
+  turnForce: 7
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
-  accelFuel: 0.25
-  turnFuel: 0.36
+  accelFuel: 0.2
+  turnFuel: 0.3
   enemyFuelLoss: 0.1
   fuelChanged: {fileID: 11400000, guid: 27be1206cb6324b4384256b436293067, type: 2}
   maxLinearVelocity: 1e+16
