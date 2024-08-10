@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float brakeDelay;
     [SerializeField] private float minimumSpeed;
+    [SerializeField] private float extraGravity;
 
     [Header("Explosion specifications")]
     [Tooltip("The amount of bounce for explosions to give the ball")]
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _hasLaunched;
     private float _currentSpin = 0f;
     private bool turning = false;
+    private bool _flying = true;
 
     // misc
     [Space]
@@ -139,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     private void Initialize() {
         if (disableOnStart) gameObject.SetActive(false);
 
-        _myBody.constraints = RigidbodyConstraints.None;
+        LockedToGround(false);
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;
@@ -152,6 +154,16 @@ public class PlayerMovement : MonoBehaviour
         playerInfo.currentFuel = 1;
         _fuelMeter = 1f;
     }
+
+    //private void OnDisable()
+    //{
+    //    StopAllCoroutines();
+    //}
+
+    //private void OnEnable()
+    //{
+    //    StartCoroutine(ExtraGravity());
+    //}
 
     private void Update()
     {
@@ -280,7 +292,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Lane Bounds"))
         {
-            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+            LockedToGround(true);
         }
     }
 
@@ -518,6 +530,20 @@ public class PlayerMovement : MonoBehaviour
         _hasLaunched = true;
     }
 
+    // Add extra gravity to land faster
+    private IEnumerator ExtraGravity()
+    {
+        while (true)
+        {
+            yield return new WaitForFixedUpdate();
+
+            if (_flying)
+            {
+                _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
+            }
+        }
+    }
+
     //public void Explode(float explosionForce)
     //{
     //    // Find direction of the explosion source
@@ -541,8 +567,24 @@ public class PlayerMovement : MonoBehaviour
     //    _myBody.AddExplosionForce(explosionForce, explosionPos, explosionDist, explosionUpwards, ForceMode.Impulse);
     //}
 
+    public void LockedToGround(bool locked)
+    {
+        if (locked)
+        {
+            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+        }
+        else
+        {
+            _myBody.constraints = RigidbodyConstraints.None;
+        }
+
+        _flying = !locked;
+    }
+
     public void Explode(float explosionForce)
     {
+        LockedToGround(false);
+
         float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
 
         Vector3 camRight = (_camInvRot * _myCam.right).normalized;

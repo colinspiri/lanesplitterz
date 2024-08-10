@@ -877,6 +877,8 @@ public class EnemyBall : MonoBehaviour
 
     public void Explode(float explosionForce)
     {
+        _myBody.constraints = RigidbodyConstraints.None;
+
         float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
 
         Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
