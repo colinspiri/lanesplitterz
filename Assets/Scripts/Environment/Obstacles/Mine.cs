@@ -28,15 +28,11 @@ public class Mine : MonoBehaviour
             // Player hit
             if (colliderObj.CompareTag("Player"))
             {
-                Debug.Log("Player explosion");
-
                 colliderObj.GetComponent<PlayerMovement>().Explode(explosionForce);
             }
             // Enemy hit
             else
             {
-                Debug.Log("Enemy explosion");
-
                 colliderObj.GetComponent<EnemyBall>().Explode(explosionForce);
             }
 

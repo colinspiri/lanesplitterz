@@ -596,7 +596,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 explosionPos = transform.position + offset;
 
-            Debug.Log("Right scalar is " + rightScalar);
+            Debug.Log("Player right scalar is " + rightScalar);
 
             _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
         }
