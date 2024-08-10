@@ -349,9 +349,9 @@ MonoBehaviour:
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
   minimumSpeed: 0
-  extraGravity: -50
-  explosionUpwards: 1.25
-  explosionRadius: 0.25
+  extraGravity: -25
+  explosionFOV: 45
+  explosionVerticality: 0.7
   turnFuel: 0.01
   accelFuel: 0
   rotationRef: {fileID: 0}

@@ -344,6 +344,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
+      propertyPath: extraGravity
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
       propertyPath: explosionDist
       value: 0.1
       objectReference: {fileID: 0}
@@ -376,6 +381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: explosionUpwards
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: explosionVerticality
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 9095661317396777986, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}

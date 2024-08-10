@@ -165,9 +165,11 @@ MonoBehaviour:
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
-  extraGravity: -50
+  extraGravity: -25
   explosionUpwards: 2
   explosionRadius: 0.25
+  explosionFOV: 45
+  explosionVerticality: 0.7
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   accelFuel: 0.25

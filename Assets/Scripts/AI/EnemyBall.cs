@@ -53,10 +53,12 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float extraGravity;
 
     [Header("Explosion specifications")]
-    [Tooltip("The amount of bounce for explosions to give the ball")]
-    [SerializeField] private float explosionUpwards;
-    [Tooltip("The maximum radius (in meters) from the center of the ball for an explosion")]
-    [SerializeField] private float explosionRadius;
+    //[Tooltip("The amount of bounce for explosions to give the ball")]
+    //[SerializeField] private float explosionUpwards;
+    //[Tooltip("The maximum radius (in meters) from the center of the ball for an explosion")]
+    //[SerializeField] private float explosionRadius;
+    [SerializeField] private float explosionFOV;
+    [SerializeField] private float explosionVerticality;
 
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while steering left or right")]
@@ -898,24 +900,51 @@ public class EnemyBall : MonoBehaviour
         _flying = !locked;
     }
 
+    //public void Explode(float explosionForce)
+    //{
+    //    if (!_flying)
+    //    {
+    //        LockedToGround(false);
+
+    //        float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
+
+    //        Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
+
+    //        Vector3 offset = camRight * rightScalar;
+
+    //        Vector3 explosionPos = transform.position + offset;
+
+    //        Debug.Log("Enemy right scalar is " + rightScalar);
+
+    //        _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+
+    //    }
+    //}
+
     public void Explode(float explosionForce)
     {
         if (!_flying)
         {
             LockedToGround(false);
 
-            float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
-
+            Vector3 camUp = (_refInvRot * rotationRef.up).normalized;
             Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
 
-            Vector3 offset = camRight * rightScalar;
+            // Rotate around local x-axis
+            float vertAngle = Mathf.Lerp(90f, 0f, explosionVerticality);
+            Quaternion vertRotation = Quaternion.AngleAxis(vertAngle, camRight);
 
-            Vector3 explosionPos = transform.position + offset;
+            // Rotate around local y-axis
+            float halfFOV = explosionFOV / 2f;
+            float horAngle = UnityEngine.Random.Range(halfFOV * -1, halfFOV);
+            Debug.Log("Explosion angle: " + horAngle);
+            Quaternion horRotation = Quaternion.AngleAxis(horAngle, camUp);
 
-            Debug.Log("Enemy right scalar is " + rightScalar);
+            camUp = horRotation * (vertRotation * camUp);
 
-            _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
-
+            // Apply force
+            /* Assumes normalized camUp */
+            _myBody.AddForce(camUp * explosionForce, ForceMode.Impulse);
         }
     }
 
