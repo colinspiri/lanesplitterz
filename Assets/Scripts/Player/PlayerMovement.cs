@@ -40,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float brakeDelay;
     [SerializeField] private float minimumSpeed;
 
+    [Header("Explosion specifications")]
+    [Tooltip("The amount of bounce for explosions to give the ball")]
+    [SerializeField] private float explosionUpwards;
+    // [SerializeField] private float explosionFOV;
+    // [SerializeField] private float explosionDist;
+    [Tooltip("The maximum radius (in meters) from the center of the ball for an explosion")]
+    [SerializeField] private float explosionRadius;
+
     [Header("Spin")] 
     [Tooltip("Every frame, hookForce is multiplied by the spin [-100, 100] to turn the ball based on the spin")]
     [SerializeField] private float hookForceMultiplier;
@@ -510,6 +518,44 @@ public class PlayerMovement : MonoBehaviour
         _hasLaunched = true;
     }
 
+    //public void Explode(float explosionForce)
+    //{
+    //    // Find direction of the explosion source
+
+    //    Vector3 explosionDir = (_camInvRot * _myCam.forward).normalized;
+    //    Vector3 camUp = (_camInvRot * _myCam.up).normalized;
+
+    //    float halfFOV = explosionFOV / 2f;
+
+    //    float explosionAngle = UnityEngine.Random.Range(-1 * halfFOV, halfFOV);
+
+    //    Quaternion forwardRotation = Quaternion.AngleAxis(explosionAngle, camUp);
+
+    //    explosionDir = forwardRotation * explosionDir;
+
+    //    // Find explosion position and blow it
+
+    //    // Assumes explosionDir is already normalized
+    //    Vector3 explosionPos = transform.position - (explosionDir * explosionDist);
+
+    //    _myBody.AddExplosionForce(explosionForce, explosionPos, explosionDist, explosionUpwards, ForceMode.Impulse);
+    //}
+
+    public void Explode(float explosionForce)
+    {
+        float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
+
+        Vector3 camRight = (_camInvRot * _myCam.right).normalized;
+
+        Vector3 offset = camRight * rightScalar;
+
+        Vector3 explosionPos = transform.position + offset;
+
+        Debug.Log("Right scalar is " + rightScalar);
+
+        _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+    }
+
     // Negate collision force against pins
     // Assuming fixedupdate will never be interrupted by a collision call
     // private void NegateCollisions()
@@ -528,6 +574,6 @@ public class PlayerMovement : MonoBehaviour
     //         _hasCollided = false;
     //     }
     // }
-    
+
     #endregion
 }

@@ -164,6 +164,8 @@ MonoBehaviour:
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
+  explosionUpwards: 0.75
+  explosionRadius: 0.5
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   accelFuel: 0.25
@@ -522,6 +524,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &6729461249166894038
 GameObject:
   m_ObjectHideFlags: 0
