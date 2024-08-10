@@ -12,7 +12,8 @@ public class EnemyBall : MonoBehaviour
 {
     [Header("Public Flags")]
     public bool enableFuelLoss = true;
-    
+    public bool enableExtraGravity = true;
+
     [Header("AI Configuration")]
     [Tooltip("Frequency in seconds for the AI to consider updating position")]
     [SerializeField] private float aiUpdateTime = 1f;
@@ -49,6 +50,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float turnSpeedPerSecond = 0.1f;
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float minimumSpeed;
+    [SerializeField] private float extraGravity;
 
     [Header("Explosion specifications")]
     [Tooltip("The amount of bounce for explosions to give the ball")]
@@ -74,6 +76,7 @@ public class EnemyBall : MonoBehaviour
     private Coroutine _turnRoutine = null;
     private Coroutine _straightenRoutine = null;
     private bool _moving = false;
+    private bool _flying = true;
 
     #endregion
 
@@ -205,7 +208,7 @@ public class EnemyBall : MonoBehaviour
         }
         else if (collider.gameObject.CompareTag("Lane Bounds"))
         {
-            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+            LockedToGround(true);
         }
     }
     
@@ -745,14 +748,20 @@ public class EnemyBall : MonoBehaviour
     // Resume or begin control
     private void StartMovement()
     {
-        if (!_moving && aiEnabled)
+        if (!_moving)
         {
-            _moving = true;
-        
-            _targetPos = transform.position;
-            _targetScore = Mathf.NegativeInfinity;
-        
-            StartCoroutine(CheckPositions());
+            if (enableExtraGravity) StartCoroutine(ExtraGravity());
+
+            if (aiEnabled)
+            {
+                _moving = true;
+
+                _targetPos = transform.position;
+                _targetScore = Mathf.NegativeInfinity;
+
+                StartCoroutine(CheckPositions());
+
+            }
         }
     }
 
@@ -875,21 +884,53 @@ public class EnemyBall : MonoBehaviour
         return new Vector3(diagonal.x * vec.x, diagonal.y * vec.y, diagonal.z * vec.z);
     }
 
+    public void LockedToGround(bool locked)
+    {
+        if (locked)
+        {
+            _myBody.constraints = RigidbodyConstraints.FreezePositionY;
+        }
+        else
+        {
+            _myBody.constraints = RigidbodyConstraints.None;
+        }
+
+        _flying = !locked;
+    }
+
     public void Explode(float explosionForce)
     {
-        _myBody.constraints = RigidbodyConstraints.None;
+        if (!_flying)
+        {
+            LockedToGround(false);
 
-        float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
+            float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
 
-        Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
+            Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
 
-        Vector3 offset = camRight * rightScalar;
+            Vector3 offset = camRight * rightScalar;
 
-        Vector3 explosionPos = transform.position + offset;
+            Vector3 explosionPos = transform.position + offset;
 
-        Debug.Log("Right scalar is " + rightScalar);
+            Debug.Log("Right scalar is " + rightScalar);
 
-        _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+            _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+
+        }
+    }
+
+    // Add extra gravity to land faster
+    private IEnumerator ExtraGravity()
+    {
+        while (true)
+        {
+            yield return new WaitForFixedUpdate();
+
+            if (_flying)
+            {
+                _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
+            }
+        }
     }
 
     #endregion

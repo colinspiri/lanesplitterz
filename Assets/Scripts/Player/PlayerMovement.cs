@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public bool acceptingInputs = true;
     public bool disableOnStart = true;
     public bool enableFuelLoss = true;
+    public bool enableExtraGravity = true;
     private float _turnVal;
     private float _accelVal;
     
@@ -155,15 +156,15 @@ public class PlayerMovement : MonoBehaviour
         _fuelMeter = 1f;
     }
 
-    //private void OnDisable()
-    //{
-    //    StopAllCoroutines();
-    //}
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 
-    //private void OnEnable()
-    //{
-    //    StartCoroutine(ExtraGravity());
-    //}
+    private void OnEnable()
+    {
+        if (enableExtraGravity) StartCoroutine(ExtraGravity());
+    }
 
     private void Update()
     {
@@ -583,19 +584,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Explode(float explosionForce)
     {
-        LockedToGround(false);
+        if (!_flying)
+        {
+            LockedToGround(false);
 
-        float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
+            float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
 
-        Vector3 camRight = (_camInvRot * _myCam.right).normalized;
+            Vector3 camRight = (_camInvRot * _myCam.right).normalized;
 
-        Vector3 offset = camRight * rightScalar;
+            Vector3 offset = camRight * rightScalar;
 
-        Vector3 explosionPos = transform.position + offset;
+            Vector3 explosionPos = transform.position + offset;
 
-        Debug.Log("Right scalar is " + rightScalar);
+            Debug.Log("Right scalar is " + rightScalar);
 
-        _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+            _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+        }
     }
 
     // Negate collision force against pins

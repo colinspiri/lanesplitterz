@@ -3617,7 +3617,7 @@ GameObject:
   - component: {fileID: 2035363880}
   m_Layer: 7
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Lane Bounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3817,12 +3817,12 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: explosionRadius
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: explosionUpwards
-      value: 0.75
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -4557,6 +4557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
+  enableExtraGravity: 1
   aiUpdateTime: 0.1
   visibleLimit: 500
   visibleLayers:
@@ -4577,6 +4578,7 @@ MonoBehaviour:
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
   minimumSpeed: 0
+  extraGravity: 0
   explosionUpwards: 0
   explosionRadius: 0
   turnFuel: 0.0001

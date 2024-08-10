@@ -370,12 +370,12 @@ PrefabInstance:
     - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
       propertyPath: explosionRadius
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
       propertyPath: explosionUpwards
-      value: 0.75
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9095661317396777986, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
@@ -570,6 +570,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 169001245692792829, guid: 261810348d112d944a6dfb05cfadb073, type: 3}
     - {fileID: 7097270182841289356, guid: 261810348d112d944a6dfb05cfadb073, type: 3}
+    - {fileID: 75998796647780606, guid: 261810348d112d944a6dfb05cfadb073, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261810348d112d944a6dfb05cfadb073, type: 3}
@@ -1043,7 +1044,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3567306268252291444, guid: a3d5e174593649d489b7211f8f0b6415, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3d5e174593649d489b7211f8f0b6415, type: 3}
@@ -1163,17 +1165,17 @@ PrefabInstance:
     - target: {fileID: 76517633546871469, guid: 2fe28139d2038424aa3b7a129072781e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1234541
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 76517633546871469, guid: 2fe28139d2038424aa3b7a129072781e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.957502
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 76517633546871469, guid: 2fe28139d2038424aa3b7a129072781e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.566193
+      value: -24.23
       objectReference: {fileID: 0}
     - target: {fileID: 76517633546871469, guid: 2fe28139d2038424aa3b7a129072781e,
         type: 3}
@@ -1214,6 +1216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mine Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875046045536203385, guid: 2fe28139d2038424aa3b7a129072781e,
+        type: 3}
+      propertyPath: explosionForce
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

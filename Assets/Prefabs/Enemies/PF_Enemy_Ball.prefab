@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
+  enableExtraGravity: 1
   aiUpdateTime: 0.1
   visibleLimit: 200
   visibleLayers:
@@ -348,6 +349,7 @@ MonoBehaviour:
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
   minimumSpeed: 0
+  extraGravity: -50
   explosionUpwards: 1.25
   explosionRadius: 0.25
   turnFuel: 0.01

@@ -159,13 +159,14 @@ MonoBehaviour:
   acceptingInputs: 1
   disableOnStart: 1
   enableFuelLoss: 1
+  enableExtraGravity: 1
   accelForce: 5
   turnForce: 5
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
-  extraGravity: -25
-  explosionUpwards: 1.25
+  extraGravity: -50
+  explosionUpwards: 2
   explosionRadius: 0.25
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
