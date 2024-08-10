@@ -163,6 +163,8 @@ public class EnemyBall : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (enableExtraGravity) ExtraGravity();
+        
         Quaternion parentRotation = rotationRef.rotation;
         _refInvRot = Quaternion.Inverse(new Quaternion(parentRotation.x, 0f, parentRotation.z, parentRotation.w));
 
@@ -752,8 +754,6 @@ public class EnemyBall : MonoBehaviour
     {
         if (!_moving)
         {
-            if (enableExtraGravity) StartCoroutine(ExtraGravity());
-
             if (aiEnabled)
             {
                 _moving = true;
@@ -949,16 +949,11 @@ public class EnemyBall : MonoBehaviour
     }
 
     // Add extra gravity to land faster
-    private IEnumerator ExtraGravity()
+    private void ExtraGravity()
     {
-        while (true)
+        if (_flying)
         {
-            yield return new WaitForFixedUpdate();
-
-            if (_flying && Time.timeScale > Mathf.Epsilon)
-            {
-                _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
-            }
+            _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
         }
     }
 

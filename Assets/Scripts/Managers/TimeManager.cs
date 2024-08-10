@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance;
     
-    private float _fixedDeltaTime;
+    // private float _fixedDeltaTime;
 
     public bool pausedForTutorial;
 
@@ -21,14 +21,14 @@ public class TimeManager : MonoBehaviour
         }
         Instance = this;
         
-        _fixedDeltaTime = Time.fixedDeltaTime;
+        // _fixedDeltaTime = Time.fixedDeltaTime;
         _timeScales = new Stack<float>();
     }
 
     private void SetTimeScaleUnstored(float newTimeScale)
     {
         Time.timeScale = newTimeScale;
-        Time.fixedDeltaTime = _fixedDeltaTime * Time.timeScale;
+        // Time.fixedDeltaTime = _fixedDeltaTime * Time.timeScale;
     }
 
     // sets timescale while ignoring tutorial pauses - use carefully!

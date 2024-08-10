@@ -158,16 +158,6 @@ public class PlayerMovement : MonoBehaviour
         _fuelMeter = 1f;
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    private void OnEnable()
-    {
-        if (enableExtraGravity) StartCoroutine(ExtraGravity());
-    }
-
     private void Update()
     {
         // Update camera inverse transform
@@ -254,6 +244,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateGround();
+
+        if (enableExtraGravity) ExtraGravity();
 
         // Debug.Log("currentSpin = " + _currentSpin);
         Hook();
@@ -534,16 +526,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Add extra gravity to land faster
-    private IEnumerator ExtraGravity()
+    private void ExtraGravity()
     {
-        while (true)
+        if (_flying)
         {
-            yield return new WaitForFixedUpdate();
-
-            if (_flying && Time.timeScale > Mathf.Epsilon)
-            {
-                _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
-            }
+            _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
         }
     }
 
