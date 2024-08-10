@@ -955,7 +955,7 @@ public class EnemyBall : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
 
-            if (_flying)
+            if (_flying && Time.timeScale > Mathf.Epsilon)
             {
                 _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
             }
