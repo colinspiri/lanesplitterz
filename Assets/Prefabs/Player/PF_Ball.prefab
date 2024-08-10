@@ -161,7 +161,7 @@ MonoBehaviour:
   enableFuelLoss: 1
   enableExtraGravity: 1
   accelForce: 5
-  turnForce: 5
+  turnForce: 7
   slipperyForce: 10
   brakeDelay: 15
   minimumSpeed: 25
@@ -172,8 +172,8 @@ MonoBehaviour:
   explosionVerticality: 0.7
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
-  accelFuel: 0.25
-  turnFuel: 0.36
+  accelFuel: 0.2
+  turnFuel: 0.3
   enemyFuelLoss: 0.1
   fuelChanged: {fileID: 0}
   maxLinearVelocity: 1e+16
