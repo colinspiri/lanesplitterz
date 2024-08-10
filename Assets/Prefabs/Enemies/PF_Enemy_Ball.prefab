@@ -347,6 +347,9 @@ MonoBehaviour:
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
   slipperyForce: 10
+  minimumSpeed: 0
+  explosionUpwards: 0.75
+  explosionRadius: 0.5
   turnFuel: 0.01
   accelFuel: 0
   rotationRef: {fileID: 0}
@@ -354,3 +357,4 @@ MonoBehaviour:
   showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 6231270577809866729}
+  aiEnabled: 1

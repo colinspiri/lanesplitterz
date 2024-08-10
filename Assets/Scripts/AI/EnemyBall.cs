@@ -50,6 +50,12 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float minimumSpeed;
 
+    [Header("Explosion specifications")]
+    [Tooltip("The amount of bounce for explosions to give the ball")]
+    [SerializeField] private float explosionUpwards;
+    [Tooltip("The maximum radius (in meters) from the center of the ball for an explosion")]
+    [SerializeField] private float explosionRadius;
+
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while steering left or right")]
     [SerializeField] private float turnFuel;
@@ -94,6 +100,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private GameObject gizmoObj;
     private List<Vector3> _possiblePositions;
     private int _posCount = 0;
+    [SerializeField] private bool aiEnabled = true;
     
     #endregion
 
@@ -738,7 +745,7 @@ public class EnemyBall : MonoBehaviour
     // Resume or begin control
     private void StartMovement()
     {
-        if (!_moving)
+        if (!_moving && aiEnabled)
         {
             _moving = true;
         
@@ -867,6 +874,21 @@ public class EnemyBall : MonoBehaviour
     {
         return new Vector3(diagonal.x * vec.x, diagonal.y * vec.y, diagonal.z * vec.z);
     }
-    
+
+    public void Explode(float explosionForce)
+    {
+        float rightScalar = UnityEngine.Random.Range(explosionRadius * -1f, explosionRadius);
+
+        Vector3 camRight = (_refInvRot * rotationRef.right).normalized;
+
+        Vector3 offset = camRight * rightScalar;
+
+        Vector3 explosionPos = transform.position + offset;
+
+        Debug.Log("Right scalar is " + rightScalar);
+
+        _myBody.AddExplosionForce(explosionForce, explosionPos, 0f, explosionUpwards, ForceMode.Impulse);
+    }
+
     #endregion
 }

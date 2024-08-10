@@ -33,7 +33,7 @@ public class Mine : MonoBehaviour
             // Enemy hit
             else
             {
-
+                colliderObj.GetComponent<EnemyBall>().Explode(explosionForce);
             }
 
             _audioSources[Random.Range(0, _audioSources.Length)].Play();
