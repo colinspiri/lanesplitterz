@@ -56,6 +56,9 @@ VisualEffect:
       - m_Value: {x: 20, y: 20}
         m_Name: Rock size
         m_Overridden: 1
+      - m_Value: {x: 10, y: 15}
+        m_Name: Primary mesh size
+        m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -78,6 +81,20 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {fileID: 2800000, guid: c04d232ad4609b0438855f30829966a5, type: 3}
         m_Name: Texture2D
+        m_Overridden: 1
+      - m_Value: {fileID: -5216581434543980006, guid: bf901a2d7a930c94ca596d6cc5147298,
+          type: 3}
+        m_Name: Primary Mesh
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: c04d232ad4609b0438855f30829966a5, type: 3}
+        m_Name: Primary Texture2D
+        m_Overridden: 1
+      - m_Value: {fileID: 289301614986012343, guid: dfdc1c1a7a440d14eb5d41cf1293b467,
+          type: 3}
+        m_Name: Secondary Mesh
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: 0c16e655ee9ccbd4ba9d5359b56a9a5c, type: 3}
+        m_Name: Secondary Texture2D
         m_Overridden: 1
     m_Bool:
       m_Array: []
