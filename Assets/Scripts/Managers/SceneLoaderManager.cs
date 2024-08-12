@@ -51,6 +51,6 @@ public class SceneLoaderManager : MonoBehaviour
         yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());
         SceneManager.LoadScene("Level " + (gameState.currentLevelIndex + 1).ToString(), LoadSceneMode.Additive);
         gameState.currentLevelIndex++;
-        musicController.NextLevel(gameState.currentLevelIndex);
+        musicController.NextLevel();
     }
 }
