@@ -59,6 +59,9 @@ VisualEffect:
       - m_Value: {x: 10, y: 15}
         m_Name: Primary mesh size
         m_Overridden: 1
+      - m_Value: {x: 0.005, y: 0.01}
+        m_Name: New Vector2
+        m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -95,6 +98,13 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {fileID: 2800000, guid: 0c16e655ee9ccbd4ba9d5359b56a9a5c, type: 3}
         m_Name: Secondary Texture2D
+        m_Overridden: 1
+      - m_Value: {fileID: -6493477161640803684, guid: c14cacfae3a5a8247a762a90e1edac18,
+          type: 3}
+        m_Name: New Mesh
+        m_Overridden: 1
+      - m_Value: {fileID: 2800000, guid: c3483e88e1b275d498058db32312bb9b, type: 3}
+        m_Name: New Texture2D
         m_Overridden: 1
     m_Bool:
       m_Array: []
