@@ -8,8 +8,8 @@ public class MusicController : MonoBehaviour
 {
     [SerializeField] AdaptiveMusicContainer tutorialMusic;
     [SerializeField] AdaptiveMusicContainer[] gameMusic;
+    [SerializeField] GameState gameState;
     private bool launched = false;
-    private int currentLevel = 0;
 
     private void Start()
     {
@@ -18,29 +18,24 @@ public class MusicController : MonoBehaviour
 
     public void Launch()
     {
-        if (!launched && currentLevel > 0)
+        if (!launched && gameState.currentLevelIndex > 0)
         {
-            gameMusic[currentLevel-1].TransitionSection(0);
+            gameMusic[(gameState.currentLevelIndex - 1) / 5].TransitionSection(0);
             launched = true;
         }
         
     }
 
-    public void NextLevel(int level)
+    public void NextLevel()
     {
-        if (level <= gameMusic.Length) {
-            if (level == 1)
+        if (gameState.currentLevelIndex % 5 == 1) {
+            if (gameState.currentLevelIndex == 1)
             {
                 tutorialMusic.SetState(1);
             }
-            else
-            {
-                gameMusic[currentLevel - 1].SetState(1);
-            }
-            currentLevel = level;
-            gameMusic[currentLevel - 1].RunContainer();
+            int newLevel = (gameState.currentLevelIndex - 1) / 5;
+            gameMusic[newLevel].RunContainer();
+            launched = false;
         }
-        
-        
     }
 }

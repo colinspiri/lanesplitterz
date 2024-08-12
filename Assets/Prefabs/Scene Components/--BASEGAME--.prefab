@@ -421,6 +421,105 @@ MonoBehaviour:
     _gradualStateChangeTime: 1
   _initialState: 0
   _ignoreWarnings: 0
+--- !u!1 &862155512442188312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3239310262626567245}
+  - component: {fileID: 2221513473944842648}
+  m_Layer: 0
+  m_Name: Corpo Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3239310262626567245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862155512442188312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370297589638225213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2221513473944842648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862155512442188312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae20871896b029c4ba10f2e8c21e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playType: 1
+  _isOneShot: 0
+  _trackBPM: 120
+  _timeSignatureTop: 4
+  _timeSignatureBottom: 4
+  _isPlaying: 0
+  _sections:
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 784d1d162aadec54ab16a0eb760bb558, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 1
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 49d52915288b1344c9bace24f2b0af7a, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 2
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+    - _transitionInto: 3
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+  _initialSection: 0
+  _currentSection: 0
+  _states:
+  - _stateAudioLayerVolumes:
+    - 1
+    - 1
+    - 1
+    - 1
+    _gradualStateChange: 0
+    _gradualStateChangeTime: 1
+  - _stateAudioLayerVolumes:
+    - 0
+    - 0
+    - 0
+    - 0
+    _gradualStateChange: 0
+    _gradualStateChangeTime: 1
+  _initialState: 0
+  _ignoreWarnings: 0
 --- !u!1 &1013112468165360583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1197,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &6071840221375052668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +2011,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 0640eafd633f0cd4291d6adec8a18287,
+    type: 2}
   _event: {fileID: 11400000, guid: 0640eafd633f0cd4291d6adec8a18287, type: 2}
   _response:
     m_PersistentCalls:
@@ -1943,7 +2044,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1c8904d561efe3b41ba54819f7c4e2dc,
+    type: 2}
   _event: {fileID: 11400000, guid: 1c8904d561efe3b41ba54819f7c4e2dc, type: 2}
   _response:
     m_PersistentCalls:
@@ -1975,7 +2077,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 16f4f020c66ce7542aac1a408eeecfb6,
+    type: 2}
   _event: {fileID: 11400000, guid: 16f4f020c66ce7542aac1a408eeecfb6, type: 2}
   _response:
     m_PersistentCalls:
@@ -2007,7 +2110,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 884338dddeea9db479581723e010dc64,
+    type: 2}
   _event: {fileID: 11400000, guid: 884338dddeea9db479581723e010dc64, type: 2}
   _response:
     m_PersistentCalls:
@@ -2105,6 +2209,7 @@ Transform:
   m_Children:
   - {fileID: 6878639608186257463}
   - {fileID: 3562550363596352086}
+  - {fileID: 3239310262626567245}
   m_Father: {fileID: 8500893530938471023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6764594138453727965
@@ -2122,6 +2227,8 @@ MonoBehaviour:
   tutorialMusic: {fileID: 7217692162893916384}
   gameMusic:
   - {fileID: 6660178748321575947}
+  - {fileID: 2221513473944842648}
+  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
 --- !u!1 &9189417159018289720
 GameObject:
   m_ObjectHideFlags: 0
