@@ -62,6 +62,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GatherTexture2D_8831e80fc9a44ad1945742d04c26ee28_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: df264368ea3084546a846a06c6e39465, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -80,6 +84,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_16d06fb1870c4a10876e41143a9c6b47_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: b6c6d1cc7cc7cd448aee6770e6f5dfd8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1c1eed1656de42d9a832234c67b41396_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: f9bc879a2a075ac479c142a19fe50c1d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_2e8710120ba348a580e6e2ddb319f5f2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: f9bc879a2a075ac479c142a19fe50c1d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_422f4429ff984f3991db932cb2d3d858_Texture_1_Texture2D:
@@ -136,7 +148,7 @@ Material:
     - _Cutoff: 0.5
     - _DepthFarMultiply: 5
     - _DepthLineThickness: 0.003
-    - _DepthMinThreshold: 1
+    - _DepthMinThreshold: 0.000001
     - _DepthNormalThreshold: 3
     - _DepthNormalThresholdScale: 3000
     - _DepthStrength: 1
@@ -146,16 +158,17 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FarDepth: 200
+    - _FarDepth: 1000
+    - _FarDepthMultiplier: 1000
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NearDepth: 0.01
+    - _NearDepth: 0.3
     - _NoiseDensity: 10
     - _NoiseOffset: 2
     - _NormalFarDepth: 100
-    - _NormalFarDepthThreshold: 20
+    - _NormalFarDepthThreshold: 100
     - _NormalLineThickness: 0.001
     - _NormalNearDepth: 0.01
     - _NormalNearDepthThreshold: 1
@@ -177,7 +190,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+    - _FarColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
     - _NearColor: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
