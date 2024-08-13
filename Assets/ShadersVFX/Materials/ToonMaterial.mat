@@ -147,8 +147,8 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthFarMultiply: 5
-    - _DepthLineThickness: 0.003
-    - _DepthMinThreshold: 0.000001
+    - _DepthLineThickness: 0.001
+    - _DepthMinThreshold: 1
     - _DepthNormalThreshold: 3
     - _DepthNormalThresholdScale: 3000
     - _DepthStrength: 1
@@ -168,7 +168,7 @@ Material:
     - _NoiseDensity: 10
     - _NoiseOffset: 2
     - _NormalFarDepth: 100
-    - _NormalFarDepthThreshold: 100
+    - _NormalFarDepthThreshold: 300
     - _NormalLineThickness: 0.001
     - _NormalNearDepth: 0.01
     - _NormalNearDepthThreshold: 1
@@ -190,7 +190,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+    - _FarColor: {r: 0.23584902, g: 0.23584902, b: 0.23584902, a: 1}
     - _NearColor: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
