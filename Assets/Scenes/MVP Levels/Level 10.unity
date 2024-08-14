@@ -4766,12 +4766,17 @@ PrefabInstance:
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7340907
+      value: 1.279365
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39917
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4624075
+      value: 0.21362013
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
@@ -5269,12 +5274,17 @@ PrefabInstance:
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7340907
+      value: 1.2854121
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35342
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4624075
+      value: 0.20020396
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
@@ -10579,17 +10589,16 @@ MonoBehaviour:
   possibleLayers:
   - Balls
   triggerCount: -1
-  currentThrow: {fileID: 11400000, guid: e770c02edf9f7b443b8538023d60bbf7, type: 2}
+  startLevelReset: {fileID: 11400000, guid: df6ac4c5de70ce8418aa5626ab4780c3, type: 2}
+  endLevelReset: {fileID: 11400000, guid: f9967aa9c1197774891228b6a731ea67, type: 2}
   playerCurrentPoints: {fileID: 11400000, guid: e56f34336fd93df4486504cbf4353efa,
     type: 2}
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
-  startLevelReset: {fileID: 11400000, guid: df6ac4c5de70ce8418aa5626ab4780c3, type: 2}
-  endLevelReset: {fileID: 11400000, guid: f9967aa9c1197774891228b6a731ea67, type: 2}
   lane: {fileID: 11400000, guid: 47a309b27a42b174b8657a4b67613e8d, type: 2}
-  ground: {fileID: 523641089}
   uiConstants: {fileID: 11400000, guid: 1f196faed6b75be41acbee04debe87c8, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
+  ground: {fileID: 523641089}
 --- !u!114 &1458300665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11560,12 +11569,17 @@ PrefabInstance:
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7340907
+      value: 1.2018288
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.31149
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4624075
+      value: 0.21388197
       objectReference: {fileID: 0}
     - target: {fileID: 8593976186398371615, guid: eed1a990da39b6644bbed7830435ce05,
         type: 3}
