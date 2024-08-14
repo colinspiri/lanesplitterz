@@ -168,7 +168,7 @@ E1-V15: How about this: Try on my super special Pin & Roll lane!
 //should be mad
 Hiro: Hey! That's cheating!
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: No it ain't, not if you have the money!
+E1-V15: No it ain't. You can hit 'em too!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 //she be sad or depressed
 Hiro: !!! 
@@ -200,7 +200,7 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Come to speak to your competitor, son?
+E1-V15: Come for some tips, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 -> So why do you care so much about Elvis?
     <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
