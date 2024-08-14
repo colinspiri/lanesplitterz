@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b255fcf8db4d9492261d574ab552d8, type: 3}
   m_Name: SceneLoader
   m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
+  playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   mainMenuScene:
     sceneAsset: {fileID: 102900000, guid: 2c23cb2c88c85474d930fb371a1b945e, type: 3}
     scenePath: Assets/Scenes/MainMenu.unity
@@ -19,4 +21,3 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
     scenePath: Assets/Scenes/Game.unity
   firstLevelIndex: 1
-  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}

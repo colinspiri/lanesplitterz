@@ -92,17 +92,17 @@ public class Cannon : MonoBehaviour
                 if (numSpacePressed == 0)
                 {
                     ConfirmedCannonPosition.Raise();
-                    if (_isFirstThrow) ConfirmedCannonPositionTutorial.Raise();
+                    if (_isFirstThrow && playerInfo.isPracticing) ConfirmedCannonPositionTutorial.Raise();
                 }
                 else if (numSpacePressed == 1)
                 {
                     ConfirmedLaunchPower.Raise(powerMeterData);
-                    if (_isFirstThrow) ConfirmedLaunchPowerTutorial.Raise();
+                    if (_isFirstThrow && playerInfo.isPracticing) ConfirmedLaunchPowerTutorial.Raise();
                 }
                 else if (numSpacePressed == 2)
                 {
                     ConfirmedInitialSpin.Raise(spinMeterData);
-                    if (_isFirstThrow)
+                    if (_isFirstThrow && playerInfo.isPracticing)
                     {
                         ConfirmedInitialSpinTutorial.Raise();
                         _isFirstThrow = false;

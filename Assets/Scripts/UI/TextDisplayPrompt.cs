@@ -12,10 +12,17 @@ public class TextDisplayPrompt : MonoBehaviour
     [SerializeField] private TextAreaVariable firstPrompt;
     [SerializeField] private bool showOnEveryThrow;
     [SerializeField] private bool showAtBeginning;
+    [SerializeField] private PlayerInfo playerInfo;
 
     private void Start()
     {
-        if (showOnEveryThrow)
+        if (!playerInfo.isPracticing)
+        {
+            promptText.gameObject.SetActive(false);
+            background.gameObject.SetActive(false);
+            return;
+        }
+            if (showOnEveryThrow)
         {
             RoundManager.OnNewRound += () => ChangeText(firstPrompt);
             RoundManager.OnNewThrow += () => ChangeText(firstPrompt);

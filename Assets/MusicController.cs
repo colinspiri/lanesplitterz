@@ -13,7 +13,16 @@ public class MusicController : MonoBehaviour
 
     private void Start()
     {
-        tutorialMusic.RunContainer();
+        if (gameState.currentLevelIndex == 0)
+        {
+            tutorialMusic.RunContainer();
+        }
+        else
+        {
+            int newLevel = (gameState.currentLevelIndex - 1) / 5;
+            gameMusic[newLevel].RunContainer();
+        }
+        
     }
 
     public void Launch()

@@ -12,12 +12,14 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private float waitWhenObstacleHit;
     [SerializeField] private float waitWhenAtGoldenPins;
     [SerializeField] private float zThresholdForGoldenPinsPrompt;
+    [SerializeField] private PlayerInfo playerInfo;
     
     private bool _started;
     private bool _playerHitObstacle;
     
     public void BeginTutorial()
     {
+        if (!playerInfo.isPracticing) return;
         if (_started) return;
         _started = true;
         StartCoroutine(DoTutorial());
@@ -50,6 +52,7 @@ public class Tutorial : MonoBehaviour
 
     public void OnPlayerHitObstacle()
     {
+        if (!playerInfo.isPracticing) return;
         if (_playerHitObstacle) return;
         _playerHitObstacle = true;
         StartCoroutine(NotifyObstacleEffects());

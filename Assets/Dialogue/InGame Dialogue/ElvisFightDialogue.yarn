@@ -18,24 +18,6 @@ Hiro:  Woah! I've seen you playing on Fremont Street. Could I have your autograp
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Um...
 Hiro: Thanks, but-
-
-???: TEST INTERMISSION
-???: Q1 or Q4?
--> Q1
-    ???: Curious. But would you rather Q2 or Q4?
-    -> Q2
-        ???: Fascinating. Not even Q3?
-        -> Q3
-            ???: It seems I have underestimated you.
-            ???: Well played.
-        -> Q4
-            ???: lmaooo gotchaaa
-    -> Q4
-        ???: Ah, so there are limits.
--> Q4
-    ???: Understandable, have a nice day.
-???: Well, that about wraps up the intermission. Toodles!
-
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 ???: You are welcome. I am simply preparing you for your failure.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -196,16 +178,14 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: I am just warming up hehe.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: You have no chance.
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: Give up, son. Your concert ends now.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: I still got an encore!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
-
-
 ===
 
 title: ElvisRoundFour
@@ -214,9 +194,69 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: Give up, son. Your concert ends now.
+E1-V15: Come to speak to your competitor, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: I still got an encore!
+-> So why do you care so much about Elvis?
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15: He was the biggest star on planet Earth!
+    E1-V15: Before Michael Jackson, before Taylor Swift, even before Gleepnorp the Inevitable, there was Elvis Presley.
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: He sounds great! But I've never heard of him.
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15:Unsurprising, the quality of education in this city has dropped 301% since 1985 PB.
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    -> Why Elvis in particular?
+        <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+        E1-V15: I was created by Manny Manns, a man with true vision. He was a stock trading genius. 
+        E1-V15: I was to be his calculator and jukebox.
+        <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+        Hiro: Juice box? Like for apple juice?
+        <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+        E1-V15: His favorite musician was a man who thrived in the 20th Century PB: The King of Rock and Roll, Elvis Presley. 
+        E1-V15: We loved him so much, we had all his albums on vinyl. 
+        E1-V15: We were here in Neo Las Vegas when the bombs first fell. 
+        E1-V15: While Manny lay dying, I swore to him I would carry Elvis into the future. 
+        <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+        -> Carry him into the future?
+            E1-V15: I have done the calculations: If they could bring Ceasar back, then I can resurrect Elvis.
+            <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+            Hiro: You're going to revive Elvis the Pelvis???
+            <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+            E1-V15: Incorrect. I am going to upload Elvis the Pelvis into my consciousness. He and I will be one. 
+            E1-V15: We will revive rock and roll and spread it across the world.
+            <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+            Hiro: Why not just make your own music? What's the point of becoming Elvis?
+            <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+            E1-V15: Have you ever seen a blue sky over your head? We're trapped in a world that's troubled with pain, son. 
+            E1-V15: I miss when people's biggest concern was their choice of outfit on a Friday night.
+            E1-V15: Elvis will lead us back into the light.
+            <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+            Hiro: How is Elvis gonna fix everything? 
+            <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+            E1-V15: ...
+            E1-V15: I don't know, but he'll make things better. What are you gonna do with the crown?
+            <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+            Hiro: When I win, I'm gonna get rid of everyone's debt, and change this city for the better. 
+            Hiro: I nearly lost my mentor in a ball crash 4 years ago. 
+            Hiro: She pulled through, but she's millions of chips in debt, all because of the accident. 
+            Hiro: But her story isn't so different from anyone else in this city.
+            Hiro: I'm gonna give Emi, and everyone else, a future to believe in. 
+            <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+            E1-V15: You've got some real burnin' love, but you're no king.
+        -> Let's Roll! 
+    -> Let's Roll! 
+-> Let's Roll!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: My prediction for your success is now 4.567%. 
+E1-V15: You've lost every match before this, barely hitting a single pin. But now, you’re beating me.
+E1-V15: There must be a variable I haven't accounted for. What is it?
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: It's something you can't quantify, E1. My spirit!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: ... I see...
+E1-V15: No matter, baby. I don't plan on going down easy. Viva Neo Las Vegas!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Let's see if Elvis' spirit is stronger than mine! Viva Neo Las Vegas indeed.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>

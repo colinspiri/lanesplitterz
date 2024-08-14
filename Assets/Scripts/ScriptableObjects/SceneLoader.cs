@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "SceneLoader", menuName = "SceneLoader")]
 public class SceneLoader : ScriptableObject {
     [SerializeField] private GameState gameState;
+    [SerializeField] private PlayerInfo playerInfo;
     public SceneReference mainMenuScene;
     public SceneReference gameScene;
     public int firstLevelIndex = 1;
@@ -18,8 +19,23 @@ public class SceneLoader : ScriptableObject {
     public void LoadGameScene() {
         ResetTime();
         SceneManager.LoadScene(gameScene.ScenePath);
-        LoadTutorial();
-        gameState.currentLevelIndex = 0;
+/*        LoadTutorial();
+        gameState.currentLevelIndex = 0;*/
+    }
+
+    public void SetLevelIndex(int levelIndex) {
+        gameState.currentLevelIndex = levelIndex;
+    }
+
+    public void SetIsPracticing(bool isPracticing)
+    {
+        playerInfo.isPracticing = isPracticing;
+        playerInfo.skippedTutorial = false;
+    }
+    public void SetIsNotPracticing()
+    {
+        playerInfo.isPracticing = false;
+        playerInfo.skippedTutorial = true;
     }
 
     // Loads levels additively (Game scene is always loaded)
@@ -37,6 +53,12 @@ public class SceneLoader : ScriptableObject {
     }
 
     public void LoadTutorial()=> SceneManager.LoadScene("Level 0", LoadSceneMode.Additive);
+
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene("Level 1", LoadSceneMode.Additive);
+        
+    }
 
     public void Restart()
     {

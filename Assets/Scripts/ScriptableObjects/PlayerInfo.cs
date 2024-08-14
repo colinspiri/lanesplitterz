@@ -12,4 +12,6 @@ public class PlayerInfo : ScriptableObject
     public float currentFuel;
     [HideInInspector]
     public bool isPracticing;
+    [HideInInspector] 
+    public bool skippedTutorial;
 }
