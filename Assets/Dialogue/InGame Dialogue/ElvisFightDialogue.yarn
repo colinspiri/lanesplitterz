@@ -1,4 +1,4 @@
-﻿title: BossIntro
+title: BossIntro
 tags:
 ---
 Character 1: hello! #line:0bf57b3 
@@ -27,14 +27,14 @@ Hiro: Oh, no need, I'm gonna win this thing!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Yup!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-??: What is your name, son?
+???: What is your name, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: E1-V15. Here.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
-Hiro: Thanks! Elvis? I thought your name was E1-V15?
+Hiro: Thanks! Elvis? I thought your name was          E1-V15?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: Indeed, I signed with the name of the King.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -117,7 +117,7 @@ E1-V15: It is no surprise, baby.
 <<EnableOneArt DialogueUI EnemyArtHappy>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
-E1-V15: You were great out there, son. You’re the toughest I’ve ever rolled against.
+E1-V15: You were great out there, son. You're the toughest I've ever rolled against.
 <<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtHappy>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
@@ -163,9 +163,15 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: You are far better than expected. You will fail nonetheless, baby.
+E1-V15: How about this: Try on my super special Pin & Roll lane!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Just you wait!
+//should be mad
+Hiro: Hey! That's cheating!
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: No it ain't, not if you have the money!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+//she be sad or depressed
+Hiro: !!! 
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -247,16 +253,32 @@ E1-V15: Come to speak to your competitor, son?
     -> Let's Roll! 
 -> Let's Roll!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: My prediction for your success is now 4.567%. 
-E1-V15: You've lost every match before this, barely hitting a single pin. But now, you’re beating me.
-E1-V15: There must be a variable I haven't accounted for. What is it?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: It's something you can't quantify, E1. My spirit!
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: ... I see...
-E1-V15: No matter, baby. I don't plan on going down easy. Viva Neo Las Vegas!
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Let's see if Elvis' spirit is stronger than mine! Viva Neo Las Vegas indeed.
+E1-V15: ...
+<<if CheckIsPlayerWinning() == true >>
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15: My prediction for your success is now 4.567%. 
+    E1-V15: You've lost every match before this, barely hitting a single pin. But now, you're beating me.
+    E1-V15: There must be a variable I haven't accounted for. What is it?
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: It's something you can't quantify, E1. My spirit!
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15: ... I see...
+    E1-V15: No matter, baby. I don't plan on going down easy. Viva Neo Las Vegas!
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: Let's see if Elvis' spirit is stronger than mine! Viva Neo Las Vegas indeed.
+<<elseif CheckIsPlayerWinning() == false>>
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15: This is your best performance to date, but you're still losing. 
+    E1-V15: Why do you continue? 
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: It's simple: My spirit. 
+    Hiro: I don't plan on giving up, even if I'm down 100 points, I'm gonna give it my all! 
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    E1-V15: ...
+    E1-V15: Spirit is a poor predictor of success. Don't be surprised when I win, baby.
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: Don't be surprised when you lose. Uh- baby.
+<<endif>>
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
