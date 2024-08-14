@@ -196,7 +196,7 @@ tags:
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: Come to speak to your competitor, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
--> Q1
+-> So why do you care so much about Elvis?
     <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
     E1-V15: He was the biggest star on planet Earth!
     E1-V15: Before Michael Jackson, before Taylor Swift, even before Gleepnorp the Inevitable, there was Elvis Presley.
@@ -244,17 +244,19 @@ E1-V15: Come to speak to your competitor, son?
             <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
             E1-V15: You've got some real burnin' love, but you're no king.
         -> Let's Roll! 
-            ???: lmaooo gotchaaa
     -> Let's Roll! 
-        ???: Ah, so there are limits.
 -> Let's Roll!
-    ???: Understandable, have a nice day.
-???: Well, that about wraps up the intermission. Toodles!
-
-
-
-
-
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: My prediction for your success is now 4.567%. 
+E1-V15: You've lost every match before this, barely hitting a single pin. But now, you’re beating me.
+E1-V15: There must be a variable I haven't accounted for. What is it?
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: It's something you can't quantify, E1. My spirit!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+E1-V15: ... I see...
+E1-V15: No matter, baby. I don't plan on going down easy. Viva Neo Las Vegas!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Let's see if Elvis' spirit is stronger than mine! Viva Neo Las Vegas indeed.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
