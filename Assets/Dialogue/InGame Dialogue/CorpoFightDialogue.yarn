@@ -34,22 +34,16 @@ Hiro: The real-estate company?
 Kaiba: We've gone far beyond real-estate, but yes.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Do you know a woman named Emiliana Krueger?
-<<EnableOneArt DialogueUI EnemyArtSad>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 Kaiba: I don't. That name is as meaningless to me as your own.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
 Hiro: She got into an accident, was treated at a Los Lobos hospital.
-Hiro: Ever since, she’s been a slave to your company's debts!
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtSad>>
+Hiro: Ever since, she's been a slave to your company's debts!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 Kaiba: An accident, kid?
 Kaiba: Our world operates on the principle of cause and effect.
 Kaiba: Her fate was the direct result of her own choices.
 Kaiba: Maybe she should have made better ones.
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<EnableOneArt DialogueUI EnemyArtAngry>>
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro:  How can you say that!? You don't even know her!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
@@ -130,11 +124,12 @@ Kaiba: I thought you were just another nobody, but you're a true warrior.
 Kaiba: With power like that...you might actually have a chance against Caesar.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Thanks! But I couldn't have done it alone!
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 //needs art for emiliana
 Emiliana: Kid!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Emiliana!
-
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Emiliana: You really showed that corporate bastard what for!
 Emiliana: What's all that money worth to you now, Mr. Business?
 //needs other a new things for E1
@@ -143,13 +138,13 @@ E1: Hiro Protag!
 Hiro: E1!
 Hiro: I love the new outfit.
 Hiro: Did you see the match?
-
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 E1: You bet I did, baby.
 E1: I ran a simulation before it started.
 E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: --Thanks, E1.
-
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 E1: ...and superior height.
 E1: According to the model, your chance of victory was a number smaller than I can process.
 E1: It had me all shook up, but I couldn't help believin' in you.
@@ -158,11 +153,11 @@ Hiro: Thanks E1!
 Hiro: You're my favorite…
 Hiro: (and only)
 Hiro: fan!
-
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Emiliana: Hey, don't forget about me!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 Kaiba: Why do you keep losers like this around?
-
+<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Emiliana: Hey!
 
 E1: Hey!
@@ -184,7 +179,7 @@ Kaiba: Oh, and Hiro?
 Kaiba: If you ever want an internship, just give me a call.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Maybe if you find a new line of work...
-===
+=== 
 
 title: CorpoRoundTwo
 tags:
@@ -208,9 +203,11 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Kaiba: I'm just here for the thrill. It's hard to come by, ya know?
+Kaiba: Check out these special pins I ordered, kid.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Then I'm happy to oblige!
+Hiro: Ugh, why does everyone have the money for this...
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: Money makes Neo Las Vegas go round.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -252,7 +249,7 @@ Kaiba: ...What do you want.
     Kaiba: I'm simply taking advantage of the opportunities that come my way.
     Kaiba: Why shouldn't the weaknesses of others become my strength? 
     <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-      -> Carry him into the future?
+      -> What about your weakness?
         <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
         Kaiba: What weakness?
         <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
@@ -267,16 +264,26 @@ Kaiba: ...What do you want.
         <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
         Kaiba: We'll see about that.
       -> Let's Roll! 
-            ???: lmaooo gotchaaa
   -> Let's Roll! 
-        ???: Ah, so there are limits.
 -> Let's Roll!
-    ???: Understandable, have a nice day.
-???: Well, that about wraps up the intermission. Toodles!
-
-
-
-
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: Hm.
+<<if CheckIsPlayerWinning() == true >>
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    Kaiba: Alright kid, it's time to end this.
+    Kaiba: You've got my adrenaline pumping, don't disappoint me now.
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: I'll give it my all, and nothing less!
+<<elseif CheckIsPlayerWinning() == false>>
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    Kaiba: This is a match that just won't light.
+    Kaiba: Maybe you should forfeit before you get hurt.
+    <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+    Hiro: I'll never give up!
+    Hiro: Even if I lose, I'll go down giving it my all!
+    <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+    Kaiba: Make me feel something, kid. I'm getting bored!
+<<endif>>
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>

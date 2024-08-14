@@ -97,6 +97,13 @@ public class DialogueUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    [YarnFunction("CheckIsPlayerWinning")]
+    public static bool CheckIsPlayerWinning()
+    {
+        if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore) return true;
+        return false;
+    }
+
     #endregion
 
     #region Character Art Functions
