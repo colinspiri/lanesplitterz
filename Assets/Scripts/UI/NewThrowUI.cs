@@ -58,7 +58,7 @@ public class NewThrowUI : MonoBehaviour
 
     private void Awake()
     {
-        playerInfo.isPracticing = true;
+        //playerInfo.isPracticing = true;
     }
 
     // Start is called before the first frame update

@@ -183,7 +183,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     private void NextRound() {
-        if (playerInfo.isPracticing == false && !isFirstRound) gameState.currentRound++;
+        if (playerInfo.skippedTutorial) gameState.currentRound++;
+        else if (playerInfo.isPracticing == false && !isFirstRound) gameState.currentRound++;
         if (playerInfo.isPracticing == false) isFirstRound = false;
         gameState.currentThrow = 1;
 
