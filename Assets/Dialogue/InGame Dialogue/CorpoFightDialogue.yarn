@@ -3,50 +3,65 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Hey there new opponent 
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-???: Ew. I already despise you 
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+???: ... 
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Um...
-Hiro: Thanks, but-
+Hiro: Holy moly! It's a Galvan 43X heavy roller!
+Hiro: A multiphasic engine, positronic controller, titanium shell…with a ball like that, you could roll through almost anything!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-???: You are welcome. I am simply preparing you for your failure.
+???: It's a 44X, actually.
+???: It's not publicly available yet, but for enough money, everything has a price.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Oh, no need, I'm gonna win this thing!
+Hiro: Wow!
+Hiro: It's…the most beautiful thing I've ever seen *sniffle*.
+Hiro: Can I... touch it?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-???: You are not. Still want an autograph, baby?
+???: No. Who even are you?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Yup!
+Hiro: I'm the one and only Hiro Protag!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-??: What is your name, son?
+???:  Is that name supposed to mean something to me?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: My name is Hiro Protag. And yours?
+Hiro: I'm the soon-to-be King of Neo Las Vegas!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: Corpo. Here.
+???: Oh, it's another competitor.
+???: ...
+Kaiba: I am Mark Kaiba, Senior Executive of Acquisitions for Los Lobos.
+Kaiba: Here, take my card.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
-Hiro: Thanks! Elvis? I thought your name was Corpo?
+Hiro: The real-estate company?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: Indeed, I signed with the name of the King.
+Kaiba: We've gone far beyond real-estate, but yes.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: King? You mean Ceasar?
+Hiro: Do you know a woman named Emiliana Krueger?
 <<EnableOneArt DialogueUI EnemyArtSad>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
-Corpo: !!!
-Corpo: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
+Kaiba: I don't. That name is as meaningless to me as your own.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
-Hiro: What is he? Some kind of magician?
+Hiro: She got into an accident, was treated at a Los Lobos hospital.
+Hiro: Ever since, she’s been a slave to your company's debts!
 <<EnableOneArt DialogueUI EnemyArtDefault>>
 <<DisableOneArt DialogueUI EnemyArtSad>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: ...
+Kaiba: An accident, kid?
+Kaiba: Our world operates on the principle of cause and effect.
+Kaiba: Her fate was the direct result of her own choices.
+Kaiba: Maybe she should have made better ones.
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<EnableOneArt DialogueUI EnemyArtAngry>>
-<<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
-Corpo: No.
-Corpo: You should prepare yourself, son. You will not make it past the opener.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro:  How can you say that!? You don't even know her!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: You bleeding hearts are all the same.
+Kaiba: You cry and whine about how unfair life is, but none of you are willing to do anything about it.
+Kaiba: You just want to leech resources from those who have earned their place in the world.
+Kaiba: Well let me tell you, you won't get anything from me.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: I'm no leech, Kaiba. You bought your ball? I built mine. 
+Hiro: Today, I roll for myself, and for Emiliana!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: You'd best be focused on your own choices today, kid.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -77,12 +92,14 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: It seems my predictions were correct. Spirit had no bearing on the outcome. 
+Kaiba: Over already?
+Kaiba: How anticlimactic!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Dang it! I'll be back next time. 
+Hiro: Just you wait, Kaiba!
+Hiro: I'll be back next time, stronger than ever!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: By then, Elvis will sit on Caesar's throne. 
-Corpo: Btw, father jinn gotchyo ass.
+Kaiba: Don't bother, you never had what it takes to become King. 
+Kaiba: Btw, father jinn gotchyo ass.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
@@ -95,58 +112,78 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: I won? Wait… I won??? Holy-
-<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-//Needs Character Art
-//Enable Emiliana Art
-Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
-//Needs Character Art
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: I...lost?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Wait, you didn't think I'd win?
+Hiro: Don't worry Kaiba, it happens to everybody!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: It is no surprise, baby.
-<<EnableOneArt DialogueUI EnemyArtHappy>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
-Corpo: You were great out there, son. You’re the toughest I’ve ever rolled against.
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtHappy>>
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: Spirit is far more valuable a predictor than I thought.
-<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-//Needs Character Art
-Emiliana: He's a real special kid, our Hiro.
-//Needs Character Art
-//Disable Emiliana Art
+Kaiba: Hah...haha
+Kaiba: Hahahahahaha
+Kaiba: HAHAHAHAHAHAHAH!
+Kaiba: What a rush!
+Kaiba: I haven't felt like this in YEARS!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Thanks, E1. It was an honor to roll with you.
-<<EnableOneArt DialogueUI EnemyArtSurprised>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtSurprised PlayerArtDefault>>
-Corpo: ...
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtSurprised>>
+Hiro: Ha ha...what?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: I will not revive him anymore.
+Kaiba: Hiro!
+Kaiba: I thought you were just another nobody, but you're a true warrior.
+Kaiba: With power like that...you might actually have a chance against Caesar.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Elvis the Pelvis?
+Hiro: Thanks! But I couldn't have done it alone!
+//needs art for emiliana
+Emiliana: Kid!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Emiliana!
+
+Emiliana: You really showed that corporate bastard what for!
+Emiliana: What's all that money worth to you now, Mr. Business?
+//needs other a new things for E1
+E1: Hiro Protag!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: E1!
+Hiro: I love the new outfit.
+Hiro: Did you see the match?
+
+E1: You bet I did, baby.
+E1: I ran a simulation before it started.
+E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: --Thanks, E1.
+
+E1: ...and superior height.
+E1: According to the model, your chance of victory was a number smaller than I can process.
+E1: It had me all shook up, but I couldn't help believin' in you.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Thanks E1!
+Hiro: You're my favorite…
+Hiro: (and only)
+Hiro: fan!
+
+Emiliana: Hey, don't forget about me!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: It is time to put the past to rest.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Cool. And E1?
-Hiro: Good luck out there.
+Kaiba: Why do you keep losers like this around?
+
+Emiliana: Hey!
+
+E1: Hey!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: Thank you, thank you very much.
-Corpo: And before I leave, may I have your autograph?
+Kaiba: What's the point?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: !!!
-Hiro: Sure!
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-<<EnableInputs Cannon>>
-<<EnableGameOverUI DialogueUI>>
-<<EnableScoreboard DialogueUI>>
-<<DisableDialogue DialogueUI>>
+Hiro: Without my friends, I never could have made it this far.
+Hiro: Their love is the fire that lights my fighting spirit!
+<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: ...
+Kaiba: I see...
+Kaiba: Well, Hiro, I wish you the best of luck for the finals.
+Kaiba: Nobody's ever been able to defeat that monster. Nobody.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: I'm not afraid of Caesar! No one can wear the crown forever.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Kaiba: Haha, you've at least got a fighting chance.
+Kaiba: Oh, and Hiro?
+Kaiba: If you ever want an internship, just give me a call.
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Maybe if you find a new line of work...
 ===
 
 title: CorpoRoundTwo
@@ -155,9 +192,9 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: You are far better than expected. You will fail nonetheless, baby.
+Kaiba:  You really think you have a chance? Please.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: Just you wait!
+Hiro: I’m just getting started!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -170,10 +207,10 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: I am just warming up hehe.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: You have no chance.
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: I'm just here for the thrill. It's hard to come by, ya know?
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Then I’m happy to oblige!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -201,10 +238,10 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: I can't let you do this, E1.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-Corpo: ...
+<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+Kaiba: I see a fire in your eyes. Show me what it can burn!
+<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+Hiro: Uh... sure!
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
