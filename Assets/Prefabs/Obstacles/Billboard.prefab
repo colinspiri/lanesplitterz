@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8658406507758920541
 Transform:
   m_ObjectHideFlags: 0
@@ -189,8 +189,7 @@ Transform:
   m_LocalPosition: {x: -10.123251, y: -4.555848, z: -33.382835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4086292483255306974}
+  m_Children: []
   m_Father: {fileID: 4534724891217292728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &121919458462603880
@@ -235,11 +234,11 @@ Transform:
   m_GameObject: {fileID: 6777815240214295508}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -1.0767488, y: -11.144152, z: 3.0718002}
+  m_LocalPosition: {x: -11.2, y: -15.7, z: -30.311035}
   m_LocalScale: {x: 11.8193, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3845537898261787056}
+  m_Father: {fileID: 4534724891217292728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &3133624669496571040
 MeshFilter:
@@ -301,12 +300,12 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -324,9 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c614b8b027b93d48bcfac8b0aaa7773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  billboard: {fileID: 0}
-  movementPoint1: {fileID: 2760055243190176197}
-  movementPoint2: {fileID: 8943246574405186823}
+  billboard: {fileID: 6777815240214295508}
   destroySound: {fileID: 6890485234492830145}
   moveDuration: 5
   fuelSub: 0.1
@@ -355,14 +352,15 @@ Transform:
   m_GameObject: {fileID: 7651755260666972930}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0244043, y: 0.4366027, z: 104.311035}
+  m_LocalPosition: {x: 3.0244043, y: 19.95, z: 104.311035}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4086292483255306974}
+  - {fileID: 3845537898261787056}
+  - {fileID: 8147583271698592936}
   - {fileID: 8658406507758920541}
   - {fileID: 8684898369668664587}
-  - {fileID: 8147583271698592936}
-  - {fileID: 3845537898261787056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8943246574405186823
@@ -380,7 +378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8684898369668664587
 Transform:
   m_ObjectHideFlags: 0

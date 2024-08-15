@@ -5,72 +5,69 @@ using UnityEngine;
 public class billboardMovement : MonoBehaviour
 {
     private PlayerMovement playerMove;
-    [SerializeField] public GameObject billboard;
-    [SerializeField] public GameObject movementPoint1;
-    [SerializeField] public GameObject movementPoint2;
+    public GameObject billboard;
+    
     [SerializeField] private AudioSource destroySound;
     [SerializeField] public float moveDuration = 5;
-    //[SerializeField] private float slowDown = 0.01f;
+
+    //This is the stupidest solution to this problem I could have found
+    //MoveBoolean: If true, move right, if false, move left
+    //SwitchBoolean: If true, switch MoveBoolean to false, if false, switch MoveBooelan to true
+    private bool MoveBoolean = true;
+    private bool SwitchBoolean = false;
+
+ 
     [Range(0.01f, 1.0f)]
     public float fuelSub = 0.1f;
 
-    // Start is called before the first frame update
-    IEnumerator Start()
+    private void Start()
     {
         playerMove = PlayerMovement.Instance;
-        
-        /* This is not the way. This code should be replaced and moved */
-        while (true)
+    }
+
+    private void Update()
+    {
+        if (MoveBoolean)
         {
-            yield return StartCoroutine( MoveBillboardForward ( movementPoint2.transform.position ) );
-            yield return StartCoroutine( MoveBillboardBack ( movementPoint1.transform.position ) );
+            transform.Translate(Vector3.right * moveDuration * Time.deltaTime);
         }
-    }
-
-    //Moves billboard from one position to another (via lerping)
-    IEnumerator MoveBillboardForward ( Vector3 targetPosition )
-    {
-        Vector3 startPosition = movementPoint1.transform.position;
-        float timeElapsed = 0;
-        
-        while (timeElapsed < moveDuration)
+        else 
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed/moveDuration);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            transform.Translate(Vector3.left * moveDuration * Time.deltaTime);
         }
-        transform.position = targetPosition;
-    }
-
-    IEnumerator MoveBillboardBack ( Vector3 targetPosition )
-    {
-        Vector3 startPosition = movementPoint2.transform.position;
-        float timeElapsed = 0;
         
-        while (timeElapsed < moveDuration)
+    }
+
+    //Checks if the layer is a Balls or Ground. On trigger hit, either slows down Ball by a float and deactivates the object, 
+    //or reverses movement of the billboard 
+    public void OnTriggerEnter( Collider billboardHit )
+    {
+        if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Balls"))
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed/moveDuration);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            billboard.gameObject.SetActive(false);
+            destroySound.Play();
+
+            playerMove.ReduceFuel(fuelSub);
         }
-        transform.position = targetPosition;
-    }
 
-    //draws movement points for easy understanding
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(movementPoint1.transform.position, new Vector3(12, 5, 1));
-        Gizmos.DrawWireCube(movementPoint2.transform.position, new Vector3(12, 5, 1));
-    }
+        if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            //this feels like an afront to god
+            if(!SwitchBoolean)
+            {
+                MoveBoolean = false;
+                SwitchBoolean = true;
+            }
+            else 
+            {
+                MoveBoolean = true;
+                SwitchBoolean = false;
+            }
+            
+            
+        }
 
-    //on trigger hit, slows down Ball by a float and deactivates the object
-    void OnTriggerEnter( Collider billboardHit )
-    {
-        billboard.gameObject.SetActive(false);
-        //playerMove.Accelerate( slowDown );
-        destroySound.Play();
-
-        playerMove.ReduceFuel(fuelSub);
+        //Debug.Log("Triggered");
     }
 
 }
