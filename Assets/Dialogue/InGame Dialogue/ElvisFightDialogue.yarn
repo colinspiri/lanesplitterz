@@ -200,6 +200,7 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableCheckerboard DialogueUI>>
 E1-V15: Come for some tips, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 -> So why do you care so much about Elvis?
@@ -252,6 +253,7 @@ E1-V15: Come for some tips, son?
         -> Let's Roll! 
     -> Let's Roll! 
 -> Let's Roll!
+<<DisableCheckerboard DialogueUI>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: ...
 <<if CheckIsPlayerWinning() == true >>

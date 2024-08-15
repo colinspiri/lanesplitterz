@@ -14,6 +14,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject blur;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject doublePointsUI;
+    [SerializeField] private GameObject checkerboard;
 
     [Header("Scriptable Objects")]
     [SerializeField] private GameState gameState;
@@ -102,6 +103,18 @@ public class DialogueUI : MonoBehaviour
     {
         if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore) return true;
         return false;
+    }
+
+    [YarnCommand("EnableCheckerboard")]
+    public void EnableCheckerboard()
+    {
+        checkerboard.SetActive(true);
+    }
+
+    [YarnCommand("DisableCheckerboard")]
+    public void DisableCheckerboard()
+    {
+        checkerboard.SetActive(false);
     }
 
     #endregion

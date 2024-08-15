@@ -220,6 +220,7 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableCheckerboard DialogueUI>>
 Kaiba: ...What do you want. 
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 -> Why do you work for Los Lobos?
@@ -266,6 +267,7 @@ Kaiba: ...What do you want.
       -> Let's Roll! 
   -> Let's Roll! 
 -> Let's Roll!
+<<DisableCheckerboard DialogueUI>>
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 Kaiba: Hm.
 <<if CheckIsPlayerWinning() == true >>
