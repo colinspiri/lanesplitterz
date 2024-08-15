@@ -56,8 +56,9 @@ public class PinManager : MonoBehaviour {
             playerCurrentPoints.Value += pin.PointValue;
         }
         else if (pin.LastTouchedBy == Pin.LastTouched.EnemyBall && gameState.isClearingPins == false) {
-            if (gameState.isDoublePointsThrow == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
-            else enemyCurrentPoints.Value += pin.PointValue;
+            /*            if (gameState.isDoublePointsThrow == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
+                        else enemyCurrentPoints.Value += pin.PointValue;*/
+            enemyCurrentPoints.Value += pin.PointValue;
         }
     }
 
