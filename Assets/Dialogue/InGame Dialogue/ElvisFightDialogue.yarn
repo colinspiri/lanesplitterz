@@ -27,7 +27,7 @@ Hiro: Oh, no need, I'm gonna win this thing!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Yup!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-???: What is your name, son?
+???: What's your name, son?
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
@@ -38,7 +38,7 @@ Hiro: Thanks! Elvis? I thought your name was          E1-V15?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 E1-V15: Indeed, I signed with the name of the King.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
-Hiro: King? You mean Ceasar?
+Hiro: King? You mean Caesar?
 <<EnableOneArt DialogueUI EnemyArtSad>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
@@ -54,7 +54,7 @@ E1-V15: ...
 <<EnableOneArt DialogueUI EnemyArtAngry>>
 <<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
 E1-V15: No.
-E1-V15: You should prepare yourself, son. You will not make it past the opener.
+E1-V15: You should prepare yourself, son. You won't make it past the opener.
 <<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -113,7 +113,7 @@ Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Wait, you didn't think I'd win?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: It is no surprise, baby.
+E1-V15: It's no surprise, baby.
 <<EnableOneArt DialogueUI EnemyArtHappy>>
 <<DisableOneArt DialogueUI EnemyArtDefault>>
 <<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
@@ -140,7 +140,7 @@ E1-V15: I will not revive him anymore.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Elvis the Pelvis?
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
-E1-V15: It is time to put the past to rest.
+E1-V15: It's time to put the past to rest.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Cool. And E1?
 Hiro: Good luck out there.
@@ -225,7 +225,7 @@ E1-V15: Come for some tips, son?
         E1-V15: While Manny lay dying, I swore to him I would carry Elvis into the future. 
         <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
         -> Carry him into the future?
-            E1-V15: I have done the calculations: If they could bring Ceasar back, then I can resurrect Elvis.
+            E1-V15: I have done the calculations: If they could bring Caesar back, then I can resurrect Elvis.
             <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
             Hiro: You're going to revive Elvis the Pelvis???
             <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
