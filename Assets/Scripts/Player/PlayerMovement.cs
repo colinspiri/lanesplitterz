@@ -137,6 +137,10 @@ public class PlayerMovement : MonoBehaviour
         RoundManager.OnNewThrow += () => _hasLaunched = false;
         RoundManager.OnNewRound += () => _hasLaunched = false;
 
+        // added for getting rid of initial spin
+        RoundManager.OnNewThrow += () => _currentSpin = 0;
+        RoundManager.OnNewRound += () => _currentSpin = 0;
+
         Initialize();
         //InitializeLevel();
     }

@@ -98,8 +98,18 @@ public class Cannon : MonoBehaviour
                 {
                     ConfirmedLaunchPower.Raise(powerMeterData);
                     if (_isFirstThrow && playerInfo.isPracticing) ConfirmedLaunchPowerTutorial.Raise();
+
+                    if (_isFirstThrow && playerInfo.isPracticing)
+                    {
+                        //ConfirmedInitialSpinTutorial.Raise();
+                        _isFirstThrow = false;
+                    }
+
+                    Launch();
+                    numSpacePressed = 0;
+                    return; 
                 }
-                else if (numSpacePressed == 2)
+/*                else if (numSpacePressed == 2)
                 {
                     ConfirmedInitialSpin.Raise(spinMeterData);
                     if (_isFirstThrow && playerInfo.isPracticing)
@@ -111,7 +121,7 @@ public class Cannon : MonoBehaviour
                     Launch();
                     numSpacePressed = 0;
                     return;
-                }
+                }*/
 
                 numSpacePressed++;
             }
@@ -184,7 +194,7 @@ public class Cannon : MonoBehaviour
 
         // Linear acceleration
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
-        PlayerMovement.Instance.Spin(spinMeterData.meterValue * -1f); // meterValue is the spin force
+        //PlayerMovement.Instance.Spin(spinMeterData.meterValue * -1f); // meterValue is the spin force
 
         LaunchedBall.Raise();
 
