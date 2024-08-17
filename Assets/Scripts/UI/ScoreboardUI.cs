@@ -124,6 +124,20 @@ public class ScoreboardUI : MonoBehaviour {
         RoundManager.Instance.enemyPointsByRound = 0;
     }
 
+    public void ClearScoreboard()
+    {
+        playerRoundOneText.text = "-";
+        playerRoundTwoText.text = "-";
+        playerRoundThreeText.text = "-";
+        playerRoundFourText.text = "-";
+        playerRoundFiveText.text = "-";
+        enemyRoundOneText.text = "-";
+        enemyRoundTwoText.text = "-";
+        enemyRoundThreeText.text = "-";
+        enemyRoundFourText.text = "-";
+        enemyRoundFiveText.text = "-";
+    }
+
     public void ShowFinalScores() {
         bool playerWins = RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore;
         playerScoreText.text = (playerWins ? "player won" : "player lost") + " with " +

@@ -67,6 +67,7 @@ public class DialogueUI : MonoBehaviour
         gameOverUI.SetActive(false);
         StartNewRound();
         ScoreboardUI.Instance.HideFinalScores();
+        ScoreboardUI.Instance.ClearScoreboard();
     }
 
     public void StartNewRound() => RoundManager.OnNewRound.Invoke();
