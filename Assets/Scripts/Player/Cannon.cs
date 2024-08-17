@@ -42,6 +42,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Rigidbody ball;
     [SerializeField] private TrajectoryLine trajectoryLine;
 
+    public GameObject launchVFX;
     public bool acceptingInputs;
     private bool launched;
     private Vector2 movementInput;
@@ -175,6 +176,13 @@ public class Cannon : MonoBehaviour
 
     private void Launch()
     {
+        // play vfx
+        if (launchVFX)
+        {
+            ParticleSystem vfx = launchVFX.GetComponent<ParticleSystem>();
+            vfx.Play();
+        }
+        
         launched = true;
 
         musicController.Launch();

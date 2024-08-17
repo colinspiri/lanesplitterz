@@ -17,6 +17,7 @@ public class EnemyCannon : MonoBehaviour
     
     [SerializeField] private AudioSource launchSound;
     [SerializeField] private Rigidbody ball;
+    [SerializeField] public GameObject launchVFX;
 
     public bool Rotating { get; private set; } = false;
 
@@ -70,6 +71,7 @@ public class EnemyCannon : MonoBehaviour
     }
     public void Launch(float launchForce)
     {
+        
         ball.WakeUp();
         ball.gameObject.SetActive(true);
         
@@ -77,6 +79,12 @@ public class EnemyCannon : MonoBehaviour
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
 
         launchSound.Play();
+        // play vfx
+        if (launchVFX)
+        {
+            ParticleSystem vfx = launchVFX.GetComponent<ParticleSystem>();
+            vfx.Play();
+        }
     }
     
     #endregion
