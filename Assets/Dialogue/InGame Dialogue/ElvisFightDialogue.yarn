@@ -15,8 +15,13 @@ tags:
 Hiro:  Woah! I've seen you playing on Fremont Street. Could I have your autograph? You rock! 
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: Thank you very much. Your chance of success is 0.0132%. 
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Um...
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Thanks, but-
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are welcome. I am simply preparing you for your failure.
@@ -24,30 +29,39 @@ Hiro: Thanks, but-
 Hiro: Oh, no need, I'm gonna win this thing!
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are not. Still want an autograph, baby?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Yup!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 ???: What's your name, son?
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: E1-V15. Here.
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Thanks! Elvis? I thought your name was          E1-V15?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 E1-V15: Indeed, I signed with the name of the King.
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: King? You mean Caesar?
-<<EnableOneArt DialogueUI ElvisArtSad>>
+<<EnableOneArt DialogueUI ElvisArtSurprised>>
 <<DisableOneArt DialogueUI ElvisArtDefault>>
-<<FadeArt DialogueUI ElvisArtSad PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
 E1-V15: !!!
 E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtSad>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtSurprised>>
 Hiro: What is he? Some kind of magician?
 <<EnableOneArt DialogueUI ElvisArtDefault>>
-<<DisableOneArt DialogueUI ElvisArtSad>>
+<<DisableOneArt DialogueUI ElvisArtSurprised>>
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: ...
 <<DisableOneArt DialogueUI ElvisArtDefault>>
