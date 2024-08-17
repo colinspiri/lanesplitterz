@@ -73,8 +73,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxLinearVelocity = 1e+16f;
     [SerializeField] private float maxAngularVelocity = 50f;
 
-    [Header("Impact VFX")]
+    [Header("VFX & Shaders")]
     [SerializeField] private VisualEffect impactVFX;
+    [SerializeField] private Material speedlineVFX;
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
@@ -243,6 +244,10 @@ public class PlayerMovement : MonoBehaviour
             }
             turning = false;
         }
+
+        // speed line depending on _currentSpeed
+        float opacity = Mathf.Clamp(_currentSpeed * 0.01f, 0f, 1f);
+        speedlineVFX.SetFloat("_Speed", opacity);
     }
     
     private void FixedUpdate()
