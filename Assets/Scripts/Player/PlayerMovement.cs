@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("VFX & Shaders")]
     [SerializeField] private VisualEffect impactVFX;
+    [SerializeField] private VisualEffect goldImpactVFX;
     [SerializeField] private Material speedlineVFX;
 
     [Header("Audio Sources")]
@@ -281,8 +282,17 @@ public class PlayerMovement : MonoBehaviour
 
             foreach (ContactPoint contact in contactList)
             {
-                impactVFX.transform.position = contact.point;
-                impactVFX.Play();
+                // if game tag != Gold Pin
+                if (collision.collider.gameObject.tag != "Gold Pin")
+                {
+                    impactVFX.transform.position = contact.point;
+                    impactVFX.Play();
+                }
+                else
+                {
+                    goldImpactVFX.transform.position = contact.point;
+                    goldImpactVFX.Play();
+                }
                 _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
         }
