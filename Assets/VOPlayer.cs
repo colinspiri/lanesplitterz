@@ -8,8 +8,10 @@ using Yarn.Unity;
 public class VOPlayer : MonoBehaviour
 {
     [SerializeField] AudioClipRandomizer ProtagVO;
+    [SerializeField] AudioClipRandomizer MentorVO;
     [SerializeField] AudioClipRandomizer ElvisVO;
     [SerializeField] AudioClipRandomizer CorpoVO;
+    [SerializeField] AudioClipRandomizer CaesarVO;
     [SerializeField] TextMeshProUGUI characterName;
     [SerializeField] GameState gameState;
     public int frequency = 2;
@@ -34,7 +36,19 @@ public class VOPlayer : MonoBehaviour
                 stop--;
             }
         }
-        else if (gameState.currentLevelIndex < 6)
+        else if (characterName.text == "Emiliana")
+        {
+            if (stop == 1)
+            {
+                MentorVO.PlaySFX();
+                stop = frequency * 2;
+            }
+            else
+            {
+                stop--;
+            }
+        }
+        else if (gameState.currentLevelIndex < 6 || characterName.text == "E1")
         {
             if (stop == 1)
             {
@@ -59,6 +73,18 @@ public class VOPlayer : MonoBehaviour
             if (stop == 1)
             {
                 CorpoVO.PlaySFX();
+                stop = frequency * 2;
+            }
+            else
+            {
+                stop--;
+            }
+        }
+        else
+        {
+            if (stop == 1)
+            {
+                CaesarVO.PlaySFX();
                 stop = frequency * 2;
             }
             else

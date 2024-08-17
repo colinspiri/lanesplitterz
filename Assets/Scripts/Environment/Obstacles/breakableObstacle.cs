@@ -17,6 +17,7 @@ public class breakableObstacle : MonoBehaviour
     [Range(0.01f, 1f)]
     public float fuelSub = 0.1f;
     private float step = 1f;
+    private bool playedSound = false;
 
     void Start()
     {
@@ -32,18 +33,25 @@ public class breakableObstacle : MonoBehaviour
             _playerMove.ReduceFuel(fuelSub);
             if (onPlayerHitObstacle)
                 onPlayerHitObstacle.Raise();
+            destroySound.spatialBlend = 0.0f;
         }
         else if (collider.gameObject.CompareTag("Enemy Ball"))
         {
             EnemyBall enemyBall = collider.gameObject.GetComponent<EnemyBall>();
 
             enemyBall.ReduceFuel(fuelSub);
+            destroySound.spatialBlend = 1.0f;
         }
 
         intactCube.SetActive(false);
         brokenCube.SetActive(true);
 
-        destroySound.Play();
+        if (!playedSound)
+        {
+            destroySound.Play();
+            playedSound = true;
+        }
+        
         StartCoroutine(TimerRoutine());
 
     }

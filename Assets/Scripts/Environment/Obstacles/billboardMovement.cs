@@ -15,6 +15,7 @@ public class billboardMovement : MonoBehaviour
     //SwitchBoolean: If true, switch MoveBoolean to false, if false, switch MoveBooelan to true
     private bool MoveBoolean = true;
     private bool SwitchBoolean = false;
+    private bool playSound = true;
 
  
     [Range(0.01f, 1.0f)]
@@ -45,9 +46,23 @@ public class billboardMovement : MonoBehaviour
         if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Balls"))
         {
             billboard.gameObject.SetActive(false);
-            destroySound.Play();
+            
 
             playerMove.ReduceFuel(fuelSub);
+            if (billboardHit.gameObject.CompareTag("Player"))
+            {
+                destroySound.spatialBlend = 0.0f;
+            }
+            else if (billboardHit.gameObject.CompareTag("Enemy Ball"))
+            {
+                destroySound.spatialBlend = 1.0f;
+            }
+
+            if (playSound)
+            {
+                destroySound.Play();
+                playSound = false;
+            }
         }
 
         if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))

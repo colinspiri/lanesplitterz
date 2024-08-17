@@ -1,5 +1,90 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &56376988284268466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7548863416938733522}
+  - component: {fileID: 4424891039800689562}
+  m_Layer: 0
+  m_Name: Mentor Clips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7548863416938733522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56376988284268466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483077954241843733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4424891039800689562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56376988284268466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: 6ee7a3f7774f8df498d39cb729516aea, type: 3}
+  - {fileID: 8300000, guid: c5e1a8e87fd36bd4492c0a998c6de6b0, type: 3}
+  - {fileID: 8300000, guid: 4cc21e2be9e1f694baee7e7d4464f78e, type: 3}
+  - {fileID: 8300000, guid: 500ab5a8e2b6a654fb7cda3c32437a49, type: 3}
+  - {fileID: 8300000, guid: 7c24550698f65bc43b4b77270bec57ec, type: 3}
+  - {fileID: 8300000, guid: 4ae3533c62e30b74d857bb8a1ceda3fd, type: 3}
+  - {fileID: 8300000, guid: 29c790b93744b994393a60154a190514, type: 3}
+  - {fileID: 8300000, guid: 4fe5d92258714be4181157f964ab39e2, type: 3}
+  - {fileID: 8300000, guid: db96a4831736ecd459ee17766b1090d9, type: 3}
+  - {fileID: 8300000, guid: 0cd0e7658a2f0a44cb32f8e170872698, type: 3}
+  - {fileID: 8300000, guid: c5d728730016ed24c99d4eb9edba93f7, type: 3}
+  - {fileID: 8300000, guid: 7bfe55d04f9cbba48ac041fbf5c7ce71, type: 3}
+  - {fileID: 8300000, guid: 6f8f31bf36026c2468ef5da0ec961cc2, type: 3}
+  - {fileID: 8300000, guid: 8d226ef6ac7af8a40bf9247f5597a9fb, type: 3}
+  - {fileID: 8300000, guid: adb41dc9d2e6d024e98dc9a8d1c9dcb5, type: 3}
+  - {fileID: 8300000, guid: d4be1222de246274b8e3349eecaa66b4, type: 3}
+  - {fileID: 8300000, guid: 5e839fb969dd0da4c95dc121e779d76a, type: 3}
+  - {fileID: 8300000, guid: a3ed0a6f96a250d4a89548ff37721800, type: 3}
+  - {fileID: 8300000, guid: a874b6c827c36a24bb078fb9b9eccca9, type: 3}
+  - {fileID: 8300000, guid: c1cfef2ca90548e4595d7ba9356827aa, type: 3}
+  - {fileID: 8300000, guid: c108bfac9baf3c64f99585efe319dee2, type: 3}
+  - {fileID: 8300000, guid: 91a0c0b1d11f12b4e93b57da4cfdda75, type: 3}
+  - {fileID: 8300000, guid: 2cb9a0d21ad5c854f9f347b3dd882edf, type: 3}
+  - {fileID: 8300000, guid: acd1d27312e11f5408d77472f66a1d38, type: 3}
+  - {fileID: 8300000, guid: 143ac1015ecc9c04bae55f99dc91824d, type: 3}
+  - {fileID: 8300000, guid: 2fe6172692b7e964cae4b19bf2c2d9f0, type: 3}
+  _mixerGroup: {fileID: -5511231188376953159, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
+  _overrideArcSettings: 1
+  _noRepeats: 1
+  _randomPitch: 0
+  _minPitch: 0.5
+  _maxPitch: 1.5
+  _volume: 1
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &419737406878530759
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +884,8 @@ Transform:
   - {fileID: 1241744125926853418}
   - {fileID: 1933446313917324318}
   - {fileID: 6083719932501129366}
+  - {fileID: 1325743370556053465}
+  - {fileID: 7548863416938733522}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2889005097192983678
@@ -944,6 +1031,117 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2204433064599966133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325743370556053465}
+  - component: {fileID: 4438342810455426592}
+  m_Layer: 0
+  m_Name: Caesar Clips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325743370556053465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204433064599966133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 483077954241843733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4438342810455426592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204433064599966133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: 2069756100a139f42ad0518a6cbe7f20, type: 3}
+  - {fileID: 8300000, guid: 19fc6fae29f40df4fa0e912d746aaa2f, type: 3}
+  - {fileID: 8300000, guid: 69caeabccef11a547b8d3daa5cfe95c8, type: 3}
+  - {fileID: 8300000, guid: ff4edd94e32387c45b400bc14259b41e, type: 3}
+  - {fileID: 8300000, guid: 262a799536b9cb64480a9f4cc6b03cea, type: 3}
+  - {fileID: 8300000, guid: 04f09b39b8c3ab04281d4d3ab771a25d, type: 3}
+  - {fileID: 8300000, guid: c2d4e9dfe9c69e14595d7f60badece8f, type: 3}
+  - {fileID: 8300000, guid: ce9c26ca2b17d384791a83f8fccb3720, type: 3}
+  - {fileID: 8300000, guid: fa89cf503b620c842b0fd4052f140230, type: 3}
+  - {fileID: 8300000, guid: 8338214be651e8d4daab4f14783fe3f0, type: 3}
+  - {fileID: 8300000, guid: bc9fa5086540c8c4f8b516a3e639178c, type: 3}
+  - {fileID: 8300000, guid: 9e1b8f025276e1245a85a21b4eea022f, type: 3}
+  - {fileID: 8300000, guid: c5f0f9a108bfa4f4689e3446b497d61f, type: 3}
+  - {fileID: 8300000, guid: d89a27a8e39207f48ad22d4b03043414, type: 3}
+  - {fileID: 8300000, guid: f50081bd539b55b4abd15ae56850304b, type: 3}
+  - {fileID: 8300000, guid: 7f7ecfa23dd6ef642ba3a6a09a70233f, type: 3}
+  - {fileID: 8300000, guid: 5b65bbec8c2eade4398f2706ebed9134, type: 3}
+  - {fileID: 8300000, guid: 037f9ba3b15f5f848b0621e66441f9a7, type: 3}
+  - {fileID: 8300000, guid: 5907fedfe2425bf458484a3f2d180b5d, type: 3}
+  - {fileID: 8300000, guid: b9c8fbe060dfa1a4889442abe153b88b, type: 3}
+  - {fileID: 8300000, guid: 1e9967ecb6f2efd4e9671386384f8c6b, type: 3}
+  - {fileID: 8300000, guid: 66aa16a0c582900478a45c80b0f665e4, type: 3}
+  - {fileID: 8300000, guid: 5b115484f92164644980647362de71cd, type: 3}
+  - {fileID: 8300000, guid: 1da86f9680ef9ed43a2df099be8ac831, type: 3}
+  - {fileID: 8300000, guid: a70a65c53f4bee745b325598582931e1, type: 3}
+  - {fileID: 8300000, guid: 4f9d5982ec503a5449147c5b2a447401, type: 3}
+  - {fileID: 8300000, guid: e5c6290772802174bb602b8599a6210d, type: 3}
+  - {fileID: 8300000, guid: 80806a837bd4bdc45900443f2b16eedb, type: 3}
+  - {fileID: 8300000, guid: 016870795a69e164a9bef91796ea6b1e, type: 3}
+  - {fileID: 8300000, guid: 3aa3a468256912c4eac1ea468a57c5e4, type: 3}
+  - {fileID: 8300000, guid: 8429ea38a0382314caaaeeb2c3975128, type: 3}
+  - {fileID: 8300000, guid: 75295e8471a5a0446bc3870d174499fb, type: 3}
+  - {fileID: 8300000, guid: 968c1b7eafa46654e89491f227070f52, type: 3}
+  - {fileID: 8300000, guid: fa49886c2ca9fb544bc309b523d3f2e9, type: 3}
+  - {fileID: 8300000, guid: 5430a89125b23ca4ead225e1eb148856, type: 3}
+  - {fileID: 8300000, guid: 0fdcf78ba086cff4ea554b9b474389b2, type: 3}
+  - {fileID: 8300000, guid: 8b24b963e13b9754ca470e9b8f98eaf6, type: 3}
+  - {fileID: 8300000, guid: 4aa099bf1c279c649af041565ecc8499, type: 3}
+  - {fileID: 8300000, guid: 2d41dcf42ed154d4f96ca449f29c01bc, type: 3}
+  - {fileID: 8300000, guid: 551c7483c4605614c8644b49c4300c15, type: 3}
+  - {fileID: 8300000, guid: 6587349482f6ef04d98c3a77e1ce1cf7, type: 3}
+  - {fileID: 8300000, guid: 12411c2c34eeed24fb0ab2bc629a3932, type: 3}
+  - {fileID: 8300000, guid: 9f1d3579d0b6e3b409a688cdbcb577ac, type: 3}
+  - {fileID: 8300000, guid: b3a5c95a826396847815def55f044083, type: 3}
+  - {fileID: 8300000, guid: f78b9a0c44c20484a8ab155c9f9e0dfb, type: 3}
+  - {fileID: 8300000, guid: dd0a1beae9c5b7d40ba7a1a832980457, type: 3}
+  - {fileID: 8300000, guid: 7339973675c6adc459147ff8aa396255, type: 3}
+  - {fileID: 8300000, guid: d0874ed25f2a5d547acc5e22e138c93f, type: 3}
+  - {fileID: 8300000, guid: 9759fdf15e3d81549bf6383eaf5aa527, type: 3}
+  - {fileID: 8300000, guid: 645736983af319b4fb11173d13d90ca6, type: 3}
+  - {fileID: 8300000, guid: a44f34e826e796048aa4f845ebe462c1, type: 3}
+  - {fileID: 8300000, guid: acaf7298dd273874c90f6b3a2f6af8c6, type: 3}
+  _mixerGroup: {fileID: -5511231188376953159, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
+  _overrideArcSettings: 1
+  _noRepeats: 1
+  _randomPitch: 0
+  _minPitch: 0.5
+  _maxPitch: 1.5
+  _volume: 1
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
+  _ignoreListenerPause: 0
 --- !u!1 &2643913468082973684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,8 +1754,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProtagVO: {fileID: 6229184116604087225}
+  MentorVO: {fileID: 4424891039800689562}
   ElvisVO: {fileID: 6717564299199927771}
   CorpoVO: {fileID: 1930558368723284401}
+  CaesarVO: {fileID: 4438342810455426592}
   characterName: {fileID: 2643913469417464832}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   frequency: 1
