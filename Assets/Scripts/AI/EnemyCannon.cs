@@ -74,17 +74,18 @@ public class EnemyCannon : MonoBehaviour
         
         ball.WakeUp();
         ball.gameObject.SetActive(true);
-        
-        launchForce = Mathf.Clamp(launchForce, MinLaunchForce, MaxLaunchForce);
-        ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
 
-        launchSound.Play();
         // play vfx
         if (launchVFX)
         {
             ParticleSystem vfx = launchVFX.GetComponent<ParticleSystem>();
             vfx.Play();
         }
+        
+        launchForce = Mathf.Clamp(launchForce, MinLaunchForce, MaxLaunchForce);
+        ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+
+        launchSound.Play();
     }
     
     #endregion

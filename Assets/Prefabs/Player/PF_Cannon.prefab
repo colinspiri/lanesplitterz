@@ -589,12 +589,12 @@ PrefabInstance:
     - target: {fileID: 3769595525641496284, guid: 5062b4a70baeb0f41a4d8fc779e69628,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3769595525641496284, guid: 5062b4a70baeb0f41a4d8fc779e69628,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.754
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3769595525641496284, guid: 5062b4a70baeb0f41a4d8fc779e69628,
         type: 3}
@@ -631,10 +631,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3976457450593828568, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976457450593828568, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365641064934511593, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365641064934511593, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6514806907571250388, guid: 5062b4a70baeb0f41a4d8fc779e69628,
         type: 3}
       propertyPath: m_Name
       value: Blue Launch VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002150745040770664, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9002150745040770664, guid: 5062b4a70baeb0f41a4d8fc779e69628,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -176,13 +176,6 @@ public class Cannon : MonoBehaviour
 
     private void Launch()
     {
-        // play vfx
-        if (launchVFX)
-        {
-            ParticleSystem vfx = launchVFX.GetComponent<ParticleSystem>();
-            vfx.Play();
-        }
-        
         launched = true;
 
         musicController.Launch();
@@ -199,6 +192,13 @@ public class Cannon : MonoBehaviour
 
         ball.gameObject.SetActive(true);
         ball.transform.position = launchPoint.position;
+
+        // play vfx
+        if (launchVFX)
+        {
+            ParticleSystem vfx = launchVFX.GetComponent<ParticleSystem>();
+            vfx.Play();
+        }
 
         // Linear acceleration
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
