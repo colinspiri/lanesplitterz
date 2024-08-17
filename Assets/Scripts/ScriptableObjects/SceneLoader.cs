@@ -48,7 +48,7 @@ public class SceneLoader : ScriptableObject {
             currentLevelIndex.Value++;
         }*/
         // when we have caesar levels, make it * 3
-        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) return; // replace with win/lose screen
+        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) return; // replace with win/lose screen
         else SceneLoaderManager.Instance.LoadNextLevel();
     }
 

@@ -56,7 +56,7 @@ Hiro: I'm no leech, Kaiba. You bought your ball? I built mine.
 Hiro: Today, I roll for myself, and for Emiliana!
 <<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
 Kaiba: You'd best be focused on your own choices today, kid.
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
+<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -179,6 +179,11 @@ Kaiba: Oh, and Hiro?
 Kaiba: If you ever want an internship, just give me a call.
 <<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
 Hiro: Maybe if you find a new line of work...
+<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<EnableInputs Cannon>>
+<<EnableGameOverUI DialogueUI>>
+<<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
 === 
 
 title: CorpoRoundTwo

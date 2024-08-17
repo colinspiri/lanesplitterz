@@ -105,11 +105,11 @@ public class NewThrowUI : MonoBehaviour
             // TODO: events to start dialogue for ceasar
             else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 3)
             {
-/*                if (gameState.currentRound == 1) caesarStartDialogueRoundOne.Raise();
+                if (gameState.currentRound == 1) caesarStartDialogueRoundOne.Raise();
                 if (gameState.currentRound == 2) caesarStartDialogueRoundTwo.Raise();
                 if (gameState.currentRound == 3) caesarStartDialogueRoundThree.Raise();
                 if (gameState.currentRound == 4) caesarStartDialogueRoundFour.Raise();
-                if (gameState.currentRound == 5) caesarStartDialogueRoundFive.Raise();*/
+                if (gameState.currentRound == 5) caesarStartDialogueRoundFive.Raise();
             }
         }
     }
