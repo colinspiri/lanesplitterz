@@ -257,11 +257,15 @@ E1-V15: Come for some tips, son?
             <<DisableOneArt DialogueUI ElvisArtSad>>
             <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
             E1-V15: I have done the calculations: If they could bring Caesar back, then I can resurrect Elvis.
-            <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+            <<EnableOneArt DialogueUI PlayerArtSurprised>>
+            <<DisableOneArt DialogueUI PlayerArtDefault>>
+            <<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
             Hiro: You're going to revive Elvis the Pelvis???
-            <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+            <<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
             E1-V15: Incorrect. I am going to upload Elvis the Pelvis into my consciousness. He and I will be one. 
             E1-V15: We will revive rock and roll and spread it across the world.
+            <<EnableOneArt DialogueUI PlayerArtDefault>>
+            <<DisableOneArt DialogueUI PlayerArtSurprised>>
             <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
             Hiro: Why not just make your own music? What's the point of becoming Elvis?
             <<EnableOneArt DialogueUI ElvisArtSad>>
@@ -283,8 +287,14 @@ E1-V15: Come for some tips, son?
             E1-V15: I don't know, but he'll make things better. What are you gonna do with the crown?
             <<FadeArt DialogueUI PlayerArtDefault ElvisArtAngry>>
             Hiro: When I win, I'm gonna get rid of everyone's debt, and change this city for the better. 
+            <<EnableOneArt DialogueUI PlayerArtSad>>
+            <<DisableOneArt DialogueUI PlayerArtDefault>>
+            <<FadeArt DialogueUI PlayerArtSad ElvisArtAngry>>
             Hiro: I nearly lost my mentor in a ball crash 4 years ago. 
             Hiro: She pulled through, but she's millions of chips in debt, all because of the accident. 
+            <<EnableOneArt DialogueUI PlayerArtDefault>>
+            <<DisableOneArt DialogueUI PlayerArtSad>>
+            <<FadeArt DialogueUI PlayerArtDefault ElvisArtAngry>>
             Hiro: But her story isn't so different from anyone else in this city.
             Hiro: I'm gonna give Emi, and everyone else, a future to believe in. 
             <<EnableOneArt DialogueUI ElvisArtDefault>>
