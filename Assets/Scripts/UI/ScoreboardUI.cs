@@ -1,6 +1,7 @@
 ﻿using ScriptableObjectArchitecture;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -129,6 +130,12 @@ public class ScoreboardUI : MonoBehaviour {
                                RoundManager.Instance.playerFinalScore + " points";
         enemyScoreText.text = (playerWins ? "enemy lost" : "enemy won") + " with " +
                               RoundManager.Instance.enemyFinalScore + " points";
+    }
+
+    public void HideFinalScores()
+    {
+        playerScoreText.text = "";
+        enemyScoreText.text = "";
     }
 
     private string PointsByThrowToString(IReadOnlyList<int> pointsByThrow) {

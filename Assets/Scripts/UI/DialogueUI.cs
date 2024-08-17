@@ -66,6 +66,7 @@ public class DialogueUI : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameOverUI.SetActive(false);
         StartNewRound();
+        ScoreboardUI.Instance.HideFinalScores();
     }
 
     public void StartNewRound() => RoundManager.OnNewRound.Invoke();
