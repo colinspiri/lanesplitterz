@@ -27,6 +27,9 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI enemyRoundFiveText;
 
     [Space]
+    [SerializeField] private TextMeshProUGUI enemyTitleText;
+
+    [Space]
     [SerializeField] private GameObject scoreboardUI;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
@@ -136,6 +139,12 @@ public class ScoreboardUI : MonoBehaviour {
         enemyRoundThreeText.text = "-";
         enemyRoundFourText.text = "-";
         enemyRoundFiveText.text = "-";
+    }
+
+    public void UpdateEnemyTitleText()
+    {
+        if (gameState.currentLevelIndex >= 10) enemyTitleText.text = "Caesar";
+        else if (gameState.currentLevelIndex >= 5) enemyTitleText.text = "Kaiba";
     }
 
     public void ShowFinalScores() {
