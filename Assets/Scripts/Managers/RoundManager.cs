@@ -219,4 +219,12 @@ public class RoundManager : MonoBehaviour {
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
     }
+
+    public void ClearFinalScores()
+    {
+        playerFinalScore = 0;
+        enemyFinalScore = 0;
+        playerPointsByThrow.Clear();
+        enemyPointsByThrow.Clear();
+    }
 }

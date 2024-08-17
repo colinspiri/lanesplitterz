@@ -3,71 +3,71 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<EnableFadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Hey there final opponent.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: Ew. I am in fact better than you. 
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Um...
 Hiro: Thanks, but-
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are welcome. I am simply preparing you for your failure.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Oh, no need, I'm gonna win this thing!
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are not. Still want an autograph, baby?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Yup!
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ??: What is your name, son?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: Caesar. Here.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
 Hiro: Thanks! Elvis? I thought your name was Caesar?
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: Indeed, I signed with the name of the King.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: King? You mean Ceasar?
-<<EnableOneArt DialogueUI EnemyArtSad>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtSad PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtSad>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<FadeArt DialogueUI ElvisArtSad PlayerArtDefault>>
 Caesar: !!!
 Caesar: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtSad>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtSad>>
 Hiro: What is he? Some kind of magician?
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtSad>>
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtSad>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: ...
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<EnableOneArt DialogueUI EnemyArtAngry>>
-<<FadeArt DialogueUI EnemyArtAngry PlayerArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtAngry>>
+<<FadeArt DialogueUI ElvisArtAngry PlayerArtDefault>>
 Caesar: No.
 Caesar: You should prepare yourself, son. You will not make it past the opener.
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtAngry>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
 
 //<<EnableMouse DialogueUI>>
 //-> Yes, trust me. I'm ready for this. 
- //   <<EnableEnemyArt DialogueUI>>
+ //   <<EnableElvisArt DialogueUI>>
   //  <<EnablePlayerArt DialogueUI>>
-  //  <<FadeInEnemyArt DialogueUI>>
+  //  <<FadeInElvisArt DialogueUI>>
   //  <<FadeOutPlayerArt DialogueUI>>
  //   Boss: This should be fun hehe.
- //   <<DisableEnemyArt DialogueUI>>
+ //   <<DisableElvisArt DialogueUI>>
   //  <<DisablePlayerArt DialogueUI>>
 //-> I'll defeat you with one strike!
-    //<<EnableEnemyArt DialogueUI>>
+    //<<EnableElvisArt DialogueUI>>
    // <<EnablePlayerArt DialogueUI>>
-   // <<FadeInEnemyArt DialogueUI>>
+   // <<FadeInElvisArt DialogueUI>>
    // <<FadeOutPlayerArt DialogueUI>>
    // Boss: You impudent, insolent, naive fool, you'll regret messing with me!
-  //  <<DisableEnemyArt DialogueUI>>
+  //  <<DisableElvisArt DialogueUI>>
  //   <<DisablePlayerArt DialogueUI>>
 ===
 
@@ -76,14 +76,14 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: It seems my predictions were correct. Spirit had no bearing on the outcome. 
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Dang it! I'll be back next time. 
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: By then, Elvis will sit on Caesar's throne. 
 Caesar: Btw, father jinn gotchyo ass.
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
@@ -95,54 +95,54 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<EnableFadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: I won? Wait… I won??? Holy-
-<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 //Needs Character Art
 //Enable Emiliana Art
 Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 //Needs Character Art
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Wait, you didn't think I'd win?
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: It is no surprise, baby.
-<<EnableOneArt DialogueUI EnemyArtHappy>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtHappy PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtHappy>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<FadeArt DialogueUI ElvisArtHappy PlayerArtDefault>>
 Caesar: You were great out there, son. You’re the toughest I’ve ever rolled against.
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtHappy>>
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtHappy>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: Spirit is far more valuable a predictor than I thought.
-<<FadeOutBothArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 //Needs Character Art
 Emiliana: He's a real special kid, our Hiro.
 //Needs Character Art
 //Disable Emiliana Art
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Thanks, E1. It was an honor to roll with you.
-<<EnableOneArt DialogueUI EnemyArtSurprised>>
-<<DisableOneArt DialogueUI EnemyArtDefault>>
-<<FadeArt DialogueUI EnemyArtSurprised PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtSurprised>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
 Caesar: ...
-<<EnableOneArt DialogueUI EnemyArtDefault>>
-<<DisableOneArt DialogueUI EnemyArtSurprised>>
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI ElvisArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtSurprised>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: I will not revive him anymore.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Elvis the Pelvis?
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: It is time to put the past to rest.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Cool. And E1?
 Hiro: Good luck out there.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: Thank you, thank you very much.
 Caesar: And before I leave, may I have your autograph?
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: !!!
 Hiro: Sure!
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
@@ -154,11 +154,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: You are far better than expected. You will fail nonetheless, baby.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Just you wait!
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -170,11 +170,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<EnableFadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: I am just warming up hehe.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: You have no chance.
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -185,11 +185,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: Give up, son. Your concert ends now.
-<<FadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: I still got an encore!
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -201,11 +201,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<EnableFadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: I can't let you do this, E1.
-<<FadeArt DialogueUI EnemyArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Caesar: ...
-<<DisableArt DialogueUI PlayerArtDefault EnemyArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
