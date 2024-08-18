@@ -39,13 +39,14 @@ public class billboardMovement : MonoBehaviour
         
     }
 
-    //Checks if the layer is a Balls or Ground. On trigger hit, either slows down Ball by a float and deactivates the object, 
+    //Checks if the layer is a Balls or Ground. On collider hit, either slows down Ball by a float and deactivates the object, 
     //or reverses movement of the billboard 
-    public void OnTriggerEnter( Collider billboardHit )
+    public void OnCollisionEnter( Collision billboardHit )
     {
         if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Balls"))
         {
             billboard.gameObject.SetActive(false);
+            
             
 
             playerMove.ReduceFuel(fuelSub);
@@ -72,17 +73,19 @@ public class billboardMovement : MonoBehaviour
             {
                 MoveBoolean = false;
                 SwitchBoolean = true;
+
             }
             else 
             {
                 MoveBoolean = true;
                 SwitchBoolean = false;
+
             }
             
             
         }
 
-        //Debug.Log("Triggered");
+        //                Debug.Log("Triggered1");
     }
 
 }

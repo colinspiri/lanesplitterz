@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 6337188026311268405}
   - component: {fileID: 5975502951689561551}
   - component: {fileID: 2540631444969628539}
+  - component: {fileID: 5803115784338203843}
   m_Layer: 8
   m_Name: billboardArt
   m_TagString: Damage Obstacle
@@ -305,7 +306,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -327,6 +328,33 @@ MonoBehaviour:
   destroySound: {fileID: 6890485234492830145}
   moveDuration: 5
   fuelSub: 0.1
+--- !u!54 &5803115784338203843
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777815240214295508}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &7651755260666972930
 GameObject:
   m_ObjectHideFlags: 0
