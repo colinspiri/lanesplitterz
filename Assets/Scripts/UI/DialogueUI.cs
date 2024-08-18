@@ -163,11 +163,15 @@ public class DialogueUI : MonoBehaviour
     public void FadeArt(GameObject fadeIn, GameObject fadeOut)
     {
         Color tempColor = fadeIn.transform.GetChild(0).GetComponent<Image>().color;
-        tempColor.a = 1f;
+        tempColor.r = 1f;
+        tempColor.g = 1f;
+        tempColor.b = 1f;
         fadeIn.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         tempColor = fadeOut.transform.GetChild(0).GetComponent<Image>().color;
-        tempColor.a = 0.1f;
+        tempColor.r = 0.25f;
+        tempColor.g = 0.25f;
+        tempColor.b = 0.25f;
         fadeOut.transform.GetChild(0).GetComponent<Image>().color = tempColor;
     }
 
@@ -175,11 +179,15 @@ public class DialogueUI : MonoBehaviour
     public void FadeOutBothArt(GameObject artOne, GameObject artTwo)
     {
         Color tempColor = artOne.transform.GetChild(0).GetComponent<Image>().color;
-        tempColor.a = 0.1f;
+        tempColor.r = 0.25f;
+        tempColor.g = 0.25f;
+        tempColor.b = 0.25f;
         artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         tempColor = artTwo.transform.GetChild(0).GetComponent<Image>().color;
-        tempColor.a = 0.1f;
+        tempColor.r = 0.25f;
+        tempColor.g = 0.25f;
+        tempColor.b = 0.25f;
         artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
     }
 
