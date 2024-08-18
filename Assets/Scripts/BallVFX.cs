@@ -11,22 +11,39 @@ public class BallVFX : MonoBehaviour {
     [SerializeField] private VisualEffect ballSmokeBack;
     [SerializeField] private VisualEffect ballSmokeFront;
 
+    ParticleSystemRenderer ballSpinRenderer;
     private void Start() {
-        ballSpin.SetActive(false);
+        ballSpin.GetComponent<ParticleSystem>().Stop();
+        ballSpin.GetComponent<ParticleSystem>().Play();
+        // disable renderer of ballspin
+        ballSpinRenderer = ballSpin.GetComponent<ParticleSystemRenderer>();
+        ballSpinRenderer.enabled = true;
     }
 
     private void Update() {
         if (PlayerMovement.Instance == null || playerInfo.currentFuel <= Mathf.Epsilon) return;
         
         SnapToBall();
-        ballSpin.transform.position = PlayerMovement.Instance.transform.position;
-
+        CheckSpin();
         CheckTurnDirection();
         CheckAccelerationDirection();
     }
 
     private void SnapToBall() {
         transform.position = PlayerMovement.Instance.transform.position;
+        ballSpin.transform.position = PlayerMovement.Instance.transform.position - new Vector3(0, 0, 2.0f);
+    }
+
+    private void CheckSpin()
+    {
+        if (PlayerMovement.Instance.TurnDirection != 0)
+        {
+            ballSpinRenderer.enabled = true;
+        }
+        else
+        {
+            ballSpinRenderer.enabled = false;
+        }
     }
 
     private void CheckTurnDirection() {
@@ -34,20 +51,16 @@ public class BallVFX : MonoBehaviour {
 
         if (turnDirection == 1) {
             ballSmokeLeft.Play();
-            ballSpin.SetActive(true);
         }
         else {
             ballSmokeLeft.Stop();
-            ballSpin.SetActive(false);
         } 
         
         if (turnDirection == -1) {
             ballSmokeRight.Play();
-            ballSpin.SetActive(true);
         }
         else {
             ballSmokeRight.Stop();
-            ballSpin.SetActive(false);
         }
     }
 
