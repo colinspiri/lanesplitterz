@@ -5,16 +5,21 @@ using UnityEngine.VFX;
 
 public class BallVFX : MonoBehaviour {
     [SerializeField] private PlayerInfo playerInfo;
-    
+    [SerializeField] private GameObject ballSpin;
     [SerializeField] private VisualEffect ballSmokeLeft;
     [SerializeField] private VisualEffect ballSmokeRight;
     [SerializeField] private VisualEffect ballSmokeBack;
     [SerializeField] private VisualEffect ballSmokeFront;
 
+    private void Start() {
+        ballSpin.SetActive(false);
+    }
+
     private void Update() {
         if (PlayerMovement.Instance == null || playerInfo.currentFuel <= Mathf.Epsilon) return;
         
         SnapToBall();
+        ballSpin.transform.position = PlayerMovement.Instance.transform.position;
 
         CheckTurnDirection();
         CheckAccelerationDirection();
@@ -29,18 +34,20 @@ public class BallVFX : MonoBehaviour {
 
         if (turnDirection == 1) {
             ballSmokeLeft.Play();
-            // ballSmokeLeft.SetUInt("SmokeRate", 100);
+            ballSpin.SetActive(true);
         }
         else {
             ballSmokeLeft.Stop();
+            ballSpin.SetActive(false);
         } 
         
         if (turnDirection == -1) {
             ballSmokeRight.Play();
-            // ballSmokeRight.SetUInt("SmokeRate", 100);
+            ballSpin.SetActive(true);
         }
         else {
             ballSmokeRight.Stop();
+            ballSpin.SetActive(false);
         }
     }
 
@@ -49,7 +56,6 @@ public class BallVFX : MonoBehaviour {
 
         if (accelerationDirection == 1) {
             ballSmokeBack.Play();
-            // ballSmokeBack.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeBack.Stop();
@@ -57,7 +63,6 @@ public class BallVFX : MonoBehaviour {
 
         if (accelerationDirection == -1) {
             ballSmokeFront.Play();
-            // ballSmokeFront.SetUInt("SmokeRate", 100);
         }
         else {
             ballSmokeFront.Stop();

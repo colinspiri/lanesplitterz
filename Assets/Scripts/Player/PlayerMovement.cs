@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private VisualEffect impactVFX;
     [SerializeField] private VisualEffect goldImpactVFX;
     [SerializeField] private Material speedlineVFX;
+    [SerializeField] private ParticleSystem ballSpinVFX;
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
