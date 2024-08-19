@@ -534,20 +534,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2116863973}
     m_Modifications:
+    - target: {fileID: 880659654875163484, guid: f786fc5d5326e0e46a49ef16ef5a1264,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880659654875163484, guid: f786fc5d5326e0e46a49ef16ef5a1264,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcbc60637c2b794d9664aedf42f44db, type: 2}
     - target: {fileID: 2354676691212371878, guid: f786fc5d5326e0e46a49ef16ef5a1264,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.8555484
+      value: 4.57
       objectReference: {fileID: 0}
     - target: {fileID: 2354676691212371878, guid: f786fc5d5326e0e46a49ef16ef5a1264,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.2879524
+      value: 3.79
       objectReference: {fileID: 0}
     - target: {fileID: 2354676691212371878, guid: f786fc5d5326e0e46a49ef16ef5a1264,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.3697
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 2354676691212371878, guid: f786fc5d5326e0e46a49ef16ef5a1264,
         type: 3}
@@ -1013,6 +1023,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2116863973}
     m_Modifications:
+    - target: {fileID: 880659654875163484, guid: f786fc5d5326e0e46a49ef16ef5a1264,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880659654875163484, guid: f786fc5d5326e0e46a49ef16ef5a1264,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fcbc60637c2b794d9664aedf42f44db, type: 2}
     - target: {fileID: 2354676691212371878, guid: f786fc5d5326e0e46a49ef16ef5a1264,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -4723,7 +4743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &925265670
 Transform:
   m_ObjectHideFlags: 0
