@@ -51,6 +51,26 @@ public class SceneLoaderManager : MonoBehaviour
         yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());
         SceneManager.LoadScene("Level " + (gameState.currentLevelIndex + 1).ToString(), LoadSceneMode.Additive);
         gameState.currentLevelIndex++;
+
+        if (gameState.currentLevelIndex < 6)
+        {
+            gameState.isElvisLevel = true;
+            gameState.isCorpoLevel = false;
+            gameState.isCaesarLevel = false;
+        }
+        else if (gameState.currentLevelIndex < 11)
+        {
+            gameState.isElvisLevel = false;
+            gameState.isCorpoLevel = true;
+            gameState.isCaesarLevel = false;
+        }
+        else
+        {
+            gameState.isElvisLevel = false;
+            gameState.isCorpoLevel = false;
+            gameState.isCaesarLevel = true;
+        }
+
         musicController.NextLevel();
     }
 }

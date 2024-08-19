@@ -156,6 +156,8 @@ public class RoundManager : MonoBehaviour {
 
     public void CheckElvisAbility()
     {
+        if (!gameState.isElvisLevel) return;
+
         if (elvisInfo.doublePointsThrows.ContainsKey(gameState.currentRound))
         {
             if (elvisInfo.doublePointsThrows[gameState.currentRound] == gameState.currentThrow)

@@ -11,4 +11,7 @@ public class GameState : ScriptableObject
     [HideInInspector] public bool isScoreboardEnabled;
     [HideInInspector] public bool isClearingPins;
     [HideInInspector] public bool isDoublePointsThrow;
+    [HideInInspector] public bool isElvisLevel;
+    [HideInInspector] public bool isCorpoLevel;
+    [HideInInspector] public bool isCaesarLevel;
 }
