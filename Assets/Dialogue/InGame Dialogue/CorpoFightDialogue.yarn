@@ -3,60 +3,83 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 ???: ... 
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Holy moly! It's a Galvan 43X heavy roller!
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: A multiphasic engine, positronic controller, titanium shell…with a ball like that, you could roll through almost anything!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 ???: It's a 44X, actually.
 ???: It's not publicly available yet, but for enough money, everything has a price.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Wow!
+<<EnableOneArt DialogueUI PlayerArtSad>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: It's…the most beautiful thing I've ever seen *sniffle*.
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtSad>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Can I... touch it?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 ???: No. Who even are you?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: I'm the one and only Hiro Protag!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 ???:  Is that name supposed to mean something to me?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: I'm the soon-to-be King of Neo Las Vegas!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 ???: Oh, it's another competitor.
 ???: ...
 Kaiba: I'm Mark Kaiba, Senior Executive of Acquisitions for Los Lobos.
 Kaiba: Here, take my card.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: The real-estate company?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 Kaiba: We've gone far beyond real-estate, but yes.
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Do you know a woman named Emiliana Krueger?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 Kaiba: I don't. That name is as meaningless to me as your own.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtSad>>
+<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: She got into an accident, was treated at a Los Lobos hospital.
+<<EnableOneArt DialogueUI PlayerArtAngry>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
 Hiro: Ever since, she's been a slave to your company's debts!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtAngry>>
 Kaiba: An accident, kid?
 Kaiba: Our world operates on the principle of cause and effect.
 Kaiba: Her fate was the direct result of her own choices.
 Kaiba: Maybe she should have made better ones.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
 Hiro:  How can you say that!? You don't even know her!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtAngry>>
 Kaiba: You bleeding hearts are all the same.
 Kaiba: You cry and whine about how unfair life is, but none of you are willing to do anything about it.
 Kaiba: You just want to leech resources from those who have earned their place in the world.
 Kaiba: Well let me tell you, you won't get anything from me.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
 Hiro: I'm no leech, Kaiba. You bought your ball? I built mine. 
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtAngry>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Today, I roll for myself, and for Emiliana!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: You'd best be focused on your own choices today, kid.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
