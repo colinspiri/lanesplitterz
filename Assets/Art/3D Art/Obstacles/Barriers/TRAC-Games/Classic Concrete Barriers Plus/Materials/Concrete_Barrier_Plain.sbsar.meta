@@ -1,0 +1,2825 @@
+fileFormatVersion: 2
+guid: d6bfabf2a293c4ad49ead5563351c211
+labels:
+- Substance
+- SubstanceDesigner
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 23
+  mGraphInstanceData:
+  - graphLabel: Concrete_Barrier_Bare
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"329\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"1\"
+      />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\" type=\"0\"
+      value=\"0.363\" />\n  <presetinput identifier=\"Custom_Foreground\" uid=\"3881164461\"
+      type=\"3\" value=\"0.115438,0.773974,0.0150222,1\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.228\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.217\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"0.693\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.455\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.489\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 8190593949058030662, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -6192720487067416877, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -3277094380255445965, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -3206682953279493657, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: 3500959378307015424, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.0107
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Bare - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -1037964879043873875, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: -3206682953279493657, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -6192720487067416877, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 3500959378307015424, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3277094380255445965, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 8190593949058030662, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Bare_W
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"329\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"1\"
+      />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\" type=\"0\"
+      value=\"0.363\" />\n  <presetinput identifier=\"Custom_Foreground\" uid=\"3881164461\"
+      type=\"3\" value=\"0.115438,0.773974,0.0150222,1\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.228\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.217\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"0.47\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.755\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.519\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.598\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -8181888716259440127, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 4220040962351421624, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -8751023241511939921, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -1085165854218472549, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -7770888648649477982, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.0107
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Bare_W - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare_W - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare_W - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare_W - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare_W - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Bare_W - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 1728293809586853447, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: -1085165854218472549, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 4220040962351421624, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -7770888648649477982, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8751023241511939921, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8181888716259440127, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Full_RedWhite_Decal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"526\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"3\" />\n  <presetinput identifier=\"Colour_Preset\" uid=\"3881503433\"
+      type=\"4\" value=\"2\" />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\"
+      type=\"0\" value=\"0.182\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Decal_Selection_1\"
+      uid=\"3881201233\" type=\"4\" value=\"2\" />\n  <presetinput identifier=\"Decal_Position_1\"
+      uid=\"3881279412\" type=\"1\" value=\"-0.26,0.041\" />\n  <presetinput identifier=\"decal_rotation_1\"
+      uid=\"3879743687\" type=\"0\" value=\"0.52\" />\n  <presetinput identifier=\"decal_scale_1\"
+      uid=\"3879744263\" type=\"0\" value=\"0.136\" />\n  <presetinput identifier=\"Decal_Selection_2\"
+      uid=\"3880104557\" type=\"4\" value=\"4\" />\n  <presetinput identifier=\"Decal_Position_2\"
+      uid=\"3880104585\" type=\"1\" value=\"0.24,0.244\" />\n  <presetinput identifier=\"decal_scale_2\"
+      uid=\"3879744351\" type=\"0\" value=\"0.185\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.41\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.575\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"1\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.759\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.565\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.595\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+        _ROUGHNESSMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 5484328716255315992, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -1443409767935073516, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -6638772863938767863, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -8745565495565085842, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: 7036235625746145721, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_RedWhite_Decal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 3382153101681095604, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: -1443409767935073516, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 5484328716255315992, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -6638772863938767863, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 7036235625746145721, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8745565495565085842, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Full_Yellow_Dry_NoDecal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"5282\"
+      />\n  <presetinput identifier=\"Custom_Foreground\" uid=\"3881164461\" type=\"3\"
+      value=\"0.115438,0.773974,0.0150222,1\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.228\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"1\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"0.723\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.455\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.524\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -5985753998461184693, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 5201320003285291279, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: 99935337702432352, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 2867275306546482944, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: 1369006436123297718, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.0107
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Full_Yellow_Dry_NoDecal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -3311753912639762315, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 2867275306546482944, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 5201320003285291279, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 1369006436123297718, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 99935337702432352, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -5985753998461184693, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Lower_RedWhite_Dry
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"3112\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"3\" />\n  <presetinput identifier=\"Colour_Preset\" uid=\"3881503433\"
+      type=\"4\" value=\"2\" />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\"
+      type=\"0\" value=\"0.238\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.228\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.389\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.304\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.504\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.44\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -6543290409661161909, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 877830320126811595, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -4200410060285091505, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -6705414068810580360, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -2248217473648460919, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -1903306450515654902, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 877830320126811595, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -6543290409661161909, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -4200410060285091505, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -2248217473648460919, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -6705414068810580360, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"806\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"3\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"3\" />\n  <presetinput identifier=\"Colour_Preset\" uid=\"3881503433\"
+      type=\"4\" value=\"2\" />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\"
+      type=\"0\" value=\"0.296\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.198\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.389\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.524\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.488\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+        _ROUGHNESSMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 8164099924575413514, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 3630460333331334340, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: 4986479075301978175, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 2597584977576533008, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -313513604962175151, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_RedWhite_Dry_NoDecal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 3030907741560715620, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 2597584977576533008, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 3630460333331334340, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -313513604962175151, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 4986479075301978175, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 8164099924575413514, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Lower_Yellow_Dirty
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"3847\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"3\"
+      />\n  <presetinput identifier=\"Custom_Background\" uid=\"3881160593\" type=\"3\"
+      value=\"0,0,0,1\" />\n  <presetinput identifier=\"Scrape_Opacity\" uid=\"3881639913\"
+      type=\"0\" value=\"1\" />\n  <presetinput identifier=\"moss_propagation\" uid=\"3880553297\"
+      type=\"0\" value=\"0.847\" />\n  <presetinput identifier=\"Dust_Amount\" uid=\"3883235300\"
+      type=\"0\" value=\"0.347\" />\n  <presetinput identifier=\"Dirt_Amount\" uid=\"3883705136\"
+      type=\"0\" value=\"0.533\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 8692755070863470667, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -2213946677951719017, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -3445189378195586840, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 960897158286121052, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -3119446258972473557, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_Dirty - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -7042701179258721890, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 960897158286121052, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -2213946677951719017, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3119446258972473557, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3445189378195586840, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 8692755070863470667, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Lower_Yellow_No_Decal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"8988\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"3\"
+      />\n  <presetinput identifier=\"Custom_Background\" uid=\"3881160593\" type=\"3\"
+      value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\" uid=\"3881587888\"
+      type=\"0\" value=\"0.259\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"0.526\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.319\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.587\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -6260579291726946782, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 6217626619977913334, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -1486527716171240205, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -8893378354392582045, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -1365495693488811781, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_Yellow_No_Decal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -7715504126758222838, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: -8893378354392582045, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 6217626619977913334, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -1365495693488811781, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -1486527716171240205, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -6260579291726946782, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"9029\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"3\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"2\" />\n  <presetinput identifier=\"Concrete_Bright\" uid=\"3883632524\"
+      type=\"0\" value=\"0.296\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.198\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0.389\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.524\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.488\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 2728578316613021561, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -7667566696321956239, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -3362385100738675384, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 5608430305855097815, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -8700123596316236206, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Lower_YellowBlack_Diag_Dry_NoDecal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 9217660665275162080, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 5608430305855097815, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -7667566696321956239, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8700123596316236206, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3362385100738675384, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 2728578316613021561, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Upper_Lower_Yellow_Decal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"8752\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"5\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"2\" />\n  <presetinput identifier=\"Custom_Background\" uid=\"3881160593\"
+      type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Decal_Selection_1\"
+      uid=\"3881201233\" type=\"4\" value=\"3\" />\n  <presetinput identifier=\"Decal_Position_1\"
+      uid=\"3881279412\" type=\"1\" value=\"0.175,-0.017\" />\n  <presetinput identifier=\"decal_rotation_1\"
+      uid=\"3879743687\" type=\"0\" value=\"0.528\" />\n  <presetinput identifier=\"decal_scale_1\"
+      uid=\"3879744263\" type=\"0\" value=\"0.216\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.317\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"1\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.421\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.471\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.581\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -3620006400927126265, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -8756697873519240530, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -8709451138101163203, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 5617941502067584943, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: 5898458178823930561, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_Decal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 4217646835161603731, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 5617941502067584943, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8756697873519240530, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 5898458178823930561, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -8709451138101163203, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3620006400927126265, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Upper_Lower_Yellow_No_Decal
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"9739\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"5\"
+      />\n  <presetinput identifier=\"Custom_Background\" uid=\"3881160593\" type=\"3\"
+      value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\" uid=\"3881587888\"
+      type=\"0\" value=\"0.317\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"1\" />\n  <presetinput identifier=\"black_scrape_opacity\"
+      uid=\"3883228895\" type=\"0\" value=\"0.474\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.003\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: 8500481007215322291, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: 7765561244555284735, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -54312519649919302, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: -7421428077412744108, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: -26020552228826369, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.02
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Lower_Yellow_No_Decal - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: -2272944188068365713, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: 7765561244555284735, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 8500481007215322291, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -54312519649919302, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -26020552228826369, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -7421428077412744108, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+  - graphLabel: Concrete_Barrier_Upper_Yellow_Stripe
+    prototypeName: Concrete_Barrier_Plain
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Concrete_Barrier_Plain\" label=\"\" >\n  <presetinput
+      identifier=\"$outputsize\" uid=\"2474884316\" type=\"8\" value=\"10,10\" />\n
+      \ <presetinput identifier=\"$randomseed\" uid=\"3304172174\" type=\"4\" value=\"5368\"
+      />\n  <presetinput identifier=\"Paint_Mask\" uid=\"3881479910\" type=\"4\" value=\"4\"
+      />\n  <presetinput identifier=\"Paint_Pattern\" uid=\"3881475608\" type=\"4\"
+      value=\"2\" />\n  <presetinput identifier=\"Custom_Foreground\" uid=\"3881164461\"
+      type=\"3\" value=\"0.115438,0.773974,0.0150222,1\" />\n  <presetinput identifier=\"Custom_Background\"
+      uid=\"3881160593\" type=\"3\" value=\"0,0,0,1\" />\n  <presetinput identifier=\"Base_Paint_Wear\"
+      uid=\"3881587888\" type=\"0\" value=\"0.448\" />\n  <presetinput identifier=\"Scrape_Opacity\"
+      uid=\"3881639913\" type=\"0\" value=\"0\" />\n  <presetinput identifier=\"moss_propagation\"
+      uid=\"3880553297\" type=\"0\" value=\"0.161\" />\n  <presetinput identifier=\"Dust_Amount\"
+      uid=\"3883235300\" type=\"0\" value=\"0.368\" />\n  <presetinput identifier=\"Dirt_Amount\"
+      uid=\"3883705136\" type=\"0\" value=\"0.524\" />\n  <presetinput identifier=\"Dirt_Colour_Preset\"
+      uid=\"3876920449\" type=\"4\" value=\"2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    materialProperties:
+      shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
+      lightmapFlags: 4
+      texEnvs:
+      - name: _BumpMap
+        texture: {fileID: -5823823770834969434, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailAlbedoMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailMask
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _DetailNormalMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _EmissionMap
+        texture: {instanceID: 0}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MainTex
+        texture: {fileID: -4367356694581542711, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _MetallicGlossMap
+        texture: {fileID: -3733456393611691392, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _OcclusionMap
+        texture: {fileID: 3400697792001988956, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      - name: _ParallaxMap
+        texture: {fileID: 5654263657509217076, guid: d6bfabf2a293c4ad49ead5563351c211,
+          type: 3}
+        scale: {x: 1, y: 1}
+        offset: {x: 0, y: 0}
+      floats:
+      - name: _BumpScale
+        float: 1
+      - name: _Cutoff
+        float: 0.5
+      - name: _DetailNormalMapScale
+        float: 1
+      - name: _DstBlend
+        float: 0
+      - name: _GlossMapScale
+        float: 1
+      - name: _Glossiness
+        float: 0.5
+      - name: _GlossyReflections
+        float: 1
+      - name: _Metallic
+        float: 0
+      - name: _Mode
+        float: 0
+      - name: _OcclusionStrength
+        float: 1
+      - name: _Parallax
+        float: 0.0107
+      - name: _SmoothnessTextureChannel
+        float: 0
+      - name: _SpecularHighlights
+        float: 1
+      - name: _SrcBlend
+        float: 1
+      - name: _UVSec
+        float: 0
+      - name: _ZWrite
+        float: 1
+      colors:
+      - name: _Color
+        color: {r: 1, g: 1, b: 1, a: 1}
+      - name: _EmissionColor
+        color: {r: 0, g: 0, b: 0, a: 1}
+    outputDescList:
+    - outputName: baseColor
+      identifier: basecolor
+      usageName: baseColor
+      channelStr: baseColor
+      label: Base Color
+      usage: 1
+      bImage: 1
+      bNumerical: 0
+      bLinear: 0
+    - outputName: normal
+      identifier: normal
+      usageName: normal
+      channelStr: normal
+      label: Normal
+      usage: 7
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: roughness
+      identifier: roughness
+      usageName: roughness
+      channelStr: roughness
+      label: Roughness
+      usage: 15
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: metallic
+      identifier: metallic
+      usageName: metallic
+      channelStr: metallic
+      label: Metallic
+      usage: 28
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: height
+      identifier: height
+      usageName: height
+      channelStr: height
+      label: Height
+      usage: 9
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    - outputName: ambientOcclusion
+      identifier: ambientOcclusion
+      usageName: ambientOcclusion
+      channelStr: ambientOcclusion
+      label: AO
+      usage: 5
+      bImage: 1
+      bNumerical: 0
+      bLinear: 1
+    texturePackingList:
+    - targetName: baseColor
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: normal
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: roughness
+      components:
+      - sourceName: roughness
+        from: 0
+        to: 3
+    - targetName: metallic
+      components:
+      - sourceName: smoothness
+        from: 0
+        to: 3
+    - targetName: height
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    - targetName: ambientOcclusion
+      components:
+      - sourceName: source
+        from: 0
+        to: 3
+    textureParameters:
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Concrete_Barrier_Upper_Yellow_Stripe - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList: []
+    inputTextureMap: []
+    targetSettingList:
+    - label: Default
+      bOverride: 0
+      bLockRatio: 1
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormatMode: 0
+      normalCompressed: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 141109520998483127, guid: d6bfabf2a293c4ad49ead5563351c211,
+      type: 3}
+    generatedTextures:
+    - {fileID: -4367356694581542711, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -5823823770834969434, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: -3733456393611691392, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 5654263657509217076, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
+    - {fileID: 3400697792001988956, guid: d6bfabf2a293c4ad49ead5563351c211, type: 3}
