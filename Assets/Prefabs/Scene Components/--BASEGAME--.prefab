@@ -1333,7 +1333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
-  ballSpin: {fileID: 4842663928613695641}
   ballSmokeLeft: {fileID: 4904195924731250994}
   ballSmokeRight: {fileID: 1490224216870921514}
   ballSmokeBack: {fileID: 3259516008293906476}
@@ -2680,6 +2679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallSpin VFX
       objectReference: {fileID: 0}
+    - target: {fileID: 542279224877087068, guid: 8106c99ad4393be47899c17882f9b592,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4732257619481191995, guid: 8106c99ad4393be47899c17882f9b592,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2769,12 +2773,6 @@ Transform:
 --- !u!198 &957250756625421177 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5330818601859635900, guid: 8106c99ad4393be47899c17882f9b592,
-    type: 3}
-  m_PrefabInstance: {fileID: 4950029091727378885}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4842663928613695641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 542279224877087068, guid: 8106c99ad4393be47899c17882f9b592,
     type: 3}
   m_PrefabInstance: {fileID: 4950029091727378885}
   m_PrefabAsset: {fileID: 0}
