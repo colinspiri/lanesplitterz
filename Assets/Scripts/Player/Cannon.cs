@@ -49,13 +49,15 @@ public class Cannon : MonoBehaviour
     private Enemy _enemy;
     private int numSpacePressed = 0;
     private bool _isFirstThrow;
+    private static Cannon _instance = null;
 
     private void Awake()
     {
-        _enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
-        if (!_enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
-
         _isFirstThrow = true;
+        if (_instance == null)
+        {
+            _instance = this;
+        }
     }
     private void Start()
     {
@@ -64,6 +66,7 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => DetermineDisableInputs();
+        UpdateEnemy();
         Initialize();
     }
 
@@ -220,6 +223,12 @@ public class Cannon : MonoBehaviour
     public void DetermineDisableInputs()
     {
         if (playerInfo.isPracticing == false) DisableInputs();
+    }
+
+    public static void UpdateEnemy()
+    {
+        _instance._enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
+        if (!_instance._enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
 
 /*    // used temporarily until corpo dialogue is implemented (we can enable inputs in the yarn file instead)

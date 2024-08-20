@@ -13,6 +13,7 @@ public class EnemyBall : MonoBehaviour
     [Header("Public Flags")]
     public bool enableFuelLoss = true;
     public bool enableExtraGravity = true;
+    public bool attackPlayer = false;
 
     [Header("AI Configuration")]
     [Tooltip("Frequency in seconds for the AI to consider updating position")]
@@ -36,6 +37,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float pointWeight;
     [SerializeField] private float distWeight;
     [SerializeField] private float angleWeight;
+    [SerializeField] private float aggroPoints;
     // The position being moved to
     private Vector3 _targetPos;
     private float _targetScore;
@@ -43,6 +45,7 @@ public class EnemyBall : MonoBehaviour
     private Dictionary<GameObject, float> _valueCache;
     // The true update time for checking positions
     private float _posUpdateTime;
+    private bool _hasAttackedPlayer;
 
     [Header("Force specifications")] [SerializeField]
     private float turnForce;
@@ -583,7 +586,14 @@ public class EnemyBall : MonoBehaviour
                             // Player ball
                             else if (obstacle.layer == _ballLayer)
                             {
-                                obsValue = -1f * playerFuelLoss * fuelWeight;
+                                if (attackPlayer && !_hasAttackedPlayer)
+                                {
+                                    obsValue = aggroPoints;
+                                }
+                                else
+                                {
+                                    obsValue = -1f * playerFuelLoss * fuelWeight;
+                                }
                             }
 
                             _valueCache.Add(obstacle, obsValue);
@@ -757,6 +767,7 @@ public class EnemyBall : MonoBehaviour
             if (aiEnabled)
             {
                 _moving = true;
+                _hasAttackedPlayer = false;
 
                 _targetPos = transform.position;
                 _targetScore = Mathf.NegativeInfinity;

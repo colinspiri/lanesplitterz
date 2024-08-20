@@ -9,8 +9,6 @@ public class EnemyCannon : MonoBehaviour
     [field: SerializeField] public float MaxYaw{get; private set;}
     [field: SerializeField] public float MinPitch{get; private set;}
     [field: SerializeField] public float MaxPitch{get; private set;}
-    [field: SerializeField] public float MaxLaunchForce{get; private set;}
-    [field: SerializeField] public float MinLaunchForce{get; private set;}
     [field: SerializeField] public float DefaultLaunchForce{get; private set;}
     [field: SerializeField] public float DegreesPerSecond{get; private set;}
     [field: SerializeField] public Transform LaunchPoint{get; private set;}
@@ -82,8 +80,8 @@ public class EnemyCannon : MonoBehaviour
             vfx.Play();
         }
         
-        launchForce = Mathf.Clamp(launchForce, MinLaunchForce, MaxLaunchForce);
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
+        Debug.Log("Enemy launching with force " + launchForce);
 
         launchSound.Play();
     }

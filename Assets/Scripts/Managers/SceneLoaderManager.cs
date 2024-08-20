@@ -13,7 +13,10 @@ public class SceneLoaderManager : MonoBehaviour
     [SerializeField] private GameState gameState;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private SceneLoader sceneLoader;
-    
+    [SerializeField] private GameObject e1Cannon;
+    [SerializeField] private GameObject kaibaCannon;
+    [SerializeField] private GameObject caesarCannon;
+
     private void Awake()
     {
         Instance = this;
@@ -57,18 +60,30 @@ public class SceneLoaderManager : MonoBehaviour
             gameState.isElvisLevel = true;
             gameState.isCorpoLevel = false;
             gameState.isCaesarLevel = false;
+
+            // e1Cannon.SetActive(true);
         }
         else if (gameState.currentLevelIndex < 11)
         {
             gameState.isElvisLevel = false;
             gameState.isCorpoLevel = true;
             gameState.isCaesarLevel = false;
+
+            e1Cannon.SetActive(false);
+            kaibaCannon.SetActive(true);
+
+            Cannon.UpdateEnemy();
         }
         else
         {
             gameState.isElvisLevel = false;
             gameState.isCorpoLevel = false;
             gameState.isCaesarLevel = true;
+
+            kaibaCannon.SetActive(false);
+            caesarCannon.SetActive(true);
+
+            Cannon.UpdateEnemy();
         }
 
         musicController.NextLevel();
