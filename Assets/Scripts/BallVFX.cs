@@ -5,7 +5,7 @@ using UnityEngine.VFX;
 
 public class BallVFX : MonoBehaviour {
     [SerializeField] private PlayerInfo playerInfo;
-    [SerializeField] private GameObject ballSpin;
+    // [SerializeField] private GameObject ballSpin;
     [SerializeField] private VisualEffect ballSmokeLeft;
     [SerializeField] private VisualEffect ballSmokeRight;
     [SerializeField] private VisualEffect ballSmokeBack;
@@ -13,38 +13,38 @@ public class BallVFX : MonoBehaviour {
 
     ParticleSystemRenderer ballSpinRenderer;
     private void Start() {
-        ballSpin.GetComponent<ParticleSystem>().Stop();
-        ballSpin.GetComponent<ParticleSystem>().Play();
-        // disable renderer of ballspin
-        ballSpinRenderer = ballSpin.GetComponent<ParticleSystemRenderer>();
-        ballSpinRenderer.enabled = true;
+        // ballSpin.GetComponent<ParticleSystem>().Stop();
+        // ballSpin.GetComponent<ParticleSystem>().Play();
+        // // disable renderer of ballspin
+        // ballSpinRenderer = ballSpin.GetComponent<ParticleSystemRenderer>();
+        // ballSpinRenderer.enabled = true;
     }
 
     private void Update() {
         if (PlayerMovement.Instance == null || playerInfo.currentFuel <= Mathf.Epsilon) return;
         
         SnapToBall();
-        CheckSpin();
+        // CheckSpin();
         CheckTurnDirection();
         CheckAccelerationDirection();
     }
 
     private void SnapToBall() {
         transform.position = PlayerMovement.Instance.transform.position;
-        ballSpin.transform.position = PlayerMovement.Instance.transform.position - new Vector3(0, 0, 2.0f);
+        // ballSpin.transform.position = PlayerMovement.Instance.transform.position - new Vector3(0, 0, 2.0f);
     }
 
-    private void CheckSpin()
-    {
-        if (PlayerMovement.Instance.TurnDirection != 0)
-        {
-            ballSpinRenderer.enabled = true;
-        }
-        else
-        {
-            ballSpinRenderer.enabled = false;
-        }
-    }
+    // private void CheckSpin()
+    // {
+        // if (PlayerMovement.Instance.TurnDirection != 0)
+        // {
+        //     ballSpinRenderer.enabled = true;
+        // }
+        // else
+        // {
+        //     ballSpinRenderer.enabled = false;
+        // }
+    // }
 
     private void CheckTurnDirection() {
         int turnDirection = PlayerMovement.Instance.TurnDirection;

@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (acceptingInputs)
         {
-            _turnVal = Input.GetAxis("Turn");
+            _turnVal = Input.GetAxis("Turn") * turnForce;
 
             _accelVal = Input.GetAxis("Accelerate");
 
@@ -201,9 +201,9 @@ public class PlayerMovement : MonoBehaviour
         else if (_turnVal > 0) TurnDirection = 1;
         else TurnDirection = 0;
 
-        if ((Math.Abs(_accelVal) > Mathf.Epsilon || Math.Abs(_turnVal) > Mathf.Epsilon) && _fuelMeter > 0.0f)
+        // If ball is accelerating / turning
+        if ((Math.Abs(_accelVal) > Mathf.Epsilon || Math.Abs(_turnVal) > Mathf.Epsilon) && _fuelMeter > Mathf.Epsilon)
         {
-
             if (!EngineSFX._isPlaying)
             {
                 EngineSFX.RunContainer();
@@ -213,15 +213,16 @@ public class PlayerMovement : MonoBehaviour
                 EngineSFX.TransitionSection(0);
             }
 
-            if (Math.Abs(_turnVal) > Mathf.Epsilon && !turning)
-            {
-                TurnSFX.PlaySFX();
-                turning = true;
-            } 
             if (Math.Abs(_turnVal) < Mathf.Epsilon)
             {
                 turning = false;
             }
+            else if (!turning)
+            {
+                TurnSFX.PlaySFX();
+                turning = true;
+            }
+
             if (Math.Abs(_accelVal) > Mathf.Epsilon)
             {
                 if (!AccelSFX._isPlaying)
@@ -259,7 +260,7 @@ public class PlayerMovement : MonoBehaviour
         if (enableExtraGravity) ExtraGravity();
 
         // Debug.Log("currentSpin = " + _currentSpin);
-        Hook();
+        // Hook();
         
         if (Mathf.Abs(_turnVal) > Mathf.Epsilon) Turn(_turnVal);
         
@@ -318,35 +319,52 @@ public class PlayerMovement : MonoBehaviour
     // Emulate frictional movement to the side
     private void Hook()
     { 
-        if (!Grounded() || IsIcy()) return;
+        // Colin hook code
+        // if (!Grounded() || IsIcy()) return;
 
-        float hookForceMagnitude = _currentSpin * hookForceMultiplier;
-        Vector3 hookForce = (_camInvRot * _myCam.right) * hookForceMagnitude;
+        // float hookForceMagnitude = _currentSpin * hookForceMultiplier;
+        // Vector3 hookForce = (_camInvRot * _myCam.right) * hookForceMagnitude;
         
-        _myBody.AddForce(hookForce);
+        // _myBody.AddForce(hookForce);
 
-        /*Vector3 camUp = _camInvRot * _myCam.up; 
-        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
-        Turn(force * hookMultiplier, false);*/
+        // Aaron hook code
+        // Vector3 camUp = _camInvRot * _myCam.up; 
+        // float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
+        // Turn(force * hookMultiplier, false);
     }
     
+    // public void Turn(float turnVal, bool expendFuel = true)
+    // {
+    //     // TODO: Add smoke VFX
+        
+    //     if (expendFuel)
+    //     {
+    //         float fuelReduction = turnFuel * Time.fixedDeltaTime;
+    //         ReduceFuel(fuelReduction);
+    //     }
+
+    //     _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
+    //     if (_currentSpin > 100) _currentSpin = 100;
+    //     else if (_currentSpin < -100) _currentSpin = -100;
+    // }
+
     // turnVal is turn force, negative for left, positive for right
     public void Turn(float turnVal, bool expendFuel = true)
     {
-        // TODO: Add smoke VFX
-        
         if (expendFuel)
         {
             float fuelReduction = turnFuel * Time.fixedDeltaTime;
-            ReduceFuel(fuelReduction);
+
+            if (_fuelMeter <= Mathf.Epsilon)
+            {
+                return;
+            }
+            else
+            { 
+                ReduceFuel(fuelReduction);
+            }
         }
 
-        _currentSpin += turnVal * turnSpeedPerSecond * Time.deltaTime;
-        if (_currentSpin > 100) _currentSpin = 100;
-        else if (_currentSpin < -100) _currentSpin = -100;
-
-        /*
-        turnVal *= turnForce;
         
         Vector3 linForce = (_camInvRot * _myCam.right) * turnVal;
         Vector3 rotForce = (_camInvRot * _myCam.up) * turnVal;
@@ -364,7 +382,7 @@ public class PlayerMovement : MonoBehaviour
         _myBody.AddForce(linForce, ForceMode.Impulse);
 
         // Rotational acceleration
-        _myBody.AddTorque(rotForce, ForceMode.Impulse);*/
+        _myBody.AddTorque(rotForce, ForceMode.Impulse);
     }
     
     // accelVal is the force to accelerate with
