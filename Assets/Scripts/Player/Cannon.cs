@@ -66,6 +66,7 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => DetermineDisableInputs();
+        if (playerInfo.isPracticing == false) DisableInputs();
         UpdateEnemy();
         Initialize();
     }
@@ -78,6 +79,7 @@ public class Cannon : MonoBehaviour
         launched = false;
 
         trajectoryLine.SetPositions();
+
         //launchForce = 0;
         //PowerLevelManager.Instance.DisablePowerSlider();
     }
