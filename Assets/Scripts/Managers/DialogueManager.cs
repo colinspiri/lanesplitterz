@@ -69,4 +69,9 @@ public class DialogueManager : MonoBehaviour
             gameMusic.TransitionSection(1);
         }
     }
+
+    public void SetNewGameMusic(AdaptiveMusicContainer music)
+    {
+        gameMusic = music;
+    }
 }

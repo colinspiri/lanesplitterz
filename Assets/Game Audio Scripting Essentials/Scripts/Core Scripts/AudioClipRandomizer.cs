@@ -43,7 +43,9 @@ namespace GameAudioScriptingEssentials
         [SerializeField] float _stereoPan = 0.0f;
         [Tooltip("How much the audio clips are attenuated in the world (0 being 2D with no attenuation, 1 being 3D with full attenuation)")]
         [Range(0.0f, 1.0f)]
-        [SerializeField] float _spatialBlend = 0.0f;
+        [SerializeField] public float _spatialBlend = 0.0f;
+        [Range(0.0f, 500.0f)]
+        [SerializeField] public float _maxRange = 500.0f;
 
         [SerializeField] bool _ignoreListenerPause = false;
 
@@ -132,6 +134,7 @@ namespace GameAudioScriptingEssentials
             _newAudioSource.panStereo = _stereoPan;
             _newAudioSource.spatialBlend = _spatialBlend;
             _newAudioSource.ignoreListenerPause = _ignoreListenerPause;
+            _newAudioSource.maxDistance = _maxRange;
             _newAudioSource.Play();
 
             if (!_loop)

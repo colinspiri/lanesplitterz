@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Runtime.CompilerServices;
 using BehaviorDesigner.Runtime.Tasks;
+using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -13,6 +14,7 @@ public class PinManager : MonoBehaviour {
     // components 
     [SerializeField] private GameObject pinPrefab;
     [SerializeField] private GameObject goldenPinPrefab;
+    [SerializeField] private AudioClipRandomizer goldenPinSFX;
 
     // scriptable object variables
     [SerializeField] private PinCollection allPins;
@@ -54,6 +56,10 @@ public class PinManager : MonoBehaviour {
 
         if (pin.LastTouchedBy == Pin.LastTouched.PlayerBall && gameState.isClearingPins == false) {
             playerCurrentPoints.Value += pin.PointValue;
+            if (pin.PointValue == 5)
+            {
+                goldenPinSFX.PlaySFX();
+            }
         }
         else if (pin.LastTouchedBy == Pin.LastTouched.EnemyBall && gameState.isClearingPins == false) {
             /*            if (gameState.isDoublePointsThrow == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
