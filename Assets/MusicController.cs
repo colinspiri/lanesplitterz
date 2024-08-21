@@ -9,6 +9,7 @@ public class MusicController : MonoBehaviour
     [SerializeField] AdaptiveMusicContainer tutorialMusic;
     [SerializeField] AdaptiveMusicContainer[] gameMusic;
     [SerializeField] GameState gameState;
+    [SerializeField] DialogueManager dialogueManager;
     private bool launched = false;
 
     private void Start()
@@ -44,6 +45,7 @@ public class MusicController : MonoBehaviour
             }
             int newLevel = (gameState.currentLevelIndex - 1) / 5;
             gameMusic[newLevel].RunContainer();
+            dialogueManager.SetNewGameMusic(gameMusic[newLevel]);
             launched = false;
         }
     }

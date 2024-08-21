@@ -389,6 +389,11 @@ MonoBehaviour:
       _fadeType: 1
       _quantization: 0
       _crossfadeTime: 1
+    - _transitionInto: 4
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
@@ -403,6 +408,18 @@ MonoBehaviour:
       _audioClips: []
       _audioLayerVolumes: 1
     _sectionTransitions: []
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: b5722e048ac61d641aa3047220f294d0, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 1
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
   _initialSection: 0
   _currentSection: 0
   _states:
@@ -502,6 +519,25 @@ MonoBehaviour:
       _fadeType: 1
       _quantization: 0
       _crossfadeTime: 1
+    - _transitionInto: 0
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 1f53cdcb3e8db304e817f6b2594280d4, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions: []
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 6bad7adea21773d4f8afa73a1016edca, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions: []
   _initialSection: 0
   _currentSection: 0
   _states:
@@ -726,6 +762,7 @@ MonoBehaviour:
     type: 3}
   goldenPinPrefab: {fileID: 5264718845464563505, guid: 1f0ed9cfbf586504f9f88b819d5df217,
     type: 3}
+  goldenPinSFX: {fileID: 7958852940132865719}
   allPins: {fileID: 11400000, guid: 5f7405f0aeba16843a20e781756ebd11, type: 2}
   pinsStanding: {fileID: 11400000, guid: 29ab08b2918abf0419547b2b2790ddbc, type: 2}
   pinsFallen: {fileID: 11400000, guid: b3a102e005dce7841ae8209202862b6b, type: 2}
@@ -864,6 +901,189 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2558909944437393500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5891469705697011837}
+  - component: {fileID: 483844064437232643}
+  m_Layer: 0
+  m_Name: Caesar Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5891469705697011837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558909944437393500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370297589638225213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &483844064437232643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558909944437393500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae20871896b029c4ba10f2e8c21e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playType: 1
+  _isOneShot: 0
+  _trackBPM: 120
+  _timeSignatureTop: 4
+  _timeSignatureBottom: 4
+  _isPlaying: 0
+  _sections:
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: ab6762200e60cfd43a6aa33dbb28e61c, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 1
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: e0cc5f6f7986d2b418113e6da83158a0, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 2
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+    - _transitionInto: 3
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+    - _transitionInto: 0
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 35afc9d5b8ac045479305a8e7fd1846d, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions: []
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 5011330469efa3848a17fcb2668be662, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions: []
+  _initialSection: 0
+  _currentSection: 0
+  _states:
+  - _stateAudioLayerVolumes:
+    - 1
+    - 1
+    - 1
+    - 1
+    _gradualStateChange: 1
+    _gradualStateChangeTime: 1
+  - _stateAudioLayerVolumes:
+    - 0
+    - 0
+    - 0
+    - 0
+    _gradualStateChange: 1
+    _gradualStateChangeTime: 1
+  _initialState: 0
+  _ignoreWarnings: 0
+--- !u!1 &3389202481234308339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3656146996553813346}
+  - component: {fileID: 7958852940132865719}
+  m_Layer: 0
+  m_Name: Golden Pin SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3656146996553813346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389202481234308339}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4399905, y: 18.599121, z: 208.11412}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8500893530938471023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7958852940132865719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389202481234308339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: d33cd12449df0bc4aa14e66a80997b35, type: 3}
+  - {fileID: 8300000, guid: 057c603fc4f85474fa96a8d0d7d09365, type: 3}
+  - {fileID: 8300000, guid: 6b3176cc95e101f458b184dad361a678, type: 3}
+  - {fileID: 8300000, guid: 338247e2177829f4a9cef126ca346975, type: 3}
+  - {fileID: 8300000, guid: 0a77e43b513493b4094706eddf671b0f, type: 3}
+  _mixerGroup: {fileID: -2978140294193931848, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
+  _overrideArcSettings: 0
+  _noRepeats: 1
+  _randomPitch: 0
+  _minPitch: 0.5
+  _maxPitch: 1.5
+  _volume: 0.498
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
+  _maxRange: 500
+  _ignoreListenerPause: 0
 --- !u!1 &3415461884440466104
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +1132,9 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
   sceneLoader: {fileID: 11400000, guid: e4be4f08e033c7d4784863d0cec404a9, type: 2}
+  e1Cannon: {fileID: 0}
+  kaibaCannon: {fileID: 0}
+  caesarCannon: {fileID: 0}
 --- !u!1 &3886986884091025869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1224,7 @@ Transform:
   - {fileID: 7070231436455063471}
   - {fileID: 6370297589638225213}
   - {fileID: 4890256700462206379}
+  - {fileID: 3656146996553813346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4979255267530882314
@@ -1210,6 +1434,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _maxRange: 500
   _ignoreListenerPause: 0
 --- !u!1 &6071840221375052668
 GameObject:
@@ -2316,6 +2541,7 @@ Transform:
   - {fileID: 6878639608186257463}
   - {fileID: 3562550363596352086}
   - {fileID: 3239310262626567245}
+  - {fileID: 5891469705697011837}
   m_Father: {fileID: 8500893530938471023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6764594138453727965
@@ -2334,7 +2560,9 @@ MonoBehaviour:
   gameMusic:
   - {fileID: 6660178748321575947}
   - {fileID: 2221513473944842648}
+  - {fileID: 483844064437232643}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
+  dialogueManager: {fileID: 7237183769958233333}
 --- !u!1 &9189417159018289720
 GameObject:
   m_ObjectHideFlags: 0
