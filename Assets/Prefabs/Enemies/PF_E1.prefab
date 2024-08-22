@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 515288289239412171, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f644083e2a76f64a8654d82f90cf897, type: 2}
     - target: {fileID: 960224175594389648, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: mBehaviorSource.mTaskData.JSONSerialization
@@ -98,6 +103,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_E1
       objectReference: {fileID: 0}
+    - target: {fileID: 8436926333022564213, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c7ad68f4b4153994298ad992094c83fd, type: 2}
+    - target: {fileID: 8868735914295797751, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 41ba5de50a973ab4195e8195e43ea918, type: 2}
+    - target: {fileID: 9131558411470318170, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f644083e2a76f64a8654d82f90cf897, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

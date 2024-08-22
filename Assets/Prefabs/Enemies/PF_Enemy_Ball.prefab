@@ -273,6 +273,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2033880181515198734, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 257c7aa940e5af54faeb0f35bdf7e8d5, type: 2}
     - target: {fileID: 3863889324186810178, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
       propertyPath: _response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -329,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableFuelLoss: 1
   enableExtraGravity: 1
+  attackPlayer: 0
   aiUpdateTime: 0.1
   visibleLimit: 200
   visibleLayers:
@@ -344,6 +350,7 @@ MonoBehaviour:
   pointWeight: 0.4
   distWeight: 0.3
   angleWeight: 0.7
+  aggroPoints: 0
   turnForce: 2.5
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
