@@ -1,3 +1,4 @@
+using GameAudioScriptingEssentials;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,14 @@ public class Mine : MonoBehaviour
 {
     public int explosionForce;
 
-    [SerializeField] private GameObject effects;
-
     private int _ballLayer;
-    private AudioSource[] _audioSources;
+    [SerializeField] private AudioClipRandomizer explosionSFX;
+       
     private bool _destructing;
 
     private void Start()
     {
         _ballLayer = LayerMask.NameToLayer("Balls");
-        _audioSources = effects.GetComponents<AudioSource>();
         _destructing = false;
     }
 
@@ -29,14 +28,16 @@ public class Mine : MonoBehaviour
             if (colliderObj.CompareTag("Player"))
             {
                 colliderObj.GetComponent<PlayerMovement>().Explode(explosionForce);
+                explosionSFX._spatialBlend = 0.0f;
             }
             // Enemy hit
             else
             {
                 colliderObj.GetComponent<EnemyBall>().Explode(explosionForce);
+                explosionSFX._spatialBlend = 1.0f;
             }
 
-            _audioSources[Random.Range(0, _audioSources.Length)].Play();
+            explosionSFX.PlaySFX();
 
             Destroy(gameObject);
 
