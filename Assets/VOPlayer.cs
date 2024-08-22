@@ -41,7 +41,7 @@ public class VOPlayer : MonoBehaviour
             if (stop == 1)
             {
                 MentorVO.PlaySFX();
-                stop = frequency * 2;
+                stop = frequency;
             }
             else
             {
@@ -55,11 +55,11 @@ public class VOPlayer : MonoBehaviour
                 ElvisVO.PlaySFX();
                 if (swing == false)
                 {
-                    stop = frequency * 4;
+                    stop = frequency * 2;
                 }
                 else
                 {
-                    stop = frequency * 2;
+                    stop = frequency;
                 }
                 swing = !swing;
             }
@@ -73,7 +73,7 @@ public class VOPlayer : MonoBehaviour
             if (stop == 1)
             {
                 CorpoVO.PlaySFX();
-                stop = frequency * 2;
+                stop = frequency;
             }
             else
             {
@@ -85,7 +85,7 @@ public class VOPlayer : MonoBehaviour
             if (stop == 1)
             {
                 CaesarVO.PlaySFX();
-                stop = frequency * 2;
+                stop = frequency;
             }
             else
             {

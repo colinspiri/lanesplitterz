@@ -275,6 +275,7 @@ tags:
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 <<EnableCheckerboard DialogueUI>>
+<<BeginIntermission MusicManager>>
 Kaiba: ...What do you want. 
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 -> Why do you work for Los Lobos?
@@ -331,6 +332,7 @@ Kaiba: ...What do you want.
   -> Let's Roll! 
 -> Let's Roll!
 <<DisableCheckerboard DialogueUI>>
+<<EndIntermission MusicManager>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
 <<EnableOneArt DialogueUI PlayerArtDefault>>
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
