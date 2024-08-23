@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 54662100136125794}
   - component: {fileID: 65725906566340526}
   - component: {fileID: 65649762450900362}
-  - component: {fileID: 114455108470643504}
   m_Layer: 0
   m_Name: Landmine
   m_TagString: Untagged
@@ -157,20 +156,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.48104593, y: 0.14262699, z: 0.48104593}
   m_Center: {x: 0, y: 0.021313481, z: 0}
---- !u!114 &114455108470643504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736351032197158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d066aec7535ca4e9c542f0e28615a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1000013462590818, guid: a756de3e816f86d4d81498362661e222,
-    type: 3}
 --- !u!1001 &6375325308188051117
 PrefabInstance:
   m_ObjectHideFlags: 0
