@@ -228,6 +228,7 @@ tags:
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 <<EnableCheckerboard DialogueUI>>
+<<BeginIntermission MusicManager>>
 E1-V15: Come for some tips, son?
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 -> So why do you care so much about Elvis?
@@ -318,6 +319,7 @@ E1-V15: Come for some tips, son?
     -> Let's Roll! 
 -> Let's Roll!
 <<DisableCheckerboard DialogueUI>>
+<<EndIntermission MusicManager>>
 <<DisableOneArt DialogueUI ElvisArtSad>>
 <<DisableOneArt DialogueUI ElvisArtSurprised>>
 <<EnableOneArt DialogueUI ElvisArtDefault>>

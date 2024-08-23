@@ -129,77 +129,104 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: I...lost?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Don't worry Kaiba, it happens to everybody!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: Hah...haha
 Kaiba: Hahahahahaha
 Kaiba: HAHAHAHAHAHAHAH!
 Kaiba: What a rush!
 Kaiba: I haven't felt like this in YEARS!
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Ha ha...what?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 Kaiba: Hiro!
 Kaiba: I thought you were just another nobody, but you're a true warrior.
 Kaiba: With power like that...you might actually have a chance against Caesar.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Thanks! But I couldn't have done it alone!
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 //needs art for emiliana
 Emiliana: Kid!
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Emiliana!
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Emiliana: You really showed that corporate bastard what for!
 Emiliana: What's all that money worth to you now, Mr. Business?
 //needs other a new things for E1
 E1: Hiro Protag!
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: E1!
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: I love the new outfit.
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Did you see the match?
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 E1: You bet I did, baby.
 E1: I ran a simulation before it started.
 E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtSad>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: --Thanks, E1.
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtSad ElvisArtDefault>>
 E1: ...and superior height.
 E1: According to the model, your chance of victory was a number smaller than I can process.
 E1: It had me all shook up, but I couldn't help believin' in you.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSad>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Thanks E1!
 Hiro: You're my favorite…
+<<EnableOneArt DialogueUI PlayerArtSad>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: (and only)
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtSad>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: fan!
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Emiliana: Hey, don't forget about me!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: Why do you keep losers like this around?
-<<FadeOutBothArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Emiliana: Hey!
 
 E1: Hey!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: What's the point?
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Without my friends, I never could have made it this far.
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Their love is the fire that lights my fighting spirit!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 Kaiba: ...
 Kaiba: I see...
 Kaiba: Well, Hiro, I wish you the best of luck for the finals.
 Kaiba: Nobody's ever been able to defeat that monster. Nobody.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: I'm not afraid of Caesar! No one can wear the crown forever.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Kaiba: Haha, you've at least got a fighting chance.
 Kaiba: Oh, and Hiro?
 Kaiba: If you ever want an internship, just give me a call.
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Maybe if you find a new line of work...
 <<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
@@ -248,6 +275,7 @@ tags:
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 <<EnableCheckerboard DialogueUI>>
+<<BeginIntermission MusicManager>>
 Kaiba: ...What do you want. 
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 -> Why do you work for Los Lobos?
@@ -304,6 +332,7 @@ Kaiba: ...What do you want.
   -> Let's Roll! 
 -> Let's Roll!
 <<DisableCheckerboard DialogueUI>>
+<<EndIntermission MusicManager>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
 <<EnableOneArt DialogueUI PlayerArtDefault>>
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>

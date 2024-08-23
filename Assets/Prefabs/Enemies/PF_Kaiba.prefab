@@ -18,6 +18,11 @@ PrefabInstance:
         Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(541.332764,126.815437)"},"ID":6,"Name":"Activate
         Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
       objectReference: {fileID: 0}
+    - target: {fileID: 4842827526982638153, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0652830fc1705904789d3bb8cd7cf659, type: 2}
     - target: {fileID: 5481001172532128167, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -32,6 +37,11 @@ PrefabInstance:
         type: 3}
       propertyPath: secondsToConsider
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519864363889820360, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6800576033366555298, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
