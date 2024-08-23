@@ -3,83 +3,101 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
+<<EnableFadeArt DialogueUI CorpoArtApathetic PlayerArtSurprised>>
 ???: ... 
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtApathetic>>
 Hiro: Holy moly! It's a Galvan 43X heavy roller!
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtApathetic>>
 Hiro: A multiphasic engine, positronic controller, titanium shell…with a ball like that, you could roll through almost anything!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtApathetic PlayerArtHappy>>
 ???: It's a 44X, actually.
 ???: It's not publicly available yet, but for enough money, everything has a price.
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtApathetic>>
 Hiro: Wow!
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad CorpoArtApathetic>>
 Hiro: It's…the most beautiful thing I've ever seen *sniffle*.
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtApathetic>>
 Hiro: Can I... touch it?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
+<<FadeArt DialogueUI CorpoArtApathetic PlayerArtSurprised>>
 ???: No. Who even are you?
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtApathetic>>
 Hiro: I'm the one and only Hiro Protag!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtApathetic PlayerArtHappy>>
 ???:  Is that name supposed to mean something to me?
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtApathetic>>
 Hiro: I'm the soon-to-be King of Neo Las Vegas!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtApathetic PlayerArtHappy>>
 ???: Oh, it's another competitor.
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI CorpoArtApathetic>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 ???: ...
 Kaiba: I'm Mark Kaiba, Senior Executive of Acquisitions for Los Lobos.
 Kaiba: Here, take my card.
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtDefault>>
 Hiro: The real-estate company?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtSurprised>>
 Kaiba: We've gone far beyond real-estate, but yes.
 <<EnableOneArt DialogueUI PlayerArtDefault>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtSmug>>
 Hiro: Do you know a woman named Emiliana Krueger?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtDefault>>
 Kaiba: I don't. That name is as meaningless to me as your own.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtSmug>>
 Hiro: She got into an accident, was treated at a Los Lobos hospital.
 <<EnableOneArt DialogueUI PlayerArtAngry>>
 <<DisableOneArt DialogueUI PlayerArtDefault>>
-<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry CorpoArtSmug>>
 Hiro: Ever since, she's been a slave to your company's debts!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtAngry>>
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtAngry>>
 Kaiba: An accident, kid?
 Kaiba: Our world operates on the principle of cause and effect.
 Kaiba: Her fate was the direct result of her own choices.
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtAngry>>
 Kaiba: Maybe she should have made better ones.
-<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry CorpoArtSmug>>
 Hiro:  How can you say that!? You don't even know her!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtAngry>>
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtAngry>>
 Kaiba: You bleeding hearts are all the same.
 Kaiba: You cry and whine about how unfair life is, but none of you are willing to do anything about it.
+<<EnableOneArt DialogueUI CorpoArtAngry>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtAngry PlayerArtAngry>>
 Kaiba: You just want to leech resources from those who have earned their place in the world.
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtAngry>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtAngry>>
 Kaiba: Well let me tell you, you won't get anything from me.
-<<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtAngry CorpoArtSmug>>
 Hiro: I'm no leech, Kaiba. You bought your ball? I built mine. 
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtAngry>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtSmug>>
 Hiro: Today, I roll for myself, and for Emiliana!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtHappy>>
 Kaiba: You'd best be focused on your own choices today, kid.
-<<DisableArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtHappy CorpoArtSmug>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -108,16 +126,21 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 Kaiba: Over already?
+<<EnableOneArt DialogueUI CorpoArtCrazy>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
 Kaiba: How anticlimactic!
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
 Hiro: Just you wait, Kaiba!
 Hiro: I'll be back next time, stronger than ever!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtCrazy>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtDefault>>
 Kaiba: Don't bother, you never had what it takes to become King. 
 Kaiba: Btw, father jinn gotchyo ass.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtSmug>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
@@ -129,107 +152,124 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: I...lost?
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Don't worry Kaiba, it happens to everybody!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: Hah...haha
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtHappy>>
 Kaiba: Hahahahahaha
+<<EnableOneArt DialogueUI CorpoArtCrazy>>
+<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<FadeArt DialogueUI CorpoArtCrazy PlayerArtHappy>>
 Kaiba: HAHAHAHAHAHAHAH!
 Kaiba: What a rush!
 Kaiba: I haven't felt like this in YEARS!
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtCrazy>>
 Hiro: Ha ha...what?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
+<<FadeArt DialogueUI CorpoArtCrazy PlayerArtSurprised>>
 Kaiba: Hiro!
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtCrazy>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtSurprised>>
 Kaiba: I thought you were just another nobody, but you're a true warrior.
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtSurprised>>
 Kaiba: With power like that...you might actually have a chance against Caesar.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Thanks! But I couldn't have done it alone!
-<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 //needs art for emiliana
 Emiliana: Kid!
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Emiliana!
-<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Emiliana: You really showed that corporate bastard what for!
 Emiliana: What's all that money worth to you now, Mr. Business?
 //needs other a new things for E1
 E1: Hiro Protag!
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: E1!
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised CorpoArtDefault>>
 Hiro: I love the new outfit.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Did you see the match?
-<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 E1: You bet I did, baby.
 E1: I ran a simulation before it started.
 E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad CorpoArtDefault>>
 Hiro: --Thanks, E1.
-<<FadeOutBothArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtSad CorpoArtDefault>>
 E1: ...and superior height.
 E1: According to the model, your chance of victory was a number smaller than I can process.
 E1: It had me all shook up, but I couldn't help believin' in you.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Thanks E1!
 Hiro: You're my favorite…
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad CorpoArtDefault>>
 Hiro: (and only)
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: fan!
-<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Emiliana: Hey, don't forget about me!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: Why do you keep losers like this around?
-<<FadeOutBothArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Emiliana: Hey!
 
 E1: Hey!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: What's the point?
 <<EnableOneArt DialogueUI PlayerArtDefault>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 Hiro: Without my friends, I never could have made it this far.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtDefault>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Their love is the fire that lights my fighting spirit!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: ...
 Kaiba: I see...
 Kaiba: Well, Hiro, I wish you the best of luck for the finals.
 Kaiba: Nobody's ever been able to defeat that monster. Nobody.
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: I'm not afraid of Caesar! No one can wear the crown forever.
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtSmug PlayerArtHappy>>
 Kaiba: Haha, you've at least got a fighting chance.
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
 Kaiba: Oh, and Hiro?
 Kaiba: If you ever want an internship, just give me a call.
 <<EnableOneArt DialogueUI PlayerArtDefault>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 Hiro: Maybe if you find a new line of work...
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
@@ -241,11 +281,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtAngry PlayerArtDefault>>
 Kaiba:  You really think you have a chance? Please.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtAngry>>
 Hiro: I'm just getting started!
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -256,13 +296,13 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 Kaiba: Get ready for some collateral damage, kid.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 Hiro: Bombs?! Where did you get these?!?!
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 Kaiba: Money makes Neo Las Vegas go round.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -273,60 +313,99 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 <<EnableCheckerboard DialogueUI>>
 <<BeginIntermission MusicManager>>
 Kaiba: ...What do you want. 
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 -> Why do you work for Los Lobos?
-  <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+  <<EnableOneArt DialogueUI CorpoArtCrazy>>
+  <<DisableOneArt DialogueUI CorpoArtDefault>>
+  <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
   Kaiba: Because they're the top dogs in town!
+  <<EnableOneArt DialogueUI CorpoArtDefault>>
+  <<DisableOneArt DialogueUI CorpoArtCrazy>>
+  <<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
   Kaiba: Los Lobos generates more revenue than any other company; We have for the past decade.
+  <<EnableOneArt DialogueUI CorpoArtSmug>>
+  <<DisableOneArt DialogueUI CorpoArtDefault>>
+  <<FadeArt DialogueUI CorpoArtSmug PlayerArtDefault>>
   Kaiba: Do you know how we've managed that?
-  <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+  <<FadeArt DialogueUI PlayerArtDefault CorpoArtSmug>>
   Hiro: High interest rates?
-  <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+  <<EnableOneArt DialogueUI CorpoArtDefault>>
+  <<DisableOneArt DialogueUI CorpoArtSmug>>
+  <<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
   Kaiba: By turning Los Lobos into a battlefield.
+  <<EnableOneArt DialogueUI CorpoArtSmug>>
+  <<DisableOneArt DialogueUI CorpoArtDefault>>
+  <<FadeArt DialogueUI CorpoArtSmug PlayerArtDefault>>
   Kaiba: It's a place where only the strong, those fit to rule, can rise to the top.
+  <<EnableOneArt DialogueUI CorpoArtDefault>>
+  <<DisableOneArt DialogueUI CorpoArtSmug>>
+  <<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
   Kaiba: And those dregs who seek reward for hope and aspiration alone... are buried.
+  <<EnableOneArt DialogueUI CorpoArtCrazy>>
+  <<DisableOneArt DialogueUI CorpoArtDefault>>
+  <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
   Kaiba: It makes me giddy just thinking about it. Hahahaha!
-  <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+  <<FadeArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
   -> How did you 'rise to the top'?
-    <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
     Kaiba: Our great city runs on addiction, everyone's pulled in one way or another.
+    <<EnableOneArt DialogueUI CorpoArtDefault>>
+    <<DisableOneArt DialogueUI CorpoArtCrazy>>
+    <<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
     Kaiba: Some lose themselves at the bottom of a bottle.
     Kaiba: For many, all it takes is a simple game of chance.
     Kaiba: Others still just want to throw money at the market until there's nothing left to buy.
+    <<EnableOneArt DialogueUI CorpoArtCrazy>>
+    <<DisableOneArt DialogueUI CorpoArtDefault>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
     Kaiba: Once you make all those vices work for you, success is inevitable.
     <<EnableOneArt DialogueUI PlayerArtSurprised>>
     <<DisableOneArt DialogueUI PlayerArtDefault>>
-    <<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
+    <<FadeArt DialogueUI PlayerArtSurprised CorpoArtCrazy>>
     Hiro: And you call me the leech...
-    <<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
+    <<EnableOneArt DialogueUI CorpoArtAngry>>
+    <<DisableOneArt DialogueUI CorpoArtCrazy>>
+    <<FadeArt DialogueUI CorpoArtAngry PlayerArtSurprised>>
     Kaiba: I didn't build this city.
+    <<EnableOneArt DialogueUI CorpoArtSmug>>
+    <<DisableOneArt DialogueUI CorpoArtAngry>>
+    <<FadeArt DialogueUI CorpoArtSmug PlayerArtSurprised>>
     Kaiba: I'm simply taking advantage of the opportunities that come my way.
+    <<EnableOneArt DialogueUI CorpoArtCrazy>>
+    <<DisableOneArt DialogueUI CorpoArtSmug>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtSurprised>>
     Kaiba: Why shouldn't the weaknesses of others become my strength? 
     <<EnableOneArt DialogueUI PlayerArtDefault>>
     <<DisableOneArt DialogueUI PlayerArtSurprised>>
-    <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+    <<FadeArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
       -> What about your weakness?
-        <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+        <<EnableOneArt DialogueUI CorpoArtAngry>>
+        <<DisableOneArt DialogueUI CorpoArtCrazy>>
+        <<FadeArt DialogueUI CorpoArtAngry PlayerArtDefault>>
         Kaiba: What weakness?
-        <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+        <<FadeArt DialogueUI PlayerArtDefault CorpoArtAngry>>
         Hiro: That you're alone, Kaiba.
         Hiro: No matter how much you have, you're still just one man.
         Hiro: I never could have gotten here without Emiliana - without the help of my friends.
-        <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+        <<EnableOneArt DialogueUI CorpoArtCrazy>>
+        <<DisableOneArt DialogueUI CorpoArtAngry>>
+        <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
         Kaiba: And that's made you weak.
         <<EnableOneArt DialogueUI PlayerArtAngry>>
         <<DisableOneArt DialogueUI PlayerArtDefault>>
-        <<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
+        <<FadeArt DialogueUI PlayerArtAngry CorpoArtCrazy>>
         Hiro: No!
         <<EnableOneArt DialogueUI PlayerArtHappy>>
         <<DisableOneArt DialogueUI PlayerArtAngry>>
-        <<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+        <<FadeArt DialogueUI PlayerArtHappy CorpoArtCrazy>>
         Hiro: We're stronger together, more powerful than you could ever be!
-        <<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+        <<EnableOneArt DialogueUI CorpoArtDefault>>
+        <<DisableOneArt DialogueUI CorpoArtCrazy>>
+        <<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
         Kaiba: We'll see about that.
       -> Let's Roll! 
   -> Let's Roll! 
@@ -334,33 +413,42 @@ Kaiba: ...What do you want.
 <<DisableCheckerboard DialogueUI>>
 <<EndIntermission MusicManager>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI CorpoArtCrazy>>
 <<EnableOneArt DialogueUI PlayerArtDefault>>
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 Kaiba: Hm.
 <<if CheckIsPlayerWinning() == true >>
-    <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+    <<FadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
     Kaiba: Alright kid, it's time to end this.
+    <<EnableOneArt DialogueUI CorpoArtCrazy>>
+    <<DisableOneArt DialogueUI CorpoArtDefault>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
     Kaiba: You've got my adrenaline pumping, don't disappoint me now.
     <<EnableOneArt DialogueUI PlayerArtHappy>>
     <<DisableOneArt DialogueUI PlayerArtDefault>>
-    <<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+    <<FadeArt DialogueUI PlayerArtHappy CorpoArtCrazy>>
     Hiro: I'll give it my all, and nothing less!
 <<elseif CheckIsPlayerWinning() == false>>
-    <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+    <<EnableOneArt DialogueUI CorpoArtSmug>>
+    <<DisableOneArt DialogueUI CorpoArtDefault>>
+    <<FadeArt DialogueUI CorpoArtSmug PlayerArtDefault>>
     Kaiba: This is a match that just won't light.
+    <<EnableOneArt DialogueUI CorpoArtCrazy>>
+    <<DisableOneArt DialogueUI CorpoArtSmug>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
     Kaiba: Maybe you should forfeit before you get hurt.
     <<EnableOneArt DialogueUI PlayerArtAngry>>
     <<DisableOneArt DialogueUI PlayerArtDefault>>
-    <<FadeArt DialogueUI PlayerArtAngry ElvisArtDefault>>
+    <<FadeArt DialogueUI PlayerArtAngry CorpoArtCrazy>>
     Hiro: I'll never give up!
     <<EnableOneArt DialogueUI PlayerArtHappy>>
     <<DisableOneArt DialogueUI PlayerArtAngry>>
-    <<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
+    <<FadeArt DialogueUI PlayerArtHappy CorpoArtCrazy>>
     Hiro: Even if I lose, I'll go down giving it my all!
-    <<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+    <<FadeArt DialogueUI CorpoArtCrazy PlayerArtHappy>>
     Kaiba: Make me feel something, kid. I'm getting bored!
 <<endif>>
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
@@ -372,11 +460,11 @@ tags:
 ---
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CorpoArtCrazy PlayerArtDefault>>
 Kaiba: I see a fire in your eyes. Show me what it can burn!
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
 Hiro: Uh... sure!
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtDefault CorpoArtCrazy>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
