@@ -519,6 +519,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
+      propertyPath: BallRolling
+      value: 
+      objectReference: {fileID: 4128675262109897109}
+    - target: {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 11400000, guid: e4be4f08e033c7d4784863d0cec404a9,
@@ -549,6 +554,42 @@ PrefabInstance:
       propertyPath: hookForceMultiplier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3768742843009056195, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _mixerGroup
+      value: 
+      objectReference: {fileID: -7485126522645788911, guid: 690fdda113763624ca6f76467a88c97e,
+        type: 2}
+    - target: {fileID: 7410549962634077536, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _states.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410549962634077536, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _states.Array.data[0]._gradualStateChange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410549962634077536, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _states.Array.data[1]._gradualStateChange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410549962634077536, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _states.Array.data[1]._gradualStateChangeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410549962634077536, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _states.Array.data[1]._stateAudioLayerVolumes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7610547072773348169, guid: 27a3a13a5fa452a42b310974564d601d,
+        type: 3}
+      propertyPath: _volume
+      value: 0.601
+      objectReference: {fileID: 0}
     - target: {fileID: 9095661317396777986, guid: 27a3a13a5fa452a42b310974564d601d,
         type: 3}
       propertyPath: m_Material
@@ -564,6 +605,12 @@ PrefabInstance:
       addedObject: {fileID: 1889049200960741347}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
+--- !u!82 &4128675262109897109 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6862339446579452368, guid: 27a3a13a5fa452a42b310974564d601d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7383630805299628101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7133769728073839050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 394013142470015375, guid: 27a3a13a5fa452a42b310974564d601d,

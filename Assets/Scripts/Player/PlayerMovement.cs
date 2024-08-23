@@ -81,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] AudioSource BallRolling;
+    [SerializeField] AudioClipRandomizer enteringOil;
+    [SerializeField] AudioClipRandomizer turningInOil;
     [SerializeField] AdaptiveMusicContainer EngineSFX;
     [SerializeField] AudioClipRandomizer TurnSFX;
     [SerializeField] AdaptiveMusicContainer AccelSFX;
@@ -376,6 +378,7 @@ public class PlayerMovement : MonoBehaviour
             
             linForce /= slipperyForce;
             rotForce /= slipperyForce;
+            turningInOil.PlaySFX();
         }
         
         // Linear acceleration
@@ -501,6 +504,10 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, (_camInvRot * _myCam.up) * -1f, out hit,
                 _myCollider.radius + 1f, _groundMask) && _currentSpeed > Mathf.Epsilon)
         {
+            if (!IsIcy() && hit.collider.gameObject.tag == "Icy")
+            {
+                enteringOil.PlaySFX();
+            }
             if (!Grounded())
             {
                 BallRolling.Play();
