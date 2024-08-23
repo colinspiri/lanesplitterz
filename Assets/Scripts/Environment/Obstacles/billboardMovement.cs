@@ -47,7 +47,6 @@ public class billboardMovement : MonoBehaviour
         {
             billboard.gameObject.SetActive(false);
             
-            
 
             playerMove.ReduceFuel(fuelSub);
             if (billboardHit.gameObject.CompareTag("Player"))
@@ -73,18 +72,20 @@ public class billboardMovement : MonoBehaviour
             {
                 MoveBoolean = false;
                 SwitchBoolean = true;
-
             }
             else 
             {
                 MoveBoolean = true;
                 SwitchBoolean = false;
-
             }
             
             
         }
 
+        if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            return;
+        }
         //                Debug.Log("Triggered1");
     }
 
