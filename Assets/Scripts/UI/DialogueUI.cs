@@ -13,6 +13,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject endGameUI;
     [SerializeField] private GameObject doublePointsUI;
     [SerializeField] private GameObject checkerboard;
 
@@ -62,7 +63,13 @@ public class DialogueUI : MonoBehaviour
 
     public IEnumerator EnableGameOverUICoroutine()
     {
-        gameOverUI.SetActive(true);
+        if (gameState.currentLevelIndex >= 15)
+        {
+            endGameUI.SetActive(true);
+            EnableMouse();
+            yield break;
+        }
+        else gameOverUI.SetActive(true);
         yield return new WaitForSeconds(2f);
         gameOverUI.SetActive(false);
         StartNewRound();
@@ -197,6 +204,13 @@ public class DialogueUI : MonoBehaviour
         EnableHUD();
         DisableBlur();
         DisableMouse();
+    }
+
+    [YarnCommand("DisableDialogueWithMouse")]
+    public void DisableDialogueWithMouse()
+    {
+        EnableHUD();
+        DisableBlur();
     }
 
     #endregion

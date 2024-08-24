@@ -72,6 +72,7 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator NextRoundUI()
     {
+        if (gameState.currentLevelIndex >= 15) yield break;
         if (playerInfo.isPracticing == true) yield break;
 
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
