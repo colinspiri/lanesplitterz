@@ -345,7 +345,7 @@ tags:
 <<endif>>
 <<DisableOneArt DialogueUI CaesarArtAngry>>
 <<DisableOneArt DialogueUI PlayerArtAngry>>
-<<FadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
+<<EnableFadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
 Caesar: Well, you've come to speak to your King, Harold?
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
 -> So what's your "grand plan"?
