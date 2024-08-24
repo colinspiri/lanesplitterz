@@ -162,20 +162,20 @@ public class RoundManager : MonoBehaviour {
         {
             if (elvisInfo.doublePointsThrows[gameState.currentRound] == gameState.currentThrow)
             {
-                ChangeLaneMaterial(blueLane);
+                //ChangeLaneMaterial(blueLane);
                 gameState.isDoublePointsThrow = true;
                 return;
             }
         }
 
-        ChangeLaneMaterial(greyLane);
+        //ChangeLaneMaterial(greyLane);
         gameState.isDoublePointsThrow = false;
     }
 
     private void ChangeLaneMaterial(Material material)
     {
-        lane.ground.GetComponent<Renderer>().material = material;
-        lane.waitingArea.GetComponent<Renderer>().material = material;
+/*        lane.ground.GetComponent<Renderer>().material = material;
+        lane.waitingArea.GetComponent<Renderer>().material = material;*/
     }
 
     private void NextThrow() {
