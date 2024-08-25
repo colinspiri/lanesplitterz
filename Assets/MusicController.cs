@@ -9,10 +9,12 @@ public class MusicController : MonoBehaviour
 {
     [SerializeField] AdaptiveMusicContainer tutorialMusic;
     [SerializeField] AdaptiveMusicContainer[] gameMusic;
+    [SerializeField] AudioSource countdown;
     [SerializeField] GameState gameState;
     [SerializeField] DialogueManager dialogueManager;
     private AdaptiveMusicContainer currentMusic;
     private bool launched = false;
+    private bool firstLaunch = true;
 
     private void Start()
     {
@@ -37,11 +39,17 @@ public class MusicController : MonoBehaviour
             currentMusic.TransitionSection(0);
             launched = true;
         }
+        if (firstLaunch)
+        {
+            countdown.Play();
+            firstLaunch = false;
+        }
         
     }
 
     public void NextLevel()
     {
+        firstLaunch = true;
         if (gameState.currentLevelIndex % 5 == 1) {
             if (gameState.currentLevelIndex == 1)
             {
