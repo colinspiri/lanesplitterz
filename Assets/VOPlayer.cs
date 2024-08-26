@@ -105,6 +105,10 @@ public class VOPlayer : MonoBehaviour
                 stop--;
             }
         }
+        else if (characterName.text == "")
+        {
+
+        }
         else if (unknownCharacter == "Corpo")
         {
             if (stop == 1)

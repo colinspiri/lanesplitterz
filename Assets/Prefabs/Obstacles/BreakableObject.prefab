@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e2f45dc5aa3a54ab421fda5d6b0c40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroySound: {fileID: 1426885971117588203}
+  destroySound: {fileID: 8701193529055880000}
   onPlayerHitObstacle: {fileID: 11400000, guid: ed1813a3d06bec9418b5878f5925efed,
     type: 2}
   intactCube: {fileID: 6883928517232238214}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6527751998457263516}
-  - component: {fileID: 1426885971117588203}
+  - component: {fileID: 8701193529055880000}
   m_Layer: 12
   m_Name: Destroy Sound
   m_TagString: Untagged
@@ -109,103 +109,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 390578967248170231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1426885971117588203
-AudioSource:
+--- !u!114 &8701193529055880000
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5460107265516340218}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4870696037730604375, guid: 690fdda113763624ca6f76467a88c97e,
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d582541dd1aa69c459a6a8f1cae8ff08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arcObj: {fileID: 0}
+  _audioClips:
+  - {fileID: 8300000, guid: 81c69739b58045d4d81023564439d892, type: 3}
+  - {fileID: 8300000, guid: f0a8f535996c1ad4fbb6523952743ffd, type: 3}
+  - {fileID: 8300000, guid: dd9a95a7c914a9844a5f34fc3d71f113, type: 3}
+  _mixerGroup: {fileID: -4870696037730604375, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: f6610170bbc6f4b4ab8efd6455669e95, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 100
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.858
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _overrideArcSettings: 1
+  _noRepeats: 1
+  _randomPitch: 1
+  _minPitch: 0.83
+  _maxPitch: 1.13
+  _volume: 1
+  _loop: 0
+  _priority: 128
+  _stereoPan: 0
+  _spatialBlend: 0
+  _maxRange: 500
+  _ignoreListenerPause: 0
 --- !u!1001 &2536835867942027846
 PrefabInstance:
   m_ObjectHideFlags: 0
