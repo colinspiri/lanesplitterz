@@ -76,6 +76,7 @@ public class MusicController : MonoBehaviour
     [YarnCommand("PlayMainTheme")]
     public void PlayTheme()
     {
+        currentMusic.SetState(0);
         currentMusic.TransitionSection(1);
     }
 
