@@ -1352,7 +1352,7 @@ AudioSource:
   m_GameObject: {fileID: 850916263}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6511731023181483466, guid: 690fdda113763624ca6f76467a88c97e,
+  OutputAudioMixerGroup: {fileID: 3354782549252822821, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 108433bac46331348afe46775c9ee048, type: 3}
   m_PlayOnAwake: 0
@@ -2080,7 +2080,7 @@ AudioSource:
   m_GameObject: {fileID: 1149378769}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6511731023181483466, guid: 690fdda113763624ca6f76467a88c97e,
+  OutputAudioMixerGroup: {fileID: 3354782549252822821, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 537b4f136589fd14787e2866151b9600, type: 3}
   m_PlayOnAwake: 0
@@ -2818,15 +2818,15 @@ MonoBehaviour:
     _sectionTransitions:
     - _transitionInto: 1
       _triggerType: 0
-      _fadeType: 0
+      _fadeType: 1
       _quantization: 0
-      _crossfadeTime: 0
+      _crossfadeTime: 0.5
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
-    - _arcObj: {fileID: 11400000, guid: 2273d7697c344384d83e405b44c8c0ed, type: 2}
+    - _arcObj: {fileID: 11400000, guid: 967e77f97036d6042a8504fc8d6d6857, type: 2}
       _audioClips: []
-      _audioLayerVolumes: 0.801
+      _audioLayerVolumes: 1
     _sectionTransitions: []
   _initialSection: 0
   _currentSection: 0
@@ -3548,7 +3548,7 @@ AudioSource:
   m_GameObject: {fileID: 2130101968}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6511731023181483466, guid: 690fdda113763624ca6f76467a88c97e,
+  OutputAudioMixerGroup: {fileID: 3354782549252822821, guid: 690fdda113763624ca6f76467a88c97e,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6c2ccee4f487bea468eb30fb9c400f0c, type: 3}
   m_PlayOnAwake: 0

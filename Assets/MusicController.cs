@@ -9,6 +9,7 @@ public class MusicController : MonoBehaviour
 {
     [SerializeField] AdaptiveMusicContainer tutorialMusic;
     [SerializeField] AdaptiveMusicContainer[] gameMusic;
+    [SerializeField] AdaptiveMusicContainer elvisIntermission;
     [SerializeField] AudioSource countdown;
     [SerializeField] GameState gameState;
     [SerializeField] DialogueManager dialogueManager;
@@ -29,7 +30,7 @@ public class MusicController : MonoBehaviour
             currentMusic = gameMusic[newLevel];
             currentMusic.RunContainer();
         }
-        
+
     }
 
     public void Launch()
@@ -44,17 +45,14 @@ public class MusicController : MonoBehaviour
             countdown.Play();
             firstLaunch = false;
         }
-        
+
     }
 
     public void NextLevel()
     {
         firstLaunch = true;
         if (gameState.currentLevelIndex % 5 == 1) {
-            if (gameState.currentLevelIndex == 1)
-            {
-                currentMusic.SetState(1);
-            }
+            currentMusic.SetState(1);
             int newLevel = (gameState.currentLevelIndex - 1) / 5;
             currentMusic = gameMusic[newLevel];
             currentMusic.RunContainer();
@@ -74,4 +72,51 @@ public class MusicController : MonoBehaviour
     {
         currentMusic.TransitionSection(0);
     }
+
+    [YarnCommand("PlayMainTheme")]
+    public void PlayTheme()
+    {
+        currentMusic.TransitionSection(1);
+    }
+
+    [YarnCommand("StopMusic")]
+    public void StopMusic()
+    {
+        currentMusic.SetState(1);
+    }
+
+    [YarnCommand("StartMusic")]
+    public void StartMusic()
+    {
+        currentMusic.SetState(0);
+    }
+
+    [YarnCommand("PlayCorpoTheme")]
+    public void PlayCorpoTheme()
+    {
+        currentMusic.SetState(1);
+        currentMusic = gameMusic[1];
+        currentMusic.RunContainer();
+        currentMusic.SetState(0);
+    }
+
+    [YarnCommand("PlayCaesarTheme")]
+    public void PlayCaesarTheme()
+    {
+        currentMusic.SetState(1);
+        currentMusic = gameMusic[2];
+        currentMusic.RunContainer();
+        currentMusic.SetState(0);
+    }
+
+    [YarnCommand("PlayElvisTheme")]
+    public void PlayElvisTheme()
+    {
+        currentMusic.SetState(1);
+        currentMusic = elvisIntermission;
+        currentMusic.RunContainer();
+        currentMusic.SetState(0);
+    }
+
 }
+
