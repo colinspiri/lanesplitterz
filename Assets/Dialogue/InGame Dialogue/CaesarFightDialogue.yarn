@@ -227,6 +227,7 @@ E1: Thank you, thank you very much.
 Caesar: Well, that didn't do much, did it? Back to killing! 
 <<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtDefault>>
 <<SetVO VOPlayer HiroandE1>>
+<<StopMusic MusicManager>>
 Hiro and E1: AH!
 Emi: Hey lugnut!
 <<PlayMainTheme MusicManager>>
