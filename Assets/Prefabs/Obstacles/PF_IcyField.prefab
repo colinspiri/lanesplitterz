@@ -116,11 +116,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4678407791153986683}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03790473d9741c140b04a1e2e3949602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oilVFX: {fileID: 6461733592743952389}
 --- !u!65 &8687033785720741591
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -263,6 +264,12 @@ PrefabInstance:
 --- !u!4 &1901367497986119696 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3566698292082330961, guid: 1258436d33299c84c9d663fae803f662,
+    type: 3}
+  m_PrefabInstance: {fileID: 3106488244366267713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6461733592743952389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8264324045837079876, guid: 1258436d33299c84c9d663fae803f662,
     type: 3}
   m_PrefabInstance: {fileID: 3106488244366267713}
   m_PrefabAsset: {fileID: 0}
