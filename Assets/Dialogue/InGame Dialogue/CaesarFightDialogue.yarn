@@ -133,7 +133,7 @@ tags:
 <<EnableFadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: It's... It's over. 
 <<FadeOutBothArt DialogueUI PlayerArtDefault CaesarArtAngry>>
-Emi : Hiro, you did it! You're the King of Neo Las Vegas! 
+Emi: Hiro, you did it! You're the King of Neo Las Vegas! 
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: Emi! I couldn't have done it witho--
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
@@ -162,6 +162,8 @@ Hiro: Is something supposed to be happening?
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
 Caesar: Shut up! It's just slow. Give it a minute. 
 <<FadeOutBothArt DialogueUI PlayerArtDefault CaesarArtAngry>>
+<<SetVO VOPlayer Corpo>>
+<<StopMusic MusicManager>>
 ???: Actually, Los Lobos' tech offers lightning fast speeds. The quickest in Neo Las Vegas. 
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtAngry>>
@@ -169,6 +171,7 @@ Caesar: Shut up! It's just slow. Give it a minute.
 Caesar: Who goes there?!
 <<DisableArt DialogueUI PlayerArtDefault CaesarArtSurprised>>
 <<EnableFadeArt DialogueUI CorpoArtApathetic PlayerArtSurprised>>
+<<PlayCorpoTheme MusicManager>>
 Kaiba: The Los Lobos H264 Bubble. Beautiful piece of machine. Hard Light technology. Photon Projection Mapping. All proprietary. And I just cut off your access. 
 <<FadeArt DialogueUI PlayerArtSurprised CorpoArtApathetic>>
 Hiro: Kaiba!
@@ -195,10 +198,13 @@ Kaiba: Don't mention it, kid.
 <<DisableOneArt DialogueUI CorpoArtDefault>>
 <<EnableOneArt DialogueUI CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtSurprised>>
+<<PlayCaesarTheme MusicManager>>
 Caesar: Fine then! I'll kill you myself, Hiro! With my own bare steel!  
 <<FadeArt DialogueUI PlayerArtSurprised CaesarArtAngry>>
 Hiro: Eep!
 <<FadeOutBothArt DialogueUI PlayerArtSurprised CaesarArtAngry>>
+<<SetVO VOPlayer Elvis>>
+<<StopMusic MusicManager>>
 ???: HI-YAH! 
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtAngry>>
@@ -206,6 +212,7 @@ Hiro: Eep!
 Caesar: You...slapped me. Was that supposed to hurt? 
 <<FadeOutBothArt DialogueUI PlayerArtSurprised CaesarArtSurprised>>
 ???: Not many know, but Elvis the Pelvis was a master of Ka-ra-te. 
+<<PlayElvisTheme MusicManager>>
 E1: So I too learned the ancient martial art.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
@@ -216,16 +223,21 @@ E1: Thank you, thank you very much.
 <<EnableOneArt DialogueUI CaesarArtDefault>>
 <<DisableOneArt DialogueUI CaesarArtSurprised>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
+<<PlayCaesarTheme MusicManager>>
 Caesar: Well, that didn't do much, did it? Back to killing! 
 <<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtDefault>>
+<<SetVO VOPlayer HiroandE1>>
 Hiro and E1: AH!
+<<StopMusic MusicManager>>
 Emi: Hey lugnut!
+<<PlayMainTheme MusicManager>>
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtDefault>>
 <<FadeArt DialogueUI CaesarArtSurprised PlayerArtHappy>>
 Caesar: ?!?!
 <<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtSurprised>>
 Emi: Hail Caesar. 
+<<PlayWhack Whack>>
 : WHACK!
 Emi: If you want to get to Hiro, you'll have to get through me. 
 E1: ...

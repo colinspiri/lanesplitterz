@@ -3,15 +3,16 @@ using ScriptableObjectArchitecture;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAudioScriptingEssentials;
 
 public class HitPinSound : MonoBehaviour
 {
     // components
     [SerializeField] private IntReference pinsKnockedDown;
-    [SerializeField] private AudioSource pinHitSlow;
-    [SerializeField] private AudioSource pinHitNormal;
-    [SerializeField] private AudioSource bigFall;
-    [SerializeField] private AudioSource smallFall;
+    [SerializeField] private AudioClipRandomizer pinHitSlow;
+    [SerializeField] private AudioClipRandomizer pinHitNormal;
+    [SerializeField] private AudioClipRandomizer bigFall;
+    [SerializeField] private AudioClipRandomizer smallFall;
     [SerializeField] bool isPlayer;
     
     // parameters
@@ -37,12 +38,12 @@ public class HitPinSound : MonoBehaviour
         {
             if (slow && isPlayer)
             {
-                pinHitSlow.Play();
+                pinHitSlow.PlaySFX();
                 slow = false;
             }
             else
             {
-                pinHitNormal.Play();
+                pinHitNormal.PlaySFX();
             }
             StartCoroutine(PinsFall());
 
@@ -64,11 +65,11 @@ public class HitPinSound : MonoBehaviour
         yield return new WaitForSeconds(countWait);
         if (pinsKnockedDown.Value - currentlyKnockedDown > pinNumber)
         {
-            bigFall.Play();
+            bigFall.PlaySFX();
         }
         else
         {
-            smallFall.Play();
+            smallFall.PlaySFX();
         }
         yield return new WaitForSeconds(nextHitWait);
         PinManager.OnPinHitByBall += PlayPinHitSound;

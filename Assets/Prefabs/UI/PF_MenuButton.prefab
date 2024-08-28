@@ -185,7 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _arcObj: {fileID: 11400000, guid: 26ec72b49ee45f24f8e4659e2a2a4b6b, type: 2}
   _audioClips: []
-  _mixerGroup: {fileID: 0}
+  _mixerGroup: {fileID: -5105470423888557312, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
   _overrideArcSettings: 0
   _noRepeats: 0
   _randomPitch: 0
@@ -196,6 +197,7 @@ MonoBehaviour:
   _priority: 128
   _stereoPan: 0
   _spatialBlend: 0
+  _maxRange: 500
   _ignoreListenerPause: 1
 --- !u!1 &5578273971731233429
 GameObject:

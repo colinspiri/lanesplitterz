@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class breakableObstacle : MonoBehaviour
 {
     private PlayerMovement _playerMove;
 
-    [SerializeField] AudioSource destroySound;
+    [SerializeField] AudioClipRandomizer destroySound;
     [SerializeField] private GameEvent onPlayerHitObstacle;
     [SerializeField] GameObject intactCube;
     [SerializeField] GameObject brokenCube;
@@ -33,14 +34,14 @@ public class breakableObstacle : MonoBehaviour
             _playerMove.ReduceFuel(fuelSub);
             if (onPlayerHitObstacle)
                 onPlayerHitObstacle.Raise();
-            destroySound.spatialBlend = 0.0f;
+            destroySound._spatialBlend = 0.0f;
         }
         else if (collider.gameObject.CompareTag("Enemy Ball"))
         {
             EnemyBall enemyBall = collider.gameObject.GetComponent<EnemyBall>();
 
             enemyBall.ReduceFuel(fuelSub);
-            destroySound.spatialBlend = 1.0f;
+            destroySound._spatialBlend = 1.0f;
         }
 
         intactCube.SetActive(false);
@@ -48,7 +49,7 @@ public class breakableObstacle : MonoBehaviour
 
         if (!playedSound)
         {
-            destroySound.Play();
+            destroySound.PlaySFX();
             playedSound = true;
         }
         

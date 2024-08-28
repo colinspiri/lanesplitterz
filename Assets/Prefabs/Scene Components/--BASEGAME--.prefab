@@ -400,14 +400,24 @@ MonoBehaviour:
     - _arcObj: {fileID: 11400000, guid: 336945a3526ce0e418b03cce266ed2db, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
-    _sectionTransitions: []
+    _sectionTransitions:
+    - _transitionInto: 4
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
     - _arcObj: {fileID: 11400000, guid: b4bfc7a9a4183f54dade5f5c6c7d1072, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
-    _sectionTransitions: []
+    _sectionTransitions:
+    - _transitionInto: 4
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
@@ -428,9 +438,11 @@ MonoBehaviour:
     - 1
     - 1
     - 1
+    - 1
     _gradualStateChange: 0
     _gradualStateChangeTime: 1
   - _stateAudioLayerVolumes:
+    - 0
     - 0
     - 0
     - 0
@@ -530,14 +542,24 @@ MonoBehaviour:
     - _arcObj: {fileID: 11400000, guid: 1f53cdcb3e8db304e817f6b2594280d4, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
-    _sectionTransitions: []
+    _sectionTransitions:
+    - _transitionInto: 0
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
     - _arcObj: {fileID: 11400000, guid: 6bad7adea21773d4f8afa73a1016edca, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
-    _sectionTransitions: []
+    _sectionTransitions:
+    - _transitionInto: 0
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
   _initialSection: 0
   _currentSection: 0
   _states:
@@ -901,6 +923,135 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2372938107861673050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1301571387012828062}
+  - component: {fileID: 3767886639657994062}
+  m_Layer: 0
+  m_Name: Countdown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1301571387012828062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372938107861673050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370297589638225213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3767886639657994062
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372938107861673050}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3354782549252822821, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 9cf04f01d4cc6df4590ffa6a5df78ecb, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2558909944437393500
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +1115,11 @@ MonoBehaviour:
       _fadeType: 1
       _quantization: 0
       _crossfadeTime: 1
+    - _transitionInto: 4
+      _triggerType: 1
+      _fadeType: 1
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
@@ -992,11 +1148,28 @@ MonoBehaviour:
     - _arcObj: {fileID: 11400000, guid: 35afc9d5b8ac045479305a8e7fd1846d, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
-    _sectionTransitions: []
+    _sectionTransitions:
+    - _transitionInto: 0
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
   - _audioLayerACR: []
     _layerObject: []
     _audioLayers:
     - _arcObj: {fileID: 11400000, guid: 5011330469efa3848a17fcb2668be662, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions:
+    - _transitionInto: 0
+      _triggerType: 0
+      _fadeType: 0
+      _quantization: 0
+      _crossfadeTime: 1
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: 967e77f97036d6042a8504fc8d6d6857, type: 2}
       _audioClips: []
       _audioLayerVolumes: 1
     _sectionTransitions: []
@@ -1008,14 +1181,16 @@ MonoBehaviour:
     - 1
     - 1
     - 1
-    _gradualStateChange: 1
+    - 1
+    _gradualStateChange: 0
     _gradualStateChangeTime: 1
   - _stateAudioLayerVolumes:
     - 0
     - 0
     - 0
     - 0
-    _gradualStateChange: 1
+    - 0
+    _gradualStateChange: 0
     _gradualStateChangeTime: 1
   _initialState: 0
   _ignoreWarnings: 0
@@ -1180,6 +1355,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausedForTutorial: 0
+--- !u!1 &3910322715242844517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8463986395163070324}
+  - component: {fileID: 1902196954870462802}
+  m_Layer: 0
+  m_Name: Elvis Intermission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8463986395163070324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910322715242844517}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6370297589638225213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1902196954870462802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910322715242844517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae20871896b029c4ba10f2e8c21e4e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playType: 1
+  _isOneShot: 0
+  _trackBPM: 120
+  _timeSignatureTop: 4
+  _timeSignatureBottom: 4
+  _isPlaying: 0
+  _sections:
+  - _audioLayerACR: []
+    _layerObject: []
+    _audioLayers:
+    - _arcObj: {fileID: 11400000, guid: b5722e048ac61d641aa3047220f294d0, type: 2}
+      _audioClips: []
+      _audioLayerVolumes: 1
+    _sectionTransitions: []
+  _initialSection: 0
+  _currentSection: 0
+  _states:
+  - _stateAudioLayerVolumes:
+    - 1
+    _gradualStateChange: 0
+    _gradualStateChangeTime: 1
+  - _stateAudioLayerVolumes:
+    - 0
+    _gradualStateChange: 0
+    _gradualStateChangeTime: 1
+  _initialState: 0
+  _ignoreWarnings: 0
 --- !u!1 &4478742880529064818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2788,8 @@ Transform:
   - {fileID: 3562550363596352086}
   - {fileID: 3239310262626567245}
   - {fileID: 5891469705697011837}
+  - {fileID: 1301571387012828062}
+  - {fileID: 8463986395163070324}
   m_Father: {fileID: 8500893530938471023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6764594138453727965
@@ -2561,6 +2809,8 @@ MonoBehaviour:
   - {fileID: 6660178748321575947}
   - {fileID: 2221513473944842648}
   - {fileID: 483844064437232643}
+  elvisIntermission: {fileID: 1902196954870462802}
+  countdown: {fileID: 3767886639657994062}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   dialogueManager: {fileID: 7237183769958233333}
 --- !u!1 &9189417159018289720

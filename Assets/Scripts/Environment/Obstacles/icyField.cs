@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class icyField : MonoBehaviour
 {
+    [SerializeField] GameObject oilVFX;
+    ParticleSystem oilParticles;
+
+    void Start()
+    {
+        oilParticles = oilVFX.GetComponent<ParticleSystem>();
+        oilParticles.Stop();
+    }
     //sends a log to console if ball is in icy field (might also do the same if any OTHER collider interacts with it, but, ya know)
     private void OnTriggerEnter( Collider collider )
     {      
         //Debug.Log("Icy Field");
+        if (collider.gameObject.tag == "Player")
+        {
+            oilParticles.transform.position = collider.transform.position;
+            oilParticles.Play();
+        }
+        else
+        {
+            oilParticles.Stop();
+        }
     }
 
     //draws a gizmo over the icy field
