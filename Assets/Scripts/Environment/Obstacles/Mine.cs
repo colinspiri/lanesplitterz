@@ -36,7 +36,6 @@ public class Mine : MonoBehaviour
                 colliderObj.GetComponent<EnemyBall>().Explode(explosionForce);
                 explosionSFX._spatialBlend = 1.0f;
             }
-
             explosionSFX.PlaySFX();
 
             Destroy(gameObject);
