@@ -55,6 +55,7 @@ public class MusicController : MonoBehaviour
             currentMusic.SetState(1);
             int newLevel = (gameState.currentLevelIndex - 1) / 5;
             currentMusic = gameMusic[newLevel];
+            currentMusic.SetState(0);
             currentMusic.RunContainer();
             dialogueManager.SetNewGameMusic(currentMusic);
             launched = false;

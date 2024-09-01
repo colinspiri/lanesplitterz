@@ -12,6 +12,7 @@ public class VOPlayer : MonoBehaviour
     [SerializeField] AudioClipRandomizer ElvisVO;
     [SerializeField] AudioClipRandomizer CorpoVO;
     [SerializeField] AudioClipRandomizer CaesarVO;
+    [SerializeField] AudioClipRandomizer TypingVO;
     [SerializeField] TextMeshProUGUI characterName;
     [SerializeField] GameState gameState;
     public int frequency = 2;
