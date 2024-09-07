@@ -72,7 +72,7 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator NextRoundUI()
     {
-        if (gameState.currentLevelIndex >= 15) yield break;
+        //if (gameState.currentLevelIndex >= 15) yield break;
         if (playerInfo.isPracticing == true) yield break;
 
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
@@ -184,8 +184,16 @@ public class NewThrowUI : MonoBehaviour
     {
         winLoseUI.SetActive(true);
 
-        if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore) loseTextObject.SetActive(false);
-        else winTextObject.SetActive(false);
+        if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore)
+        {
+            loseTextObject.SetActive(false);
+            playerInfo.isWinning = true;
+        }
+        else
+        {
+            winTextObject.SetActive(false);
+            playerInfo.isWinning = false;
+        }
 
         yield return new WaitForSeconds(uiConstants.roundUITime);
 

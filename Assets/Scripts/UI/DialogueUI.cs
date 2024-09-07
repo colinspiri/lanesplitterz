@@ -63,7 +63,7 @@ public class DialogueUI : MonoBehaviour
 
     public IEnumerator EnableGameOverUICoroutine()
     {
-        if (gameState.currentLevelIndex >= 15)
+        if (gameState.currentLevelIndex >= 15 && CheckIsPlayerWinning())
         {
             endGameUI.SetActive(true);
             EnableMouse();

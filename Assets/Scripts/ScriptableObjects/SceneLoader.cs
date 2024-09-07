@@ -42,14 +42,16 @@ public class SceneLoader : ScriptableObject {
     public void LoadNewLevel()
     {
         // only game scene is loaded so we can just add the first level
-/*        if (currentLevelIndex.Value < firstLevelIndex)
-        {
-            SceneManager.LoadScene("Level " + firstLevelIndex.ToString(), LoadSceneMode.Additive);
-            currentLevelIndex.Value++;
-        }*/
+        /*        if (currentLevelIndex.Value < firstLevelIndex)
+                {
+                    SceneManager.LoadScene("Level " + firstLevelIndex.ToString(), LoadSceneMode.Additive);
+                    currentLevelIndex.Value++;
+                }*/
         // when we have caesar levels, make it * 3
-        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) return; // replace with win/lose screen
-        else SceneLoaderManager.Instance.LoadNextLevel();
+        /*        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) return; // replace with win/lose screen
+                else SceneLoaderManager.Instance.LoadNextLevel();*/
+
+        SceneLoaderManager.Instance.LoadNextLevel();
     }
 
     public void LoadTutorial()=> SceneManager.LoadScene("Level 0", LoadSceneMode.Additive);

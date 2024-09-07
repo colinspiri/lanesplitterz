@@ -52,8 +52,25 @@ public class SceneLoaderManager : MonoBehaviour
     public IEnumerator LoadLevelCoroutine()
     {
         yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());
-        SceneManager.LoadScene("Level " + (gameState.currentLevelIndex + 1).ToString(), LoadSceneMode.Additive);
-        gameState.currentLevelIndex++;
+
+        // replay boss if player lost
+        if (playerInfo.isWinning == false && gameState.currentLevelIndex % 5 == 0)
+        {
+            SceneManager.LoadScene("Level " + (gameState.currentLevelIndex - 4).ToString(), LoadSceneMode.Additive);
+            gameState.currentLevelIndex -= 4;
+            RoundManager.Instance.ClearFinalScores();
+            RoundManager.Instance.ClearPlayerCurrentPoints();
+        }
+        else if (playerInfo.isWinning == true && gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3)
+        {
+            yield break;
+        }
+        // move on to next boss
+        else
+        {
+            SceneManager.LoadScene("Level " + (gameState.currentLevelIndex + 1).ToString(), LoadSceneMode.Additive);
+            gameState.currentLevelIndex++;
+        }
 
         if (gameState.currentLevelIndex < 6)
         {
