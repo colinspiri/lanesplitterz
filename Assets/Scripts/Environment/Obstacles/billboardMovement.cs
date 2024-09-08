@@ -9,6 +9,9 @@ public class billboardMovement : MonoBehaviour
     
     [SerializeField] private AudioSource destroySound;
     [SerializeField] public float moveDuration = 5;
+    [SerializeField] GameObject intactBoard;
+    [SerializeField] GameObject brokenBoard;
+    float step = 1f;
 
     //This is the stupidest solution to this problem I could have found
     //MoveBoolean: If true, move right, if false, move left
@@ -45,8 +48,9 @@ public class billboardMovement : MonoBehaviour
     {
         if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Balls"))
         {
-            billboard.gameObject.SetActive(false);
-            
+
+            intactBoard.SetActive(false);
+            brokenBoard.SetActive(true);
 
             playerMove.ReduceFuel(fuelSub);
             if (billboardHit.gameObject.CompareTag("Player"))
@@ -87,6 +91,15 @@ public class billboardMovement : MonoBehaviour
             return;
         }
         //                Debug.Log("Triggered1");
+
+        StartCoroutine(TimerRoutine());
+    }
+
+    private IEnumerator TimerRoutine()
+    {
+        step = 1f;
+        yield return new WaitForSecondsRealtime(step);
+        billboard.SetActive(false);
     }
 
 }
