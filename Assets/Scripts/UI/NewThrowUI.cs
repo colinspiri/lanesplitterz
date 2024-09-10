@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using UnityEngine.UI;
 
 public class NewThrowUI : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameObject playGameButton;
     [SerializeField] private GameObject EndFirstThrowTutorialUI;
     [SerializeField] private GameObject EndSecondThrowTutorialUI;
+    [SerializeField] private Image fadeToBlackUI;
 
     [Header("Text Elements")]
     [SerializeField] private TextMeshProUGUI roundText;
@@ -72,6 +74,8 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator NextRoundUI()
     {
+        yield return new WaitUntil(() => fadeToBlackUI.color.a == 0f);
+
         //if (gameState.currentLevelIndex >= 15) yield break;
         if (playerInfo.isPracticing == true) yield break;
 

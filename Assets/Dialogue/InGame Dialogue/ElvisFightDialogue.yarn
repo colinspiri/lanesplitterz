@@ -106,10 +106,10 @@ Hiro: Dang it! I'll be back next time.
 E1-V15: By then, Elvis will sit on Caesar's throne. 
 E1-V15: Btw, father jinn gotchyo ass.
 <<DisableArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<DisableDialogueWithMouse DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
-<<DisableDialogue DialogueUI>>
 ===
 
 title: ElvisPlayerWin

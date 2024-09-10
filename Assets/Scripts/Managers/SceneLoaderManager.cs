@@ -34,6 +34,8 @@ public class SceneLoaderManager : MonoBehaviour
 
     private void InitializeLevel()
     {
+        // if the player loses we want them to choose if they want to play again, not automatically load the next level
+        if (gameState.currentLevelIndex % 5 == 0 && !playerInfo.isWinning) return;
         if (playerInfo.isPracticing == true) LoadTutorialLevel();
         else sceneLoader.LoadNewLevel();
     }

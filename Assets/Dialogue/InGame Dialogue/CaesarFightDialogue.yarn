@@ -119,10 +119,10 @@ Caesar: I declare Neo Las Vegas the capital of the New Roman Empire! Time to bri
 <<FadeArt DialogueUI PlayerArtSurprised CaesarArtHappy>>
 Hiro: NOOOOOOO!
 <<DisableArt DialogueUI PlayerArtSurprised CaesarArtHappy>>
+<<DisableDialogueWithMouse DialogueUI>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
-<<DisableDialogueWithMouse DialogueUI>>
 ===
 
 title: CaesarPlayerWin

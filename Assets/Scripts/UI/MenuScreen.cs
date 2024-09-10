@@ -111,6 +111,12 @@ public class MenuScreen : MonoBehaviour {
     }
 
     private void UpdateLastButton() {
+        if (gameObject.name == "Play Again Screen")
+        {
+            _lastButton = null;
+            return;
+        }
+
         if (eventSystem.currentSelectedGameObject)
         {
             _lastButton = eventSystem.currentSelectedGameObject.GetComponent<Selectable>();

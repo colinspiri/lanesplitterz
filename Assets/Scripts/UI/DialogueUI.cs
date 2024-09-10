@@ -6,6 +6,7 @@ using Yarn.Unity;
 using UnityEngine.UI;
 using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
+using DG.Tweening;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject blur;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject endGameUI;
+    [SerializeField] private Image fadeToBlackUI;
     [SerializeField] private GameObject doublePointsUI;
     [SerializeField] private GameObject checkerboard;
 
@@ -58,25 +60,57 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableGameOverUI")]
     public void EnableGameOverUI()
     {
-        StartCoroutine(EnableGameOverUICoroutine());
+        //StartCoroutine(EnableGameOverUICoroutine());
+        EnableGameOverUICoroutine();
     }
 
-    public IEnumerator EnableGameOverUICoroutine()
+    public void EnableGameOverUICoroutine()
     {
+        // player beat the game
         if (gameState.currentLevelIndex >= 15 && CheckIsPlayerWinning())
         {
             endGameUI.SetActive(true);
             EnableMouse();
-            yield break;
+            return;
+            //yield break;
         }
-        else gameOverUI.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        gameOverUI.SetActive(false);
-        StartNewRound();
+        // player beat either elvis or corpo
+        else if (CheckIsPlayerWinning())
+        {
+            // should take one second to fade in, wait one second, and take two seconds to fade out
+/*            fadeToBlackUI.DOFade(1f, 2f).OnComplete(() => StartNewRound()).OnComplete(() => fadeToBlackUI.DOFade(1f, 1f))
+                .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));*/
+
+            fadeToBlackUI.DOFade(1f, 2f)
+            .OnComplete(() =>
+            {
+                StartNewRound();
+                fadeToBlackUI.DOFade(1f, 1f)
+                    .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));
+            });
+        }
+        // player lost to current boss
+        else
+        {
+            DisableDialogueWithMouse();
+            gameOverUI.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+/*            ScoreboardUI.Instance.HideFinalScores();
+            ScoreboardUI.Instance.ClearScoreboard();
+            ScoreboardUI.Instance.UpdateEnemyTitleText();
+            yield break;*/
+        }
+/*        yield return new WaitForSeconds(2f);
+        gameOverUI.SetActive(false);*/
+        //StartNewRound();
         ScoreboardUI.Instance.HideFinalScores();
         ScoreboardUI.Instance.ClearScoreboard();
         ScoreboardUI.Instance.UpdateEnemyTitleText();
     }
+
+    // set gameOverUI to inactive when player clicks play again after losing
+    public void SetUIToInactive(GameObject gameObject) => gameObject.SetActive(false);
 
     public void StartNewRound() => RoundManager.OnNewRound.Invoke();
 
