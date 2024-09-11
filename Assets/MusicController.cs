@@ -50,13 +50,22 @@ public class MusicController : MonoBehaviour
 
     public void NextLevel()
     {
+        Debug.Log("Next Level");
         firstLaunch = true;
         if (gameState.currentLevelIndex % 5 == 1) {
             currentMusic.SetState(1);
             int newLevel = (gameState.currentLevelIndex - 1) / 5;
-            currentMusic = gameMusic[newLevel];
-            currentMusic.SetState(0);
-            currentMusic.RunContainer();
+            if (currentMusic == gameMusic[newLevel])
+            {
+                currentMusic.SetState(0);
+                currentMusic.TransitionSection(1);
+            }
+            else
+            {
+                currentMusic = gameMusic[newLevel];
+                currentMusic.SetState(0);
+                currentMusic.RunContainer();
+            }
             dialogueManager.SetNewGameMusic(currentMusic);
             launched = false;
         }
@@ -78,7 +87,7 @@ public class MusicController : MonoBehaviour
     public void PlayTheme()
     {
         currentMusic.SetState(0);
-        currentMusic.TransitionSection(1);
+        currentMusic.TransitionSection(2);
     }
 
     [YarnCommand("StopMusic")]
