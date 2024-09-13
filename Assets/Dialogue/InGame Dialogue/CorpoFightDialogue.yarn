@@ -198,66 +198,66 @@ Emiliana: You really showed that corporate bastard what for!
 Emiliana: What's all that money worth to you now, Mr. Business?
 //needs other a new things for E1
 <<DisableArt DialogueUI MentorArtHappy CorpoArtDefault>>
-<<EnableFadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
+<<EnableFadeArt DialogueUI ElvisHeadbandArtHappy PlayerArtHappy>>
 E1: Hiro Protag!
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtHappy>>
 Hiro: E1!
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisHeadbandArtHappy>>
 Hiro: I love the new outfit.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtHappy>>
 Hiro: Did you see the match?
-<<FadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
+<<FadeArt DialogueUI ElvisHeadbandArtHappy PlayerArtHappy>>
 E1: You bet I did, baby.
-<<EnableOneArt DialogueUI ElvisArtDefault>>
-<<DisableOneArt DialogueUI ElvisArtHappy>>
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtDefault>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtHappy>>
+<<FadeArt DialogueUI ElvisHeadbandArtDefault PlayerArtHappy>>
 E1: I ran a simulation before it started.
 E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad ElvisHeadbandArtDefault>>
 Hiro: --Thanks, E1.
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
+<<FadeArt DialogueUI ElvisHeadbandArtDefault PlayerArtSad>>
 E1: ...and superior height.
 E1: According to the model, your chance of victory was a number smaller than I can process.
-<<EnableOneArt DialogueUI ElvisArtHappy>>
-<<DisableOneArt DialogueUI ElvisArtDefault>>
-<<FadeArt DialogueUI ElvisArtHappy PlayerArtSad>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtHappy>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtDefault>>
+<<FadeArt DialogueUI ElvisHeadbandArtHappy PlayerArtSad>>
 E1: It had me all shook up, but I couldn't help believin' in you.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtHappy>>
 Hiro: Thanks E1!
 Hiro: You're my favorite…
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtSad ElvisHeadbandArtHappy>>
 Hiro: (and only)
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtHappy>>
 Hiro: fan!
 <<EnableOneArt DialogueUI MentorArtAngry>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI MentorArtAngry ElvisArtHappy>>
+<<FadeArt DialogueUI MentorArtAngry ElvisHeadbandArtHappy>>
 Emiliana: Hey, don't forget about me!
 <<EnableOneArt DialogueUI CorpoArtDefault>>
-<<DisableOneArt DialogueUI ElvisArtHappy>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtHappy>>
 <<FadeArt DialogueUI CorpoArtDefault MentorArtAngry>>
 Kaiba: Why do you keep losers like this around?
 <<FadeArt DialogueUI MentorArtAngry CorpoArtDefault>>
 Emiliana: Hey!
 
-<<EnableOneArt DialogueUI ElvisArtAngry>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtAngry>>
 <<DisableOneArt DialogueUI CorpoArtDefault>>
-<<FadeArt DialogueUI ElvisArtAngry MentorArtAngry>>
+<<FadeArt DialogueUI ElvisHeadbandArtAngry MentorArtAngry>>
 E1: Hey!
 <<EnableOneArt DialogueUI CorpoArtDefault>>
-<<DisableOneArt DialogueUI ElvisArtAngry>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtAngry>>
 <<FadeArt DialogueUI CorpoArtDefault MentorArtAngry>>
 Kaiba: What's the point?
 <<EnableOneArt DialogueUI PlayerArtDefault>>

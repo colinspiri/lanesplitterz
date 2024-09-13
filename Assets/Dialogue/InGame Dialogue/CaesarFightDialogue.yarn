@@ -216,38 +216,38 @@ Hiro: Eep!
 Caesar: You...slapped me. Was that supposed to hurt? 
 <<FadeOutBothArt DialogueUI PlayerArtSurprised CaesarArtSurprised>>
 ???: Not many know, but Elvis the Pelvis was a master of Ka-ra-te. 
-<<EnableOneArt DialogueUI ElvisArtSurprised>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtSurprised>>
-<<FadeArt DialogueUI ElvisArtSurprised PlayerArtSurprised>>
+<<FadeArt DialogueUI ElvisHeadbandArtSurprised PlayerArtSurprised>>
 <<PlayElvisTheme MusicManager>>
 E1: So I too learned the ancient martial art.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy ElvisArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtSurprised>>
 Hiro: E1! You're so brave! 
-<<EnableOneArt DialogueUI ElvisArtHappy>>
-<<DisableOneArt DialogueUI ElvisArtSurprised>>
-<<FadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtHappy>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtSurprised>>
+<<FadeArt DialogueUI ElvisHeadbandArtHappy PlayerArtHappy>>
 E1: Thank you, thank you very much. 
 <<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI ElvisArtHappy>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 <<PlayCaesarTheme MusicManager>>
 Caesar: Well, that didn't do much, did it? Back to killing! 
 <<DisableArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
-<<EnableOneArt DialogueUI ElvisArtSurprised>>
-<<FadeInBothArt DialogueUI PlayerArtSurprised ElvisArtSurprised>>
+<<EnableOneArt DialogueUI ElvisHeadbandArtSurprised>>
+<<FadeInBothArt DialogueUI PlayerArtSurprised ElvisHeadbandArtSurprised>>
 <<SetVO VOPlayer HiroandE1>>
 Hiro and E1: AH!
 <<EnableOneArt DialogueUI MentorArtDefault>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI MentorArtDefault ElvisArtSurprised>>
+<<FadeArt DialogueUI MentorArtDefault ElvisHeadbandArtSurprised>>
 <<StopMusic MusicManager>>
 Emi: Hey lugnut!
 <<PlayMainTheme MusicManager>>
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
-<<DisableOneArt DialogueUI ElvisArtSurprised>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtSurprised>>
 <<FadeArt DialogueUI CaesarArtSurprised MentorArtDefault>>
 Caesar: ?!?!
 <<DisableOneArt DialogueUI MentorArtDefault>>
@@ -257,10 +257,10 @@ Emi: Hail Caesar.
 : WHACK!
 Emi: If you want to get to Hiro, you'll have to get through me. 
 <<DisableOneArt DialogueUI CaesarArtSurprised>>
-<<EnableFadeArt DialogueUI ElvisArtDefault MentorArtAngry>>
+<<EnableFadeArt DialogueUI ElvisHeadbandArtDefault MentorArtAngry>>
 E1: ...
 <<EnableOneArt DialogueUI CorpoArtAngry>>
-<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<DisableOneArt DialogueUI ElvisHeadbandArtDefault>>
 <<FadeArt DialogueUI CorpoArtAngry MentorArtAngry>>
 Kaiba: ...
 <<EnableOneArt DialogueUI CaesarArtSadInjured>>
