@@ -1,4 +1,4 @@
-﻿title: CorpoRoundOne
+title: CorpoRoundOne
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -186,63 +186,82 @@ Kaiba: With power like that...you might actually have a chance against Caesar.
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
 <<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Thanks! But I couldn't have done it alone!
-<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
-//needs art for emiliana
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<EnableFadeArt DialogueUI MentorArtHappy CorpoArtDefault>>
 Emiliana: Kid!
-<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
+<<EnableFadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
 Hiro: Emiliana!
-<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<EnableFadeArt DialogueUI MentorArtHappy CorpoArtDefault>>
 Emiliana: You really showed that corporate bastard what for!
 Emiliana: What's all that money worth to you now, Mr. Business?
 //needs other a new things for E1
+<<DisableArt DialogueUI MentorArtHappy CorpoArtDefault>>
+<<EnableFadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
 E1: Hiro Protag!
-<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
 Hiro: E1!
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSurprised CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtSurprised ElvisArtHappy>>
 Hiro: I love the new outfit.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
 Hiro: Did you see the match?
-<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
 E1: You bet I did, baby.
+<<EnableOneArt DialogueUI ElvisArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtHappy>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 E1: I ran a simulation before it started.
 E1: Kaiba had a superior ball, more experience, more resources, formal training, better posture, sharper clothes --
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: --Thanks, E1.
-<<FadeOutBothArt DialogueUI PlayerArtSad CorpoArtDefault>>
+<<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
 E1: ...and superior height.
 E1: According to the model, your chance of victory was a number smaller than I can process.
+<<EnableOneArt DialogueUI ElvisArtHappy>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<FadeArt DialogueUI ElvisArtHappy PlayerArtSad>>
 E1: It had me all shook up, but I couldn't help believin' in you.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
 Hiro: Thanks E1!
 Hiro: You're my favorite…
 <<EnableOneArt DialogueUI PlayerArtSad>>
 <<DisableOneArt DialogueUI PlayerArtHappy>>
-<<FadeArt DialogueUI PlayerArtSad CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtSad ElvisArtHappy>>
 Hiro: (and only)
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
-<<FadeArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtHappy>>
 Hiro: fan!
-<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<EnableOneArt DialogueUI MentorArtAngry>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<FadeArt DialogueUI MentorArtAngry ElvisArtHappy>>
 Emiliana: Hey, don't forget about me!
-<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtHappy>>
+<<FadeArt DialogueUI CorpoArtDefault MentorArtAngry>>
 Kaiba: Why do you keep losers like this around?
-<<FadeOutBothArt DialogueUI PlayerArtHappy CorpoArtDefault>>
+<<FadeArt DialogueUI MentorArtAngry CorpoArtDefault>>
 Emiliana: Hey!
 
+<<EnableOneArt DialogueUI ElvisArtAngry>>
+<<DisableOneArt DialogueUI CorpoArtDefault>>
+<<FadeArt DialogueUI ElvisArtAngry MentorArtAngry>>
 E1: Hey!
-<<FadeArt DialogueUI CorpoArtDefault PlayerArtHappy>>
+<<EnableOneArt DialogueUI CorpoArtDefault>>
+<<DisableOneArt DialogueUI ElvisArtAngry>>
+<<FadeArt DialogueUI CorpoArtDefault MentorArtAngry>>
 Kaiba: What's the point?
 <<EnableOneArt DialogueUI PlayerArtDefault>>
-<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI MentorArtAngry>>
 <<FadeArt DialogueUI PlayerArtDefault CorpoArtDefault>>
 Hiro: Without my friends, I never could have made it this far.
 <<EnableOneArt DialogueUI PlayerArtHappy>>

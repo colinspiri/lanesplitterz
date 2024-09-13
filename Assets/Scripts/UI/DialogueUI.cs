@@ -232,6 +232,22 @@ public class DialogueUI : MonoBehaviour
         artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
     }
 
+    [YarnCommand("FadeInBothArt")]
+    public void FadeInBothArt(GameObject artOne, GameObject artTwo)
+    {
+        Color tempColor = artOne.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.r = 1f;
+        tempColor.g = 1f;
+        tempColor.b = 1f;
+        artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
+
+        tempColor = artTwo.transform.GetChild(0).GetComponent<Image>().color;
+        tempColor.r = 1f;
+        tempColor.g = 1f;
+        tempColor.b = 1f;
+        artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
+    }
+
     [YarnCommand("DisableDialogue")]
     public void DisableDialogue()
     {

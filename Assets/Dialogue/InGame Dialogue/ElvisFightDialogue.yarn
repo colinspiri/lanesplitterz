@@ -119,13 +119,12 @@ tags:
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: I won? Wait… I won??? Holy-
-<<FadeOutBothArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
-//Needs Character Art
-//Enable Emiliana Art
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<EnableFadeArt DialogueUI MentorArtHappy ElvisArtDefault>>
 Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 //Needs Character Art
 <<EnableOneArt DialogueUI PlayerArtSad>>
-<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
 <<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: Wait, you didn't think I'd win?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
@@ -138,13 +137,11 @@ E1-V15: You were great out there, son. You're the toughest I've ever rolled agai
 <<DisableOneArt DialogueUI ElvisArtHappy>>
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
 E1-V15: Spirit is far more valuable a predictor than I thought.
-<<FadeOutBothArt DialogueUI PlayerArtSad ElvisArtDefault>>
-//Needs Character Art
-Emiliana: He's a real special kid, our Hiro.
-//Needs Character Art
-//Disable Emiliana Art
-<<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSad>>
+<<EnableFadeArt DialogueUI MentorArtHappy ElvisArtDefault>>
+Emiliana: He's a real special kid, our Hiro.
+<<EnableOneArt DialogueUI PlayerArtHappy>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
 <<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Thanks, E1. It was an honor to roll with you.
 <<EnableOneArt DialogueUI ElvisArtSurprised>>

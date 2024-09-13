@@ -132,8 +132,12 @@ tags:
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: It's... It's over. 
-<<FadeOutBothArt DialogueUI PlayerArtDefault CaesarArtAngry>>
+<<EnableOneArt DialogueUI MentorArtHappy>>
+<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<FadeArt DialogueUI MentorArtHappy CaesarArtAngry>>
 Emi: Hiro, you did it! You're the King of Neo Las Vegas! 
+<<EnableOneArt DialogueUI PlayerArtDefault>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: Emi! I couldn't have done it witho--
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
@@ -193,7 +197,7 @@ Kaiba: God, I love the free market!
 Hiro: Kaiba, you saved the city!
 <<EnableOneArt DialogueUI CorpoArtDefault>>
 <<DisableOneArt DialogueUI CorpoArtCrazy>>
-<<FadeArt DialogueUI PlayerArtSurprised CorpoArtDefault>>
+<<FadeArt DialogueUI CorpoArtDefault PlayerArtSurprised>>
 Kaiba: Don't mention it, kid. 
 <<DisableOneArt DialogueUI CorpoArtDefault>>
 <<EnableOneArt DialogueUI CaesarArtAngry>>
@@ -212,63 +216,80 @@ Hiro: Eep!
 Caesar: You...slapped me. Was that supposed to hurt? 
 <<FadeOutBothArt DialogueUI PlayerArtSurprised CaesarArtSurprised>>
 ???: Not many know, but Elvis the Pelvis was a master of Ka-ra-te. 
+<<EnableOneArt DialogueUI ElvisArtSurprised>>
+<<DisableOneArt DialogueUI CaesarArtSurprised>>
+<<FadeArt DialogueUI ElvisArtSurprised PlayerArtSurprised>>
 <<PlayElvisTheme MusicManager>>
 E1: So I too learned the ancient martial art.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
-<<FadeArt DialogueUI PlayerArtHappy CaesarArtSurprised>>
+<<FadeArt DialogueUI PlayerArtHappy ElvisArtSurprised>>
 Hiro: E1! You're so brave! 
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtSurprised>>
+<<EnableOneArt DialogueUI ElvisArtHappy>>
+<<DisableOneArt DialogueUI ElvisArtSurprised>>
+<<FadeArt DialogueUI ElvisArtHappy PlayerArtHappy>>
 E1: Thank you, thank you very much. 
 <<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI CaesarArtSurprised>>
+<<DisableOneArt DialogueUI ElvisArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 <<PlayCaesarTheme MusicManager>>
 Caesar: Well, that didn't do much, did it? Back to killing! 
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtDefault>>
+<<DisableArt DialogueUI CaesarArtDefault PlayerArtHappy>>
+<<EnableOneArt DialogueUI PlayerArtSurprised>>
+<<EnableOneArt DialogueUI ElvisArtSurprised>>
+<<FadeInBothArt DialogueUI PlayerArtSurprised ElvisArtSurprised>>
 <<SetVO VOPlayer HiroandE1>>
 Hiro and E1: AH!
+<<EnableOneArt DialogueUI MentorArtDefault>>
+<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<FadeArt DialogueUI MentorArtDefault ElvisArtSurprised>>
 <<StopMusic MusicManager>>
 Emi: Hey lugnut!
 <<PlayMainTheme MusicManager>>
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
-<<DisableOneArt DialogueUI CaesarArtDefault>>
-<<FadeArt DialogueUI CaesarArtSurprised PlayerArtHappy>>
+<<DisableOneArt DialogueUI ElvisArtSurprised>>
+<<FadeArt DialogueUI CaesarArtSurprised MentorArtDefault>>
 Caesar: ?!?!
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtSurprised>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
+<<EnableFadeArt DialogueUI MentorArtAngry CaesarArtSurprised>>
 Emi: Hail Caesar. 
 <<PlayWhack Whack>>
 : WHACK!
 Emi: If you want to get to Hiro, you'll have to get through me. 
+<<DisableOneArt DialogueUI CaesarArtSurprised>>
+<<EnableFadeArt DialogueUI ElvisArtDefault MentorArtAngry>>
 E1: ...
 <<EnableOneArt DialogueUI CorpoArtAngry>>
-<<DisableOneArt DialogueUI CaesarArtSurprised>>
-<<FadeArt DialogueUI CorpoArtAngry PlayerArtHappy>>
+<<DisableOneArt DialogueUI ElvisArtDefault>>
+<<FadeArt DialogueUI CorpoArtAngry MentorArtAngry>>
 Kaiba: ...
 <<EnableOneArt DialogueUI CaesarArtSadInjured>>
 <<DisableOneArt DialogueUI CorpoArtAngry>>
-<<FadeArt DialogueUI CaesarArtSadInjured PlayerArtHappy>>
+<<FadeArt DialogueUI CaesarArtSadInjured MentorArtAngry>>
 Caesar: Aeugh!
 Caesar: My face! My beautiful face! You've sullied it!
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtSadInjured>>
+<<DisableOneArt DialogueUI MentorArtAngry>>
+<<EnableFadeArt DialogueUI MentorArtHappy CaesarArtSadInjured>>
 Emi: Guess your flesh wasn't tough as marble, huh?
-<<FadeArt DialogueUI CaesarArtSadInjured PlayerArtHappy>>
+<<FadeArt DialogueUI CaesarArtSadInjured MentorArtHappy>>
 Caesar: Fine! 
 <<EnableOneArt DialogueUI CaesarArtAngryInjured>>
 <<DisableOneArt DialogueUI CaesarArtSadInjured>>
-<<FadeArt DialogueUI CaesarArtAngryInjured PlayerArtHappy>>
+<<FadeArt DialogueUI CaesarArtAngryInjured MentorArtHappy>>
 Caesar: You can play king for now, but there's only one dictator for life.
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtAngryInjured>>
+<<FadeArt DialogueUI MentorArtHappy CaesarArtAngryInjured>>
 Emi : Hear that Hiro? This guy's saying you're the new King! 
-<<FadeArt DialogueUI PlayerArtHappy CaesarArtAngryInjured>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
+<<EnableFadeArt DialogueUI PlayerArtHappy CaesarArtAngryInjured>>
 Hiro: We did it! Anybody in this city who's ever been racked with debt is getting a second chance.
 Hiro: And that starts with you, Emiliana. 
-<<FadeOutBothArt DialogueUI PlayerArtHappy CaesarArtAngryInjured>>
+<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<EnableFadeArt DialogueUI MentorArtHappy CaesarArtAngryInjured>>
 Emi: Thanks, Hiro. Neo Las Vegas has a bright future with you at the helm.
 
 //then announcer momengt
 
-<<DisableArt DialogueUI PlayerArtHappy CaesarArtAngryInjured>>
+<<DisableArt DialogueUI MentorArtHappy CaesarArtAngryInjured>>
 <<EnableInputs Cannon>>
 <<EnableGameOverUI DialogueUI>>
 <<EnableScoreboard DialogueUI>>
