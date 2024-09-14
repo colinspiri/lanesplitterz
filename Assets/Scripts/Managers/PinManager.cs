@@ -29,6 +29,10 @@ public class PinManager : MonoBehaviour {
     private List<PinSpawn> _pinSpawns = new List<PinSpawn>();
 
     public bool player;
+    public int playerWhitePinCount;
+    public int playerGoldPinCount;
+    public int enemyWhitePinCount;
+    public int enemyGoldPinCount;
 
     // public static Action OnPinKnockedDown;
     public static Action OnPinHitByBall;
@@ -40,6 +44,13 @@ public class PinManager : MonoBehaviour {
     private void Start() {
         RoundManager.OnNewThrow += ClearFallenPins;
         RoundManager.OnNewRound += ResetAllPins;
+/*        RoundManager.OnNewRound += () =>
+        {
+            playerWhitePinCount = 0;
+            playerGoldPinCount = 0;
+            enemyWhitePinCount = 0;
+            enemyGoldPinCount = 0;
+        };*/
 
         // RoundManager.OnNewThrow += Initialize;
     }
@@ -59,12 +70,16 @@ public class PinManager : MonoBehaviour {
             if (pin.PointValue == 5)
             {
                 goldenPinSFX.PlaySFX();
+                playerGoldPinCount++;
             }
+            else playerWhitePinCount++;
         }
         else if (pin.LastTouchedBy == Pin.LastTouched.EnemyBall && gameState.isClearingPins == false) {
             /*            if (gameState.isDoublePointsThrow == true && pin.PointValue == 1) enemyCurrentPoints.Value += pin.PointValue * 2;
                         else enemyCurrentPoints.Value += pin.PointValue;*/
             enemyCurrentPoints.Value += pin.PointValue;
+            if (pin.PointValue == 5) enemyGoldPinCount++;
+            else enemyWhitePinCount++;
         }
     }
 

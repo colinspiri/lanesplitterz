@@ -188,6 +188,14 @@ public class Cannon : MonoBehaviour
         // Begin enemy launch sequence
         if (_enemy) _enemy.LaunchSequence();
 
+        if (gameState.currentThrow == 1)
+        {
+            PinManager.Instance.playerWhitePinCount = 0;
+            PinManager.Instance.playerGoldPinCount = 0;
+            PinManager.Instance.enemyWhitePinCount = 0;
+            PinManager.Instance.enemyGoldPinCount = 0;
+        }
+
         StartCoroutine(LaunchWithEnemy());
     }
 

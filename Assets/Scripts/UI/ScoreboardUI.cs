@@ -26,6 +26,34 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI enemyRoundFourText;
     [SerializeField] private TextMeshProUGUI enemyRoundFiveText;
 
+    [Header("Player Scoreboard White Pin Text")]
+    [SerializeField] private TextMeshProUGUI playerRoundOneWhiteText;
+    [SerializeField] private TextMeshProUGUI playerRoundTwoWhiteText;
+    [SerializeField] private TextMeshProUGUI playerRoundThreeWhiteText;
+    [SerializeField] private TextMeshProUGUI playerRoundFourWhiteText;
+    [SerializeField] private TextMeshProUGUI playerRoundFiveWhiteText;
+
+    [Header("Player Scoreboard Gold Pin Text")]
+    [SerializeField] private TextMeshProUGUI playerRoundOneGoldText;
+    [SerializeField] private TextMeshProUGUI playerRoundTwoGoldText;
+    [SerializeField] private TextMeshProUGUI playerRoundThreeGoldText;
+    [SerializeField] private TextMeshProUGUI playerRoundFourGoldText;
+    [SerializeField] private TextMeshProUGUI playerRoundFiveGoldText;
+
+    [Header("Enemy Scoreboard White Pin Text")]
+    [SerializeField] private TextMeshProUGUI enemyRoundOneWhiteText;
+    [SerializeField] private TextMeshProUGUI enemyRoundTwoWhiteText;
+    [SerializeField] private TextMeshProUGUI enemyRoundThreeWhiteText;
+    [SerializeField] private TextMeshProUGUI enemyRoundFourWhiteText;
+    [SerializeField] private TextMeshProUGUI enemyRoundFiveWhiteText;
+
+    [Header("Enemy Scoreboard Gold Pin Text")]
+    [SerializeField] private TextMeshProUGUI enemyRoundOneGoldText;
+    [SerializeField] private TextMeshProUGUI enemyRoundTwoGoldText;
+    [SerializeField] private TextMeshProUGUI enemyRoundThreeGoldText;
+    [SerializeField] private TextMeshProUGUI enemyRoundFourGoldText;
+    [SerializeField] private TextMeshProUGUI enemyRoundFiveGoldText;
+
     [Space]
     [SerializeField] private TextMeshProUGUI enemyTitleText;
 
@@ -34,6 +62,14 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
 
+    private List<TextMeshProUGUI> whiteAndGoldTexts;
+    private List<TextMeshProUGUI> scoreTexts;
+
+    private int playerWhitePinCountFirstThrow;
+    private int playerGoldPinCountFirstThrow;
+    private int enemyWhitePinCountFirstThrow;
+    private int enemyGoldPinCountFirstThrow;
+
     private void Awake() {
         Instance = this;
     }
@@ -41,6 +77,38 @@ public class ScoreboardUI : MonoBehaviour {
     private void Start() {
         playerScoreText.text = "";
         enemyScoreText.text = "";
+
+        whiteAndGoldTexts.Add(playerRoundOneWhiteText);
+        whiteAndGoldTexts.Add(playerRoundTwoWhiteText);
+        whiteAndGoldTexts.Add(playerRoundThreeWhiteText);
+        whiteAndGoldTexts.Add(playerRoundFourWhiteText);
+        whiteAndGoldTexts.Add(playerRoundFiveWhiteText);
+        whiteAndGoldTexts.Add(playerRoundOneGoldText);
+        whiteAndGoldTexts.Add(playerRoundTwoGoldText);
+        whiteAndGoldTexts.Add(playerRoundThreeGoldText);
+        whiteAndGoldTexts.Add(playerRoundFourGoldText);
+        whiteAndGoldTexts.Add(playerRoundFiveGoldText);
+        whiteAndGoldTexts.Add(enemyRoundOneWhiteText);
+        whiteAndGoldTexts.Add(enemyRoundTwoWhiteText);
+        whiteAndGoldTexts.Add(enemyRoundThreeWhiteText);
+        whiteAndGoldTexts.Add(enemyRoundFourWhiteText);
+        whiteAndGoldTexts.Add(enemyRoundFiveWhiteText);
+        whiteAndGoldTexts.Add(enemyRoundOneGoldText);
+        whiteAndGoldTexts.Add(enemyRoundTwoGoldText);
+        whiteAndGoldTexts.Add(enemyRoundThreeGoldText);
+        whiteAndGoldTexts.Add(enemyRoundFourGoldText);
+        whiteAndGoldTexts.Add(enemyRoundFiveGoldText);
+
+        scoreTexts.Add(playerRoundOneText);
+        scoreTexts.Add(playerRoundTwoText);
+        scoreTexts.Add(playerRoundThreeText);
+        scoreTexts.Add(playerRoundFourText);
+        scoreTexts.Add(playerRoundFiveText);
+        scoreTexts.Add(enemyRoundOneText);
+        scoreTexts.Add(enemyRoundTwoText);
+        scoreTexts.Add(enemyRoundThreeText);
+        scoreTexts.Add(enemyRoundFourText);
+        scoreTexts.Add(enemyRoundFiveText);
     }
 
     private void Update()
@@ -72,6 +140,12 @@ public class ScoreboardUI : MonoBehaviour {
                     playerRoundOneText.text = RoundManager.Instance.playerPointsByRound.ToString();
                     enemyRoundOneText.text = RoundManager.Instance.enemyPointsByRound.ToString();
                 }
+
+                ChangePinText(playerRoundOneWhiteText, PinManager.Instance.playerWhitePinCount);
+                ChangePinText(playerRoundOneGoldText, PinManager.Instance.playerGoldPinCount);
+                ChangePinText(enemyRoundOneWhiteText, PinManager.Instance.enemyWhitePinCount);
+                ChangePinText(enemyRoundOneGoldText, PinManager.Instance.enemyGoldPinCount);
+
                 break;
             case 2:
                 if (gameState.currentThrow == 1)
@@ -84,6 +158,12 @@ public class ScoreboardUI : MonoBehaviour {
                     playerRoundTwoText.text = RoundManager.Instance.playerPointsByRound.ToString();
                     enemyRoundTwoText.text = RoundManager.Instance.enemyPointsByRound.ToString();
                 }
+
+                ChangePinText(playerRoundTwoWhiteText, PinManager.Instance.playerWhitePinCount);
+                ChangePinText(playerRoundTwoGoldText, PinManager.Instance.playerGoldPinCount);
+                ChangePinText(enemyRoundTwoWhiteText, PinManager.Instance.enemyWhitePinCount);
+                ChangePinText(enemyRoundTwoGoldText, PinManager.Instance.enemyGoldPinCount);
+
                 break;
             case 3:
                 if (gameState.currentThrow == 1)
@@ -96,6 +176,12 @@ public class ScoreboardUI : MonoBehaviour {
                     playerRoundThreeText.text = RoundManager.Instance.playerPointsByRound.ToString();
                     enemyRoundThreeText.text = RoundManager.Instance.enemyPointsByRound.ToString();
                 }
+
+                ChangePinText(playerRoundThreeWhiteText, PinManager.Instance.playerWhitePinCount);
+                ChangePinText(playerRoundThreeGoldText, PinManager.Instance.playerGoldPinCount);
+                ChangePinText(enemyRoundThreeWhiteText, PinManager.Instance.enemyWhitePinCount);
+                ChangePinText(enemyRoundThreeGoldText, PinManager.Instance.enemyGoldPinCount);
+
                 break;
             case 4:
                 if (gameState.currentThrow == 1)
@@ -108,6 +194,12 @@ public class ScoreboardUI : MonoBehaviour {
                     playerRoundFourText.text = RoundManager.Instance.playerPointsByRound.ToString();
                     enemyRoundFourText.text = RoundManager.Instance.enemyPointsByRound.ToString();
                 }
+
+                ChangePinText(playerRoundFourWhiteText, PinManager.Instance.playerWhitePinCount);
+                ChangePinText(playerRoundFourGoldText, PinManager.Instance.playerGoldPinCount);
+                ChangePinText(enemyRoundFourWhiteText, PinManager.Instance.enemyWhitePinCount);
+                ChangePinText(enemyRoundFourGoldText, PinManager.Instance.enemyGoldPinCount);
+
                 break;
             case 5:
                 if (gameState.currentThrow == 1)
@@ -120,6 +212,12 @@ public class ScoreboardUI : MonoBehaviour {
                     playerRoundFiveText.text = RoundManager.Instance.playerPointsByRound.ToString();
                     enemyRoundFiveText.text = RoundManager.Instance.enemyPointsByRound.ToString();
                 }
+
+                ChangePinText(playerRoundFiveWhiteText, PinManager.Instance.playerWhitePinCount);
+                ChangePinText(playerRoundFiveGoldText, PinManager.Instance.playerGoldPinCount);
+                ChangePinText(enemyRoundFiveWhiteText, PinManager.Instance.enemyWhitePinCount);
+                ChangePinText(enemyRoundFiveGoldText, PinManager.Instance.enemyGoldPinCount);
+
                 break;
         }
 
@@ -139,6 +237,30 @@ public class ScoreboardUI : MonoBehaviour {
         enemyRoundThreeText.text = "-";
         enemyRoundFourText.text = "-";
         enemyRoundFiveText.text = "-";
+
+        playerRoundOneWhiteText.text = "-";
+        playerRoundTwoWhiteText.text = "-";
+        playerRoundThreeWhiteText.text = "-";
+        playerRoundFourWhiteText.text = "-";
+        playerRoundFiveWhiteText.text = "-";
+        playerRoundOneGoldText.text = "-";
+        playerRoundTwoGoldText.text = "-";
+        playerRoundThreeGoldText.text = "-";
+        playerRoundFourGoldText.text = "-";
+        playerRoundFiveGoldText.text = "-";
+        enemyRoundOneWhiteText.text = "-";
+        enemyRoundTwoWhiteText.text = "-";
+        enemyRoundThreeWhiteText.text = "-";
+        enemyRoundFourWhiteText.text = "-";
+        enemyRoundFiveWhiteText.text = "-";
+        enemyRoundOneGoldText.text = "-";
+        enemyRoundTwoGoldText.text = "-";
+        enemyRoundThreeGoldText.text = "-";
+        enemyRoundFourGoldText.text = "-";
+        enemyRoundFiveGoldText.text = "-";
+
+        //foreach (TextMeshProUGUI text in scoreTexts) text.text = "-";
+        //foreach (TextMeshProUGUI text in whiteAndGoldTexts) text.text = "-";
     }
 
     public void UpdateEnemyTitleText()
@@ -161,6 +283,8 @@ public class ScoreboardUI : MonoBehaviour {
         enemyScoreText.text = "";
     }
 
+    private void ChangePinText(TextMeshProUGUI text, int pinCount) => text.text = pinCount.ToString();
+
     private string PointsByThrowToString(IReadOnlyList<int> pointsByThrow) {
         string toString = "";
         for (var i = 0; i < pointsByThrow.Count; i++) {
@@ -172,4 +296,12 @@ public class ScoreboardUI : MonoBehaviour {
         }
         return toString;
     }
+}
+
+public enum PinColorType
+{
+    PlayerWhite,
+    PlayerGold,
+    EnemyWhite,
+    EnemyGold
 }

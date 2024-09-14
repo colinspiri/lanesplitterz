@@ -17860,6 +17860,26 @@ MonoBehaviour:
   enemyRoundThreeText: {fileID: 5977781363848869300}
   enemyRoundFourText: {fileID: 143319366358606911}
   enemyRoundFiveText: {fileID: 638079383954711767}
+  playerRoundOneWhiteText: {fileID: 3049335830458786629}
+  playerRoundTwoWhiteText: {fileID: 6696480656263552972}
+  playerRoundThreeWhiteText: {fileID: 3723917336324672919}
+  playerRoundFourWhiteText: {fileID: 7152011306572873988}
+  playerRoundFiveWhiteText: {fileID: 3614713616602279097}
+  playerRoundOneGoldText: {fileID: 4718864564614478952}
+  playerRoundTwoGoldText: {fileID: 9108364726720623255}
+  playerRoundThreeGoldText: {fileID: 769897820244491849}
+  playerRoundFourGoldText: {fileID: 155334214484431006}
+  playerRoundFiveGoldText: {fileID: 3900722520881002297}
+  enemyRoundOneWhiteText: {fileID: 3736580664759618539}
+  enemyRoundTwoWhiteText: {fileID: 3351409319354042026}
+  enemyRoundThreeWhiteText: {fileID: 6801954925074051012}
+  enemyRoundFourWhiteText: {fileID: 8899259669599770323}
+  enemyRoundFiveWhiteText: {fileID: 1293481616538021469}
+  enemyRoundOneGoldText: {fileID: 6942505059190596774}
+  enemyRoundTwoGoldText: {fileID: 3069382450673474773}
+  enemyRoundThreeGoldText: {fileID: 3224379033714109452}
+  enemyRoundFourGoldText: {fileID: 3471899386038287600}
+  enemyRoundFiveGoldText: {fileID: 2226149837680205589}
   enemyTitleText: {fileID: 2332993747936073661}
   scoreboardUI: {fileID: 235461834100685176}
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
@@ -27663,12 +27683,12 @@ PrefabInstance:
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
@@ -27678,7 +27698,7 @@ PrefabInstance:
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -205
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468753483733, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
