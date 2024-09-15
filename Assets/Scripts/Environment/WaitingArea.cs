@@ -55,8 +55,9 @@ public class WaitingArea : ActionOnCollide
 
         if (gameState.currentThrow % 2 == 0 && playerInfo.isPracticing == false)
         {
-            yield return new WaitForSeconds(uiConstants.clearingPinsTime + uiConstants.currentScoresTime);
             RoundManager.Instance.UpdateScoreboard();
+            yield return new WaitUntil(() => playerInfo.isReady == true);
+            //yield return new WaitForSeconds(uiConstants.clearingPinsTime + uiConstants.currentScoresTime);
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
             gameState.isClearingPins = false;
@@ -65,8 +66,9 @@ public class WaitingArea : ActionOnCollide
         }
         else if (gameState.currentThrow % 2 == 1)
         {
-            yield return new WaitForSeconds(uiConstants.clearingPinsTime);
             if (playerInfo.isPracticing == false) RoundManager.Instance.UpdateScoreboard();
+            yield return new WaitUntil(() => playerInfo.isReady == true);
+            //yield return new WaitForSeconds(uiConstants.clearingPinsTime);
             ResetBalls();
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
             playerCurrentPoints.Value = 0;

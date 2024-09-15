@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 using UnityEngine.UI;
+using Unity.VisualScripting.FullSerializer.Internal;
 
 public class NewThrowUI : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class NewThrowUI : MonoBehaviour
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
+    private bool _playerReady;
 
     private void Awake()
     {
@@ -70,6 +72,7 @@ public class NewThrowUI : MonoBehaviour
         StartCoroutine(NextRoundUI());
         _isFirstThrow = true;
         _isSecondThrow = false;
+        playerInfo.isReady = false;
     }
 
     private IEnumerator NextRoundUI()
@@ -131,20 +134,29 @@ public class NewThrowUI : MonoBehaviour
         else if (gameState.currentThrow % 2 == 0)
         {
             currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
-            currentScoresUI.SetActive(true);
-            yield return new WaitForSeconds(uiConstants.currentScoresTime);
+            //currentScoresUI.SetActive(true);
+            //yield return new WaitForSeconds(uiConstants.currentScoresTime);
             StartCoroutine(DisplayClearingPinsUI());
+            yield break;
         }
     }
+
+    public void RedisplayScoreboard() => StartCoroutine(DisplayClearingPinsUI());
+    public void HideScoreboard() => StopAllCoroutines();
     private IEnumerator DisplayClearingPinsUI()
     {
         if (playerInfo.isPracticing == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
         if (playerInfo.isPracticing == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
 
-        clearingPinsUI.SetActive(true);
-        yield return new WaitForSeconds(uiConstants.clearingPinsTime);
-        clearingPinsUI.SetActive(false);
-        currentScoresUI.SetActive(false);
+        //clearingPinsUI.SetActive(true);
+
+        if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
+        yield return new WaitUntil(() => playerInfo.isReady == true);
+        if (!playerInfo.isPracticing) ScoreboardUI.Instance.HideScoreboard();
+
+        //yield return new WaitForSeconds(uiConstants.clearingPinsTime);
+        //clearingPinsUI.SetActive(false);
+        //currentScoresUI.SetActive(false);
 
         if (playerInfo.isPracticing == true && _isSecondThrow) _isSecondThrow = false;
 
@@ -157,6 +169,8 @@ public class NewThrowUI : MonoBehaviour
 
         if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 0) DisplayTutorialButtons();
     }
+
+    public void SetPlayerReady() => playerInfo.isReady = true;
 
     // call when player wants to play tutorial again
     public void NotifyTutorialReset()

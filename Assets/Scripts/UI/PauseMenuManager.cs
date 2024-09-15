@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using ScriptableObjectArchitecture;
 
 public class PauseMenuManager : MonoBehaviour {
     public static PauseMenuManager Instance;
 
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private List<GameObject> objectsToDisableOnPause;
+    [SerializeField] private GameState gameState;
     private List<bool> _wereObjectsActiveBeforePause = new();
-    
+    [SerializeField] private GameEvent pauseEvent;
+    [SerializeField] private GameEvent resumeEvent;
+
     private PlayerInputActions _inputActions;
 
     private void Awake() {
@@ -29,6 +33,8 @@ public class PauseMenuManager : MonoBehaviour {
         foreach (var t in objectsToDisableOnPause) {
             _wereObjectsActiveBeforePause.Add(t.activeSelf);
         }
+
+        gameState.isScoreboardEnabled = false;
         ClosePauseMenu();
     }
     
@@ -56,6 +62,7 @@ public class PauseMenuManager : MonoBehaviour {
         Cursor.visible = true;
 
         GameManager.Instance.Pause();
+        pauseEvent.Raise();
     }
 
     public void ClosePauseMenu()
@@ -66,9 +73,13 @@ public class PauseMenuManager : MonoBehaviour {
             objectsToDisableOnPause[i].SetActive(_wereObjectsActiveBeforePause[i]);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (!gameState.isScoreboardEnabled && !gameState.isDialogueRunning)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         GameManager.Instance.Resume();
+        if (gameState.isScoreboardEnabled) resumeEvent.Raise();
     }
 }

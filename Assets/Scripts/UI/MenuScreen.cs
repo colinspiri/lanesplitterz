@@ -111,7 +111,7 @@ public class MenuScreen : MonoBehaviour {
     }
 
     private void UpdateLastButton() {
-        if (gameObject.name == "Play Again Screen")
+        if (gameObject.name == "Play Again Screen" || gameObject.name == "Scoreboard Screen")
         {
             _lastButton = null;
             return;

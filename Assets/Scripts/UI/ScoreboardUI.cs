@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreboardUI : MonoBehaviour {
     public static ScoreboardUI Instance;
@@ -58,12 +59,14 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI enemyTitleText;
 
     [Space]
+    [SerializeField] private GameObject menuManager;
     [SerializeField] private GameObject scoreboardUI;
+    [SerializeField] private GameObject continueButton;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
 
-    private List<TextMeshProUGUI> whiteAndGoldTexts;
-    private List<TextMeshProUGUI> scoreTexts;
+    private List<TextMeshProUGUI> whiteAndGoldTexts = new();
+    private List<TextMeshProUGUI> scoreTexts = new();
 
     private int playerWhitePinCountFirstThrow;
     private int playerGoldPinCountFirstThrow;
@@ -109,12 +112,29 @@ public class ScoreboardUI : MonoBehaviour {
         scoreTexts.Add(enemyRoundThreeText);
         scoreTexts.Add(enemyRoundFourText);
         scoreTexts.Add(enemyRoundFiveText);
+
+        gameState.isScoreboardEnabled = false;
     }
 
     private void Update()
     {
-        if (playerInfo.isPracticing == false && Input.GetKeyDown(KeyCode.Tab) && gameState.isScoreboardEnabled == true) scoreboardUI.SetActive(true);
-        if (playerInfo.isPracticing == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
+        //if (playerInfo.isPracticing == false && Input.GetKeyDown(KeyCode.Tab) && gameState.isScoreboardEnabled == true) scoreboardUI.SetActive(true);
+        //if (playerInfo.isPracticing == false && Input.GetKeyUp(KeyCode.Tab)) scoreboardUI.SetActive(false);
+    }
+
+    public void DisplayScoreboard()
+    {
+        menuManager.SetActive(true);
+        scoreboardUI.SetActive(true);
+        continueButton.SetActive(true);
+        gameState.isScoreboardEnabled = true;
+    }
+    public void HideScoreboard()
+    {
+        menuManager.SetActive(false);
+        scoreboardUI.SetActive(false);
+        continueButton.SetActive(false);
+        gameState.isScoreboardEnabled = false;
     }
 
     private string ChangeScoreboardRoundText(List<int> pointsByThrow)
@@ -227,40 +247,8 @@ public class ScoreboardUI : MonoBehaviour {
 
     public void ClearScoreboard()
     {
-        playerRoundOneText.text = "-";
-        playerRoundTwoText.text = "-";
-        playerRoundThreeText.text = "-";
-        playerRoundFourText.text = "-";
-        playerRoundFiveText.text = "-";
-        enemyRoundOneText.text = "-";
-        enemyRoundTwoText.text = "-";
-        enemyRoundThreeText.text = "-";
-        enemyRoundFourText.text = "-";
-        enemyRoundFiveText.text = "-";
-
-        playerRoundOneWhiteText.text = "-";
-        playerRoundTwoWhiteText.text = "-";
-        playerRoundThreeWhiteText.text = "-";
-        playerRoundFourWhiteText.text = "-";
-        playerRoundFiveWhiteText.text = "-";
-        playerRoundOneGoldText.text = "-";
-        playerRoundTwoGoldText.text = "-";
-        playerRoundThreeGoldText.text = "-";
-        playerRoundFourGoldText.text = "-";
-        playerRoundFiveGoldText.text = "-";
-        enemyRoundOneWhiteText.text = "-";
-        enemyRoundTwoWhiteText.text = "-";
-        enemyRoundThreeWhiteText.text = "-";
-        enemyRoundFourWhiteText.text = "-";
-        enemyRoundFiveWhiteText.text = "-";
-        enemyRoundOneGoldText.text = "-";
-        enemyRoundTwoGoldText.text = "-";
-        enemyRoundThreeGoldText.text = "-";
-        enemyRoundFourGoldText.text = "-";
-        enemyRoundFiveGoldText.text = "-";
-
-        //foreach (TextMeshProUGUI text in scoreTexts) text.text = "-";
-        //foreach (TextMeshProUGUI text in whiteAndGoldTexts) text.text = "-";
+        foreach (TextMeshProUGUI text in scoreTexts) text.text = "-";
+        foreach (TextMeshProUGUI text in whiteAndGoldTexts) text.text = "-";
     }
 
     public void UpdateEnemyTitleText()

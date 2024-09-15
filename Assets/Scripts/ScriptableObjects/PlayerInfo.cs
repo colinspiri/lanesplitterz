@@ -16,4 +16,6 @@ public class PlayerInfo : ScriptableObject
     public bool skippedTutorial;
     [HideInInspector]
     public bool isWinning;
+    [HideInInspector]
+    public bool isReady;
 }

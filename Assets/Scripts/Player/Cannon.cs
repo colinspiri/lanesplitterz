@@ -194,7 +194,10 @@ public class Cannon : MonoBehaviour
             PinManager.Instance.playerGoldPinCount = 0;
             PinManager.Instance.enemyWhitePinCount = 0;
             PinManager.Instance.enemyGoldPinCount = 0;
+
         }
+        
+        playerInfo.isReady = false;
 
         StartCoroutine(LaunchWithEnemy());
     }

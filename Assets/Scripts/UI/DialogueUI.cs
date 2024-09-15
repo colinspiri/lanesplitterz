@@ -117,7 +117,7 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableScoreboard")]
     public void EnableScoreboard()
     {
-        gameState.isScoreboardEnabled = true;
+        //gameState.isScoreboardEnabled = true;
     }
 
     [YarnCommand("EnableDoublePointsUI")]
@@ -171,6 +171,7 @@ public class DialogueUI : MonoBehaviour
         EnableBlur();
         DisableHUD();
         EnableMouse();
+        gameState.isDialogueRunning = true;
     }
 
     [YarnCommand("EnableOneArt")]
@@ -254,6 +255,7 @@ public class DialogueUI : MonoBehaviour
         EnableHUD();
         DisableBlur();
         DisableMouse();
+        gameState.isDialogueRunning = false;
     }
 
     [YarnCommand("DisableDialogueWithMouse")]
@@ -261,6 +263,7 @@ public class DialogueUI : MonoBehaviour
     {
         EnableHUD();
         DisableBlur();
+        gameState.isDialogueRunning = false;
     }
 
     #endregion

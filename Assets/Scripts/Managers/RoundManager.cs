@@ -93,7 +93,7 @@ public class RoundManager : MonoBehaviour {
     public void NotifyBallsAtEndOfTrack() {
         // then a little delay before end of throw (move delay here from end of track trigger)
 
-        if (gameState.currentThrow == 2) gameState.isScoreboardEnabled = false;
+        //if (gameState.currentThrow == 2) gameState.isScoreboardEnabled = false;
         
         EndThrow();
     }
@@ -105,10 +105,10 @@ public class RoundManager : MonoBehaviour {
             enemyPointsByRound = CalculatePointsByRound(enemyPointsByThrow);
         }
 
-        playerCurrentPoints.Value = 0;
-        enemyCurrentPoints.Value = 0;
+        //playerCurrentPoints.Value = 0;
+        //enemyCurrentPoints.Value = 0;
 
-        if(ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
+        if (ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
     }
 
     public int CalculatePointsByRound(List<int> points)
