@@ -216,6 +216,8 @@ public class NewThrowUI : MonoBehaviour
         yield return new WaitForSeconds(uiConstants.roundUITime);
 
         winLoseUI.SetActive(false);
+        loseTextObject.SetActive(true);
+        winTextObject.SetActive(true);
 
         if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
         if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
