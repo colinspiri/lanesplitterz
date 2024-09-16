@@ -46,7 +46,7 @@ Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis
 <<EnableOneArt DialogueUI PlayerArtSurprised>>
 <<DisableOneArt DialogueUI PlayerArtDefault>>
 <<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
-Hiro: Thanks! Elvis? I thought your name was          E1-V15?
+Hiro: Thanks! Elvis? I thought your name was E1-V15?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 E1-V15: Indeed, I signed with the name of the King.
 <<EnableOneArt DialogueUI PlayerArtDefault>>
@@ -187,10 +187,11 @@ tags:
 <<EnableDialogue DialogueUI>>
 //<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
-E1-V15: How about this: Try on my super special Pin & Roll lane!
+E1-V15: How about this: Try on my super special, Double Blue Pin Lane!
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 //should be mad
-Hiro: Hey! That's cheating!
+Hiro: Those glowy pins are worth two points? 
+Hiro: Wait, hey! That's cheating!
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: No it ain't. You can hit 'em too!
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
