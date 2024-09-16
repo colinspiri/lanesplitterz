@@ -141,7 +141,7 @@ public class RoundManager : MonoBehaviour {
 
     private void EndThrow() {
         // if no more pins, count points as 0 and skip to next round
-        if (pinsStanding.Count == 0) {
+        if (pinsStanding.Count == 0 && gameState.currentThrow == 1) {
             playerPointsByThrow.Add(0);
             enemyPointsByThrow.Add(0);
 
