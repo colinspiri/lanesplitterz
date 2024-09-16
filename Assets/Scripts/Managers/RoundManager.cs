@@ -119,6 +119,7 @@ public class RoundManager : MonoBehaviour {
         return totalPoints;
     }
 
+    // Final scores in this case is the same as total scores
     public void CalculateFinalScores() {
         if (playerInfo.isPracticing == true) return;
         
@@ -134,6 +135,8 @@ public class RoundManager : MonoBehaviour {
         foreach (var enemyPoint in enemyPointsByThrow) {
             enemyFinalScore += enemyPoint;
         }
+
+        ScoreboardUI.Instance.UpdateTotalScores();
     }
 
     private void EndThrow() {

@@ -106,7 +106,7 @@ public class DialogueUI : MonoBehaviour
         //StartNewRound();
         ScoreboardUI.Instance.HideFinalScores();
         ScoreboardUI.Instance.ClearScoreboard();
-        ScoreboardUI.Instance.UpdateEnemyTitleText();
+        //ScoreboardUI.Instance.UpdateEnemyTitleText(); // move to scene loader manager
     }
 
     // set gameOverUI to inactive when player clicks play again after losing

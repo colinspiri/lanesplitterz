@@ -106,5 +106,7 @@ public class SceneLoaderManager : MonoBehaviour
         }
 
         musicController.NextLevel();
+
+        ScoreboardUI.Instance.UpdateEnemyTitleText();
     }
 }

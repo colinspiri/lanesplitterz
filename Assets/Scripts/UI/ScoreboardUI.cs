@@ -13,6 +13,10 @@ public class ScoreboardUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private TextMeshProUGUI enemyScoreText;
 
+    [Header("Total Scores")]
+    [SerializeField] private TextMeshProUGUI playerTotalScoreText;
+    [SerializeField] private TextMeshProUGUI enemyTotalScoreText;
+
     [Header("Player Scoreboard Score Text")]
     [SerializeField] private TextMeshProUGUI playerRoundOneText;
     [SerializeField] private TextMeshProUGUI playerRoundTwoText;
@@ -245,16 +249,24 @@ public class ScoreboardUI : MonoBehaviour {
         RoundManager.Instance.enemyPointsByRound = 0;
     }
 
+    public void UpdateTotalScores()
+    {
+        playerTotalScoreText.text = RoundManager.Instance.playerFinalScore.ToString();
+        enemyTotalScoreText.text = RoundManager.Instance.enemyFinalScore.ToString();
+    }
+
     public void ClearScoreboard()
     {
         foreach (TextMeshProUGUI text in scoreTexts) text.text = "-";
         foreach (TextMeshProUGUI text in whiteAndGoldTexts) text.text = "-";
+        playerTotalScoreText.text = "-";
+        enemyTotalScoreText.text = "-";
     }
 
     public void UpdateEnemyTitleText()
     {
-        if (gameState.currentLevelIndex >= 10) enemyTitleText.text = "Caesar";
-        else if (gameState.currentLevelIndex >= 5) enemyTitleText.text = "Kaiba";
+        if (gameState.currentLevelIndex == 11) enemyTitleText.text = "Caesar";
+        else if (gameState.currentLevelIndex == 6) enemyTitleText.text = "Kaiba";
     }
 
     public void ShowFinalScores() {
