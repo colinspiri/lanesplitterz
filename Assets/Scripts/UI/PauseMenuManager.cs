@@ -35,6 +35,7 @@ public class PauseMenuManager : MonoBehaviour {
         }
 
         gameState.isScoreboardEnabled = false;
+        gameState.isPauseMenuEnabled = false;
         ClosePauseMenu();
     }
     
@@ -51,6 +52,8 @@ public class PauseMenuManager : MonoBehaviour {
 
     private void OpenPauseMenu()
     {
+        if (!gameState.isPauseMenuEnabled) return;
+
         pauseMenu.SetActive(true);
         
         for (int i = 0; i < objectsToDisableOnPause.Count; i++) {

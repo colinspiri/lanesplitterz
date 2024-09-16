@@ -84,10 +84,12 @@ public class NewThrowUI : MonoBehaviour
 
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
         {
+            gameState.isPauseMenuEnabled = false;
             roundText.text = "Round " + gameState.currentRound;
             roundUI.SetActive(true);
             yield return new WaitForSeconds(uiConstants.roundUITime);
             roundUI.SetActive(false);
+            gameState.isPauseMenuEnabled = true;
 
             // enables cannon input
             roundUIEnd.Raise();
@@ -200,6 +202,7 @@ public class NewThrowUI : MonoBehaviour
 
     private IEnumerator DisplayWinLoseUI()
     {
+        gameState.isPauseMenuEnabled = false;
         winLoseUI.SetActive(true);
 
         if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore)
@@ -222,6 +225,8 @@ public class NewThrowUI : MonoBehaviour
         if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
         if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
         if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) CaesarEndWinLoseUI.Raise();
+
+        gameState.isPauseMenuEnabled = true;
     }
 
     public void DisplayTutorialButtons()
