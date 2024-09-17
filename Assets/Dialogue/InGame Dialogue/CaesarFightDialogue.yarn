@@ -208,14 +208,12 @@ Hiro: Eep!
 <<EnableOneArt DialogueUI CaesarArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtSurprised PlayerArtSurprised>>
-Caesar: You...slapped me. Was that supposed to hurt? 
-<<FadeOutBothArt DialogueUI PlayerArtSurprised CaesarArtSurprised>>
-???: Not many know, but Elvis the Pelvis was a master of Ka-ra-te.
+Caesar: You... slapped me. Was that supposed to hurt? 
+<<PlayElvisTheme MusicManager>>
 <<EnableOneArt DialogueUI ElvisHeadbandArtSurprised>>
 <<DisableOneArt DialogueUI CaesarArtSurprised>>
 <<FadeArt DialogueUI ElvisHeadbandArtSurprised PlayerArtSurprised>>
-E1: Hi-ya!
-<<PlayElvisTheme MusicManager>>
+E1: Not many know, but Elvis the Pelvis was a master of Ka-ra-te.
 <<EnableOneArt DialogueUI PlayerArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
 <<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtSurprised>>
