@@ -8280,15 +8280,15 @@ RectTransform:
   m_GameObject: {fileID: 2682194701399768364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1, y: 2.1, z: 2.1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 453375520083938965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: 40.2, y: 100}
+  m_AnchoredPosition: {x: 0, y: 15.4}
+  m_SizeDelta: {x: 46.04, y: 91.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3477709981694730932
 CanvasRenderer:
@@ -8318,7 +8318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4bb56f17c512d7c4ba22ec8729f5e136, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 718bb08f8f1dad549990cf8bd13c1391, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10711,7 +10711,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6439665656655953255}
   meterUI: {fileID: 472894162172230268}
-  emptyUI: {fileID: 3207058071832810968}
   emptySFX: {fileID: 7605327508401599845}
   remainTime: 1.5
 --- !u!1 &3330026795398511629
@@ -15897,7 +15896,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1.12}
-  m_SizeDelta: {x: 100, y: 212.18}
+  m_SizeDelta: {x: 100, y: 251.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7950012172254373686
 CanvasRenderer:
