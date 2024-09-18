@@ -86,8 +86,7 @@ public class DialogueUI : MonoBehaviour
             {
                 StartNewRound();
             fadeToBlackUI.DOFade(1f, 1f)
-                .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f)
-                .OnComplete(() => gameState.isPauseMenuEnabled = true));
+                .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));
             });
         }
         // player lost to current boss

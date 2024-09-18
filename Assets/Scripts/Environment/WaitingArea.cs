@@ -7,7 +7,6 @@ public class WaitingArea : ActionOnCollide
 {
     [Header("Game Events")]
     [SerializeField] private GameEvent startLevelReset;
-    [SerializeField] private GameEvent endLevelReset;
 
     [Header("Scriptable Objects")]
     [SerializeField] private IntVariable playerCurrentPoints;
@@ -46,38 +45,32 @@ public class WaitingArea : ActionOnCollide
         }
     }
 
+    /// <summary>
+    /// Displays the scoreboard and waits for the player to click the button to continue. Once clicked, the game progresses to the next level.
+    /// </summary>
     private IEnumerator ResetCoroutine()
     {
         startLevelReset.Raise();
         SetIsClearingPins();
 
-    // when player is still in tutorial, we want reset everything based on the button click, not a wait time
-
-        if (gameState.currentThrow % 2 == 0 && playerInfo.isPracticing == false)
+        // when player is still in tutorial, we want reset everything based on the button click, not a wait time
+        if (playerInfo.isPracticing == false)
         {
             RoundManager.Instance.UpdateScoreboard();
             yield return new WaitUntil(() => playerInfo.isReady == true);
-            //yield return new WaitForSeconds(uiConstants.clearingPinsTime + uiConstants.currentScoresTime);
             playerCurrentPoints.Value = 0;
             enemyCurrentPoints.Value = 0;
             gameState.isClearingPins = false;
             ResetBalls();
+
+            // progresses the game to the next round
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
-        }
-        else if (gameState.currentThrow % 2 == 1)
-        {
-            if (playerInfo.isPracticing == false) RoundManager.Instance.UpdateScoreboard();
-            yield return new WaitUntil(() => playerInfo.isReady == true);
-            //yield return new WaitForSeconds(uiConstants.clearingPinsTime);
-            ResetBalls();
-            RoundManager.Instance.NotifyBallsAtEndOfTrack();
-            playerCurrentPoints.Value = 0;
-            enemyCurrentPoints.Value = 0;
-            gameState.isClearingPins = false;
         }
     }
 
-    // for tutorial call when player clicks button to replay tutorial
+    /// <summary>
+    /// Unfreezes the balls and hides them so they can be reset.
+    /// </summary>
     public void ResetBalls()
     {
         ballOne.gameObject.SetActive(false);
@@ -96,6 +89,10 @@ public class WaitingArea : ActionOnCollide
 
     public void SetIsClearingPins() => gameState.isClearingPins = true;
 
+    /// <summary>
+    /// Freezes the ball when it collides with the waiting area
+    /// </summary>
+    /// <param name="ball">Current ball to freeze</param>
     public void Freeze(GameObject ball)
     {
         Rigidbody rb = ball.GetComponent<Rigidbody>();
