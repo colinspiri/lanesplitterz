@@ -153,7 +153,14 @@ public class NewThrowUI : MonoBehaviour
         //clearingPinsUI.SetActive(true);
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
-        yield return new WaitUntil(() => playerInfo.isReady == true);
+
+        if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.isReady == true);
+        else
+        {
+            yield return new WaitForSeconds(uiConstants.clearingPinsTime);
+            SetPlayerReady();
+        }
+
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.HideScoreboard();
 
         //yield return new WaitForSeconds(uiConstants.clearingPinsTime);

@@ -2,7 +2,6 @@
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI CaesarArtHappy PlayerArtDefault>>
 Caesar: Greetings large haired child!
 Caesar: I am Gaius Julius Caesar, the great conqueror of the West, the first to suckle upon the bosom of empire, and the King of Neo Las Vegas. 
@@ -14,52 +13,42 @@ Caesar: -Yes, I am aware, it can be intimidating to be in the presence of such a
 Caesar: But I assure you, Harry, we are more alike than you think. Even the lion has sympathy for the mouse.
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtHappy>>
 Hiro: ...tag.
-<<EnableOneArt DialogueUI PlayerArtHappy>>
-<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault>>
 <<FadeArt DialogueUI PlayerArtHappy CaesarArtHappy>>
 Hiro: Well Mr. Caesar, sir, I'm really looking forward to our match. 
 <<FadeArt DialogueUI CaesarArtHappy PlayerArtHappy>>
 Caesar: Ah! And what a match it will be. To be defeated in this noble game by someone as resplendent as I is...well...
-<<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI CaesarArtHappy>>
+<<EnableDisableArt DialogueUI CaesarArtDefault CaesarArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 Caesar: It's quite the honor. 
-<<EnableOneArt DialogueUI CaesarArtHappy>>
-<<DisableOneArt DialogueUI CaesarArtDefault>>
+<<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtDefault>>
 <<FadeArt DialogueUI CaesarArtHappy PlayerArtHappy>>
 Caesar: In the shadow of Mt. Koutouri, our army laid waste to General Pompey's forces.
-<<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI CaesarArtHappy>>
+<<EnableDisableArt DialogueUI CaesarArtDefault CaesarArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 Caesar: Pompey fled. But you'll stay, won't you Hector?
-<<EnableOneArt DialogueUI PlayerArtAngry>>
-<<DisableOneArt DialogueUI PlayerArtHappy>>
+<<EnableDisableArt DialogueUI PlayerArtAngry PlayerArtHappy>>
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtDefault>>
 Hiro: I'm not just gonna roll over and let you win, Caesar. And I'm definitely not abandoning my city.
-<<EnableOneArt DialogueUI PlayerArtDefault>>
-<<DisableOneArt DialogueUI PlayerArtAngry>>
+<<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtAngry>>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
 Hiro: When I'm King, I'm gonna make Neo Las Vegas a place to be proud of. 
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
 Caesar: Hmph. I see. Another wriggling grub who thinks they know what their city needs.
-<<EnableOneArt DialogueUI CaesarArtHappy>>
-<<DisableOneArt DialogueUI CaesarArtDefault>>
+<<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtDefault>>
 <<FadeArt DialogueUI CaesarArtHappy PlayerArtDefault>>
 Caesar: I will revitalize the US. Expand Neo Las Vegas. Build a new empire. My victory today is the first step in this <b>grand plan</b>.
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtHappy>>
 Hiro: When the engine in my ball breaks down, the first thing I do is fix it, not add a spoiler.
-<<EnableOneArt DialogueUI PlayerArtAngry>>
-<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtAngry PlayerArtDefault>>
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtHappy>>
 Hiro: Most people don't have two chips to rub together. You really think you can build an empire on this city?
-<<EnableOneArt DialogueUI CaesarArtAngry>>
-<<DisableOneArt DialogueUI CaesarArtHappy>>
+<<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtHappy>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtAngry>>
 Caesar: It's not your fault your stupidity prevents you from comprehending the glorious ambitions of a great leader. 
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtAngry>>
 Hiro: Emiliana Krueger. 
-<<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtDefault CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtAngry>>
 Caesar: What?
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtDefault>>
@@ -69,45 +58,24 @@ Hiro: You became King. She lost an arm, an eye, and a future.
 Caesar: She will be named an honored soldier in the annals of our new empire. 
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtDefault>>
 Hiro: Say you're sorry. 
-<<EnableOneArt DialogueUI CaesarArtAngry>>
-<<DisableOneArt DialogueUI CaesarArtDefault>>
+<<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtDefault>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtAngry>>
 Caesar: What is this nonsense, boy? Her defeat resulted in my steel sitting upon the throne. Now out of my sight, filth. You test my patience. 
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtAngry>>
 Hiro: ...
-<<EnableOneArt DialogueUI PlayerArtDefault>>
-<<DisableOneArt DialogueUI PlayerArtAngry>>
+<<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtAngry>>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: See you on the track.
 <<DisableArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
-
-//<<EnableMouse DialogueUI>>
-//-> Yes, trust me. I'm ready for this. 
- //   <<EnableElvisArt DialogueUI>>
-  //  <<EnablePlayerArt DialogueUI>>
-  //  <<FadeInElvisArt DialogueUI>>
-  //  <<FadeOutPlayerArt DialogueUI>>
- //   Boss: This should be fun hehe.
- //   <<DisableElvisArt DialogueUI>>
-  //  <<DisablePlayerArt DialogueUI>>
-//-> I'll defeat you with one strike!
-    //<<EnableElvisArt DialogueUI>>
-   // <<EnablePlayerArt DialogueUI>>
-   // <<FadeInElvisArt DialogueUI>>
-   // <<FadeOutPlayerArt DialogueUI>>
-   // Boss: You impudent, insolent, naive fool, you'll regret messing with me!
-  //  <<DisableElvisArt DialogueUI>>
- //   <<DisablePlayerArt DialogueUI>>
 ===
 
 title: CaesarPlayerLoss
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI CaesarArtHappy PlayerArtSurprised>>
 Caesar: GYAHAHAHA! I've WON! With this victory, with this power, I will create a new world, a better world. 
 Caesar: I declare Neo Las Vegas the capital of the New Roman Empire! Time to bring this bubble down!
@@ -124,15 +92,12 @@ title: CaesarPlayerWin
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: It's... It's over. 
-<<EnableOneArt DialogueUI MentorArtHappy>>
-<<DisableOneArt DialogueUI PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtHappy PlayerArtDefault>>
 <<FadeArt DialogueUI MentorArtHappy CaesarArtAngry>>
 Emi: Hiro, you did it! You're the King of Neo Las Vegas!
-<<EnableOneArt DialogueUI PlayerArtDefault>>
-<<DisableOneArt DialogueUI MentorArtHappy>> 
+<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: Emi! I couldn't have done it witho--
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
@@ -145,27 +110,23 @@ Hiro: Hey man, I won fair a--
 Caesar: --I said <b>ENOUGH!</b> I remain the true King. And with that power, I'm bringing this bubble <b>down!</b>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: NO! You can't! 
-<<EnableOneArt DialogueUI CaesarArtHappy>>
-<<DisableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtHappy PlayerArtDefault>>
 Caesar: I've already pressed the button! Any moment now, the bubble will fall and Neo Las Vegas will march forward unto victory! GYAHAHAHA!
-<<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI CaesarArtHappy>>
+<<EnableDisableArt DialogueUI CaesarArtDefault CaesarArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
 Caesar: ...
 Caesar: ...Any second now.
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
 Hiro: Is something supposed to be happening?
-<<EnableOneArt DialogueUI CaesarArtAngry>>
-<<DisableOneArt DialogueUI CaesarArtDefault>>
+<<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtDefault>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
 Caesar: Shut up! It's just slow. Give it a minute. 
 <<FadeOutBothArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 <<SetVO VOPlayer Corpo>>
 <<StopMusic MusicManager>>
 ???: Actually, Los Lobos' tech offers lightning fast speeds. The quickest in Neo Las Vegas. 
-<<EnableOneArt DialogueUI CaesarArtSurprised>>
-<<DisableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtSurprised CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtSurprised PlayerArtDefault>>
 Caesar: Who goes there?!
 <<DisableArt DialogueUI PlayerArtDefault CaesarArtSurprised>>
@@ -176,26 +137,21 @@ Kaiba: The Los Lobos <i>H264</i> Bubble. Beautiful piece of machine. Hard Light 
 Hiro: Kaiba!
 <<FadeArt DialogueUI CorpoArtApathetic PlayerArtSurprised>>
 Kaiba: I was the one who approved this version's R&D. You don't own a cent of it, Caesar. 
-<<DisableOneArt DialogueUI CorpoArtApathetic>>
-<<EnableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtAngry CorpoArtApathetic>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtSurprised>>
 Caesar: In the name of Jupiter I command you to take this bubble down. NOW!
-<<DisableOneArt DialogueUI CaesarArtAngry>>
-<<EnableOneArt DialogueUI CorpoArtSmug>>
+<<EnableDisableArt DialogueUI CorpoArtSmug CaesarArtAngry>>
 <<FadeArt DialogueUI CorpoArtSmug PlayerArtSurprised>>
 Kaiba: No can-do, my liege. 
-<<EnableOneArt DialogueUI CorpoArtCrazy>>
-<<DisableOneArt DialogueUI CorpoArtSmug>>
+<<EnableDisableArt DialogueUI CorpoArtCrazy CorpoArtSmug>>
 <<FadeArt DialogueUI CorpoArtCrazy PlayerArtSurprised>>
 Kaiba: God, I love the free market!
 <<FadeArt DialogueUI PlayerArtSurprised CorpoArtCrazy>>
 Hiro: Kaiba, you saved the city!
-<<EnableOneArt DialogueUI CorpoArtDefault>>
-<<DisableOneArt DialogueUI CorpoArtCrazy>>
+<<EnableDisableArt DialogueUI CorpoArtDefault CorpoArtCrazy>>
 <<FadeArt DialogueUI CorpoArtDefault PlayerArtSurprised>>
 Kaiba: Don't mention it, kid. 
-<<DisableOneArt DialogueUI CorpoArtDefault>>
-<<EnableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtAngry CorpoArtDefault>>
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtSurprised>>
 <<PlayCaesarTheme MusicManager>>
 Caesar: Fine then! I'll kill you myself, Hiro! With my own bare steel!  
@@ -205,42 +161,34 @@ Hiro: Eep!
 <<SetVO VOPlayer Elvis>>
 <<StopMusic MusicManager>>
 ???: HI-YAH! 
-<<EnableOneArt DialogueUI CaesarArtSurprised>>
-<<DisableOneArt DialogueUI CaesarArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtSurprised CaesarArtAngry>>
 <<FadeArt DialogueUI CaesarArtSurprised PlayerArtSurprised>>
 Caesar: You... slapped me. Was that supposed to hurt? 
 <<PlayElvisTheme MusicManager>>
-<<EnableOneArt DialogueUI ElvisHeadbandArtSurprised>>
-<<DisableOneArt DialogueUI CaesarArtSurprised>>
+<<EnableDisableArt DialogueUI ElvisHeadbandArtSurprised CaesarArtSurprised>>
 <<FadeArt DialogueUI ElvisHeadbandArtSurprised PlayerArtSurprised>>
 E1: Not many know, but Elvis the Pelvis was a master of Ka-ra-te.
-<<EnableOneArt DialogueUI PlayerArtHappy>>
-<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtSurprised>>
 <<FadeArt DialogueUI PlayerArtHappy ElvisHeadbandArtSurprised>>
 Hiro: E1! You're so brave! 
-<<EnableOneArt DialogueUI ElvisHeadbandArtHappy>>
-<<DisableOneArt DialogueUI ElvisHeadbandArtSurprised>>
+<<EnableDisableArt DialogueUI ElvisHeadbandArtHappy ElvisHeadbandArtSurprised>>
 <<FadeArt DialogueUI ElvisHeadbandArtHappy PlayerArtHappy>>
 E1: Thank you, thank you very much. 
-<<EnableOneArt DialogueUI CaesarArtDefault>>
-<<DisableOneArt DialogueUI ElvisHeadbandArtHappy>>
+<<EnableDisableArt DialogueUI CaesarArtDefault ElvisHeadbandArtHappy>>
 <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
 <<PlayCaesarTheme MusicManager>>
 Caesar: Well, that didn't do much, did it? Back to killing! 
 <<DisableArt DialogueUI CaesarArtDefault PlayerArtHappy>>
-<<EnableOneArt DialogueUI PlayerArtSurprised>>
-<<EnableOneArt DialogueUI ElvisHeadbandArtSurprised>>
+<<EnableArt DialogueUI PlayerArtSurprised ElvisHeadbandArtSurprised>>
 <<FadeInBothArt DialogueUI PlayerArtSurprised ElvisHeadbandArtSurprised>>
 <<SetVO VOPlayer HiroandE1>>
 Hiro and E1: AH!
-<<EnableOneArt DialogueUI MentorArtDefault>>
-<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtSurprised>>
 <<FadeArt DialogueUI MentorArtDefault ElvisHeadbandArtSurprised>>
 <<StopMusic MusicManager>>
 Emi: Hey lugnut!
 <<PlayMainTheme MusicManager>>
-<<EnableOneArt DialogueUI CaesarArtSurprised>>
-<<DisableOneArt DialogueUI ElvisHeadbandArtSurprised>>
+<<EnableDisableArt DialogueUI CaesarArtSurprised ElvisHeadbandArtSurprised>>
 <<FadeArt DialogueUI CaesarArtSurprised MentorArtDefault>>
 Caesar: ?!?!
 <<DisableOneArt DialogueUI MentorArtDefault>>
@@ -252,12 +200,10 @@ Emi: If you want to get to Hiro, you'll have to get through me.
 <<DisableOneArt DialogueUI CaesarArtSurprised>>
 <<EnableFadeArt DialogueUI ElvisHeadbandArtDefault MentorArtAngry>> 
 E1: ...
-<<EnableOneArt DialogueUI CorpoArtAngry>>
-<<DisableOneArt DialogueUI ElvisHeadbandArtDefault>>
+<<EnableDisableArt DialogueUI CorpoArtAngry ElvisHeadbandArtDefault>>
 <<FadeArt DialogueUI CorpoArtAngry MentorArtAngry>>
 Kaiba: ...
-<<EnableOneArt DialogueUI CaesarArtSadInjured>>
-<<DisableOneArt DialogueUI CorpoArtAngry>>
+<<EnableDisableArt DialogueUI CaesarArtSadInjured CorpoArtAngry>>
 <<FadeArt DialogueUI CaesarArtSadInjured MentorArtAngry>>
 Caesar: Aeugh!
 Caesar: My face! My beautiful face! You've sullied it!
@@ -266,8 +212,7 @@ Caesar: My face! My beautiful face! You've sullied it!
 Emi: Guess your flesh wasn't tough as marble, huh?
 <<FadeArt DialogueUI CaesarArtSadInjured MentorArtHappy>>
 Caesar: Fine! 
-<<EnableOneArt DialogueUI CaesarArtAngryInjured>>
-<<DisableOneArt DialogueUI CaesarArtSadInjured>>
+<<EnableDisableArt DialogueUI CaesarArtAngryInjured CaesarArtSadInjured>>
 <<FadeArt DialogueUI CaesarArtAngryInjured MentorArtHappy>>
 Caesar: You can play king for now, but there's only one dictator for life.
 <<FadeArt DialogueUI MentorArtHappy CaesarArtAngryInjured>>
@@ -293,13 +238,11 @@ title: CaesarRoundTwo
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI PlayerArtHappy CaesarArtAngry>>
 Hiro: So what came first, you or the salad?
 <<FadeArt DialogueUI CaesarArtAngry PlayerArtHappy>>
 Caesar: Your petty jokes do not amuse me.
-<<EnableOneArt DialogueUI PlayerArtDefault>>
-<<DisableOneArt DialogueUI PlayerArtHappy>> 
+<<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtHappy>>
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: Jokes?
 <<DisableArt DialogueUI PlayerArtDefault CaesarArtAngry>>
@@ -312,7 +255,6 @@ title: CaesarRoundThree
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI CaesarArtHappy PlayerArtAngry>>
 Caesar: Harley! Shine and buff your vehicle so I may gaze upon my chiseled jaw!
 <<FadeArt DialogueUI PlayerArtAngry CaesarArtHappy>>
@@ -327,7 +269,6 @@ title: CaesarRoundFour
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableCheckerboard DialogueUI>>
 <<BeginIntermission MusicManager>>
 <<EnableFadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
@@ -337,33 +278,27 @@ Caesar: Come to speak to your King, Harold?
   <<FadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
   Caesar: The Bubble, Horatio. 
   Caesar: As it stands, this thin Bubble is what separates the city of Neo Las Vegas, and progress.
-  <<EnableOneArt DialogueUI CaesarArtHappy>>
-  <<DisableOneArt DialogueUI CaesarArtDefault>>
+  <<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtDefault>>
   <<FadeArt DialogueUI CaesarArtHappy PlayerArtDefault>> 
   Caesar: When I reclaim my throne, the bubble will be destroyed, and the city will grow. 
-  <<EnableOneArt DialogueUI PlayerArtSurprised>>
-  <<DisableOneArt DialogueUI PlayerArtDefault>>
+  <<EnableDisableArt DialogueUI PlayerArtSurprised PlayerArtDefault>>
   <<FadeArt DialogueUI PlayerArtSurprised CaesarArtHappy>>
   Hiro: Pop the Bubble? But the freezing cold… and the beasts… 
   Hiro: You won't have anyone left to rule!
-  <<EnableOneArt DialogueUI CaesarArtAngry>>
-  <<DisableOneArt DialogueUI CaesarArtHappy>>
+  <<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtHappy>>
   <<FadeArt DialogueUI CaesarArtAngry PlayerArtSurprised>>
   Caesar: The people of this city have never experienced true hardship.
   Caesar: If they are to become soldiers in my army, their flesh must become tough as marble.
   <<FadeArt DialogueUI PlayerArtSurprised CaesarArtAngry>>
   -> How will killing the people of this city help them?
-    <<EnableOneArt DialogueUI CaesarArtDefault>>
-    <<DisableOneArt DialogueUI CaesarArtAngry>>
+    <<EnableDisableArt DialogueUI CaesarArtDefault CaesarArtAngry>>
     <<FadeArt DialogueUI CaesarArtDefault PlayerArtSurprised>>
     Caesar: Only the strong will remain.
     Caesar: Those left will stand beside me and walk towards the horizon of a new era of civilization. An empire built by gladiators. 
-    <<EnableOneArt DialogueUI PlayerArtAngry>>
-    <<DisableOneArt DialogueUI PlayerArtSurprised>>
+    <<EnableDisableArt DialogueUI PlayerArtAngry PlayerArtSurprised>>
     <<FadeArt DialogueUI PlayerArtAngry CaesarArtDefault>>
     Hiro: Dude, are you even listening? You keep saying the same thing about “soldiers” and “gladiators” or whatever.
-    <<EnableOneArt DialogueUI PlayerArtDefault>>
-    <<DisableOneArt DialogueUI PlayerArtAngry>>
+    <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtAngry>>
     <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
     Hiro: Last I checked, nobody in this city enlisted in anything. 
     <<FadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
@@ -374,14 +309,12 @@ Caesar: Come to speak to your King, Harold?
         Caesar: But of course! I care for everyone in this city. From the lowly busker to the high rolling hot-shot. Don’t you care about your pets?
         <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
         Hiro: Lemme get this straight. So you “care” for your subjects, but you want ‘em dead?
-        <<EnableOneArt DialogueUI CaesarArtHappy>>
-        <<DisableOneArt DialogueUI CaesarArtDefault>>
+        <<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtDefault>>
         <<FadeArt DialogueUI CaesarArtHappy PlayerArtDefault>>
         Caesar: So you <i>do</i> understand politics!
         <<FadeArt DialogueUI PlayerArtDefault CaesarArtHappy>>
           -> Dude. You suck.
-            <<EnableOneArt DialogueUI CaesarArtAngry>>
-            <<DisableOneArt DialogueUI CaesarArtHappy>>
+            <<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtHappy>>
             <<FadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
             Caesar: SILENCE YOU MEWLING LOUT.
             Caesar: I am <b>GAIUS JULIUS CAESAR</b>. The Alpha and the Omega. The First and the Last. The Beginning and the End! 
@@ -395,8 +328,7 @@ Caesar: Come to speak to your King, Harold?
 -> Let's Roll!
 <<DisableCheckerboard DialogueUI>>
 <<EndIntermission MusicManager>>
-<<DisableOneArt DialogueUI CaesarArtAngry>>
-<<DisableOneArt DialogueUI CaesarArtHappy>>
+<<DisableArt DialogueUI CaesarArtAngry CaesarArtHappy>>
 <<DisableOneArt DialogueUI PlayerArtSurprised>>
 <<EnableFadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
 Caesar: Hahaha!
@@ -406,23 +338,19 @@ Caesar: Hahaha!
     <<FadeArt DialogueUI PlayerArtDefault CaesarArtDefault>>
     Hiro: Heh. I guess you really don't know much about me. 
     Hiro: I don't give up, Caesar. It's not in my nature. 
-    <<EnableOneArt DialogueUI PlayerArtHappy>>
-    <<DisableOneArt DialogueUI PlayerArtDefault>>
+    <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault>>
     <<FadeArt DialogueUI PlayerArtHappy CaesarArtDefault>>
     Hiro: I'm gonna keep fighting, no matter how dire it looks! 
-    <<EnableOneArt DialogueUI CaesarArtAngry>>
-    <<DisableOneArt DialogueUI CaesarArtDefault>>
+    <<EnableDisableArt DialogueUI CaesarArtAngry CaesarArtDefault>>
     <<FadeArt DialogueUI CaesarArtAngry PlayerArtHappy>>
     Caesar: MEN! Bring me the Galvan 20XXL. It's time I showed this would-be prince how a true King does things.
 <<elseif CheckIsPlayerWinning() == true>>
-    <<EnableOneArt DialogueUI PlayerArtHappy>>
-    <<DisableOneArt DialogueUI PlayerArtDefault>>
+    <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault>>
     <<FadeArt DialogueUI PlayerArtHappy CaesarArtDefault>>
     Hiro: I'm ending this now, Caesar!
     <<FadeArt DialogueUI CaesarArtDefault PlayerArtHappy>>
     Caesar: Hm. I'll have to make a small adjustment in my strategy. 
-    <<EnableOneArt DialogueUI CaesarArtHappy>>
-    <<DisableOneArt DialogueUI CaesarArtDefault>>
+    <<EnableDisableArt DialogueUI CaesarArtHappy CaesarArtDefault>>
     <<FadeArt DialogueUI CaesarArtHappy PlayerArtHappy>>
     Caesar: MEN! Bring me the Galvan 20XXL. It's time I showed this would-be prince how a true King does things.
 <<endif>>
@@ -437,7 +365,6 @@ title: CaesarRoundFive
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-//<<DisableInputs Cannon>>
 <<EnableFadeArt DialogueUI CaesarArtAngry PlayerArtDefault>>
 Caesar: I'll send you to the underworld! 
 <<FadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>

@@ -180,6 +180,13 @@ public class DialogueUI : MonoBehaviour
         art.transform.GetChild(0).gameObject.SetActive(true);
     }
 
+    [YarnCommand("EnableArt")]
+    public void EnableArt(GameObject artOne, GameObject artTwo)
+    {
+        artOne.transform.GetChild(0).gameObject.SetActive(true);
+        artTwo.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     [YarnCommand("DisableArt")]
     public void DisableArt(GameObject artOne, GameObject artTwo)
     {
@@ -191,6 +198,13 @@ public class DialogueUI : MonoBehaviour
     public void DisableOneArt(GameObject art)
     {
         art.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    [YarnCommand("EnableDisableArt")]
+    public void EnableDisableArt(GameObject artOne, GameObject artTwo)
+    {
+        EnableOneArt(artOne);
+        DisableOneArt(artTwo);
     }
 
     [YarnCommand("EnableFadeArt")]
