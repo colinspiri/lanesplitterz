@@ -80,13 +80,14 @@ public class DialogueUI : MonoBehaviour
             // should take one second to fade in, wait one second, and take two seconds to fade out
 /*            fadeToBlackUI.DOFade(1f, 2f).OnComplete(() => StartNewRound()).OnComplete(() => fadeToBlackUI.DOFade(1f, 1f))
                 .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));*/
-
+            gameState.isPauseMenuEnabled = false;
             fadeToBlackUI.DOFade(1f, 2f)
             .OnComplete(() =>
             {
                 StartNewRound();
-                fadeToBlackUI.DOFade(1f, 1f)
-                    .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));
+            fadeToBlackUI.DOFade(1f, 1f)
+                .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f)
+                .OnComplete(() => gameState.isPauseMenuEnabled = true));
             });
         }
         // player lost to current boss
