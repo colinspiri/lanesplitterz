@@ -73,6 +73,7 @@ public class NewThrowUI : MonoBehaviour
         _isFirstThrow = true;
         _isSecondThrow = false;
         playerInfo.isReady = false;
+        playerInfo.finishedTutorial = false;
     }
 
     private IEnumerator NextRoundUI()
@@ -257,6 +258,7 @@ public class NewThrowUI : MonoBehaviour
 
     public void EndTutorial()
     {
+        playerInfo.finishedTutorial = true;
         playerInfo.isPracticing = false;
         CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());

@@ -1,6 +1,7 @@
 using ScriptableObjectArchitecture;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,9 +35,19 @@ public class SceneLoaderManager : MonoBehaviour
 
     private void InitializeLevel()
     {
+        if (playerInfo.isPracticing == true)
+        {
+            LoadTutorialLevel();
+            return;
+        }
+        if (playerInfo.isPracticing == false && playerInfo.finishedTutorial == true)
+        {
+            sceneLoader.LoadNewLevel();
+            playerInfo.finishedTutorial = false;
+            return;
+        }
         // if the player loses we want them to choose if they want to play again, not automatically load the next level
         if (gameState.currentLevelIndex % 5 == 0 && !playerInfo.isWinning) return;
-        if (playerInfo.isPracticing == true) LoadTutorialLevel();
         else sceneLoader.LoadNewLevel();
     }
 
@@ -56,7 +67,7 @@ public class SceneLoaderManager : MonoBehaviour
         yield return SceneManager.UnloadSceneAsync("Level " + gameState.currentLevelIndex.ToString());
 
         // replay boss if player lost
-        if (playerInfo.isWinning == false && gameState.currentLevelIndex % 5 == 0)
+        if (playerInfo.isWinning == false && gameState.currentLevelIndex % 5 == 0 && gameState.currentLevelIndex > 0)
         {
             SceneManager.LoadScene("Level " + (gameState.currentLevelIndex - 4).ToString(), LoadSceneMode.Additive);
             gameState.currentLevelIndex -= 4;

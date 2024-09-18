@@ -18,4 +18,6 @@ public class PlayerInfo : ScriptableObject
     public bool isWinning;
     [HideInInspector]
     public bool isReady;
+    [HideInInspector]
+    public bool finishedTutorial;
 }
