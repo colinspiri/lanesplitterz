@@ -66,6 +66,13 @@ public class WaitingArea : ActionOnCollide
             // progresses the game to the next round
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
         }
+
+        // needed for tutorial
+        if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 1)
+        {
+            yield return new WaitUntil(() => playerInfo.isReady == true);
+            RoundManager.Instance.NotifyBallsAtEndOfTrack();
+        }
     }
 
     /// <summary>

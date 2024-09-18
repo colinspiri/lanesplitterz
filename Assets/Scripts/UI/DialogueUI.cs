@@ -13,10 +13,9 @@ public class DialogueUI : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject blur;
-    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject playAgainUI;
     [SerializeField] private GameObject endGameUI;
     [SerializeField] private Image fadeToBlackUI;
-    [SerializeField] private GameObject doublePointsUI;
     [SerializeField] private GameObject checkerboard;
 
     [Header("Scriptable Objects")]
@@ -60,26 +59,16 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableGameOverUI")]
     public void EnableGameOverUI()
     {
-        //StartCoroutine(EnableGameOverUICoroutine());
-        EnableGameOverUICoroutine();
-    }
-
-    public void EnableGameOverUICoroutine()
-    {
         // player beat the game
         if (gameState.currentLevelIndex >= 15 && CheckIsPlayerWinning())
         {
             endGameUI.SetActive(true);
             EnableMouse();
             return;
-            //yield break;
         }
         // player beat either elvis or corpo
         else if (CheckIsPlayerWinning())
         {
-            // should take one second to fade in, wait one second, and take two seconds to fade out
-/*            fadeToBlackUI.DOFade(1f, 2f).OnComplete(() => StartNewRound()).OnComplete(() => fadeToBlackUI.DOFade(1f, 1f))
-                .OnComplete(() => fadeToBlackUI.DOFade(0f, 2f));*/
             gameState.isPauseMenuEnabled = false;
             fadeToBlackUI.DOFade(1f, 2f)
             .OnComplete(() =>
@@ -93,23 +82,16 @@ public class DialogueUI : MonoBehaviour
         else
         {
             DisableDialogueWithMouse();
-            gameOverUI.SetActive(true);
+            playAgainUI.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-/*            ScoreboardUI.Instance.HideFinalScores();
-            ScoreboardUI.Instance.ClearScoreboard();
-            ScoreboardUI.Instance.UpdateEnemyTitleText();
-            yield break;*/
         }
-/*        yield return new WaitForSeconds(2f);
-        gameOverUI.SetActive(false);*/
-        //StartNewRound();
+
         ScoreboardUI.Instance.HideFinalScores();
         ScoreboardUI.Instance.ClearScoreboard();
-        //ScoreboardUI.Instance.UpdateEnemyTitleText(); // move to scene loader manager
     }
 
-    // set gameOverUI to inactive when player clicks play again after losing
+    // set playAgainUI to inactive when player clicks play again after losing
     public void SetUIToInactive(GameObject gameObject) => gameObject.SetActive(false);
 
     public void StartNewRound() => RoundManager.OnNewRound.Invoke();
@@ -118,14 +100,6 @@ public class DialogueUI : MonoBehaviour
     public void EnableScoreboard()
     {
         //gameState.isScoreboardEnabled = true;
-    }
-
-    [YarnCommand("EnableDoublePointsUI")]
-    public IEnumerator EnableDoublePointsUI()
-    {
-        doublePointsUI.SetActive(true);
-        yield return new WaitForSeconds(uiConstants.doublePointsUITime);
-        doublePointsUI.SetActive(false);
     }
 
     [YarnCommand("EnableMouse")]
