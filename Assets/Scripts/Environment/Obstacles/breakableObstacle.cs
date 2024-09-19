@@ -61,18 +61,18 @@ public class breakableObstacle : MonoBehaviour
 
     }
 
-    private IEnumerator TimerRoutine()
-    {
-        if(isTutorial == true)
-        {
-            step = 5f;
-        }
-        else
-        {
-            step = 1f;
-        }
-        yield return new WaitForSecondsRealtime(step);
-        model.SetActive(false);
-    }
+    //private IEnumerator TimerRoutine()
+    //{
+    //    if(isTutorial == true)
+    //    {
+    //        step = 5f;
+    //    }
+    //    else
+    //    {
+    //        step = 1f;
+    //    }
+    //    yield return new WaitForSecondsRealtime(step);
+    //    model.SetActive(false);
+    //}
 
 }

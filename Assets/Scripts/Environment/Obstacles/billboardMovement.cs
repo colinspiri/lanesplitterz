@@ -67,9 +67,12 @@ public class billboardMovement : MonoBehaviour
                 destroySound.Play();
                 playSound = false;
             }
-        }
 
-        if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            this.enabled = false;
+
+            //StartCoroutine(TimerRoutine());
+        }
+        else if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             //this feels like an afront to god
             if(!SwitchBoolean)
@@ -81,25 +84,16 @@ public class billboardMovement : MonoBehaviour
             {
                 MoveBoolean = true;
                 SwitchBoolean = false;
-            }
-            
-            
-        }
-
-        if (billboardHit.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            return;
+            }   
         }
         //                Debug.Log("Triggered1");
-
-        StartCoroutine(TimerRoutine());
     }
 
-    private IEnumerator TimerRoutine()
-    {
-        step = 1f;
-        yield return new WaitForSecondsRealtime(step);
-        billboard.SetActive(false);
-    }
+    //private IEnumerator TimerRoutine()
+    //{
+    //    step = 1f;
+    //    yield return new WaitForSecondsRealtime(step);
+    //    billboard.SetActive(false);
+    //}
 
 }
