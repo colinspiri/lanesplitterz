@@ -194,7 +194,7 @@ MonoBehaviour:
   waitBeforeAcceleratePrompt: 0.1
   waitWhenObstacleHit: 3
   waitWhenAtGoldenPins: 3
-  zThresholdForGoldenPinsPrompt: 110
+  zThresholdForGoldenPinsPrompt: 330
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
 --- !u!114 &3724141157199275565
 MonoBehaviour:
@@ -824,6 +824,10 @@ MonoBehaviour:
   enemyCurrentPoints: {fileID: 11400000, guid: c99c3d7c31300cd4698dff5df9379777, type: 2}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
   player: 0
+  playerWhitePinCount: 0
+  playerGoldPinCount: 0
+  enemyWhitePinCount: 0
+  enemyGoldPinCount: 0
 --- !u!1 &2152114690493040708
 GameObject:
   m_ObjectHideFlags: 0
