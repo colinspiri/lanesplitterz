@@ -128,8 +128,14 @@ public class EnemyBall : MonoBehaviour
     private void Start()
     {
         _myBody = GetComponent<Rigidbody>();
+
+        GameObject boundsObj = GameObject.FindWithTag("AI Bounds");
+
+        if (boundsObj)
+        {
+            _laneBounds = boundsObj.GetComponent<Collider>().bounds;
+        }
         
-        _laneBounds = GameObject.FindWithTag("AI Bounds").GetComponent<Collider>().bounds;
 
         _pinLayer = LayerMask.NameToLayer("Pins");
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
@@ -208,6 +214,23 @@ public class EnemyBall : MonoBehaviour
             {
                 Gizmos.DrawSphere(_possiblePositions[i], 1.5f);
             }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == _pinLayer)
+        {
+            ContactPoint[] contactList = new ContactPoint[collision.contactCount];
+
+            collision.GetContacts(contactList);
+
+            foreach (ContactPoint contact in contactList)
+            {
+                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            }
+
+            // HoldVelocity();
         }
     }
 
@@ -771,6 +794,11 @@ public class EnemyBall : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+
+    //private void HoldVelocity()
+    //{
+    //    _myBody.velocity = _lastVelocity;
+    //}
 
     // Temporarily relieve the ball of control
     public void Stun(float seconds)

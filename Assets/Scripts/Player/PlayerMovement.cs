@@ -275,7 +275,25 @@ public class PlayerMovement : MonoBehaviour
 
         _lastVelocity = _myBody.velocity;
 
-        Debug.Log("Velocity is " + _myBody.velocity.magnitude);
+        // Debug.Log("Velocity is " + _myBody.velocity.magnitude);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // Negate force of collision against pin
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
+        {
+            ContactPoint[] contactList = new ContactPoint[collision.contactCount];
+
+            collision.GetContacts(contactList);
+
+            foreach (ContactPoint contact in contactList)
+            {
+                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            }
+
+            // HoldVelocity();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -283,8 +301,6 @@ public class PlayerMovement : MonoBehaviour
         // Negate force of collision against pin
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
         {
-            // TODO: Add impact VFX
-
             ContactPoint[] contactList = new ContactPoint[collision.contactCount];
         
             collision.GetContacts(contactList);
@@ -302,8 +318,10 @@ public class PlayerMovement : MonoBehaviour
                     goldImpactVFX.transform.position = contact.point;
                     goldImpactVFX.Play();
                 }
-                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+                // _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
+
+            // StartCoroutine(Straighten(0f));
         }
         else if (collision.collider.gameObject.tag == "Gutter")
         {
@@ -514,6 +532,12 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+
+    // Straighten out velocity gradually
+    //private void HoldVelocity()
+    //{
+    //    _myBody.velocity = _lastVelocity;
+    //}
 
     // Adds spin to the ball
     // Positive spinVal spins CW (left), negative spins CCW (right)
