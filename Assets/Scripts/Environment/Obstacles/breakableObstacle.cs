@@ -43,6 +43,10 @@ public class breakableObstacle : MonoBehaviour
             enemyBall.ReduceFuel(fuelSub);
             destroySound._spatialBlend = 1.0f;
         }
+        else
+        {
+            return;
+        }
 
         intactCube.SetActive(false);
         brokenCube.SetActive(true);
@@ -53,22 +57,22 @@ public class breakableObstacle : MonoBehaviour
             playedSound = true;
         }
         
-        StartCoroutine(TimerRoutine());
+        // StartCoroutine(TimerRoutine());
 
     }
 
-    private IEnumerator TimerRoutine()
-    {
-        if(isTutorial == true)
-        {
-            step = 5f;
-        }
-        else
-        {
-            step = 1f;
-        }
-        yield return new WaitForSecondsRealtime(step);
-        model.SetActive(false);
-    }
+    //private IEnumerator TimerRoutine()
+    //{
+    //    if(isTutorial == true)
+    //    {
+    //        step = 5f;
+    //    }
+    //    else
+    //    {
+    //        step = 1f;
+    //    }
+    //    yield return new WaitForSecondsRealtime(step);
+    //    model.SetActive(false);
+    //}
 
 }

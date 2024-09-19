@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TestScript : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        Debug.Log("Pin Collider Layer is " + LayerMask.LayerToName(collision.gameObject.layer));
+        Debug.Log("Test Script is working");
     }
 }
