@@ -43,6 +43,10 @@ public class breakableObstacle : MonoBehaviour
             enemyBall.ReduceFuel(fuelSub);
             destroySound._spatialBlend = 1.0f;
         }
+        else
+        {
+            return;
+        }
 
         intactCube.SetActive(false);
         brokenCube.SetActive(true);
@@ -53,7 +57,7 @@ public class breakableObstacle : MonoBehaviour
             playedSound = true;
         }
         
-        StartCoroutine(TimerRoutine());
+        // StartCoroutine(TimerRoutine());
 
     }
 
