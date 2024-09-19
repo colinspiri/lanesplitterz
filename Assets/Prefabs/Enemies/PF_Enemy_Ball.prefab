@@ -362,8 +362,15 @@ MonoBehaviour:
   turnFuel: 0.01
   accelFuel: 0
   rotationRef: {fileID: 0}
+  hitGutter: {fileID: 9121268388709437970}
   showActualPositions: 0
   showPossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 6231270577809866729}
   aiEnabled: 1
+--- !u!82 &9121268388709437970 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 237497972535717221, guid: 27a3a13a5fa452a42b310974564d601d,
+    type: 3}
+  m_PrefabInstance: {fileID: 9069830049168588663}
+  m_PrefabAsset: {fileID: 0}

@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private float _currentSpin = 0f;
     private bool turning = false;
     private bool _flying = true;
+    private Vector3 _lastVelocity;
 
     // misc
     [Space]
@@ -271,6 +272,28 @@ public class PlayerMovement : MonoBehaviour
         // Keep ball from going too slow
         _currentSpeed = Vector3.Project(_myBody.velocity, _myCam.forward).magnitude;
         if (_hasLaunched && _currentSpeed < minimumSpeed) Accelerate(1f, false);
+
+        _lastVelocity = _myBody.velocity;
+
+        // Debug.Log("Velocity is " + _myBody.velocity.magnitude);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // Negate force of collision against pin
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
+        {
+            ContactPoint[] contactList = new ContactPoint[collision.contactCount];
+
+            collision.GetContacts(contactList);
+
+            foreach (ContactPoint contact in contactList)
+            {
+                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            }
+
+            // HoldVelocity();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -278,8 +301,6 @@ public class PlayerMovement : MonoBehaviour
         // Negate force of collision against pin
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Pins"))
         {
-            // TODO: Add impact VFX
-
             ContactPoint[] contactList = new ContactPoint[collision.contactCount];
         
             collision.GetContacts(contactList);
@@ -297,12 +318,16 @@ public class PlayerMovement : MonoBehaviour
                     goldImpactVFX.transform.position = contact.point;
                     goldImpactVFX.Play();
                 }
-                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+                // _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
             }
+
+            // StartCoroutine(Straighten(0f));
         }
         else if (collision.collider.gameObject.tag == "Gutter")
         {
             HitGutter.Play();
+            Debug.Log("VELOCITY ON COLLISION IS " + _myBody.velocity.magnitude);
+            StartCoroutine(Straighten(0.25f));
         }
         else if (collision.gameObject.CompareTag("Enemy Ball"))
         {
@@ -482,6 +507,37 @@ public class PlayerMovement : MonoBehaviour
         _myBody.velocity = linDir.normalized * _myBody.velocity.magnitude;
         _myBody.angularVelocity = rotDir.normalized * _myBody.angularVelocity.magnitude;
     }
+
+    // Straighten out velocity gradually
+    private IEnumerator Straighten(float straightenSeconds)
+    {
+        Vector3 forwardVelocity = (_camInvRot * _myCam.forward).normalized;
+
+        float magnitude = _lastVelocity.magnitude;
+
+        forwardVelocity *= magnitude;
+
+        // Avoid dividing by zero!
+        if (straightenSeconds < Mathf.Epsilon)
+        {
+            _myBody.velocity = forwardVelocity;
+
+            yield break;
+        }
+
+        for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+        {
+            _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    // Straighten out velocity gradually
+    //private void HoldVelocity()
+    //{
+    //    _myBody.velocity = _lastVelocity;
+    //}
 
     // Adds spin to the ball
     // Positive spinVal spins CW (left), negative spins CCW (right)

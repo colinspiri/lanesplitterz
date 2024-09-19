@@ -82,6 +82,7 @@ public class EnemyBall : MonoBehaviour
     private Coroutine _straightenRoutine = null;
     private bool _moving = false;
     private bool _flying = true;
+    private Vector3 _lastVelocity;
 
     #endregion
 
@@ -90,6 +91,7 @@ public class EnemyBall : MonoBehaviour
     private Rigidbody _myBody;
     private Quaternion _refInvRot;
     [SerializeField] private Transform rotationRef;
+    [SerializeField] private AudioSource hitGutter;
     private Enemy _myParentScript;
     private Bounds _laneBounds;
     private int _pinLayer;
@@ -126,8 +128,14 @@ public class EnemyBall : MonoBehaviour
     private void Start()
     {
         _myBody = GetComponent<Rigidbody>();
+
+        GameObject boundsObj = GameObject.FindWithTag("AI Bounds");
+
+        if (boundsObj)
+        {
+            _laneBounds = boundsObj.GetComponent<Collider>().bounds;
+        }
         
-        _laneBounds = GameObject.FindWithTag("AI Bounds").GetComponent<Collider>().bounds;
 
         _pinLayer = LayerMask.NameToLayer("Pins");
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
@@ -178,6 +186,8 @@ public class EnemyBall : MonoBehaviour
 
         UpdateGround();
         // Hook();
+
+        _lastVelocity = _myBody.velocity;
     }
     
     private void OnDrawGizmos()
@@ -207,6 +217,23 @@ public class EnemyBall : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == _pinLayer)
+        {
+            ContactPoint[] contactList = new ContactPoint[collision.contactCount];
+
+            collision.GetContacts(contactList);
+
+            foreach (ContactPoint contact in contactList)
+            {
+                _myBody.AddForceAtPosition(-contact.impulse, contact.point, ForceMode.Impulse);
+            }
+
+            // HoldVelocity();
+        }
+    }
+
     private void OnCollisionEnter(Collision collider)
     {
         if (collider.gameObject.CompareTag("Player"))
@@ -216,6 +243,11 @@ public class EnemyBall : MonoBehaviour
         else if (collider.gameObject.CompareTag("Lane Bounds"))
         {
             LockedToGround(true);
+        }
+        else if (collider.gameObject.CompareTag("Gutter"))
+        {
+            hitGutter.Play();
+            StartCoroutine(GutterStraighten(0.25f));
         }
     }
     
@@ -738,7 +770,36 @@ public class EnemyBall : MonoBehaviour
         
         // _turning = false;
     }
-    
+
+    private IEnumerator GutterStraighten(float straightenSeconds)
+    {
+        Vector3 forwardVelocity = (_refInvRot * rotationRef.forward).normalized;
+
+        float magnitude = _lastVelocity.magnitude;
+
+        forwardVelocity *= magnitude;
+
+        // Avoid dividing by zero!
+        if (straightenSeconds < Mathf.Epsilon)
+        {
+            _myBody.velocity = forwardVelocity;
+
+            yield break;
+        }
+
+        for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+        {
+            _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
+
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    //private void HoldVelocity()
+    //{
+    //    _myBody.velocity = _lastVelocity;
+    //}
+
     // Temporarily relieve the ball of control
     public void Stun(float seconds)
     {
