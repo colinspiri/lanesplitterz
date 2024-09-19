@@ -9,6 +9,7 @@ public class Mine : MonoBehaviour
 
     private int _ballLayer;
     [SerializeField] private AudioClipRandomizer explosionSFX;
+    [SerializeField] private ParticleSystem explosionVFX;
        
     private bool _destructing;
 
@@ -37,6 +38,7 @@ public class Mine : MonoBehaviour
                 explosionSFX._spatialBlend = 1.0f;
             }
             explosionSFX.PlaySFX();
+            explosionVFX.Play();
 
             Destroy(gameObject);
 
