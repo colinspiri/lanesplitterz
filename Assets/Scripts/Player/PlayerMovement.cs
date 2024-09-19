@@ -102,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
     private float _currentSpin = 0f;
     private bool turning = false;
     private bool _flying = true;
+    private Vector3 _lastVelocity;
 
     // misc
     [Space]
@@ -271,6 +272,10 @@ public class PlayerMovement : MonoBehaviour
         // Keep ball from going too slow
         _currentSpeed = Vector3.Project(_myBody.velocity, _myCam.forward).magnitude;
         if (_hasLaunched && _currentSpeed < minimumSpeed) Accelerate(1f, false);
+
+        _lastVelocity = _myBody.velocity;
+
+        Debug.Log("Velocity is " + _myBody.velocity.magnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -303,6 +308,8 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.collider.gameObject.tag == "Gutter")
         {
             HitGutter.Play();
+            Debug.Log("VELOCITY ON COLLISION IS " + _myBody.velocity.magnitude);
+            StartCoroutine(Straighten(0.25f));
         }
         else if (collision.gameObject.CompareTag("Enemy Ball"))
         {
@@ -481,6 +488,31 @@ public class PlayerMovement : MonoBehaviour
         
         _myBody.velocity = linDir.normalized * _myBody.velocity.magnitude;
         _myBody.angularVelocity = rotDir.normalized * _myBody.angularVelocity.magnitude;
+    }
+
+    // Straighten out velocity gradually
+    private IEnumerator Straighten(float straightenSeconds)
+    {
+        Vector3 forwardVelocity = (_camInvRot * _myCam.forward).normalized;
+
+        float magnitude = _lastVelocity.magnitude;
+
+        forwardVelocity *= magnitude;
+
+        // Avoid dividing by zero!
+        if (straightenSeconds < Mathf.Epsilon)
+        {
+            _myBody.velocity = forwardVelocity;
+
+            yield break;
+        }
+
+        for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+        {
+            _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     // Adds spin to the ball
