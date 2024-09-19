@@ -127,7 +127,7 @@ public class EnemyBall : MonoBehaviour
     {
         _myBody = GetComponent<Rigidbody>();
         
-        _laneBounds = GameObject.FindWithTag("Lane Bounds").GetComponent<Collider>().bounds;
+        _laneBounds = GameObject.FindWithTag("AI Bounds").GetComponent<Collider>().bounds;
 
         _pinLayer = LayerMask.NameToLayer("Pins");
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
@@ -445,7 +445,7 @@ public class EnemyBall : MonoBehaviour
             yield return new WaitForSeconds(_posUpdateTime);
             
             // Don't check positions while turning
-            // if (_turning) continue;
+            // if (_turning) conatinue;
             
             // Box cast to find objects ahead
             Collider[] visibleObstacles = Physics.OverlapBox(transform.position,
@@ -493,8 +493,11 @@ public class EnemyBall : MonoBehaviour
                     {
                         continue;
                     }
-                    
-                    if (showPossiblePositions) _possiblePositions.Add(predictedPos);
+
+                    if (showPossiblePositions)
+                    {
+                        _possiblePositions.Add(predictedPos);
+                    }
 
                     string predictedString = "";
                     if (showActualPositions) predictedString = "Target position " + _posCount + "\n";
@@ -667,7 +670,10 @@ public class EnemyBall : MonoBehaviour
                 if (showActualPositions)
                 {
                     Debug.Log(bestString);
-                    if (bestString != null) enemyPattern.AddPosition(bestPos, gizmoObj);
+                    if (bestString != null)
+                    {
+                        enemyPattern.AddPosition(bestPos, gizmoObj);
+                    }
                 }
                 
                 if (_turnRoutine != null)
