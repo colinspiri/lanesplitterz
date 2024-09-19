@@ -22,13 +22,6 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameState gameState;
     [SerializeField] private UIConstants uiConstants;
 
-    private Transform _myCam;
-
-    void Start()
-    {
-        _myCam = GameObject.FindWithTag("MainCamera").transform;
-    }
-
     #region Utility Dialogue Functions
 
     [YarnCommand("DisableHud")]

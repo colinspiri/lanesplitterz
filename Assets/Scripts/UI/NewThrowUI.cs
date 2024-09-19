@@ -58,12 +58,6 @@ public class NewThrowUI : MonoBehaviour
 
     private bool _isFirstThrow;
     private bool _isSecondThrow;
-    private bool _playerReady;
-
-    private void Awake()
-    {
-        //playerInfo.isPracticing = true;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -76,11 +70,13 @@ public class NewThrowUI : MonoBehaviour
         playerInfo.finishedTutorial = false;
     }
 
+    /// <summary>
+    /// Displays round number UI and raises events to start dialogue
+    /// </summary>
     private IEnumerator NextRoundUI()
     {
         yield return new WaitUntil(() => fadeToBlackUI.color.a == 0f);
 
-        //if (gameState.currentLevelIndex >= 15) yield break;
         if (playerInfo.isPracticing == true) yield break;
 
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
@@ -95,7 +91,6 @@ public class NewThrowUI : MonoBehaviour
             // enables cannon input
             roundUIEnd.Raise();
 
-            // TODO: events to start round dialogue for elvis
             if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds)
             {
                 if (gameState.currentRound == 1) elvisStartDialogueRoundOne.Raise();
@@ -104,7 +99,6 @@ public class NewThrowUI : MonoBehaviour
                 if (gameState.currentRound == 4) elvisStartDialogueRoundFour.Raise();
                 if (gameState.currentRound == 5) elvisStartDialogueRoundFive.Raise();
             }
-            // TODO: events to start dialogue for corpo
             else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 2)
             {
                 if (gameState.currentRound == 1) corpoStartDialogueRoundOne.Raise();
@@ -113,7 +107,6 @@ public class NewThrowUI : MonoBehaviour
                 if (gameState.currentRound == 4) corpoStartDialogueRoundFour.Raise();
                 if (gameState.currentRound == 5) corpoStartDialogueRoundFive.Raise();
             }
-            // TODO: events to start dialogue for ceasar
             else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 3)
             {
                 if (gameState.currentRound == 1) caesarStartDialogueRoundOne.Raise();
@@ -125,33 +118,22 @@ public class NewThrowUI : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayEndThrowUI()
+    private void DisplayEndThrowUI()
     {
         ballsAtEndOfTrack.Raise();
-
-        if (playerInfo.isPracticing == true || gameState.currentThrow == 1)
-        {
-            StartCoroutine(DisplayClearingPinsUI());
-            yield break;
-        }
-        else if (gameState.currentThrow % 2 == 0)
-        {
-            currentScoresText.text = "Your current score:\n" + RoundManager.Instance.playerFinalScore;
-            //currentScoresUI.SetActive(true);
-            //yield return new WaitForSeconds(uiConstants.currentScoresTime);
-            StartCoroutine(DisplayClearingPinsUI());
-            yield break;
-        }
+        StartCoroutine(DisplayClearingPinsUI());
     }
 
     public void RedisplayScoreboard() => StartCoroutine(DisplayClearingPinsUI());
     public void HideScoreboard() => StopAllCoroutines();
+
+    /// <summary>
+    /// Displays the scoreboard until the player is ready to move on, and displays tutorial UI during the tutorial
+    /// </summary>
     private IEnumerator DisplayClearingPinsUI()
     {
         if (playerInfo.isPracticing == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
         if (playerInfo.isPracticing == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
-
-        //clearingPinsUI.SetActive(true);
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
 
@@ -163,10 +145,6 @@ public class NewThrowUI : MonoBehaviour
         }
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.HideScoreboard();
-
-        //yield return new WaitForSeconds(uiConstants.clearingPinsTime);
-        //clearingPinsUI.SetActive(false);
-        //currentScoresUI.SetActive(false);
 
         if (playerInfo.isPracticing == true && _isSecondThrow) _isSecondThrow = false;
 
@@ -191,23 +169,9 @@ public class NewThrowUI : MonoBehaviour
         RoundManager.OnNewRound.Invoke();
     }
 
-    /*    private IEnumerator DisplayCurrentScores()
-        {
-            RoundManager.Instance.playerPointsByThrow.Add(playerCurrentPoints.Value);
-            RoundManager.Instance.enemyPointsByThrow.Add(enemyCurrentPoints.Value);
-
-            if (currentThrow % 2 == 0)
-            {
-                RoundManager.Instance.CalculateFinalScores();
-                currentScoresText.text = "Player current score: " + RoundManager.Instance.playerFinalScore + "\nEnemy current score: " + RoundManager.Instance.enemyFinalScore;
-                currentScoresUI.SetActive(true);
-                yield return new WaitForSeconds(currentScoresTime);
-                //yield return new WaitForSeconds(levelResetTime.Value);
-                //currentScoresUI.SetActive(false);
-                currentThrow++;
-            }
-        }*/
-
+    /// <summary>
+    /// Displays win/lose UI and raises events to play win/lose dialogue
+    /// </summary>
     private IEnumerator DisplayWinLoseUI()
     {
         gameState.isPauseMenuEnabled = false;
@@ -252,7 +216,7 @@ public class NewThrowUI : MonoBehaviour
         EndSecondThrowTutorialUI.SetActive(false);
     }
 
-    public void CallDisplayEndThrowUI() => StartCoroutine(DisplayEndThrowUI());
+    public void CallDisplayEndThrowUI() => DisplayEndThrowUI();
 
     public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
 
