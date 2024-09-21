@@ -33,6 +33,22 @@ public class EnemyCannon : MonoBehaviour
             StartCoroutine(RotateGradually(Quaternion.Euler(clampedX, clampedY, 0f)));
         }
     }
+
+    public void Rotate(Vector3 target)
+    {
+        if (!Rotating)
+        {
+            Rotating = true;
+
+            Vector3 meToTarget = target - transform.position;
+
+            meToTarget.y = 0f;
+
+            Quaternion rotation = Quaternion.FromToRotation(transform.forward, meToTarget);
+
+            StartCoroutine(RotateGradually(rotation));
+        }
+    }
     
     // normalize angle to [-180,180]
     private float RoundAngle(float angle)
