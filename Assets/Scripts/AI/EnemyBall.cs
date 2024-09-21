@@ -35,6 +35,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float fuelWeight;
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
+    [SerializeField] private float controlWeight;
     [SerializeField] private float distWeight;
     [SerializeField] private float angleWeight;
     [SerializeField] private float aggroPoints;
@@ -43,6 +44,10 @@ public class EnemyBall : MonoBehaviour
     private float _targetScore;
     // A dictionary caching object values
     private Dictionary<GameObject, float> _valueCache;
+    private int totalPoints = 0;
+    private float totalSpeed = 0f;
+    private float maxFuel = 1f;
+
     // The true update time for checking positions
     private float _posUpdateTime;
     private bool _hasAttackedPlayer;
@@ -75,7 +80,7 @@ public class EnemyBall : MonoBehaviour
     private float _turnVal;
     private float _accelVal;
     // private bool _turning;
-    private float _fuelMeter = 1f;
+    [SerializeField] private float _fuelMeter = 1f;
     private float _currentSpin = 0f;
     private GameObject _ground = null;
     private Coroutine _turnRoutine = null;
@@ -83,6 +88,7 @@ public class EnemyBall : MonoBehaviour
     private bool _moving = false;
     private bool _flying = true;
     private Vector3 _lastVelocity;
+    private bool _initialized = false;
 
     #endregion
 
@@ -97,6 +103,7 @@ public class EnemyBall : MonoBehaviour
     private int _pinLayer;
     private int _obstacleLayer;
     private int _ballLayer;
+    private int _groundLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
 
@@ -121,14 +128,25 @@ public class EnemyBall : MonoBehaviour
 
     private void Awake()
     {
-        // Clear enemy pattern object regardless of whether debugging is being used
-        enemyPattern.Instantiate();
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        if (!_initialized)
+        {
+            // Clear enemy pattern object regardless of whether debugging is being used
+            enemyPattern.Instantiate();
+
+            _valueCache = new();
+            _myBody = GetComponent<Rigidbody>();
+
+            _initialized = true;
+        }
     }
 
     private void Start()
     {
-        _myBody = GetComponent<Rigidbody>();
-
         GameObject boundsObj = GameObject.FindWithTag("AI Bounds");
 
         if (boundsObj)
@@ -140,8 +158,7 @@ public class EnemyBall : MonoBehaviour
         _pinLayer = LayerMask.NameToLayer("Pins");
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
         _ballLayer = LayerMask.NameToLayer("Balls");
-
-        _valueCache = new();
+        _groundLayer = LayerMask.NameToLayer("Ground");
 
         _myCollider = GetComponent<SphereCollider>();
         _myCollider.hasModifiableContacts = true;
@@ -154,7 +171,7 @@ public class EnemyBall : MonoBehaviour
 
         _myParentScript = transform.parent.GetComponent<Enemy>();
 
-        if (showPossiblePositions) _possiblePositions = new();
+        _possiblePositions = new();
 
         StartMovement();
     }
@@ -239,6 +256,8 @@ public class EnemyBall : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             ReduceFuel(playerFuelLoss);
+
+            if (attackPlayer) _hasAttackedPlayer = true;
         }
         else if (collider.gameObject.CompareTag("Lane Bounds"))
         {
@@ -549,7 +568,7 @@ public class EnemyBall : MonoBehaviour
                     {
                         GameObject obstacle = visibleObstacles[k].gameObject;
                         
-                        // Ignore the ball itself as an obstacle
+                        // Ignore the enemy ball itself as an obstacle
                         if (obstacle == gameObject) continue;
 
                         Bounds obsBounds = visibleObstacles[k].bounds;
@@ -565,73 +584,96 @@ public class EnemyBall : MonoBehaviour
                         if (showActualPositions) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
 
                         // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
-                        /* We could precompute all obstacle values when the level loads as an alternative */
-                        float obsValue;
+                        float obsValue = 0f;
 
-                        // If value isn't cached, calculate it for the first time
-                        if (!_valueCache.TryGetValue(obstacle, out obsValue))
+                        // Pin
+                        if (obstacle.layer == _pinLayer)
                         {
-                            obsValue = 0f;
+                            Pin pin = obstacle.GetComponent<Pin>();
 
-                            // Pin
-                            if (obstacle.layer == _pinLayer)
+                            // Pin is knocked down
+                            if (pin.pinState != Pin.PinState.Untouched)
                             {
-                                Pin pin = obstacle.GetComponent<Pin>();
-                                if (pin.pinState == Pin.PinState.Untouched)
-                                {
-                                    obsValue = pointWeight * pin.PointValue;
-                                }
-                                else
-                                {
-                                    obsValue = 0f;
-                                }
+                                obsValue = 0;
                             }
-                            // Obstacle
-                            else if (obstacle.layer == _obstacleLayer)
+                            // Pin is part of cluster
+                            else if (pin.parentCluster)
                             {
-                                if (obstacle.CompareTag("Speed Pad"))
+                                _valueCache[obstacle] = pointWeight * pin.parentCluster.PinValue(pin) / totalPoints;
+                            }
+                            // Pin is individual and hasn't been knocked down
+                            else
+                            {
+                                obsValue = _valueCache[obstacle];
+                            }
+                        }
+                        // Obstacle
+                        else if (obstacle.layer == _obstacleLayer)
+                        {
+                            if (obstacle.CompareTag("Speed Pad"))
+                            {
+                                obsValue = _valueCache[obstacle];
+                            }
+                            else if (obstacle.CompareTag("Damage Obstacle"))
+                            {
+                                breakableObstacle breakableObs;
+                                billboardMovement billboardMove;
+                                if (obstacle.TryGetComponent(out breakableObs))
                                 {
-                                    // ds = ||dv|| = ||Fdt/m||
-
-                                    SpeedPlane speedPlane = obstacle.GetComponent<SpeedPlane>();
-
-                                    float speedChange = speedPlane.speedMultiplier / _myBody.mass;
-
-                                    obsValue = speedWeight * speedChange;
-                                }
-                                else if (obstacle.CompareTag("Damage Obstacle"))
-                                {
-                                    breakableObstacle breakableObs;
-                                    billboardMovement billboardMove;
-                                    if (obstacle.TryGetComponent(out breakableObs))
+                                    if (breakableObs.destroyed)
                                     {
-                                        obsValue = -1f * fuelWeight * breakableObs.fuelSub;
-                                    }
-                                    else if (obstacle.TryGetComponent(out billboardMove))
-                                    {
-                                        obsValue = -1f * fuelWeight * billboardMove.fuelSub;
+                                        obsValue = 0f;
                                     }
                                     else
                                     {
-                                        Debug.LogError("Enemy error: Invalid damaging obstacle " +
-                                                       obstacle.name + " found");
+                                        obsValue = _valueCache[obstacle];
                                     }
                                 }
-                            }
-                            // Player ball
-                            else if (obstacle.layer == _ballLayer)
-                            {
-                                if (attackPlayer && !_hasAttackedPlayer)
+                                else if (obstacle.TryGetComponent(out billboardMove))
                                 {
-                                    obsValue = aggroPoints;
+                                    if (billboardMove.destroyed)
+                                    {
+                                        obsValue = 0f;
+                                    }
+                                    else
+                                    {
+                                        obsValue = _valueCache[obstacle];
+                                    }
                                 }
                                 else
                                 {
-                                    obsValue = -1f * playerFuelLoss * fuelWeight;
+                                    Debug.LogError("Enemy error: Invalid damaging obstacle " +
+                                                    obstacle.name + " found");
                                 }
                             }
-
-                            _valueCache.Add(obstacle, obsValue);
+                            else if (obstacle.CompareTag("Mine"))
+                            {
+                                obsValue = _valueCache[obstacle];
+                            }
+                        }
+                        // Player ball
+                        else if (obstacle.layer == _ballLayer)
+                        {
+                            if (attackPlayer && !_hasAttackedPlayer)
+                            {
+                                obsValue = aggroPoints;
+                            }
+                            else
+                            {
+                                obsValue = _valueCache[obstacle];
+                            }
+                        }
+                        // Oil slick
+                        else if (obstacle.layer == _groundLayer)
+                        {
+                            if (obstacle.CompareTag("Icy"))
+                            {
+                                obsValue = _valueCache[obstacle];
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
 
                         if (showActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
@@ -647,7 +689,7 @@ public class EnemyBall : MonoBehaviour
                         parentForward.y = 0f;
                         parentForward = parentForward.normalized;
 
-                        obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, Mathf.Infinity) * angleWeight;
+                        obsValue *= Mathf.Abs(Vector3.Dot(posToObs, parentForward)) * angleWeight;
 
                         if (showActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
 
@@ -718,6 +760,78 @@ public class EnemyBall : MonoBehaviour
         }
     }
 
+    public void ComputeValues()
+    {
+        Initialize();
+
+        // Point givers
+        Pin[] pins = FindObjectsOfType<Pin>();
+
+        // Count total # of points available
+        for (int i = 0; i < pins.Length; i++)
+        {
+            totalPoints += pins[i].PointValue;
+        }
+
+        // Cache pin values
+        /* Not sure if I should include clustered points here... */
+        for (int i = 0; i < pins.Length; i++)
+        {
+            _valueCache[pins[i].gameObject] = pointWeight * pins[i].PointValue / totalPoints;
+        }
+
+        // Damaging obstacles
+        billboardMovement[] billboards = FindObjectsOfType<billboardMovement>();
+        breakableObstacle[] barriers = FindObjectsOfType<breakableObstacle>();
+        PlayerMovement player = FindObjectOfType<PlayerParent>().GetComponentInChildren<PlayerMovement>(true);
+
+        for (int i = 0; i < billboards.Length; i++)
+        {
+            _valueCache[billboards[i].gameObject] = -1f * fuelWeight * billboards[i].fuelSub / maxFuel;
+        }
+
+        for (int i = 0; i < barriers.Length; i++)
+        {
+            _valueCache[barriers[i].gameObject] = -1f * fuelWeight * barriers[i].fuelSub / maxFuel;
+        }
+
+        _valueCache[player.gameObject] = -1f * playerFuelLoss * fuelWeight / maxFuel;
+
+        // Speed givers
+        SpeedPlane[] boosters = FindObjectsOfType<SpeedPlane>();
+
+        // Find total speed
+        for (int i = 0; i < boosters.Length; i++)
+        {
+            // ds = ||dv|| = ||Fdt/m||
+
+            /* Double check this equation */
+            float value = boosters[i].speedMultiplier / _myBody.mass;
+
+            totalSpeed += value;
+        }
+
+        // Cache speed values
+        for (int i = 0; i < boosters.Length; i++)
+        {
+            _valueCache[boosters[i].gameObject] = speedWeight * boosters[i].speedMultiplier / (_myBody.mass * totalSpeed);
+        }
+
+        // Control limiters
+        icyField[] oil = FindObjectsOfType<icyField>();
+        Mine[] mines = FindObjectsOfType<Mine>();
+
+        for (int i = 0; i < oil.Length; i++)
+        {
+            _valueCache[oil[i].gameObject] = controlWeight * -0.2f;
+        }
+
+        for (int i = 0; i < mines.Length; i++)
+        {
+            _valueCache[mines[i].gameObject] = controlWeight * -0.5f;
+        }
+    }
+
     // Turn, then straighten out
     private IEnumerator TurnSequence(float dir)
     {
@@ -773,6 +887,8 @@ public class EnemyBall : MonoBehaviour
 
     private IEnumerator GutterStraighten(float straightenSeconds)
     {
+        ResetParentForward(Vector3.forward);
+        
         Vector3 forwardVelocity = (_refInvRot * rotationRef.forward).normalized;
 
         float magnitude = _lastVelocity.magnitude;

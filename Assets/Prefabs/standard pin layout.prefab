@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8802589260186528954}
+  - component: {fileID: 6931648367377324720}
   m_Layer: 0
   m_Name: standard pin layout
   m_TagString: Untagged
@@ -29,18 +30,30 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2073065470390542078}
   - {fileID: 5656661379695611383}
   - {fileID: 5507725224848878769}
-  - {fileID: 7584449761983342960}
-  - {fileID: 7934744357483295520}
-  - {fileID: 1627226132909671109}
-  - {fileID: 7697101863559470801}
   - {fileID: 1779389949932008775}
   - {fileID: 3712926239045453388}
+  - {fileID: 2073065470390542078}
   - {fileID: 649340167691531934}
+  - {fileID: 7934744357483295520}
+  - {fileID: 7584449761983342960}
+  - {fileID: 7697101863559470801}
+  - {fileID: 1627226132909671109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6931648367377324720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473643613886519370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea83ba516ec355c49b94fe4beb7bbf26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &102882839641214058
 PrefabInstance:
   m_ObjectHideFlags: 0

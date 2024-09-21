@@ -19,6 +19,7 @@ public class billboardMovement : MonoBehaviour
     private bool MoveBoolean = true;
     private bool SwitchBoolean = false;
     private bool playSound = true;
+    public bool destroyed = false;
 
  
     [Range(0.01f, 1.0f)]
@@ -67,6 +68,8 @@ public class billboardMovement : MonoBehaviour
                 destroySound.Play();
                 playSound = false;
             }
+
+            destroyed = true;
 
             this.enabled = false;
 
