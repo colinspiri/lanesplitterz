@@ -20,6 +20,11 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private TextAreaVariable obstaclePrompt;
     [SerializeField] private TextAreaVariable goldenPinPrompt;
 
+    [Header("Game Events")]
+    [SerializeField] private GameEvent startFuelTutorialDialogue;
+    [SerializeField] private GameEvent startObstacleTutorialDialogue;
+    [SerializeField] private GameEvent startPinTutorialDialogue;
+
     private void Start()
     {
         sequence.AddListener(OnSequenceChanged);
@@ -41,10 +46,11 @@ public class TutorialUI : MonoBehaviour
                 rightPrompt.Clear();
                 break;
             case TutorialSequence.Steer:
-                topLeftPrompt.ShowTextWithBackground(steerPrompt);
-                topRightPrompt.Clear();
-                centerPrompt.Clear();
-                rightPrompt.ShowTextWithBackground(steerFuelPrompt);
+                //topLeftPrompt.ShowTextWithBackground(steerPrompt);
+                //topRightPrompt.Clear();
+                //centerPrompt.Clear();
+                //rightPrompt.ShowTextWithBackground(steerFuelPrompt);
+                startFuelTutorialDialogue.Raise();
                 break;
             case TutorialSequence.Accelerate:
                 topLeftPrompt.ShowTextWithBackground(acceleratePrompt);
@@ -53,16 +59,18 @@ public class TutorialUI : MonoBehaviour
                 rightPrompt.Clear();
                 break;
             case TutorialSequence.Obstacle:
-                topLeftPrompt.Clear();
-                topRightPrompt.ShowTextWithBackground(obstaclePrompt);
-                centerPrompt.Clear();
-                rightPrompt.Clear();
+                //topLeftPrompt.Clear();
+                //topRightPrompt.ShowTextWithBackground(obstaclePrompt);
+                //centerPrompt.Clear();
+                //rightPrompt.Clear();
+                startObstacleTutorialDialogue.Raise();
                 break;
             case TutorialSequence.GoldenPin:
-                topLeftPrompt.ShowTextWithBackground(goldenPinPrompt);
-                topRightPrompt.Clear();
-                centerPrompt.Clear();
-                rightPrompt.Clear();
+                //topLeftPrompt.ShowTextWithBackground(goldenPinPrompt);
+                //topRightPrompt.Clear();
+                //centerPrompt.Clear();
+                //rightPrompt.Clear();
+                startPinTutorialDialogue.Raise();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(seq), seq, null);

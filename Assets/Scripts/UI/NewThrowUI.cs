@@ -27,6 +27,10 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent caesarStartDialogueRoundFour;
     [SerializeField] private GameEvent caesarStartDialogueRoundFive;
     [Space]
+    [SerializeField] private GameEvent startTutorialDialogue;
+    [SerializeField] private GameEvent startRoundTutorialDialogue;
+    [SerializeField] private GameEvent startEndTutorialDialogue;
+    [Space]
     [SerializeField] private GameEvent roundUIEnd;
     [SerializeField] private GameEvent ElvisEndWinLoseUI;
     [SerializeField] private GameEvent CorpoEndWinLoseUI;
@@ -77,7 +81,11 @@ public class NewThrowUI : MonoBehaviour
     {
         yield return new WaitUntil(() => fadeToBlackUI.color.a == 0f);
 
-        if (playerInfo.isPracticing == true) yield break;
+        if (playerInfo.isPracticing == true)
+        {
+            if (_isFirstThrow) startTutorialDialogue.Raise();
+            yield break;
+        }
 
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
         {
@@ -132,16 +140,27 @@ public class NewThrowUI : MonoBehaviour
     /// </summary>
     private IEnumerator DisplayClearingPinsUI()
     {
-        if (playerInfo.isPracticing == true && _isFirstThrow) EndFirstThrowTutorialUI.SetActive(true);
-        if (playerInfo.isPracticing == true && _isSecondThrow) EndSecondThrowTutorialUI.SetActive(true);
+        if (playerInfo.isPracticing == true && _isFirstThrow) startRoundTutorialDialogue.Raise(); //EndFirstThrowTutorialUI.SetActive(true);
+        if (playerInfo.isPracticing == true && _isSecondThrow) startEndTutorialDialogue.Raise(); //EndSecondThrowTutorialUI.SetActive(true);
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
 
         if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.isReady == true);
-        else
+        else if (!_isFirstThrow && !_isSecondThrow)
         {
-            yield return new WaitForSeconds(uiConstants.clearingPinsTime);
-            SetPlayerReady();
+            //yield return new WaitForSeconds(uiConstants.clearingPinsTime);
+            //SetPlayerReady();
+            if (gameState.currentThrow == 2)
+            {
+                DisplayTutorialButtons();
+            }
+            else
+            {
+                gameState.isPauseMenuEnabled = false;
+                yield return new WaitForSeconds(2f);
+                SetPlayerReady();
+                gameState.isPauseMenuEnabled = true;
+            }
         }
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.HideScoreboard();
@@ -155,7 +174,7 @@ public class NewThrowUI : MonoBehaviour
             _isSecondThrow = true;
         }
 
-        if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 0) DisplayTutorialButtons();
+        //if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 0) DisplayTutorialButtons();
     }
 
     public void SetPlayerReady() => playerInfo.isReady = true;
@@ -166,7 +185,7 @@ public class NewThrowUI : MonoBehaviour
         tutorialReset.Raise();
         clearingPinsUI.SetActive(false);
         gameState.isClearingPins = false;
-        RoundManager.OnNewRound.Invoke();
+        //RoundManager.OnNewRound.Invoke();
     }
 
     /// <summary>
@@ -224,7 +243,7 @@ public class NewThrowUI : MonoBehaviour
     {
         playerInfo.finishedTutorial = true;
         playerInfo.isPracticing = false;
-        CallNotifyBallsAtEndOfTrack();
+        //CallNotifyBallsAtEndOfTrack();
         StopCoroutine(DisplayClearingPinsUI());
         clearingPinsUI.SetActive(false);
         RoundManager.Instance.ClearPlayerCurrentPoints();

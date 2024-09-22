@@ -65,19 +65,22 @@ public class TimeManager : MonoBehaviour
 
     public void PauseTime()
     {
-        SetTimeScaleUnsafe(0);
+        Time.timeScale = 0f;
+
+        //SetTimeScaleUnsafe(0);
     }
 
     public void ResumeTime()
     {
-        
-        if (_timeScales.Count == 0)
-        {
-            SetTimeScaleUnstored(1);
-            return;
-        }
-        float previousTimeScale = _timeScales.Pop();
-        SetTimeScaleUnstored(previousTimeScale);
+        Time.timeScale = 1f;
+
+        //if (_timeScales.Count == 0)
+        //{
+        //    SetTimeScaleUnstored(1);
+        //    return;
+        //}
+        //float previousTimeScale = _timeScales.Pop();
+        //SetTimeScaleUnstored(previousTimeScale);
     }
 
     private void OnDestroy()

@@ -17,6 +17,10 @@ public class DialogueManager : MonoBehaviour
     [Space]
     [SerializeField] private string caesarPlayerWinDialogue;
     [SerializeField] private string caesarPlayerLossDialogue;
+    [Space]
+    [SerializeField] private float delayTime;
+    //[Space]
+    //[SerializeField] private LineView dialogueView;
 
     private void Awake()
     {
@@ -24,6 +28,17 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void PlayDialogue(string dialogueTitle) { if (_dialogueRunner && dialogueTitle != "") _dialogueRunner.StartDialogue(dialogueTitle); }
+
+    public void PlayDelayedDialogue(string dialogueTitle)
+    {
+        StartCoroutine(DelayedDialogue(dialogueTitle));
+    }
+
+    private IEnumerator DelayedDialogue(string dialogueTitle)
+    {
+        yield return new WaitForSeconds(delayTime);
+        _dialogueRunner.StartDialogue(dialogueTitle);
+    }
 
     public void PlayElvisEndDialgue()
     {
@@ -73,5 +88,11 @@ public class DialogueManager : MonoBehaviour
     public void SetNewGameMusic(AdaptiveMusicContainer music)
     {
         gameMusic = music;
+    }
+
+    public void SetDialogueView(int view)
+    {
+        // view 0 = Tutorial
+        // view 1 = Default
     }
 }

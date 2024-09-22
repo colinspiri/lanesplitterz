@@ -2,18 +2,18 @@ title: StartTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 ???: Today's the last time you can practice before the tournament. How are you feeling, Hiro?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: I'm feeling great, Emi!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: It's Coach Emiliana right now.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: Got it, Emi!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: ...Whatever.
 Emiliana: Ok, so press “A/Left” and “D/Right” on your control pad to move the cannon, and the big “SPACEBAR” to open the power meter.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -23,9 +23,9 @@ title: LaunchTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Hit “SPACEBAR” again to launch your ball. Try to launch at the peak to go as fast as possible.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -35,10 +35,10 @@ title: FuelTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: When you're on the move, you can use “A/Left” and “D/Right” to move your ball left or right respectively, and “W/Up” to accelerate.
 Emiliana: But remember, you have limited fuel to make adjustments.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -48,9 +48,9 @@ title: ObstacleTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Smashing through obstacles will also cost ya' some fuel. 
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -60,9 +60,9 @@ title: PinTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Gray pins score you one point, while the golden ones score you five.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -72,11 +72,11 @@ title: SpeedBoostsTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Speed Boosts can be handy; They get you going right?
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtHappy MentorArtDefault>>
 Hiro: HECK YEAAHHH!
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableArt DialogueUI PlayerArtHappy MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
 <<DisableDialogue DialogueUI>>
@@ -86,16 +86,17 @@ title: RoundTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Remember, a game of Lanesplitterz has 5 rounds, each with two turns.
 Emiliana: There's gonna be someone else in the lane so-
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: Be fast and watch out!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtHappy PlayerArtDefault>>
 Emiliana: That's right.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtHappy>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
+<<SetPlayerReady DialogueUI>>
 <<DisableDialogue DialogueUI>>
 ===
 
@@ -103,19 +104,20 @@ title: EndTutorial
 tags:
 ---
 <<EnableDialogue DialogueUI>>
-<<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: ...
 Emiliana: Thank you, Hiro.
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: For what?
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: For doing your best. Even if you lose, it's not your fault. I should have been more careful-
-<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<EnableDisableArt DialogueUI PlayerArtAngry MentorArtDefault>>
 Hiro: No! You're getting sent to the Crypto Mines next week! I gotta win this thing!
-<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
+<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtAngry>>
 Emiliana: ...Yeah. You can do this, my little Hiro.
-<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+<<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
 <<EnableScoreboard DialogueUI>>
-<<DisableDialogue DialogueUI>>
+<<DisplayTutorialButtons DialogueUI>>
+<<DisableDialogueWithMouse DialogueUI>>
 ===

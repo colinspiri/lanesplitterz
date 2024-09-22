@@ -66,7 +66,8 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => DetermineDisableInputs();
-        if (playerInfo.isPracticing == false) DisableInputs();
+        //if (playerInfo.isPracticing == false) DisableInputs();
+        DisableInputs();
         UpdateEnemy();
         Initialize();
     }
@@ -231,7 +232,7 @@ public class Cannon : MonoBehaviour
     public bool EnableInputs() => acceptingInputs = true;
 
     [YarnCommand("DisableInputs")]
-    public bool DisableInputs() => acceptingInputs = false;
+    public void DisableInputs() => acceptingInputs = false;
 
     public void DetermineDisableInputs()
     {

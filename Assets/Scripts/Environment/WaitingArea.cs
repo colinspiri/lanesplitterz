@@ -68,7 +68,7 @@ public class WaitingArea : ActionOnCollide
         }
 
         // needed for tutorial
-        if (playerInfo.isPracticing == true && gameState.currentThrow % 2 == 1)
+        if (playerInfo.isPracticing == true) // && gameState.currentThrow % 2 == 1)
         {
             yield return new WaitUntil(() => playerInfo.isReady == true);
             RoundManager.Instance.NotifyBallsAtEndOfTrack();

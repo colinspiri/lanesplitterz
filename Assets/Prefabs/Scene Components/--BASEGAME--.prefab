@@ -196,6 +196,7 @@ MonoBehaviour:
   waitWhenAtGoldenPins: 3
   zThresholdForGoldenPinsPrompt: 330
   playerInfo: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c, type: 2}
+  gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
 --- !u!114 &3724141157199275565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,6 +2120,13 @@ GameObject:
   - component: {fileID: 7210958989289087225}
   - component: {fileID: 8032048908783721279}
   - component: {fileID: 3705932016571745922}
+  - component: {fileID: 15668080032175799}
+  - component: {fileID: 8902135007006159288}
+  - component: {fileID: 2956791435020463166}
+  - component: {fileID: 7742955731730203148}
+  - component: {fileID: 1819195061239059818}
+  - component: {fileID: 5448067626866396091}
+  - component: {fileID: 6504248101556872835}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -2160,6 +2168,7 @@ MonoBehaviour:
   corpoPlayerLossDialogue: CorpoPlayerLoss
   caesarPlayerWinDialogue: CaesarPlayerWin
   caesarPlayerLossDialogue: CaesarPlayerLoss
+  delayTime: 2
 --- !u!114 &6780935326880389872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,6 +2761,235 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CaesarRoundFive
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &15668080032175799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: a3890a02eaf7ca2458fa2220668aa2a6,
+    type: 2}
+  _event: {fileID: 11400000, guid: a3890a02eaf7ca2458fa2220668aa2a6, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: StartTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8902135007006159288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c,
+    type: 2}
+  _event: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDelayedDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LaunchTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2956791435020463166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: c5ea753d6a3f0e141bc525d4e4a2ed7c,
+    type: 2}
+  _event: {fileID: 11400000, guid: c5ea753d6a3f0e141bc525d4e4a2ed7c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FuelTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7742955731730203148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: a0bd2a355b074c549b5f1ec34a1c2e9a,
+    type: 2}
+  _event: {fileID: 11400000, guid: a0bd2a355b074c549b5f1ec34a1c2e9a, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ObstacleTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1819195061239059818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 325b77e17f5d0b5498d004713bdaf631,
+    type: 2}
+  _event: {fileID: 11400000, guid: 325b77e17f5d0b5498d004713bdaf631, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PinTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5448067626866396091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: df0e8313a1e38c747a46dfd615208004, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RoundTutorial
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6504248101556872835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767047440660431311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: 14a14fd906eee36418c61cef6e43fa50, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7237183769958233333}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: PlayDialogue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: EndTutorial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7729001951729564026
@@ -3733,6 +3971,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 234467982926429030}
+    - targetCorrespondingSourceObject: {fileID: 227086369114207419, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8393953662490634942}
   m_SourcePrefab: {fileID: 100100000, guid: 398457fceb7213d42a1d981ab43f4b28, type: 3}
 --- !u!1 &7097270182841289356 stripped
 GameObject:
@@ -3764,6 +4006,39 @@ MonoBehaviour:
       - m_Target: {fileID: 7189937367579595528}
         m_TargetAssemblyTypeName: Cannon, Assembly-CSharp
         m_MethodName: DetermineDisableInputs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8393953662490634942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097270182841289356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c,
+    type: 2}
+  _event: {fileID: 11400000, guid: b45888ad9991b6543806625f9c55754c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7189937367579595528}
+        m_TargetAssemblyTypeName: Cannon, Assembly-CSharp
+        m_MethodName: DisableInputs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

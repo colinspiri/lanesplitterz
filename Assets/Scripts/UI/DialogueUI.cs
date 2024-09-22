@@ -17,10 +17,13 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject endGameUI;
     [SerializeField] private Image fadeToBlackUI;
     [SerializeField] private GameObject checkerboard;
+    [SerializeField] private GameObject replayTutorialButton;
+    [SerializeField] private GameObject playGameButton;
 
     [Header("Scriptable Objects")]
     [SerializeField] private GameState gameState;
     [SerializeField] private UIConstants uiConstants;
+    [SerializeField] private PlayerInfo playerInfo;
 
     #region Utility Dialogue Functions
 
@@ -246,6 +249,17 @@ public class DialogueUI : MonoBehaviour
         DisableBlur();
         gameState.isDialogueRunning = false;
     }
+
+    [YarnCommand("DisplayTutorialButtons")]
+    public void DisplayTutorialButtons()
+    {
+        EnableMouse();
+        replayTutorialButton.SetActive(true);
+        playGameButton.SetActive(true);
+    }
+
+    [YarnCommand("SetPlayerReady")]
+    public void SetPlayerReady() => playerInfo.isReady = true;
 
     #endregion
 }
