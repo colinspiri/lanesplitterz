@@ -20,7 +20,6 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
     [SerializeField] private PinCollection pinsStanding;
-    [SerializeField] private LaneComponents lane;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private ElvisInfo elvisInfo;
     [SerializeField] private GameState gameState;
@@ -33,14 +32,10 @@ public class RoundManager : MonoBehaviour {
     [SerializeField] private string dialogueOnRoundThree;
     [SerializeField] private string dialogueOnRoundFour;
     [SerializeField] private string dialogueOnRoundFive;
-    //private DialogueRunner _dialogueRunner;
 
     [Space]
     [SerializeField] private AdaptiveMusicContainer gameMusic;
     [SerializeField] private CrowdManager crowdManager;
-    [SerializeField] private Material blueLane;
-    [SerializeField] private Material greyLane;
-    [SerializeField] private int maxLevels;
 
     [Space]
     [HideInInspector] public List<int> playerPointsByThrow = new();
@@ -57,7 +52,6 @@ public class RoundManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
-        //_dialogueRunner = FindObjectOfType<DialogueRunner>();
     }
     private void Start() {
         playerCurrentPoints.Value = 0;
@@ -66,8 +60,6 @@ public class RoundManager : MonoBehaviour {
         gameState.currentRound = 1;
         gameState.currentThrow = 1;
         gameState.isClearingPins = false;
-
-        ChangeLaneMaterial(greyLane);
 
         isFirstRound = true;
     }
@@ -91,10 +83,6 @@ public class RoundManager : MonoBehaviour {
 
     // This is specifically after the waiting period finishes
     public void NotifyBallsAtEndOfTrack() {
-        // then a little delay before end of throw (move delay here from end of track trigger)
-
-        //if (gameState.currentThrow == 2) gameState.isScoreboardEnabled = false;
-        
         EndThrow();
     }
 
@@ -104,9 +92,6 @@ public class RoundManager : MonoBehaviour {
             playerPointsByRound = CalculatePointsByRound(playerPointsByThrow);
             enemyPointsByRound = CalculatePointsByRound(enemyPointsByThrow);
         }
-
-        //playerCurrentPoints.Value = 0;
-        //enemyCurrentPoints.Value = 0;
 
         if (ScoreboardUI.Instance) ScoreboardUI.Instance.UpdateScoreboardUI();
     }
@@ -165,20 +150,12 @@ public class RoundManager : MonoBehaviour {
         {
             if (elvisInfo.doublePointsThrows[gameState.currentRound] == gameState.currentThrow)
             {
-                //ChangeLaneMaterial(blueLane);
                 gameState.isDoublePointsThrow = true;
                 return;
             }
         }
 
-        //ChangeLaneMaterial(greyLane);
         gameState.isDoublePointsThrow = false;
-    }
-
-    private void ChangeLaneMaterial(Material material)
-    {
-/*        lane.ground.GetComponent<Renderer>().material = material;
-        lane.waitingArea.GetComponent<Renderer>().material = material;*/
     }
 
     private void NextThrow() {
@@ -197,28 +174,11 @@ public class RoundManager : MonoBehaviour {
             ScoreboardUI.Instance.ShowFinalScores();
             gameState.currentRound = 1;
             endGame.Raise();
-            //if (gameState.currentLevelIndex >= 15) return;
             return;
         }
-
         
         OnNewRound?.Invoke();
     }
-
-/*    public void PlayEndDialgue()
-    {
-       if (playerFinalScore > enemyFinalScore)
-        {
-            _dialogueRunner.StartDialogue(dialogueOnPlayerWin);
-            gameMusic.TransitionSection(0);
-        }
-            
-        else
-        {
-            _dialogueRunner.StartDialogue(dialogueOnBossWin);
-            gameMusic.TransitionSection(1);
-        }    
-    }*/
 
     public void ClearPlayerCurrentPoints()
     {
