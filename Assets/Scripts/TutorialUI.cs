@@ -46,10 +46,6 @@ public class TutorialUI : MonoBehaviour
                 rightPrompt.Clear();
                 break;
             case TutorialSequence.Steer:
-                //topLeftPrompt.ShowTextWithBackground(steerPrompt);
-                //topRightPrompt.Clear();
-                //centerPrompt.Clear();
-                //rightPrompt.ShowTextWithBackground(steerFuelPrompt);
                 startFuelTutorialDialogue.Raise();
                 break;
             case TutorialSequence.Accelerate:
@@ -59,17 +55,9 @@ public class TutorialUI : MonoBehaviour
                 rightPrompt.Clear();
                 break;
             case TutorialSequence.Obstacle:
-                //topLeftPrompt.Clear();
-                //topRightPrompt.ShowTextWithBackground(obstaclePrompt);
-                //centerPrompt.Clear();
-                //rightPrompt.Clear();
                 startObstacleTutorialDialogue.Raise();
                 break;
             case TutorialSequence.GoldenPin:
-                //topLeftPrompt.ShowTextWithBackground(goldenPinPrompt);
-                //topRightPrompt.Clear();
-                //centerPrompt.Clear();
-                //rightPrompt.Clear();
                 startPinTutorialDialogue.Raise();
                 break;
             default:
