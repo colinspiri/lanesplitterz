@@ -85,13 +85,13 @@ public class SceneLoaderManager : MonoBehaviour
             gameState.currentLevelIndex++;
         }
 
-        if (gameState.currentLevelIndex < 6)
+        if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds)
         {
             gameState.isElvisLevel = true;
             gameState.isCorpoLevel = false;
             gameState.isCaesarLevel = false;
         }
-        else if (gameState.currentLevelIndex < 11)
+        else if (gameState.currentLevelIndex <= RoundManager.Instance.totalRounds * 2)
         {
             gameState.isElvisLevel = false;
             gameState.isCorpoLevel = true;
