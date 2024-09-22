@@ -47,7 +47,12 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: pointWeight
-      value: 0.7
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: controlWeight
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
