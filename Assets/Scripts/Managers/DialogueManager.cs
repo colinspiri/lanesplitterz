@@ -7,6 +7,7 @@ using Yarn.Unity;
 public class DialogueManager : MonoBehaviour
 {
     private DialogueRunner _dialogueRunner;
+
     [SerializeField] private AdaptiveMusicContainer gameMusic;
     [Space]
     [SerializeField] private string elvisPlayerWinDialogue;
@@ -19,8 +20,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private string caesarPlayerLossDialogue;
     [Space]
     [SerializeField] private float delayTime;
-    //[Space]
-    //[SerializeField] private LineView dialogueView;
 
     private void Awake()
     {
@@ -88,11 +87,5 @@ public class DialogueManager : MonoBehaviour
     public void SetNewGameMusic(AdaptiveMusicContainer music)
     {
         gameMusic = music;
-    }
-
-    public void SetDialogueView(int view)
-    {
-        // view 0 = Tutorial
-        // view 1 = Default
     }
 }
