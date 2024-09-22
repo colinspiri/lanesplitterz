@@ -33,23 +33,14 @@ public class Tutorial : MonoBehaviour
         sequence.SetValue(TutorialSequence.Steer);
         TimeManager.Instance.PauseForTutorial();
         yield return new WaitUntil(() => gameState.isDialogueRunning == false);
-        //yield return new WaitForInput(new []{KeyCode.A, KeyCode.D});
         TimeManager.Instance.ResumeFromTutorialPause();
         sequence.SetValue(TutorialSequence.ReadyForNext);
-
-        //yield return new WaitForSeconds(waitBeforeAcceleratePrompt);
-        //sequence.SetValue(TutorialSequence.Accelerate);
-        //TimeManager.Instance.PauseForTutorial();
-        //yield return new WaitForInput(KeyCode.W);
-        //TimeManager.Instance.ResumeFromTutorialPause();
-        //sequence.SetValue(TutorialSequence.ReadyForNext);
 
         yield return new WaitUntil(() => PlayerMovement.Instance.transform.position.z > zThresholdForGoldenPinsPrompt);
         sequence.SetValue(TutorialSequence.GoldenPin);
         TimeManager.Instance.PauseForTutorial();
         // slight flaw - prompt counter will countdown during pause menu
         yield return new WaitUntil(() => gameState.isDialogueRunning == false);
-        //yield return new WaitForSecondsRealtime(waitWhenAtGoldenPins);
         TimeManager.Instance.ResumeFromTutorialPause();
         sequence.SetValue(TutorialSequence.ReadyForNext);
     }
@@ -67,7 +58,6 @@ public class Tutorial : MonoBehaviour
         sequence.SetValue(TutorialSequence.Obstacle);
         TimeManager.Instance.PauseForTutorial();
         // slight flaw - prompt counter will countdown during pause menu
-        //yield return new WaitForSecondsRealtime(waitWhenObstacleHit);
         yield return new WaitUntil(() => gameState.isDialogueRunning == false);
         TimeManager.Instance.ResumeFromTutorialPause();
         sequence.SetValue(TutorialSequence.ReadyForNext);
