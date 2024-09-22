@@ -11,7 +11,6 @@ public class WaitingArea : ActionOnCollide
     [Header("Scriptable Objects")]
     [SerializeField] private IntVariable playerCurrentPoints;
     [SerializeField] private IntVariable enemyCurrentPoints;
-    [SerializeField] private LaneComponents lane;
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private GameState gameState;
@@ -24,8 +23,6 @@ public class WaitingArea : ActionOnCollide
 
     private void Awake()
     {
-        lane.ground = ground;
-        lane.waitingArea = gameObject;
         RoundManager.Instance.CheckElvisAbility();
     }
 
@@ -68,7 +65,7 @@ public class WaitingArea : ActionOnCollide
         }
 
         // needed for tutorial
-        if (playerInfo.isPracticing == true) // && gameState.currentThrow % 2 == 1)
+        if (playerInfo.isPracticing == true)
         {
             yield return new WaitUntil(() => playerInfo.isReady == true);
             RoundManager.Instance.NotifyBallsAtEndOfTrack();
