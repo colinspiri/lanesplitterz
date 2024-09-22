@@ -90,8 +90,6 @@ public class SceneLoaderManager : MonoBehaviour
             gameState.isElvisLevel = true;
             gameState.isCorpoLevel = false;
             gameState.isCaesarLevel = false;
-
-            // e1Cannon.SetActive(true);
         }
         else if (gameState.currentLevelIndex < 11)
         {
