@@ -44,6 +44,7 @@ public class Cannon : MonoBehaviour
 
     public GameObject launchVFX;
     public bool acceptingInputs;
+
     private bool launched;
     private Vector2 movementInput;
     private Enemy _enemy;
@@ -66,7 +67,6 @@ public class Cannon : MonoBehaviour
         RoundManager.OnNewThrow += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => numSpacePressed = 0;
         RoundManager.OnNewRound += () => DetermineDisableInputs();
-        //if (playerInfo.isPracticing == false) DisableInputs();
         DisableInputs();
         UpdateEnemy();
         Initialize();
@@ -74,15 +74,9 @@ public class Cannon : MonoBehaviour
 
     private void Initialize()
     {
-        //transform.rotation = Quaternion.identity;
         pivot.rotation = Quaternion.identity;
-
-        launched = false;
-
         trajectoryLine.SetPositions();
-
-        //launchForce = 0;
-        //PowerLevelManager.Instance.DisablePowerSlider();
+        launched = false;
     }
 
     private void Update()
@@ -106,40 +100,19 @@ public class Cannon : MonoBehaviour
                     ConfirmedLaunchPower.Raise(powerMeterData);
                     if (_isFirstThrow && playerInfo.isPracticing) ConfirmedLaunchPowerTutorial.Raise();
 
-                    if (_isFirstThrow && playerInfo.isPracticing)
-                    {
-                        //ConfirmedInitialSpinTutorial.Raise();
-                        _isFirstThrow = false;
-                    }
+                    if (_isFirstThrow && playerInfo.isPracticing) _isFirstThrow = false;
 
                     Launch();
                     numSpacePressed = 0;
                     return; 
                 }
-/*                else if (numSpacePressed == 2)
-                {
-                    ConfirmedInitialSpin.Raise(spinMeterData);
-                    if (_isFirstThrow && playerInfo.isPracticing)
-                    {
-                        ConfirmedInitialSpinTutorial.Raise();
-                        _isFirstThrow = false;
-                    }
-
-                    Launch();
-                    numSpacePressed = 0;
-                    return;
-                }*/
 
                 numSpacePressed++;
             }
 
-            bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-            bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
             bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
             bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
             movementInput = Vector2.zero;
-/*            if (up) movementInput += Vector2.up;
-            if (down) movementInput += Vector2.down;*/
             if (left) movementInput += Vector2.left;
             if (right) movementInput += Vector2.right;
 
@@ -149,9 +122,9 @@ public class Cannon : MonoBehaviour
                 Vector3 target = transform.rotation.eulerAngles + diff;
                 target.x = Mathf.Clamp(RoundAngle(target.x), minPitch, maxPitch);
                 target.y = Mathf.Clamp(RoundAngle(target.y), minYaw, maxYaw);
-                //transform.rotation = Quaternion.Euler(target);
                 pivot.rotation = Quaternion.Euler(target);
                 trajectoryLine.SetPositions();
+
                 if (!turnSound._isPlaying)
                 {
                     turnSound.RunContainer();   
@@ -165,11 +138,6 @@ public class Cannon : MonoBehaviour
             {
                 turnSound.TransitionSection(0);
             }
-            /*if (transform.rotation.x > maxPitch || transform.rotation.x < minPitch)
-            {
-                moving = false;
-                turnSound.Stop();
-            }*/
         }
     }
 
@@ -219,11 +187,8 @@ public class Cannon : MonoBehaviour
 
         // Linear acceleration
         ball.AddForce(powerMeterData.meterValue * transform.forward, ForceMode.Impulse); // meterValue is the launch force
-        //PlayerMovement.Instance.Spin(spinMeterData.meterValue * -1f); // meterValue is the spin force
 
         LaunchedBall.Raise();
-
-        // ball.GetComponent<PlayerMovement>().Spin(-1000f);
 
         launchSound.Play();
     }
@@ -244,10 +209,4 @@ public class Cannon : MonoBehaviour
         _instance._enemy = GameObject.FindWithTag("Enemy Parent")?.GetComponent<Enemy>();
         if (!_instance._enemy) Debug.LogWarning("Cannon Error: Enemy not found. Is enemy parent disabled?");
     }
-
-/*    // used temporarily until corpo dialogue is implemented (we can enable inputs in the yarn file instead)
-    public void DetermineEnableInputs()
-    {
-        if (playerInfo.isPracticing == false && gameState.currentLevelIndex >= 6) EnableInputs();
-    }*/
 }
