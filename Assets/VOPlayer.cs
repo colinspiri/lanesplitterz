@@ -38,7 +38,7 @@ public class VOPlayer : MonoBehaviour
                 stop--;
             }
         }
-        else if (characterName.text == "Emiliana" || characterName.text == "Emi")
+        else if (characterName.text == "Emiliana" || characterName.text == "Emi" || gameState.currentLevelIndex < 1)
         {
             if (stop == 1)
             {
