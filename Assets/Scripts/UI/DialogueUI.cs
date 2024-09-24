@@ -16,10 +16,14 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject playAgainUI;
     [SerializeField] private GameObject endGameUI;
     [SerializeField] private Image fadeToBlackUI;
-    [SerializeField] private GameObject checkerboard;
+    [SerializeField] private RectTransform checkerboard;
     [SerializeField] private GameObject replayTutorialButton;
     [SerializeField] private GameObject playGameButton;
 
+    [Header("Variables")] 
+    [SerializeField] private float checkerboardOffscreenDistance;
+    [SerializeField] private float checkerboardSlideTime;
+    
     [Header("Scriptable Objects")]
     [SerializeField] private GameState gameState;
     [SerializeField] private UIConstants uiConstants;
@@ -122,13 +126,18 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("EnableCheckerboard")]
     public void EnableCheckerboard()
     {
-        checkerboard.SetActive(true);
+        checkerboard.gameObject.SetActive(true);
+        checkerboard.anchoredPosition = new Vector2(checkerboardOffscreenDistance, 0);
+        checkerboard.DOAnchorPosX(0f, checkerboardSlideTime).SetUpdate(true);
     }
 
     [YarnCommand("DisableCheckerboard")]
-    public void DisableCheckerboard()
-    {
-        checkerboard.SetActive(false);
+    public void DisableCheckerboard() {
+        checkerboard.anchoredPosition = new Vector2(0, 0);
+        checkerboard.DOAnchorPosX(checkerboardOffscreenDistance, checkerboardSlideTime).SetUpdate(true).onComplete += () =>
+        {
+            checkerboard.gameObject.SetActive(false);
+        };
     }
 
     #endregion
