@@ -1,4 +1,5 @@
 ﻿using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 public class OverheadCameraManager : MonoBehaviour {
@@ -7,6 +8,8 @@ public class OverheadCameraManager : MonoBehaviour {
     [SerializeField] private GameObject playerCamera;
 
     [SerializeField] private GameState gameState;
+
+    [SerializeField] private BoolVariable canToggleOverheadCameraBool;
 
     private bool _ballLaunched;
     private bool _overheadViewEnabled;
@@ -25,7 +28,8 @@ public class OverheadCameraManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (gameState.isDialogueRunning || _ballLaunched) return;
+        canToggleOverheadCameraBool.Value = !gameState.isDialogueRunning && !_ballLaunched;
+        if (!canToggleOverheadCameraBool.Value) return;
 
         if (Input.GetKeyDown(KeyCode.Tab)) {
             SetOverheadCamera(!_overheadViewEnabled);

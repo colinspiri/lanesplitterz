@@ -3148,6 +3148,8 @@ MonoBehaviour:
   overheadCamera: {fileID: 9030556407063993078}
   playerCamera: {fileID: 7475848712175817818}
   gameState: {fileID: 11400000, guid: 8744488e3aaa95f4ba77de54821d7920, type: 2}
+  canToggleOverheadCameraBool: {fileID: 11400000, guid: 2e200e2bf45c53e49a371b6fce83502d,
+    type: 2}
 --- !u!114 &995499026407611609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3163,7 +3165,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6,
+    type: 2}
   _event: {fileID: 11400000, guid: 9e17ddfd0cac22249b1ca6e206740cf6, type: 2}
   _response:
     m_PersistentCalls:
