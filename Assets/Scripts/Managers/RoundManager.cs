@@ -57,7 +57,7 @@ public class RoundManager : MonoBehaviour {
         playerCurrentPoints.Value = 0;
         enemyCurrentPoints.Value = 0;
 
-        gameState.currentRound = 1;
+        //gameState.currentRound = 1;
         gameState.currentThrow = 1;
         gameState.isClearingPins = false;
 

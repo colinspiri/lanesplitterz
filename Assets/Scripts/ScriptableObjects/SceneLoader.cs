@@ -62,6 +62,37 @@ public class SceneLoader : ScriptableObject {
         
     }
 
+    public void LoadLevel(int levelIndex)
+    {
+        SceneManager.LoadScene("Level " + levelIndex.ToString(), LoadSceneMode.Additive);
+    }
+
+    public void SetCurrentRound(int round)
+    {
+        gameState.currentRound = round;
+    }
+
+    public void SetCurrentBoss(int boss)
+    {
+        switch (boss)
+        {
+            case 1:
+                gameState.isElvisLevel = true;
+                gameState.isCorpoLevel = false;
+                gameState.isCaesarLevel = false;
+                break;
+            case 2:
+                gameState.isElvisLevel = false;
+                gameState.isCorpoLevel = true;
+                gameState.isCaesarLevel = false;
+                break;
+            case 3:
+                gameState.isElvisLevel = false;
+                gameState.isCorpoLevel = false;
+                gameState.isCaesarLevel = true;
+                break;
+        }
+    }
     public void Restart()
     {
         ResetTime();
