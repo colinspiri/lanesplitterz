@@ -1009,7 +1009,7 @@ PrefabInstance:
     - target: {fileID: 8802589260186528954, guid: 1d76ffbb0f747014c952ce213a7c5f7a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -46.59
+      value: -46.4
       objectReference: {fileID: 0}
     - target: {fileID: 8802589260186528954, guid: 1d76ffbb0f747014c952ce213a7c5f7a,
         type: 3}
@@ -2455,6 +2455,7 @@ MonoBehaviour:
   waitWhenAtGoldenPins: 3
   zThresholdForGoldenPinsPrompt: 200
   playerInfo: {fileID: 0}
+  gameState: {fileID: 0}
 --- !u!4 &1150365927
 Transform:
   m_ObjectHideFlags: 0
