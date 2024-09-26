@@ -1059,11 +1059,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3325122289923080853, guid: 261810348d112d944a6dfb05cfadb073,
         type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3325122289923080853, guid: 261810348d112d944a6dfb05cfadb073,
-        type: 3}
       propertyPath: SubModule.subEmitters.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1109,11 +1104,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6202531743539786673, guid: 261810348d112d944a6dfb05cfadb073,
-        type: 3}
-      propertyPath: oilSlick
-      value: 
-      objectReference: {fileID: 1259526601}
     - target: {fileID: 6747174831744636089, guid: 261810348d112d944a6dfb05cfadb073,
         type: 3}
       propertyPath: m_IsActive
@@ -1215,21 +1205,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -47.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873848499332363426, guid: 261810348d112d944a6dfb05cfadb073,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873848499332363426, guid: 261810348d112d944a6dfb05cfadb073,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8873848499332363426, guid: 261810348d112d944a6dfb05cfadb073,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8873848499332363426, guid: 261810348d112d944a6dfb05cfadb073,
         type: 3}
@@ -1394,12 +1369,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7763108689513927355, guid: 963310912e23156469bc5d0f5f57667f,
     type: 3}
   m_PrefabInstance: {fileID: 974144374}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1259526601 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4100964981205331127, guid: 261810348d112d944a6dfb05cfadb073,
-    type: 3}
-  m_PrefabInstance: {fileID: 1055579906}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1336434031 stripped
 Transform:
