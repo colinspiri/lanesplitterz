@@ -62,9 +62,13 @@ public class DialogueUI : MonoBehaviour
         // player beat the game
         if (gameState.currentLevelIndex >= 15 && CheckIsPlayerWinning())
         {
-            endGameUI.SetActive(true);
-            EnableMouse();
-            return;
+            gameState.isPauseMenuEnabled = false;
+            fadeToBlackUI.DOFade(1f, 2f)
+            .OnComplete(() =>
+            {
+                // Load credits scene
+                SceneLoaderManager.Instance.LoadCreditsScene();
+            });
         }
         // player beat either elvis or corpo
         else if (CheckIsPlayerWinning())

@@ -56,6 +56,11 @@ public class SceneLoaderManager : MonoBehaviour
         StartCoroutine(LoadTutorialLeveCoroutine());
     }
 
+    public void LoadCreditsScene()
+    {
+        SceneManager.LoadScene("Credits", LoadSceneMode.Single);
+    }
+
     public IEnumerator LoadTutorialLeveCoroutine()
     {
         yield return SceneManager.UnloadSceneAsync("Level 0");
