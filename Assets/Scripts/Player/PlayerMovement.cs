@@ -584,7 +584,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Returns true is on icy ground, false if not
-    private bool IsIcy()
+    public bool IsIcy()
     {
         return _ground && _ground.CompareTag("Icy");
     }
