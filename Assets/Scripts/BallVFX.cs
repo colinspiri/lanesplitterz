@@ -11,6 +11,10 @@ public class BallVFX : MonoBehaviour {
     [SerializeField] private VisualEffect ballSmokeBack;
     [SerializeField] private VisualEffect ballSmokeFront;
 
+    [SerializeField] private GameObject oilSlick;
+
+    private ParticleSystem oilVFX;
+
     ParticleSystemRenderer ballSpinRenderer;
     private void Start() {
         // ballSpin.GetComponent<ParticleSystem>().Stop();
@@ -18,15 +22,22 @@ public class BallVFX : MonoBehaviour {
         // // disable renderer of ballspin
         // ballSpinRenderer = ballSpin.GetComponent<ParticleSystemRenderer>();
         // ballSpinRenderer.enabled = true;
+        oilVFX = oilSlick.GetComponent<ParticleSystem>();
+        oilVFX.Play();
     }
 
     private void Update() {
         if (PlayerMovement.Instance == null || playerInfo.currentFuel <= Mathf.Epsilon) return;
-        
         SnapToBall();
         // CheckSpin();
         CheckTurnDirection();
         CheckAccelerationDirection();
+        if (PlayerMovement.Instance.IsIcy() && oilVFX.isPlaying == false) {
+            oilVFX.Play();
+        }
+        else if (!PlayerMovement.Instance.IsIcy() && oilVFX.isPlaying == true) {
+            oilVFX.Stop();
+        }
     }
 
     private void SnapToBall() {
@@ -81,4 +92,18 @@ public class BallVFX : MonoBehaviour {
             ballSmokeFront.Stop();
         }
     }
+
+    // void OnTriggerEnter(Collider other) {
+    //     if (other.gameObject.CompareTag("Icy") && oilVFX.isPlaying == false) {
+    //         Debug.Log("Icy");
+    //         oilVFX.Play();
+    //     }
+    // }
+
+    // void OnTriggerExit(Collider other) {
+    //     if (other.gameObject.CompareTag("Icy") && oilVFX.isPlaying == true) {
+    //         Debug.Log("Not Icy");
+    //         oilVFX.Stop();
+    //     }
+    // }
 }
