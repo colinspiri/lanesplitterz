@@ -863,43 +863,41 @@ public class EnemyBall : MonoBehaviour
         }
         
         // Straighten out once you're done turning
-        _straightenRoutine = StartCoroutine(Straighten(ForwardLinVelocity()));
+        _straightenRoutine = StartCoroutine(Straighten());
         
         // LinForceToVelocity(ForwardLinVelocity());
         // RotForceToVelocity(ForwardRotVelocity());
     }
     
     // Adjust velocity to forward
-    private IEnumerator Straighten(Vector3 newVelocity)
+    private IEnumerator Straighten()
     {
+        Vector3 upVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
+
+        Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.forward).normalized);
+
+        Vector3 rightVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.right).normalized);
+
         // Avoid dividing by zero!
         if (straightenSeconds < Mathf.Epsilon)
         {
-            _myBody.velocity = newVelocity;
-
-            yield break;
+            rightVelocity = Vector3.zero;
         }
-
-        for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+        else
         {
-            Vector3 upVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
+            for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+            {
+                rightVelocity = Vector3.Lerp(rightVelocity, Vector3.zero, t / straightenSeconds);
 
-            Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.forward).normalized);
+                //Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
 
-            Vector3 rightVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.right).normalized);
-            rightVelocity = Vector3.Lerp(rightVelocity, newVelocity, t / straightenSeconds);
+                //_myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
 
-            _myBody.velocity = upVelocity + forwardVelocity + rightVelocity;
-
-            //Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
-
-            //_myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
-
-            yield return new WaitForFixedUpdate();
+                yield return new WaitForFixedUpdate();
+            }
         }
 
-        // _turning = false;
-        yield break;
+        _myBody.velocity = upVelocity + forwardVelocity + rightVelocity;
     }
 
     private IEnumerator GutterStraighten(float straightenSeconds)
