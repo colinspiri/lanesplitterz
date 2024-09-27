@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using UnityEngine;
+using Yarn.Unity;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Enemy : MonoBehaviour
     private EnemyCannon _myCannon;
     private Transform _myCannonObj;
     private EnemyRotation _myRotation;
+    private Vector3 _ogPosition;
+    private Vector3 _ogScale;
+    private float _ogGravity;
 
     private Quaternion _startCannonRot;
     
@@ -18,12 +22,18 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        _ogPosition = transform.position;
+        _ogScale = transform.localScale;
+
         _myTree = GetComponent<BehaviorTree>();
         
         _myBallBody = GetComponentInChildren<Rigidbody>(true);
         
         _myBall = GetComponentInChildren<EnemyBall>(true);
-        
+
+        _ogGravity = _myBall.extraGravity;
+
+
         _myCannon = GetComponentInChildren<EnemyCannon>(true);
         _myCannonObj = _myCannon.transform;
         _startCannonRot = _myCannonObj.rotation;
@@ -47,6 +57,24 @@ public class Enemy : MonoBehaviour
         _myBallBody.constraints = RigidbodyConstraints.None;
 
         _myCannonObj.transform.rotation = _startCannonRot;
+    }
+
+    [YarnCommand("Embiggen")]
+
+    public void Embiggen()
+    {
+        transform.Translate(new Vector3(2.5f, 2.68f, 0f));
+        transform.localScale *= 2f;
+        _myBall.extraGravity *= 2f;
+    }
+
+    [YarnCommand("Ensmallen")]
+
+    public void Ensmallen()
+    {
+        transform.position = _ogPosition;
+        transform.localScale = _ogScale;
+        _myBall.extraGravity = _ogGravity;
     }
 
     public void LaunchSequence()

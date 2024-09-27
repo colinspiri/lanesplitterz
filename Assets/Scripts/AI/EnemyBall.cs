@@ -58,7 +58,7 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float turnSpeedPerSecond = 0.1f;
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float minimumSpeed;
-    [SerializeField] private float extraGravity;
+    public float extraGravity;
 
     [Header("Explosion specifications")]
     //[Tooltip("The amount of bounce for explosions to give the ball")]
@@ -174,6 +174,11 @@ public class EnemyBall : MonoBehaviour
         _possiblePositions = new();
 
         StartMovement();
+    }
+
+    private void OnEnable()
+    {
+        _flying = true;
     }
 
     private void OnDisable()
@@ -865,24 +870,36 @@ public class EnemyBall : MonoBehaviour
     }
     
     // Adjust velocity to forward
-    private IEnumerator Straighten(Vector3 forwardVelocity)
+    private IEnumerator Straighten(Vector3 newVelocity)
     {
         // Avoid dividing by zero!
         if (straightenSeconds < Mathf.Epsilon)
         {
-            _myBody.velocity = forwardVelocity;
+            _myBody.velocity = newVelocity;
 
             yield break;
         }
-        
+
         for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
         {
-            _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
-            
+            Vector3 upVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
+
+            Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.forward).normalized);
+
+            Vector3 rightVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.right).normalized);
+            rightVelocity = Vector3.Lerp(rightVelocity, newVelocity, t / straightenSeconds);
+
+            _myBody.velocity = upVelocity + forwardVelocity + rightVelocity;
+
+            //Vector3 forwardVelocity = Vector3.Project(_myBody.velocity, (_refInvRot * rotationRef.up).normalized);
+
+            //_myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
+
             yield return new WaitForFixedUpdate();
         }
-        
+
         // _turning = false;
+        yield break;
     }
 
     private IEnumerator GutterStraighten(float straightenSeconds)
@@ -1149,6 +1166,11 @@ public class EnemyBall : MonoBehaviour
         {
             _myBody.AddForce(Vector3.up * extraGravity, ForceMode.Impulse);
         }
+    }
+
+    public void Embiggen(float multiplier)
+    {
+        transform.localScale *= multiplier;
     }
 
     #endregion

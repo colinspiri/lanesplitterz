@@ -75,6 +75,7 @@ Hiro: See you on the track.
 title: CaesarPlayerLoss
 tags:
 ---
+<<Ensmallen PF_Caesar>>
 <<EnableDialogue DialogueUI>>
 <<EnableFadeArt DialogueUI CaesarArtHappy PlayerArtSurprised>>
 Caesar: GYAHAHAHA! I've WON! With this victory, with this power, I will create a new world, a better world. 
@@ -91,6 +92,7 @@ Hiro: NOOOOOOO!
 title: CaesarPlayerWin
 tags:
 ---
+<<Ensmallen PF_Caesar>>
 <<EnableDialogue DialogueUI>>
 <<EnableFadeArt DialogueUI PlayerArtDefault CaesarArtAngry>>
 Hiro: It's... It's over. 
@@ -355,6 +357,7 @@ Caesar: Hahaha!
     <<FadeArt DialogueUI CaesarArtHappy PlayerArtHappy>>
     Caesar: MEN! Bring me the Galvan 20XXL. It's time I showed this would-be prince how a true King does things.
 <<endif>>
+<<Embiggen PF_Caesar>>
 <<DisableArt DialogueUI PlayerArtHappy CaesarArtHappy>>
 <<DisableOneArt DialogueUI CaesarArtAngry>>
 <<EnableInputs Cannon>>

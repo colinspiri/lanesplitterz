@@ -151,6 +151,11 @@ public class PlayerMovement : MonoBehaviour
         //InitializeLevel();
     }
 
+    private void OnEnable()
+    {
+        _flying = true;
+    }
+
     private void Initialize() {
         if (disableOnStart) gameObject.SetActive(false);
 
@@ -253,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
 
         // speed line depending on _currentSpeed
         float opacity = Mathf.Clamp(_currentSpeed * 0.01f, 0f, 1f);
-        speedlineVFX.SetFloat("_Speed", opacity);
+        if (speedlineVFX) speedlineVFX.SetFloat("_Speed", opacity);
     }
     
     private void FixedUpdate()
