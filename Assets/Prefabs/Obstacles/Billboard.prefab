@@ -447,6 +447,7 @@ MonoBehaviour:
   moveDuration: 5
   intactBoard: {fileID: 600063031508690300}
   brokenBoard: {fileID: 6980199350184099826}
+  destroyed: 0
   fuelSub: 0.1
 --- !u!54 &5803115784338203843
 Rigidbody:
@@ -699,7 +700,8 @@ MonoBehaviour:
   moveDuration: 5
   intactBoard: {fileID: 600063031508690300}
   brokenBoard: {fileID: 6980199350184099826}
-  fuelSub: 0.1
+  destroyed: 0
+  fuelSub: 0.3
 --- !u!1 &7688737150944804050
 GameObject:
   m_ObjectHideFlags: 0
