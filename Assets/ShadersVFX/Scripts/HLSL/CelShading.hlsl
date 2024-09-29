@@ -3,14 +3,17 @@
 
 void CelShading_float(float luminance, out float Out)
 {
-    if (luminance >= 0.0f && luminance < 0.25f)
+    Out = luminance;
+    if (luminance >= 0.0f && luminance < 0.2f)
         Out = 0.0f;
-    else if (luminance >= 0.25f && luminance < 0.5f)
-        Out = 0.25f;
-    else if (luminance >= 0.5f && luminance < 0.75f)
-        Out = 0.5f;
-    else if (luminance >= 0.75f && luminance < 1.0f)
-        Out = 0.75f;
+    else if (luminance >= 0.2f && luminance < 0.4f)
+        Out = 0.2f;
+    else if (luminance >= 0.4f && luminance < 0.6f)
+        Out = 0.4f;
+    else if (luminance >= 0.6f && luminance < 0.8f)
+        Out = 0.6f;
+    else if (luminance >= 0.8f && luminance < 1.0f)
+        Out = 0.8f;
     else
         Out = 1.0f;
 }
