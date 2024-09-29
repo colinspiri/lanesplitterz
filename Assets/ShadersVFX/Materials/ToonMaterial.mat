@@ -142,7 +142,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _ColorLineThickness: 0.001
     - _ColorMinThreshold: 1
-    - _ColorStrength: 1
+    - _ColorStrength: 1.5
     - _ColorThickness: 1
     - _Cull: 2
     - _Cutoff: 0.5
@@ -151,8 +151,8 @@ Material:
     - _DepthMinThreshold: 1
     - _DepthNormalThreshold: 3
     - _DepthNormalThresholdScale: 3000
-    - _DepthStrength: 1
-    - _DepthThickness: 2
+    - _DepthStrength: 100000
+    - _DepthThickness: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
