@@ -56,6 +56,19 @@ Emiliana: Smashing through obstacles will also cost ya' some fuel.
 <<DisableDialogue DialogueUI>>
 ===
 
+title: TABTutorial
+tags:
+---
+<<EnableDialogue DialogueUI>>
+<<EnableOneArt DialogueUI MentorArtDefault>>
+Emiliana: You can hit “TAB” to check the overhead cam. That'll show you the alley's current state.
+<<DisableOneArt DialogueUI MentorArtDefault>>
+<<EnableInputs Cannon>>
+<<EnableScoreboard DialogueUI>>
+<<DisableDialogue DialogueUI>>
+===
+
+
 title: PinTutorial
 tags:
 ---
