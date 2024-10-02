@@ -9168,6 +9168,7 @@ GameObject:
   - component: {fileID: 5604332919640839056}
   - component: {fileID: 8244905052045723300}
   - component: {fileID: 1375674956966799770}
+  - component: {fileID: 7649737877744616300}
   m_Layer: 5
   m_Name: Round UI Container
   m_TagString: Untagged
@@ -9221,6 +9222,8 @@ MonoBehaviour:
     type: 2}
   elvisStartDialogueRoundFive: {fileID: 11400000, guid: b4384d9298723ab49945b2640a1732d7,
     type: 2}
+  elvisStartDialogueIntermission: {fileID: 11400000, guid: edebadf31e4a78a4bbf081d38fdb0763,
+    type: 2}
   corpoStartDialogueRoundOne: {fileID: 11400000, guid: f917cddd97fccec4ab82f409bdaca98d,
     type: 2}
   corpoStartDialogueRoundTwo: {fileID: 11400000, guid: 251ce4b0fed2ab14ca794ae985bfc940,
@@ -9231,6 +9234,8 @@ MonoBehaviour:
     type: 2}
   corpoStartDialogueRoundFive: {fileID: 11400000, guid: e67502475d06ea745971f8a7e5a32928,
     type: 2}
+  corpoStartDialogueIntermission: {fileID: 11400000, guid: b0c10a19d46e0534ebf67f6aa0664d10,
+    type: 2}
   caesarStartDialogueRoundOne: {fileID: 11400000, guid: 97889f9b0f6ead8499dc262776d8ca3f,
     type: 2}
   caesarStartDialogueRoundTwo: {fileID: 11400000, guid: 0640eafd633f0cd4291d6adec8a18287,
@@ -9240,6 +9245,8 @@ MonoBehaviour:
   caesarStartDialogueRoundFour: {fileID: 11400000, guid: 16f4f020c66ce7542aac1a408eeecfb6,
     type: 2}
   caesarStartDialogueRoundFive: {fileID: 11400000, guid: 884338dddeea9db479581723e010dc64,
+    type: 2}
+  caesarStartDialogueIntermission: {fileID: 11400000, guid: 014025e5774049745a5f5ef13d929036,
     type: 2}
   startTutorialDialogue: {fileID: 11400000, guid: a3890a02eaf7ca2458fa2220668aa2a6,
     type: 2}
@@ -9389,6 +9396,39 @@ MonoBehaviour:
       - m_Target: {fileID: 7836701824616786811}
         m_TargetAssemblyTypeName: NewThrowUI, Assembly-CSharp
         m_MethodName: RedisplayScoreboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7649737877744616300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015965007551623924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5758ca93461aeeb4589456a052b07d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 1ee8303c0cf00e84d92b06e241c11da0,
+    type: 2}
+  _event: {fileID: 11400000, guid: 1ee8303c0cf00e84d92b06e241c11da0, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7836701824616786811}
+        m_TargetAssemblyTypeName: NewThrowUI, Assembly-CSharp
+        m_MethodName: CallStartRoundFour
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18199,7 +18239,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 200}
+  m_SizeDelta: {x: 442.6, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8324661849972278439
 CanvasRenderer:
@@ -37902,6 +37942,12 @@ PrefabInstance:
       propertyPath: playGameButton
       value: 
       objectReference: {fileID: 6838857467605894041}
+    - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: endIntermission
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ee8303c0cf00e84d92b06e241c11da0,
+        type: 2}
     - target: {fileID: 5794941595521181084, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: doublePointsUITime

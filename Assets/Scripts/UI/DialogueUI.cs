@@ -29,6 +29,9 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private UIConstants uiConstants;
     [SerializeField] private PlayerInfo playerInfo;
 
+    [Header("Game Events")]
+    [SerializeField] private GameEvent endIntermission;
+
     #region Utility Dialogue Functions
 
     [YarnCommand("DisableHud")]
@@ -141,8 +144,12 @@ public class DialogueUI : MonoBehaviour
         checkerboard.DOAnchorPosX(checkerboardOffscreenDistance, checkerboardSlideTime).SetUpdate(true).onComplete += () =>
         {
             checkerboard.gameObject.SetActive(false);
+            EndIntermission();
         };
     }
+
+    [YarnCommand("CompleteIntermission")]
+    public void EndIntermission() => endIntermission.Raise();
 
     #endregion
 

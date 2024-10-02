@@ -174,7 +174,7 @@ Hiro: I still got an encore!
 <<DisableDialogue DialogueUI>>
 ===
 
-title: ElvisRoundFour
+title: ElvisIntermission
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -258,6 +258,15 @@ E1-V15: Come for some tips, son?
 <<DisableCheckerboard DialogueUI>>
 <<EndIntermission MusicManager>>
 <<DisableArt DialogueUI ElvisArtSad ElvisArtSurprised>>
+<<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
+//<<CompleteIntermission DialogueUI>>
+<<DisableDialogue DialogueUI>>
+===
+
+title: ElvisRoundFour
+tags:
+---
+<<EnableDialogue DialogueUI>>
 <<EnableFadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: ...
 <<if CheckIsPlayerWinning() == true >>

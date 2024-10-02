@@ -253,7 +253,7 @@ Kaiba: Money makes Neo Las Vegas go round.
 <<DisableDialogue DialogueUI>>
 ===
 
-title: CorpoRoundFour
+title: CorpoIntermission
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -330,6 +330,14 @@ Kaiba: ...What do you want?
 <<DisableCheckerboard DialogueUI>>
 <<EndIntermission MusicManager>>
 <<DisableArt DialogueUI PlayerArtHappy CorpoArtCrazy>>
+<<DisableArt DialogueUI CorpoArtDefault PlayerArtDefault>>
+<<DisableDialogue DialogueUI>>
+===
+
+title: CorpoRoundFour
+tags:
+---
+<<EnableDialogue DialogueUI>>
 <<EnableFadeArt DialogueUI CorpoArtDefault PlayerArtDefault>>
 Kaiba: Hm.
 <<if CheckIsPlayerWinning() == true >>

@@ -268,7 +268,7 @@ Hiro: My name's Hiro, man.
 <<DisableDialogue DialogueUI>>
 ===
 
-title: CaesarRoundFour
+title: CaesarIntermission
 tags:
 ---
 <<EnableDialogue DialogueUI>>
@@ -332,7 +332,15 @@ Caesar: Come to speak to your King, Harold?
 <<DisableCheckerboard DialogueUI>>
 <<EndIntermission MusicManager>>
 <<DisableArt DialogueUI CaesarArtAngry CaesarArtHappy>>
-<<DisableOneArt DialogueUI PlayerArtSurprised>>
+<<DisableArt DialogueUI CaesarArtDefault PlayerArtSurprised>>
+<<DisableArt DialogueUI PlayerArtSurprised PlayerArtDefault>>
+<<DisableDialogue DialogueUI>>
+===
+
+title: CaesarRoundFour
+tags:
+---
+<<EnableDialogue DialogueUI>>
 <<EnableFadeArt DialogueUI CaesarArtDefault PlayerArtDefault>>
 Caesar: Hahaha!
 <<if CheckIsPlayerWinning() == false>>

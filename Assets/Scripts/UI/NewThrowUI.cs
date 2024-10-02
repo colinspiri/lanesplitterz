@@ -14,18 +14,21 @@ public class NewThrowUI : MonoBehaviour
     [SerializeField] private GameEvent elvisStartDialogueRoundThree;
     [SerializeField] private GameEvent elvisStartDialogueRoundFour;
     [SerializeField] private GameEvent elvisStartDialogueRoundFive;
+    [SerializeField] private GameEvent elvisStartDialogueIntermission;
     [Space]
     [SerializeField] private GameEvent corpoStartDialogueRoundOne;
     [SerializeField] private GameEvent corpoStartDialogueRoundTwo;
     [SerializeField] private GameEvent corpoStartDialogueRoundThree;
     [SerializeField] private GameEvent corpoStartDialogueRoundFour;
     [SerializeField] private GameEvent corpoStartDialogueRoundFive;
+    [SerializeField] private GameEvent corpoStartDialogueIntermission;
     [Space]
     [SerializeField] private GameEvent caesarStartDialogueRoundOne;
     [SerializeField] private GameEvent caesarStartDialogueRoundTwo;
     [SerializeField] private GameEvent caesarStartDialogueRoundThree;
     [SerializeField] private GameEvent caesarStartDialogueRoundFour;
     [SerializeField] private GameEvent caesarStartDialogueRoundFive;
+    [SerializeField] private GameEvent caesarStartDialogueIntermission;
     [Space]
     [SerializeField] private GameEvent startTutorialDialogue;
     [SerializeField] private GameEvent startRoundTutorialDialogue;
@@ -87,7 +90,14 @@ public class NewThrowUI : MonoBehaviour
         if (gameState.currentRound <= RoundManager.Instance.totalRounds)
         {
             gameState.isPauseMenuEnabled = false;
-            roundText.text = "Round " + gameState.currentRound;
+            if (gameState.currentRound == 4)
+            {
+                roundText.text = "Halftime";
+            }
+            else
+            {
+                roundText.text = "Round " + gameState.currentRound;
+            }
             roundUI.SetActive(true);
             yield return new WaitForSeconds(uiConstants.roundUITime);
             roundUI.SetActive(false);
@@ -101,7 +111,7 @@ public class NewThrowUI : MonoBehaviour
                 if (gameState.currentRound == 1) elvisStartDialogueRoundOne.Raise();
                 if (gameState.currentRound == 2) elvisStartDialogueRoundTwo.Raise();
                 if (gameState.currentRound == 3) elvisStartDialogueRoundThree.Raise();
-                if (gameState.currentRound == 4) elvisStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 4) elvisStartDialogueIntermission.Raise();
                 if (gameState.currentRound == 5) elvisStartDialogueRoundFive.Raise();
             }
             else if (gameState.isCorpoLevel)
@@ -109,7 +119,7 @@ public class NewThrowUI : MonoBehaviour
                 if (gameState.currentRound == 1) corpoStartDialogueRoundOne.Raise();
                 if (gameState.currentRound == 2) corpoStartDialogueRoundTwo.Raise();
                 if (gameState.currentRound == 3) corpoStartDialogueRoundThree.Raise();
-                if (gameState.currentRound == 4) corpoStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 4) corpoStartDialogueIntermission.Raise();
                 if (gameState.currentRound == 5) corpoStartDialogueRoundFive.Raise();
             }
             else if (gameState.isCaesarLevel)
@@ -117,9 +127,41 @@ public class NewThrowUI : MonoBehaviour
                 if (gameState.currentRound == 1) caesarStartDialogueRoundOne.Raise();
                 if (gameState.currentRound == 2) caesarStartDialogueRoundTwo.Raise();
                 if (gameState.currentRound == 3) caesarStartDialogueRoundThree.Raise();
-                if (gameState.currentRound == 4) caesarStartDialogueRoundFour.Raise();
+                if (gameState.currentRound == 4) caesarStartDialogueIntermission.Raise();
                 if (gameState.currentRound == 5) caesarStartDialogueRoundFive.Raise();
             }
+        }
+    }
+
+    public void CallStartRoundFour() => StartCoroutine(StartRoundFour());
+
+    /// <summary>
+    /// Starts round four after the end intermission event is raised
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator StartRoundFour()
+    {
+        gameState.isPauseMenuEnabled = false;
+        roundText.text = "Round " + gameState.currentRound;
+        roundUI.SetActive(true);
+        yield return new WaitForSeconds(uiConstants.roundUITime);
+        roundUI.SetActive(false);
+        gameState.isPauseMenuEnabled = true;
+
+        // enables cannon input
+        roundUIEnd.Raise();
+
+        if (gameState.isElvisLevel)
+        {
+            elvisStartDialogueRoundFour.Raise();
+        }
+        else if (gameState.isCorpoLevel)
+        {
+            corpoStartDialogueRoundFour.Raise();
+        }
+        else if (gameState.isCaesarLevel)
+        {
+            caesarStartDialogueRoundFour.Raise();
         }
     }
 
