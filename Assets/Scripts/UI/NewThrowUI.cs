@@ -69,6 +69,8 @@ public class NewThrowUI : MonoBehaviour
         RoundManager.OnNewRound += () => StartCoroutine(NextRoundUI());
         StartCoroutine(NextRoundUI());
         _isFirstThrow = true;
+        gameState.isTutorialFirstThrow = true;
+        gameState.isTutorialSecondThrow = false;
         _isSecondThrow = false;
         playerInfo.isReady = false;
         playerInfo.finishedTutorial = false;
@@ -199,13 +201,19 @@ public class NewThrowUI : MonoBehaviour
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.HideScoreboard();
 
-        if (playerInfo.isPracticing == true && _isSecondThrow) _isSecondThrow = false;
+        if (playerInfo.isPracticing == true && _isSecondThrow)
+        {
+            _isSecondThrow = false;
+            gameState.isTutorialSecondThrow = false;
+        }
 
         if (playerInfo.isPracticing == true && _isFirstThrow)
         {
             EndFirstThrowTutorialUI.SetActive(false);
             _isFirstThrow = false;
+            gameState.isTutorialFirstThrow = false;
             _isSecondThrow = true;
+            gameState.isTutorialSecondThrow = true;
         }
     }
 

@@ -16,4 +16,6 @@ public class GameState : ScriptableObject
     [HideInInspector] public bool isCaesarLevel;
     [HideInInspector] public bool isDialogueRunning;
     [HideInInspector] public bool isPauseMenuEnabled;
+    [HideInInspector] public bool isTutorialFirstThrow;
+    [HideInInspector] public bool isTutorialSecondThrow;
 }

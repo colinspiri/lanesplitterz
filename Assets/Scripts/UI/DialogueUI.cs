@@ -31,6 +31,7 @@ public class DialogueUI : MonoBehaviour
 
     [Header("Game Events")]
     [SerializeField] private GameEvent endIntermission;
+    [SerializeField] private GameEvent startTabTutorialDialogue;
 
     #region Utility Dialogue Functions
 
@@ -150,6 +151,17 @@ public class DialogueUI : MonoBehaviour
 
     [YarnCommand("CompleteIntermission")]
     public void EndIntermission() => endIntermission.Raise();
+
+    [YarnCommand("StartTabTutorial")]
+    public void StartTabTutorial() => StartCoroutine(TabTutorialCoroutine());
+
+    private IEnumerator TabTutorialCoroutine()
+    {
+        gameState.isPauseMenuEnabled = false;
+        yield return new WaitForSeconds(1f);
+        gameState.isPauseMenuEnabled = true;
+        startTabTutorialDialogue.Raise();
+    }
 
     #endregion
 
