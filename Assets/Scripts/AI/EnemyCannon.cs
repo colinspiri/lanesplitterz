@@ -97,7 +97,7 @@ public class EnemyCannon : MonoBehaviour
         }
         
         ball.AddForce(launchForce * transform.forward, ForceMode.Impulse);
-        Debug.Log("Enemy launching with force " + launchForce);
+        // Debug.Log("Enemy launching with force " + launchForce);
 
         launchSound.Play();
     }

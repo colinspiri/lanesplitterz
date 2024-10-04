@@ -33,7 +33,7 @@ public class HitPinSound : MonoBehaviour
     }
 
     private void PlayPinHitSound() {
-        Debug.Log("Was player hit: " + PinManager.Instance.player);
+        // Debug.Log("Was player hit: " + PinManager.Instance.player);
         if (PinManager.Instance.player == isPlayer)
         {
             if (slow && isPlayer)
