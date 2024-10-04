@@ -34,6 +34,12 @@ PrefabInstance:
         Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(651.332764,126.815437)"},"ID":8,"Name":"Activate
         Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
       objectReference: {fileID: 0}
+    - target: {fileID: 2393277286453442373, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 6e50edcee19c89a4dbfddaae23382e60,
+        type: 2}
     - target: {fileID: 2806798661420818949, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -56,6 +62,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0800c7761d3881740ae34a19108aafe6, type: 2}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
+      propertyPath: turnFuel
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
       propertyPath: fuelWeight
       value: 0.2
       objectReference: {fileID: 0}
@@ -68,6 +79,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speedWeight
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: straightenSeconds
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6800576033366555298, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}

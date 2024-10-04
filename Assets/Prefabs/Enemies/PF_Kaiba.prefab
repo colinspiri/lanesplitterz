@@ -29,6 +29,12 @@ PrefabInstance:
         Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(641.332764,126.815437)"},"ID":8,"Name":"Activate
         Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
       objectReference: {fileID: 0}
+    - target: {fileID: 2393277286453442373, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: a3e751ea7a43a72449175b7cac7c5767,
+        type: 2}
     - target: {fileID: 4842827526982638153, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -39,6 +45,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9f7710d71be2105448f77cbc7db3db40, type: 2}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: turnFuel
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: fuelWeight
@@ -63,6 +74,11 @@ PrefabInstance:
         type: 3}
       propertyPath: secondsToConsider
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: straightenSeconds
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6519864363889820360, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}

@@ -54,8 +54,8 @@ public class EnemyBall : MonoBehaviour
 
     [Header("Force specifications")] [SerializeField]
     private float turnForce;
-    [SerializeField] private float hookForceMultiplier;
-    [SerializeField] private float turnSpeedPerSecond = 0.1f;
+    //[SerializeField] private float hookForceMultiplier;
+    //[SerializeField] private float turnSpeedPerSecond = 0.1f;
     [SerializeField] private float slipperyForce = 10f;
     [SerializeField] private float minimumSpeed;
     public float extraGravity;
@@ -356,20 +356,20 @@ public class EnemyBall : MonoBehaviour
     }
 
     // Emulate frictional movement to the side
-    private void Hook()
-    {
-        if (!Grounded() || IsIcy()) return;
+    //private void Hook()
+    //{
+    //    if (!Grounded() || IsIcy()) return;
 
-        float hookForceMagnitude = _currentSpin * hookForceMultiplier;
-        // I have absolutely no idea if what is in the parenthesis is correct (for player ball its _camInvRot * _myCam.right)
-        Vector3 hookForce = (_refInvRot * rotationRef.right) * hookForceMagnitude;
+    //    float hookForceMagnitude = _currentSpin * hookForceMultiplier;
+    //    // I have absolutely no idea if what is in the parenthesis is correct (for player ball its _camInvRot * _myCam.right)
+    //    Vector3 hookForce = (_refInvRot * rotationRef.right) * hookForceMagnitude;
 
-        _myBody.AddForce(hookForce);
+    //    _myBody.AddForce(hookForce);
 
-        /*Vector3 camUp = _camInvRot * _myCam.up; 
-        float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
-        Turn(force * hookMultiplier, false);*/
-    }
+    //    /*Vector3 camUp = _camInvRot * _myCam.up; 
+    //    float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
+    //    Turn(force * hookMultiplier, false);*/
+    //}
 
     // accelVal is the force to accelerate with
     public void Accelerate(float accelVal, bool expendFuel = true)
