@@ -4,13 +4,13 @@ tags:
 <<EnableDialogue DialogueUI>>
 <<EnableOneArt DialogueUI MentorArtDefault>>
 ???: Today's the last time you can practice before the tournament. How are you feeling, Hiro?
-<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: I'm feeling great, Emi!
-<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
+<<EnableDisableArtTutorial DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: It's Coach Emiliana right now.
-<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: Got it, Emi!
-<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
+<<EnableDisableArtTutorial DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: ...Whatever.
 Emiliana: Ok, so press “A/Left” and “D/Right” on your control pad to move the cannon, and the big “SPACEBAR” to open the power meter.
 <<DisableOneArt DialogueUI MentorArtDefault>>
@@ -87,7 +87,7 @@ tags:
 <<EnableDialogue DialogueUI>>
 <<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Speed Boosts can be handy; They get you going right?
-<<EnableDisableArt DialogueUI PlayerArtHappy MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtHappy MentorArtDefault>>
 Hiro: HECK YEAAHHH!
 <<DisableArt DialogueUI PlayerArtHappy MentorArtDefault>>
 <<EnableInputs Cannon>>
@@ -102,9 +102,9 @@ tags:
 <<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: Remember, a game of Lanesplitterz has 5 rounds, each with two turns.
 Emiliana: There's gonna be someone else in the lane so-
-<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: Be fast and watch out!
-<<EnableDisableArt DialogueUI MentorArtHappy PlayerArtDefault>>
+<<EnableDisableArtTutorial DialogueUI MentorArtHappy PlayerArtDefault>>
 Emiliana: That's right.
 <<DisableOneArt DialogueUI MentorArtHappy>>
 <<EnableInputs Cannon>>
@@ -121,13 +121,13 @@ tags:
 <<EnableOneArt DialogueUI MentorArtDefault>>
 Emiliana: ...
 Emiliana: Thank you, Hiro.
-<<EnableDisableArt DialogueUI PlayerArtDefault MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtDefault MentorArtDefault>>
 Hiro: For what?
-<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtDefault>>
+<<EnableDisableArtTutorial DialogueUI MentorArtDefault PlayerArtDefault>>
 Emiliana: For doing your best. Even if you lose, it's not your fault. I should have been more careful-
-<<EnableDisableArt DialogueUI PlayerArtAngry MentorArtDefault>>
+<<EnableDisableArtTutorial DialogueUI PlayerArtAngry MentorArtDefault>>
 Hiro: No! You're getting sent to the Crypto Mines next week! I gotta win this thing!
-<<EnableDisableArt DialogueUI MentorArtDefault PlayerArtAngry>>
+<<EnableDisableArtTutorial DialogueUI MentorArtDefault PlayerArtAngry>>
 Emiliana: ...Yeah. You can do this, my little Hiro.
 <<DisableOneArt DialogueUI MentorArtDefault>>
 <<EnableInputs Cannon>>
