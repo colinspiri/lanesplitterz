@@ -359,8 +359,8 @@ public class DialogueUI : MonoBehaviour
     public void DisplayTutorialButtons()
     {
         EnableMouse();
-        replayTutorialButton.SetActive(true);
-        playGameButton.SetActive(true);
+        replayTutorialButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
+        playGameButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
     }
 
     [YarnCommand("SetPlayerReady")]

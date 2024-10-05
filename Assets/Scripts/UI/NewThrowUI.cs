@@ -264,15 +264,15 @@ public class NewThrowUI : MonoBehaviour
     public void DisplayTutorialButtons()
     {
         EnableMouse();
-        replayTutorialButton.SetActive(true);
-        playGameButton.SetActive(true);
+        replayTutorialButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
+        playGameButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
     }
 
     public void HideTutorialButtons()
     {
         DisableMouse();
-        replayTutorialButton.SetActive(false);
-        playGameButton.SetActive(false);
+        replayTutorialButton.transform.GetComponent<CanvasGroup>().DOFade(0f, 0f);
+        playGameButton.transform.GetComponent<CanvasGroup>().DOFade(0f, 0f);
         EndSecondThrowTutorialUI.SetActive(false);
     }
 
