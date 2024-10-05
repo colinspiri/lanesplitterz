@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
         _myTree.enabled = false;
 
         _myBall.RestoreFuel(1f);
+        _myBall.NewThrow();
         _myBallBody.Sleep();
         _myBallBody.gameObject.SetActive(false);
         _myBallBody.transform.position = _myCannon.LaunchPoint.position;

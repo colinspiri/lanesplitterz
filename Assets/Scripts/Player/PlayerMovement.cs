@@ -404,7 +404,7 @@ public class PlayerMovement : MonoBehaviour
         // Skid if on ice (reduce acceleration)
         if (IsIcy())
         {
-            Debug.Log("Turning skidding on ice");
+            // Debug.Log("Turning skidding on ice");
             
             linForce /= slipperyForce;
             rotForce /= slipperyForce;

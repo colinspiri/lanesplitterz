@@ -30,15 +30,17 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float considerTimeSteps;
     [Tooltip("The difference in two potential positions needed to choose a new one (Prevents thrashing)")]
     [SerializeField] private float changePosDiff;
+    [Tooltip("The aggression level toward the player if attacking them. 0 is none, 1 is full aggression")]
+    [SerializeField] private float playerAggression = 0f;
     [Tooltip("Percent of fuel lost on hitting the player")]
     [SerializeField] private float playerFuelLoss;
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private float fuelWeight;
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
     [SerializeField] private float controlWeight;
     [SerializeField] private float distWeight;
     [SerializeField] private float angleWeight;
-    [SerializeField] private float aggroPoints;
     // The position being moved to
     private Vector3 _targetPos;
     private float _targetScore;
@@ -50,7 +52,6 @@ public class EnemyBall : MonoBehaviour
 
     // The true update time for checking positions
     private float _posUpdateTime;
-    private bool _hasAttackedPlayer;
 
     [Header("Force specifications")] [SerializeField]
     private float turnForce;
@@ -261,8 +262,6 @@ public class EnemyBall : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             ReduceFuel(playerFuelLoss);
-
-            if (attackPlayer) _hasAttackedPlayer = true;
         }
         else if (collider.gameObject.CompareTag("Lane Bounds"))
         {
@@ -583,10 +582,13 @@ public class EnemyBall : MonoBehaviour
                         /* Assumes positive z is always forward */
                         if (obstacle.layer != _ballLayer &&
                             predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
-                        
-                        
 
-                        if (showActualPositions) predictedString += "Evaluating obstacle " + obstacle.name + ":\n";
+
+
+                        if (showActualPositions)
+                        {
+                            predictedString += "Evaluating obstacle " + obstacle.name + " with instance ID " + obstacle.GetInstanceID() + "\n";
+                        }
 
                         // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
                         float obsValue = 0f;
@@ -659,9 +661,9 @@ public class EnemyBall : MonoBehaviour
                         // Player ball
                         else if (obstacle.layer == _ballLayer)
                         {
-                            if (attackPlayer && !_hasAttackedPlayer)
+                            if (attackPlayer)
                             {
-                                obsValue = aggroPoints;
+                                obsValue = 0f;
                             }
                             else
                             {
@@ -701,8 +703,6 @@ public class EnemyBall : MonoBehaviour
                         // Scale obstacle value by inverse distance from it to position
 
                         // Calculate inverse distance to obstacle
-                        // Clamped to prevent value from ever exceeding 1
-                        // Distance ceases to matter below 0.1 meters due to shift
 
                         float invDist;
 
@@ -716,7 +716,8 @@ public class EnemyBall : MonoBehaviour
                             // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
                             invDist = InvDistanceBounds(predictedPos, obsBounds);
                         }
-                        
+
+                        // Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
                         invDist = Mathf.Clamp(invDist, 0f, 1f);
                         obsValue *= invDist;
                         if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
@@ -724,6 +725,9 @@ public class EnemyBall : MonoBehaviour
 
                         posValue += obsValue;
                     }
+
+                    // If attacking the player, scale position value by inverse x-distance to player ball
+                    if (attackPlayer) posValue *= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
 
                     if (showActualPositions) predictedString += "Value of position " + _posCount + ": " + posValue;
 
@@ -788,7 +792,7 @@ public class EnemyBall : MonoBehaviour
         // Damaging obstacles
         billboardMovement[] billboards = FindObjectsOfType<billboardMovement>();
         breakableObstacle[] barriers = FindObjectsOfType<breakableObstacle>();
-        PlayerMovement player = FindObjectOfType<PlayerParent>().GetComponentInChildren<PlayerMovement>(true);
+        player = FindObjectOfType<PlayerParent>().GetComponentInChildren<PlayerMovement>(true);
 
         for (int i = 0; i < billboards.Length; i++)
         {
@@ -965,7 +969,6 @@ public class EnemyBall : MonoBehaviour
             if (aiEnabled)
             {
                 _moving = true;
-                _hasAttackedPlayer = false;
 
                 _targetPos = transform.position;
                 _targetScore = Mathf.NegativeInfinity;
@@ -1046,9 +1049,16 @@ public class EnemyBall : MonoBehaviour
     }
     
     // Calculate the inverse distance from one position to another
-    private float InvDistance(Vector3 from, Vector3 to, float shift = 0f)
+    private float InvDistance(Vector3 from, Vector3 to)
     {
-        return Mathf.Pow(Vector3.Distance(from, to) + shift, -1);
+        return Mathf.Pow(Vector3.Distance(from, to), -1);
+    }
+
+    private float InvXDistance(Vector3 from, Vector3 to, float scalar = 1f, float power = 1)
+    {
+        if (scalar < Mathf.Epsilon) scalar = 0.00001f;
+
+        return Mathf.Pow(Mathf.Abs(from.x - to.x) * scalar, -power);
     }
     
     // Calculate the inverse squared distance from one position to a bounding box
@@ -1060,10 +1070,11 @@ public class EnemyBall : MonoBehaviour
     
     // Calculate the inverse distance from one position to a bounding box
     /* This is inefficient and should be rewritten with a custom bound parsing method */
-    private float InvDistanceBounds(Vector3 from, Bounds to, float shift = 0f)
+    private float InvDistanceBounds(Vector3 from, Bounds to)
     {
-        float distance = Mathf.Pow(to.SqrDistance(from), 0.5f);
-        return Mathf.Pow(distance + shift, -1);
+        float distance = Mathf.Pow(to.SqrDistance(from), -0.5f);
+
+        return distance;
     }
     
     // Applies the impulse needed for a desired linear velocity change
@@ -1169,6 +1180,15 @@ public class EnemyBall : MonoBehaviour
     public void Embiggen(float multiplier)
     {
         transform.localScale *= multiplier;
+    }
+
+    public void NewThrow()
+    {
+        if (showActualPositions)
+        {
+            _posCount = 0;
+            enemyPattern.ClearPositions();
+        }
     }
 
     #endregion
