@@ -235,7 +235,7 @@ public class NewThrowUI : MonoBehaviour
     private IEnumerator DisplayWinLoseUI()
     {
         gameState.isPauseMenuEnabled = false;
-        winLoseUI.SetActive(true);
+        winLoseUI.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
 
         if (RoundManager.Instance.playerFinalScore > RoundManager.Instance.enemyFinalScore)
         {
@@ -250,15 +250,16 @@ public class NewThrowUI : MonoBehaviour
 
         yield return new WaitForSeconds(uiConstants.roundUITime);
 
-        winLoseUI.SetActive(false);
-        loseTextObject.SetActive(true);
-        winTextObject.SetActive(true);
+        winLoseUI.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f).onComplete += () => 
+        { 
+            loseTextObject.SetActive(true);
+            winTextObject.SetActive(true);
+            if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
+            if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
+            if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) CaesarEndWinLoseUI.Raise();
 
-        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
-        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
-        if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) CaesarEndWinLoseUI.Raise();
-
-        gameState.isPauseMenuEnabled = true;
+            gameState.isPauseMenuEnabled = true;
+        };
     }
 
     public void DisplayTutorialButtons()
