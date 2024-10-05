@@ -73,6 +73,7 @@ public class NewThrowUI : MonoBehaviour
         gameState.isTutorialSecondThrow = false;
         _isSecondThrow = false;
         playerInfo.isReady = false;
+        playerInfo.pressedContinue = false;
         playerInfo.finishedTutorial = false;
     }
 
@@ -186,7 +187,7 @@ public class NewThrowUI : MonoBehaviour
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
 
-        if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.isReady == true);
+        if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.pressedContinue == true);
         else if (!_isFirstThrow && !_isSecondThrow)
         {
             if (gameState.currentThrow == 2) DisplayTutorialButtons();
@@ -218,6 +219,8 @@ public class NewThrowUI : MonoBehaviour
     }
 
     public void SetPlayerReady() => playerInfo.isReady = true;
+
+    public void SetPressedContinue() => playerInfo.pressedContinue = true;
 
     // call when player wants to play tutorial again
     public void NotifyTutorialReset()

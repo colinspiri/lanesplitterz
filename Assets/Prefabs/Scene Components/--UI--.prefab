@@ -4726,6 +4726,7 @@ GameObject:
   - component: {fileID: 6533178627514630188}
   - component: {fileID: 4625444803586417837}
   - component: {fileID: 4850110752447158317}
+  - component: {fileID: 6054723341141946123}
   m_Layer: 5
   m_Name: Scoreboard Art
   m_TagString: Untagged
@@ -4800,6 +4801,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6054723341141946123
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275735923027562992}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1321518519260057988
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,6 +5111,7 @@ GameObject:
   - component: {fileID: 4463462284822124816}
   - component: {fileID: 763709019713315638}
   - component: {fileID: 3007274828429624635}
+  - component: {fileID: 1204678255023344661}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -5209,7 +5223,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7836701824616786811}
         m_TargetAssemblyTypeName: NewThrowUI, Assembly-CSharp
-        m_MethodName: SetPlayerReady
+        m_MethodName: SetPressedContinue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5231,6 +5245,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &1204678255023344661
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446412970569262025}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1456869678002973592
 GameObject:
   m_ObjectHideFlags: 0
@@ -37353,6 +37379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1416345399420254055, guid: e643afb93c9b5604ab6f9be571b50507,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1587793011029800351, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -37578,7 +37609,7 @@ PrefabInstance:
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 772.5
       objectReference: {fileID: 0}
     - target: {fileID: 2643913468157557857, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
@@ -37722,12 +37753,12 @@ PrefabInstance:
     - target: {fileID: 2643913469417464835, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643913469417464835, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643913469417464835, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
@@ -37737,7 +37768,7 @@ PrefabInstance:
     - target: {fileID: 2643913469417464835, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2695961122291991379, guid: e643afb93c9b5604ab6f9be571b50507,
         type: 3}

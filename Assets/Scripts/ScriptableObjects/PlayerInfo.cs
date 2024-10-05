@@ -19,5 +19,7 @@ public class PlayerInfo : ScriptableObject
     [HideInInspector]
     public bool isReady;
     [HideInInspector]
+    public bool pressedContinue;
+    [HideInInspector]
     public bool finishedTutorial;
 }
