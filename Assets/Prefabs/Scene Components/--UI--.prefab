@@ -617,13 +617,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1751152273398963160}
+  - component: {fileID: 7112858461812346778}
   m_Layer: 5
   m_Name: Round Number UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1751152273398963160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -646,6 +647,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &7112858461812346778
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192959175889986804}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &235461834100685176
 GameObject:
   m_ObjectHideFlags: 0
