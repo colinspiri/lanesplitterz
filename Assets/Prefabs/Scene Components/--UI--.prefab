@@ -1963,6 +1963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453375520083938965}
+  - component: {fileID: 2795973023904787762}
   m_Layer: 5
   m_Name: Fuel Meter UI
   m_TagString: Untagged
@@ -1993,6 +1994,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &2795973023904787762
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472894162172230268}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &506159445758813143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,6 +2634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988919161984689128}
+  - component: {fileID: 6201680317225858780}
   m_Layer: 5
   m_Name: Power Meter UI
   m_TagString: Untagged
@@ -2651,6 +2665,18 @@ RectTransform:
   m_AnchoredPosition: {x: 650, y: 311.73227}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
+--- !u!225 &6201680317225858780
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783580897007481994}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &837103596738420421
 GameObject:
   m_ObjectHideFlags: 0

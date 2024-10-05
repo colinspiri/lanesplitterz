@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,12 @@ public class Meter : MonoBehaviour
 
     public virtual void EnableMeter()
     {
-        meterUI.SetActive(true);
+        meterUI.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
         isEnabled = true;
     }
     public virtual void DisableMeter()
     {
-        meterUI.SetActive(false);
+        meterUI.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f);
         isEnabled = false;
     }
 
