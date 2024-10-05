@@ -15,10 +15,8 @@ Hiro:  Woah! I've seen you playing on Fremont Street. Could I have your autograp
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: Thank you very much. Your chance of success is 0.0132%. 
 <<EnableDisableArt DialogueUI PlayerArtSurprised PlayerArtDefault ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Um...
 <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtSurprised ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Thanks, but-
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are welcome. I am simply preparing you for your failure.
@@ -27,36 +25,29 @@ Hiro: Oh, no need, I'm gonna win this thing!
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 ???: You are not. Still want an autograph, baby?
 <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Yup!
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 ???: What's your name, son?
 <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtHappy ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: My name is Hiro Protag. And yours?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: E1-V15. Here.
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: “Chase your dreams! You have a 0.0067% chance of achieving them! - Elvis”
 <<EnableDisableArt DialogueUI PlayerArtSurprised PlayerArtDefault ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: Thanks! Elvis? I thought your name was E1-V15?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
 E1-V15: Indeed, I signed with the name of the King.
 <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtSurprised ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: King? You mean Caesar?
 <<EnableDisableArt DialogueUI ElvisArtSurprised ElvisArtDefault PlayerArtDefault>>
-//<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
 E1-V15: !!!
 E1-V15: Do you not know Mr. Hound-Dog? The Mississippi Lip? Elvis the Pelvis? The Pied Piper of Rock and Roll?
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtSurprised>>
 Hiro: What is he? Some kind of magician?
 <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSurprised PlayerArtDefault>>
-//<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: ...
 <<EnableDisableArt DialogueUI ElvisArtAngry ElvisArtDefault PlayerArtDefault>>
-//<<FadeArt DialogueUI ElvisArtAngry PlayerArtDefault>>
 E1-V15: No.
 E1-V15: You should prepare yourself, son. You won't make it past the opener.
 <<DisableArt DialogueUI PlayerArtDefault ElvisArtAngry>>
@@ -92,44 +83,34 @@ Hiro: I won? Wait… I won??? Holy-
 <<EnableFadeArt DialogueUI MentorArtHappy ElvisArtDefault>>
 Emiliana: SCRAP KID, I CAN'T BELIEVE IT!!!
 <<EnableDisableArt DialogueUI PlayerArtSad MentorArtHappy ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
 Hiro: Wait, you didn't think I'd win?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
 E1-V15: It's no surprise, baby.
 <<EnableDisableArt DialogueUI ElvisArtHappy ElvisArtDefault PlayerArtSad>>
-//<<FadeArt DialogueUI ElvisArtHappy PlayerArtSad>>
 E1-V15: You were great out there, son. You're the toughest I've ever rolled against.
 <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtHappy PlayerArtSad>>
-//<<FadeArt DialogueUI ElvisArtDefault PlayerArtSad>>
 E1-V15: Spirit is far more valuable a predictor than I thought.
 <<DisableOneArt DialogueUI PlayerArtSad>>
 <<EnableFadeArt DialogueUI MentorArtHappy ElvisArtDefault>>
 Emiliana: He's a real special kid, our Hiro.
 <<EnableDisableArt DialogueUI PlayerArtHappy MentorArtHappy ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Thanks, E1. It was an honor to roll with you.
 <<EnableDisableArt DialogueUI ElvisArtSurprised ElvisArtDefault PlayerArtHappy>>
-//<<FadeArt DialogueUI ElvisArtSurprised PlayerArtHappy>>
 E1-V15: ...
 <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSurprised PlayerArtHappy>>
-//<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
 E1-V15: I will not revive him anymore.
 <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtHappy ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Elvis the Pelvis?
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: It's time to put the past to rest.
 <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
 Hiro: Cool. And E1?
 <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtHappy ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 Hiro: Good luck out there.
 <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
 E1-V15: Thank you, thank you very much.
 E1-V15: And before I leave, may I have your autograph?
 <<EnableDisableArt DialogueUI PlayerArtSurprised PlayerArtDefault ElvisArtDefault>>
-//<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
 Hiro: !!!
 Hiro: Sure!
 <<DisableArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
@@ -185,72 +166,57 @@ E1-V15: Come for some tips, son?
 <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
 -> So why do you care so much about Elvis?
     <<EnableDisableArt DialogueUI ElvisArtHappy ElvisArtDefault PlayerArtDefault>>
-    //<<FadeArt DialogueUI ElvisArtHappy PlayerArtDefault>>
     E1-V15: He was the biggest star on planet Earth!
     E1-V15: Before Michael Jackson, before Taylor Swift, even before Gleepnorp the Inevitable, there was Elvis Presley.
     <<FadeArt DialogueUI PlayerArtDefault ElvisArtHappy>>
     Hiro: He sounds great! But I've never heard of him.
     <<EnableDisableArt DialogueUI ElvisArtSurprised ElvisArtHappy PlayerArtDefault>>
-    //<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
     E1-V15:Unsurprising, the quality of education in this city has dropped 301% since 1985 PB.
     <<FadeArt DialogueUI PlayerArtDefault ElvisArtSurprised>>
     -> Why Elvis in particular?
         <<EnableDisableArt DialogueUI ElvisArtHappy ElvisArtSurprised PlayerArtDefault>>
-        //<<FadeArt DialogueUI ElvisArtHappy PlayerArtDefault>>
         E1-V15: I was created by Manny Manns, a man with true vision. He was a stock trading genius. 
         <<EnableDisableArt DialogueUI ElvisArtSad ElvisArtHappy PlayerArtDefault>>
-        //<<FadeArt DialogueUI ElvisArtSad PlayerArtDefault>>
         E1-V15: I was to be his calculator and jukebox.
         <<FadeArt DialogueUI PlayerArtDefault ElvisArtSad>>
         Hiro: Juice box? Like for apple juice?
         <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSad PlayerArtDefault>>
-        //<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
         E1-V15: His favorite musician was a man who thrived in the 20th Century PB: The King of Rock and Roll, Elvis Presley. 
         E1-V15: We loved him so much, we had all his albums on vinyl. 
         <<EnableDisableArt DialogueUI ElvisArtSad ElvisArtDefault PlayerArtDefault>>
-        //<<FadeArt DialogueUI ElvisArtSad PlayerArtDefault>>
         E1-V15: We were here in Neo Las Vegas when the bombs first fell. 
         E1-V15: While Manny lay dying, I swore to him I would carry Elvis into the future. 
         <<FadeArt DialogueUI PlayerArtDefault ElvisArtSad>>
         -> Carry him into the future?
             <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSad PlayerArtDefault>>
-            //<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
             E1-V15: I have done the calculations: If they could bring Caesar back, then I can resurrect Elvis.
             <<EnableDisableArt DialogueUI PlayerArtSurprised PlayerArtDefault ElvisArtDefault>>
-            //<<FadeArt DialogueUI PlayerArtSurprised ElvisArtDefault>>
             Hiro: You're going to revive Elvis the Pelvis???
             <<FadeArt DialogueUI ElvisArtDefault PlayerArtSurprised>>
             E1-V15: Incorrect. I am going to upload Elvis the Pelvis into my consciousness. He and I will be one. 
             E1-V15: We will revive rock and roll and spread it across the world.
             <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtSurprised ElvisArtDefault>>
-            //<<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
             Hiro: Why not just make your own music? What's the point of becoming Elvis?
             <<EnableDisableArt DialogueUI ElvisArtSad ElvisArtDefault PlayerArtDefault>>
-            //<<FadeArt DialogueUI ElvisArtSad PlayerArtDefault>>
             E1-V15: Have you ever seen a blue sky over your head? We're trapped in a world that's troubled with pain, son. 
             E1-V15: I miss when people's biggest concern was their choice of outfit on a Friday night.
             <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSad PlayerArtDefault>>
-            //<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
             E1-V15: Elvis will lead us back into the light.
             <<FadeArt DialogueUI PlayerArtDefault ElvisArtDefault>>
             Hiro: How is Elvis gonna fix everything? 
             <<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
             E1-V15: ...
             <<EnableDisableArt DialogueUI ElvisArtAngry ElvisArtDefault PlayerArtDefault>>
-            //<<FadeArt DialogueUI ElvisArtAngry PlayerArtDefault>>
             E1-V15: I don't know, but he'll make things better. What are you gonna do with the crown?
             <<FadeArt DialogueUI PlayerArtDefault ElvisArtAngry>>
             Hiro: When I win, I'm gonna get rid of everyone's debt, and change this city for the better. 
             <<EnableDisableArt DialogueUI PlayerArtSad PlayerArtDefault ElvisArtAngry>>
-            //<<FadeArt DialogueUI PlayerArtSad ElvisArtAngry>>
             Hiro: I nearly lost my mentor in a ball crash 4 years ago. 
             Hiro: She pulled through, but she's millions of chips in debt, all because of the accident. 
             <<EnableDisableArt DialogueUI PlayerArtDefault PlayerArtSad ElvisArtAngry>>
-            //<<FadeArt DialogueUI PlayerArtDefault ElvisArtAngry>>
             Hiro: But her story isn't so different from anyone else in this city.
             Hiro: I'm gonna give Emi, and everyone else, a future to believe in. 
             <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtAngry PlayerArtDefault>>
-            //<<FadeArt DialogueUI ElvisArtDefault PlayerArtDefault>>
             E1-V15: You've got some real burnin' love, but you're no king.
         -> Let's Roll! 
     -> Let's Roll! 
@@ -259,7 +225,6 @@ E1-V15: Come for some tips, son?
 <<EndIntermission MusicManager>>
 <<DisableArt DialogueUI ElvisArtSad ElvisArtSurprised>>
 <<DisableArt DialogueUI PlayerArtDefault ElvisArtDefault>>
-//<<CompleteIntermission DialogueUI>>
 <<DisableDialogue DialogueUI>>
 ===
 
@@ -274,13 +239,10 @@ E1-V15: ...
     E1-V15: My prediction for your success is now 4.567%. 
     E1-V15: You've lost every match before this, barely hitting a single pin. But now, you're beating me.
     <<EnableDisableArt DialogueUI ElvisArtSurprised ElvisArtDefault PlayerArtDefault>>
-    //<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
     E1-V15: There must be a variable I haven't accounted for. What is it?
     <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault ElvisArtSurprised>>
-    //<<FadeArt DialogueUI PlayerArtHappy ElvisArtSurprised>>
     Hiro: It's something you can't quantify, E1. My spirit!
     <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSurprised PlayerArtHappy>>
-    //<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
     E1-V15: ... I see...
     E1-V15: No matter, baby. I don't plan on going down easy. Viva Neo Las Vegas!
     <<FadeArt DialogueUI PlayerArtHappy ElvisArtDefault>>
@@ -288,19 +250,15 @@ E1-V15: ...
     <<DisableOneArt DialogueUI PlayerArtHappy>>
 <<elseif CheckIsPlayerWinning() == false>>
     <<EnableDisableArt DialogueUI ElvisArtSurprised ElvisArtDefault PlayerArtDefault>>
-    //<<FadeArt DialogueUI ElvisArtSurprised PlayerArtDefault>>
     E1-V15: This is your best performance to date, but you're still losing. 
     E1-V15: Why do you continue? 
     <<EnableDisableArt DialogueUI PlayerArtHappy PlayerArtDefault ElvisArtSurprised>>
-    //<<FadeArt DialogueUI PlayerArtHappy ElvisArtSurprised>>
     Hiro: It's simple: My spirit. 
     Hiro: I don't plan on giving up, even if I'm down 100 points, I'm gonna give it my all! 
     <<EnableDisableArt DialogueUI ElvisArtDefault ElvisArtSurprised PlayerArtHappy>>
-    //<<FadeArt DialogueUI ElvisArtDefault PlayerArtHappy>>
     E1-V15: ...
     E1-V15: Spirit is a poor predictor of success. Don't be surprised when I win, baby.
     <<EnableDisableArt DialogueUI PlayerArtSad PlayerArtHappy ElvisArtDefault>>
-    //<<FadeArt DialogueUI PlayerArtSad ElvisArtDefault>>
     Hiro: Don't be surprised when you lose. Uh- baby.
     <<DisableOneArt DialogueUI PlayerArtSad>>
 <<endif>>

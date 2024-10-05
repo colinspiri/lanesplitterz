@@ -180,11 +180,9 @@ public class DialogueUI : MonoBehaviour
     public void EnableOneArt(GameObject art)
     {
         art.transform.GetChild(0).gameObject.SetActive(true);
-        art.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.2f).SetUpdate(true);
+        art.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.1f).SetUpdate(true);
     }
 
-    // TODO: Enable all children objects and set their alphas to 0
-    // TODO: Use unscaled time for tweens by using SetUpdate(true)
     [YarnCommand("EnableArt")]
     public void EnableArt(GameObject artOne, GameObject artTwo)
     {
@@ -202,23 +200,26 @@ public class DialogueUI : MonoBehaviour
 
         artOne.transform.GetChild(0).gameObject.SetActive(true);
         artTwo.transform.GetChild(0).gameObject.SetActive(true);
-        artOne.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.2f).SetUpdate(true);
-        artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.2f).SetUpdate(true);
+        artOne.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.1f).SetUpdate(true);
+        artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(1f, 0.1f).SetUpdate(true);
     }
 
     [YarnCommand("DisableArt")]
     public void DisableArt(GameObject artOne, GameObject artTwo)
     {
-        artOne.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.2f).SetUpdate(true);
-        artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.2f).SetUpdate(true);
-        artOne.transform.GetChild(0).gameObject.SetActive(false);
-        artTwo.transform.GetChild(0).gameObject.SetActive(false);
+        DisableOneArt(artOne);
+        DisableOneArt(artTwo);
+
+        //artOne.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.1f).SetUpdate(true);
+        //artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.1f).SetUpdate(true);
+        //artOne.transform.GetChild(0).gameObject.SetActive(false);
+        //artTwo.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     [YarnCommand("DisableOneArt")]
     public void DisableOneArt(GameObject art)
     {
-        art.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.2f).SetUpdate(true)
+        art.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.1f).SetUpdate(true)
             .onComplete += () => 
             { art.transform.GetChild(0).gameObject.SetActive(false); };
     }
@@ -242,7 +243,7 @@ public class DialogueUI : MonoBehaviour
         tempColor2.r = 0.25f;
         tempColor2.g = 0.25f;
         tempColor2.b = 0.25f;
-        artThree.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.2f);
+        artThree.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.1f);
 
         EnableOneArt(artOne);
         DisableOneArt(artTwo);
@@ -286,7 +287,7 @@ public class DialogueUI : MonoBehaviour
         tempColor.b = 1f;
         //fadeIn.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        fadeIn.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.2f).SetUpdate(true);
+        fadeIn.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.1f).SetUpdate(true);
 
         Color tempColor2 = fadeOut.transform.GetChild(0).GetComponent<Image>().color;
         tempColor2.r = 0.25f;
@@ -294,7 +295,7 @@ public class DialogueUI : MonoBehaviour
         tempColor2.b = 0.25f;
         //fadeOut.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        fadeOut.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.2f).SetUpdate(true);
+        fadeOut.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.1f).SetUpdate(true);
     }
 
     [YarnCommand("FadeOutBothArt")]
@@ -306,7 +307,7 @@ public class DialogueUI : MonoBehaviour
         tempColor.b = 0.25f;
         //artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.2f).SetUpdate(true);
+        artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.1f).SetUpdate(true);
 
         Color tempColor2 = artTwo.transform.GetChild(0).GetComponent<Image>().color;
         tempColor2.r = 0.25f;
@@ -314,7 +315,7 @@ public class DialogueUI : MonoBehaviour
         tempColor2.b = 0.25f;
         //artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.2f).SetUpdate(true);
+        artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.1f).SetUpdate(true);
     }
 
     [YarnCommand("FadeInBothArt")]
@@ -326,7 +327,7 @@ public class DialogueUI : MonoBehaviour
         tempColor.b = 1f;
         //artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.2f).SetUpdate(true);
+        artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, 0.1f).SetUpdate(true);
 
         Color tempColor2 = artTwo.transform.GetChild(0).GetComponent<Image>().color;
         tempColor2.r = 1f;
@@ -334,7 +335,7 @@ public class DialogueUI : MonoBehaviour
         tempColor2.b = 1f;
         //artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
-        artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.2f).SetUpdate(true);
+        artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, 0.1f).SetUpdate(true);
     }
 
     [YarnCommand("DisableDialogue")]
