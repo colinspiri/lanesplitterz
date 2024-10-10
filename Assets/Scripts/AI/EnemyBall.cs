@@ -39,8 +39,8 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
     [SerializeField] private float controlWeight;
-    [SerializeField] private float distWeight;
-    [SerializeField] private float angleWeight;
+    //[SerializeField] private float distWeight;
+    //[SerializeField] private float angleWeight;
     // The position being moved to
     private Vector3 _targetPos;
     private float _targetScore;
@@ -48,7 +48,6 @@ public class EnemyBall : MonoBehaviour
     private Dictionary<GameObject, float> _valueCache;
     private int totalPoints = 0;
     private float totalSpeed = 0f;
-    private float maxFuel = 1f;
 
     // The true update time for checking positions
     private float _posUpdateTime;
@@ -104,6 +103,7 @@ public class EnemyBall : MonoBehaviour
     private int _pinLayer;
     private int _obstacleLayer;
     private int _ballLayer;
+    private int _barrierLayer;
     private int _groundLayer;
     private SphereCollider _myCollider;
     private float _myRadius;
@@ -160,6 +160,7 @@ public class EnemyBall : MonoBehaviour
         _obstacleLayer = LayerMask.NameToLayer("Obstacles");
         _ballLayer = LayerMask.NameToLayer("Balls");
         _groundLayer = LayerMask.NameToLayer("Ground");
+        _barrierLayer = LayerMask.NameToLayer("Barriers");
 
         _myCollider = GetComponent<SphereCollider>();
         _myCollider.hasModifiableContacts = true;
@@ -503,8 +504,8 @@ public class EnemyBall : MonoBehaviour
             // if (_turning) conatinue;
             
             // Box cast to find objects ahead
-            Collider[] visibleObstacles = Physics.OverlapBox(transform.position,
-                new Vector3(50f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
+            //Collider[] visibleObstacles = Physics.OverlapBox(transform.position,
+            //    new Vector3(50f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
             
             float bestValue = Mathf.NegativeInfinity;
             Vector3 bestPos = Vector3.zero;
@@ -525,21 +526,24 @@ public class EnemyBall : MonoBehaviour
                 float time = Mathf.Abs(i);
                 // Negative going left, positive going right
                 float dir = Mathf.Sign(i);
-                
+
                 // Project positions vertically in time
-                for (float j = time; j < secondsToConsider + 0.1f; j += timeStep)
+                // for (float j = time; j < secondsToConsider + 0.1f; j += timeStep)
+                for (int j = 0; j < 1; j++)
                 {
-                    float verticalTime = secondsToConsider - j;
+                    // float verticalTime = secondsToConsider - j;
 
                     // Calculate predicted horizontal position
                     // a = Fdt / (m * dt)
                     Vector3 impulse = _refInvRot * rotationRef.right * (turnForce * dir);
                     Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
-                    Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
-                    
+                    // Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
+
                     // Calculate predicted final position
-                    Vector3 predictedPos = PredictPosition(verticalTime, horizontalPos);
-                    
+                    // Vector3 predictedPos = PredictPosition(verticalTime, horizontalPos);
+
+                    Vector3 predictedPos = PredictPosition(time, in accel, transform.position);
+
                     // If out of bounds, skip to next position
                     if (predictedPos.x > _laneBounds.max.x ||
                         predictedPos.z > _laneBounds.max.z ||
@@ -567,164 +571,51 @@ public class EnemyBall : MonoBehaviour
 
                     if (showActualPositions) predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
 
-                    // Evaluate all visible obstacles relative to this position
-                    for (int k = 0; k < visibleObstacles.Length; k++)
+                    RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, 2f, _refInvRot * rotationRef.forward,
+                        visibleLimit, visibleLayers);
+
+                    Vector3 diff = predictedPos - transform.position;
+
+                    RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, 2f, diff.normalized,
+                        diff.magnitude + 0.5f, visibleLayers);
+
+
+                    //Collider[] obstaclesAhead = Physics.OverlapBox(predictedPos,
+                    //    new Vector3(2f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
+
+                    // Evaluate all obstacles ahead of this position
+                    for (int k = 0; k < obstaclesAhead.Length; k++)
                     {
-                        GameObject obstacle = visibleObstacles[k].gameObject;
+                        GameObject obstacle = obstaclesAhead[k].collider.gameObject;
                         
                         // Ignore the enemy ball itself as an obstacle
                         if (obstacle == gameObject) continue;
 
-                        Bounds obsBounds = visibleObstacles[k].bounds;
+                        Bounds obsBounds = obstaclesAhead[k].collider.bounds;
 
-                        // Ignore unreachable obstacles from position
-                        // Doesn't ignore the player, since they can catch up
-                        /* Assumes positive z is always forward */
-                        if (obstacle.layer != _ballLayer &&
-                            predictedPos.z - obstacle.transform.position.z > _myRadius) continue;
-
-
-
-                        if (showActualPositions)
-                        {
-                            predictedString += "Evaluating obstacle " + obstacle.name + " with instance ID " + obstacle.GetInstanceID() + "\n";
-                        }
-
-                        // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
-                        float obsValue = 0f;
-
-                        // Pin
-                        if (obstacle.layer == _pinLayer)
-                        {
-                            Pin pin = obstacle.GetComponent<Pin>();
-
-                            // Pin is knocked down
-                            if (pin.pinState != Pin.PinState.Untouched)
-                            {
-                                obsValue = 0;
-                            }
-                            // Pin is part of cluster
-                            else if (pin.parentCluster)
-                            {
-                                _valueCache[obstacle] = pointWeight * pin.parentCluster.PinValue(pin) / totalPoints;
-                            }
-                            // Pin is individual and hasn't been knocked down
-                            else
-                            {
-                                obsValue = _valueCache[obstacle];
-                            }
-                        }
-                        // Obstacle
-                        else if (obstacle.layer == _obstacleLayer)
-                        {
-                            if (obstacle.CompareTag("Speed Pad"))
-                            {
-                                obsValue = _valueCache[obstacle];
-                            }
-                            else if (obstacle.CompareTag("Damage Obstacle"))
-                            {
-                                breakableObstacle breakableObs;
-                                billboardMovement billboardMove;
-                                if (obstacle.TryGetComponent(out breakableObs))
-                                {
-                                    if (breakableObs.destroyed)
-                                    {
-                                        obsValue = 0f;
-                                    }
-                                    else
-                                    {
-                                        obsValue = _valueCache[obstacle];
-                                    }
-                                }
-                                else if (obstacle.TryGetComponent(out billboardMove))
-                                {
-                                    if (billboardMove.destroyed)
-                                    {
-                                        obsValue = 0f;
-                                    }
-                                    else
-                                    {
-                                        obsValue = _valueCache[obstacle];
-                                    }
-                                }
-                                else
-                                {
-                                    Debug.LogError("Enemy error: Invalid damaging obstacle " +
-                                                    obstacle.name + " found");
-                                }
-                            }
-                            else if (obstacle.CompareTag("Mine"))
-                            {
-                                obsValue = _valueCache[obstacle];
-                            }
-                        }
-                        // Player ball
-                        else if (obstacle.layer == _ballLayer)
-                        {
-                            if (attackPlayer)
-                            {
-                                obsValue = 0f;
-                            }
-                            else
-                            {
-                                obsValue = _valueCache[obstacle];
-                            }
-                        }
-                        // Oil slick
-                        else if (obstacle.layer == _groundLayer)
-                        {
-                            if (obstacle.CompareTag("Icy"))
-                            {
-                                obsValue = _valueCache[obstacle];
-                            }
-                            else
-                            {
-                                continue;
-                            }
-                        }
-
-                        if (showActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
-
-                        // Scale obstacle value by cos of angle between obstacle and position
-                        // An angle of 90 degrees means it's unreachable and is worthless
-                        // An angle of 0 degrees means it's straight-ahead and worth its full value
-                        Vector3 posToObs = obstacle.transform.position - predictedPos;
-                        posToObs.y = 0f;
-                        posToObs = posToObs.normalized;
-
-                        Vector3 parentForward = _refInvRot * rotationRef.forward;
-                        parentForward.y = 0f;
-                        parentForward = parentForward.normalized;
-
-                        obsValue *= Mathf.Abs(Vector3.Dot(posToObs, parentForward)) * angleWeight;
-
-                        if (showActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
-
-                        // Scale obstacle value by inverse distance from it to position
-
-                        // Calculate inverse distance to obstacle
-
-                        float invDist;
-
-                        if (obsBounds.Contains(predictedPos))
-                        {
-                            invDist = 1f;
-                        }
-                        else
-                        {
-                            // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
-                            // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
-                            invDist = InvDistanceBounds(predictedPos, obsBounds);
-                        }
-
-                        // Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
-                        invDist = Mathf.Clamp(invDist, 0f, 1f);
-                        obsValue *= invDist;
-                        if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
-                        obsValue *= distWeight;
-
-                        posValue += obsValue;
+                        posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref predictedPos, false);
                     }
+
+                    // Evaluate all obstacles on the way to this position
+                    for (int k = 0; k < obstaclesInBetween.Length; k++)
+                    {
+                        GameObject obstacle = obstaclesInBetween[k].collider.gameObject;
+
+                        // Ignore the enemy ball itself as an obstacle
+                        if (obstacle == gameObject) continue;
+
+                        Bounds obsBounds = obstaclesInBetween[k].collider.bounds;
+
+                        posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref predictedPos, true);
+                    }
+
+                    // Scale position value inversely by how far ahead it is
+                    float secondsBound = secondsToConsider * 1.5f;
+                    float timeScalar = 1f - Mathf.Pow(time / secondsBound, 2f);
+
+                    predictedString += "Time scalar is " + timeScalar;
+
+                    posValue *= timeScalar;
 
                     // If attacking the player, scale position value by inverse x-distance to player ball
                     if (attackPlayer) posValue *= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
@@ -769,6 +660,147 @@ public class EnemyBall : MonoBehaviour
         }
     }
 
+    private float ScoreObstacle(GameObject obstacle, Bounds obsBounds, ref string predictedString, ref Vector3 predictedPos, bool inBetween)
+    {
+        if (showActualPositions)
+        {
+            predictedString += "Evaluating obstacle " + obstacle.name + " with instance ID " + obstacle.GetInstanceID() + "\n";
+        }
+
+        // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
+        float obsValue = 0f;
+
+        // Pin
+        if (obstacle.layer == _pinLayer)
+        {
+            Pin pin = obstacle.GetComponent<Pin>();
+
+            // Pin is knocked down
+            if (pin.pinState != Pin.PinState.Untouched)
+            {
+                obsValue = 0;
+            }
+            // Pin is part of cluster
+            else if (pin.parentCluster)
+            {
+                _valueCache[obstacle] = pointWeight * pin.parentCluster.PinValue(pin) / totalPoints;
+            }
+            // Pin is individual and hasn't been knocked down
+            else
+            {
+                obsValue = _valueCache[obstacle];
+            }
+        }
+        // Obstacle
+        else if (obstacle.layer == _obstacleLayer)
+        {
+            if (obstacle.CompareTag("Speed Pad"))
+            {
+                obsValue = _valueCache[obstacle];
+            }
+            else if (obstacle.CompareTag("Damage Obstacle"))
+            {
+                billboardMovement billboardMove = obstacle.GetComponent<billboardMovement>();
+
+                if (billboardMove.destroyed)
+                {
+                    obsValue = 0f;
+                }
+                else
+                {
+                    obsValue = _valueCache[obstacle];
+                }
+            }
+            else if (obstacle.CompareTag("Mine"))
+            {
+                obsValue = _valueCache[obstacle];
+            }
+        }
+        // Barrier
+        else if (obstacle.layer == _barrierLayer)
+        {
+            breakableObstacle breakableObs = obstacle.GetComponent<breakableObstacle>();
+            if (breakableObs.destroyed)
+            {
+                obsValue = 0f;
+            }
+            else
+            {
+                obsValue = _valueCache[obstacle];
+            }
+        }
+        // Player ball
+        else if (obstacle.layer == _ballLayer)
+        {
+            if (attackPlayer)
+            {
+                obsValue = 0f;
+            }
+            else
+            {
+                obsValue = _valueCache[obstacle];
+            }
+        }
+        // Oil slick
+        else if (obstacle.layer == _groundLayer)
+        {
+            if (obstacle.CompareTag("Icy"))
+            {
+                obsValue = _valueCache[obstacle];
+            }
+            else
+            {
+                return 0f;
+            }
+        }
+
+        if (showActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
+
+        if (!inBetween)
+        {
+            // Scale obstacle value by cos of angle between obstacle and position
+            // An angle of 90 degrees means it's unreachable and is worthless
+            // An angle of 0 degrees means it's straight-ahead and worth its full value
+            Vector3 posToObs = obsBounds.ClosestPoint(predictedPos) - predictedPos;
+            posToObs.y = 0f;
+            posToObs = posToObs.normalized;
+
+            Vector3 parentForward = _refInvRot * rotationRef.forward;
+            parentForward.y = 0f;
+            parentForward = parentForward.normalized;
+
+            // Dot product is equal to 1 at 0 degrees (obs *= 1), 0 at 90 degrees (obs *= 0), -1 at 180 degrees (obs *= 0)
+            obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, 1f);
+
+            if (showActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
+
+            // Scale obstacle value by inverse distance from it to position
+
+            // Calculate inverse distance to obstacle
+
+            float invDist;
+
+            if (obsBounds.Contains(predictedPos))
+            {
+                invDist = 1f;
+            }
+            else
+            {
+                // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+                // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
+                invDist = InvDistanceBounds(predictedPos, obsBounds, 1f);
+            }
+
+            // Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
+            invDist = Mathf.Clamp(invDist, 0f, 1f);
+            obsValue *= invDist;
+            if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
+            // obsValue *= distWeight;
+        }
+
+        return obsValue;
+    }
+
     public void ComputeValues()
     {
         Initialize();
@@ -796,15 +828,15 @@ public class EnemyBall : MonoBehaviour
 
         for (int i = 0; i < billboards.Length; i++)
         {
-            _valueCache[billboards[i].gameObject] = -1f * fuelWeight * billboards[i].fuelSub / maxFuel;
+            _valueCache[billboards[i].gameObject] = -1f * fuelWeight * billboards[i].fuelSub;
         }
 
         for (int i = 0; i < barriers.Length; i++)
         {
-            _valueCache[barriers[i].gameObject] = -1f * fuelWeight * barriers[i].fuelSub / maxFuel;
+            _valueCache[barriers[i].gameObject] = -1f * fuelWeight * barriers[i].fuelSub;
         }
 
-        _valueCache[player.gameObject] = -1f * playerFuelLoss * fuelWeight / maxFuel;
+        _valueCache[player.gameObject] = -1f * playerFuelLoss * fuelWeight;
 
         // Speed givers
         SpeedPlane[] boosters = FindObjectsOfType<SpeedPlane>();
@@ -1070,9 +1102,9 @@ public class EnemyBall : MonoBehaviour
     
     // Calculate the inverse distance from one position to a bounding box
     /* This is inefficient and should be rewritten with a custom bound parsing method */
-    private float InvDistanceBounds(Vector3 from, Bounds to)
+    private float InvDistanceBounds(Vector3 from, Bounds to, float power = 1f)
     {
-        float distance = Mathf.Pow(to.SqrDistance(from), -0.5f);
+        float distance = Mathf.Pow(to.SqrDistance(from), -0.5f * power);
 
         return distance;
     }

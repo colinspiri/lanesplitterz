@@ -339,18 +339,18 @@ MonoBehaviour:
   visibleLimit: 200
   visibleLayers:
     serializedVersion: 2
-    m_Bits: 1416
+    m_Bits: 5512
   straightenSeconds: 0
   secondsToConsider: 2.5
   considerTimeSteps: 25
   changePosDiff: 0.1
+  playerAggression: 0
   playerFuelLoss: 0.1
+  player: {fileID: 0}
   fuelWeight: 0.4
   speedWeight: 0.2
   pointWeight: 0.4
-  distWeight: 0.3
-  angleWeight: 0.7
-  aggroPoints: 0
+  controlWeight: 0
   turnForce: 2.5
   hookForceMultiplier: 0
   turnSpeedPerSecond: 0.1
@@ -361,6 +361,7 @@ MonoBehaviour:
   explosionVerticality: 0.5
   turnFuel: 0.01
   accelFuel: 0
+  _fuelMeter: 1
   rotationRef: {fileID: 0}
   hitGutter: {fileID: 9121268388709437970}
   showActualPositions: 0
