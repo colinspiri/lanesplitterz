@@ -3111,7 +3111,8 @@ MonoBehaviour:
   _showDebugFields: 0
   _enableGizmoDebugging: 1
   _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
+  _previouslyRegisteredEvent: {fileID: 11400000, guid: 881eb3523d85da74aba6331f80bc3f69,
+    type: 2}
   _event: {fileID: 11400000, guid: 881eb3523d85da74aba6331f80bc3f69, type: 2}
   _response:
     m_PersistentCalls:
@@ -3393,7 +3394,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16381
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
