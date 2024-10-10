@@ -13,22 +13,26 @@ public class MiniPinCluster : PinClusterParent
         _pinIndices = new(transform.childCount);
 
         float minZ = Mathf.Infinity;
+        Pin bestPin = null;
 
         // Identify first pin in cluster (First layer)
         for (int i = 0; i < transform.childCount; i++)
         {
-            Transform pin = transform.GetChild(i);
+            Transform pinBody = transform.GetChild(i);
 
-            if (pin.position.z < minZ)
+            Pin pin = pinBody.GetComponent<Pin>();
+
+            pin.parentCluster = this;
+
+            if (pinBody.position.z < minZ)
             {
-                minZ = pin.position.z;
-                _children.Insert(0, pin.GetComponent<Pin>());
-                // _children[0] = pin.GetComponent<Pin>();
-                _children[0].parentCluster = this;
-
-                _pinIndices[_children[0]] = 0;
+                minZ = pinBody.position.z;
+                bestPin = pin;
             }
         }
+
+        _children.Add(bestPin);
+        _pinIndices[bestPin] = 0;
 
         // Add second layer of pins
         for (int i = 0; i < transform.childCount; i++)
