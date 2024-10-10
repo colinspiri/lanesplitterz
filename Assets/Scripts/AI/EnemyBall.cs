@@ -735,7 +735,7 @@ public class EnemyBall : MonoBehaviour
             // Pin is part of cluster
             else if (pin.parentCluster)
             {
-                _valueCache[obstacle] = pointWeight * pin.parentCluster.PinValue(pin) / totalPoints;
+                obsValue = pointWeight * pin.parentCluster.PinValue(pin) / totalPoints;
             }
             // Pin is individual and hasn't been knocked down
             else
