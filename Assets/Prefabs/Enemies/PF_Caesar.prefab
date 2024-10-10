@@ -52,13 +52,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6702737fc41c139488725497a01ace60, type: 2}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
+      propertyPath: turnFuel
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
       propertyPath: turnForce
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: fuelWeight
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -68,7 +73,7 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: pointWeight
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -78,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: attackPlayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -88,12 +93,12 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: playerAggression
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: considerTimeSteps
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -103,12 +108,12 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: showActualPositions
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: showPossiblePositions
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6519864363889820360, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}

@@ -56,7 +56,7 @@ public class EnemyBall : MonoBehaviour
     private float turnForce;
     //[SerializeField] private float hookForceMultiplier;
     //[SerializeField] private float turnSpeedPerSecond = 0.1f;
-    [SerializeField] private float slipperyForce = 10f;
+    [SerializeField] private float slipperyMod = 10f;
     [SerializeField] private float minimumSpeed;
     public float extraGravity;
 
@@ -132,7 +132,6 @@ public class EnemyBall : MonoBehaviour
 
     private void Awake()
     {
-        _possiblePositions = new();
         Initialize();
     }
 
@@ -143,6 +142,7 @@ public class EnemyBall : MonoBehaviour
             // Clear enemy pattern object regardless of whether debugging is being used
             enemyPattern.Instantiate();
 
+            if (_possiblePositions == null) _possiblePositions = new();
             _possiblePositions.Instantiate();
 
 
@@ -328,8 +328,8 @@ public class EnemyBall : MonoBehaviour
     //     // {
     //     //     Debug.Log("Turning skidding on ice");
     //     //     
-    //     //     linForce /= slipperyForce;
-    //     //     rotForce /= slipperyForce;
+    //     //     linForce /= slipperyMod;
+    //     //     rotForce /= slipperyMod;
     //     // }
     //
     //     // Linear acceleration
@@ -364,8 +364,8 @@ public class EnemyBall : MonoBehaviour
         // {
         //     Debug.Log("Turning skidding on ice");
         //     
-        //     linForce /= slipperyForce;
-        //     rotForce /= slipperyForce;
+        //     linForce /= slipperyMod;
+        //     rotForce /= slipperyMod;
         // }
 
         // Linear acceleration
@@ -435,8 +435,8 @@ public class EnemyBall : MonoBehaviour
         {
             // Debug.Log("Acceleration skidding on ice");
 
-            linearForce /= slipperyForce;
-            rotationalForce /= slipperyForce;
+            linearForce /= slipperyMod;
+            rotationalForce /= slipperyMod;
         }
 
         // Linear acceleration
@@ -474,8 +474,8 @@ public class EnemyBall : MonoBehaviour
         {
             // Debug.Log("Acceleration skidding on ice");
 
-            linearForce /= slipperyForce;
-            rotationalForce /= slipperyForce;
+            linearForce /= slipperyMod;
+            rotationalForce /= slipperyMod;
         }
 
         // Steer existing velocity toward direction of force
@@ -604,12 +604,12 @@ public class EnemyBall : MonoBehaviour
                     predictedString += "Scaled fuel cost: " + expectedFuelLoss * -fuelWeight + "\n";
                 }
 
-                RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, _myCollider.radius, _refInvRot * rotationRef.forward,
+                RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, 1f, _refInvRot * rotationRef.forward,
                     visibleLimit, visibleLayers);
 
                 Vector3 diff = predictedPos - transform.position;
 
-                RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, _myCollider.radius, diff.normalized,
+                RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, 1f, diff.normalized,
                     diff.magnitude + 0.5f, visibleLayers);
 
                 HashSet<GameObject> obstacleCache = new();
@@ -812,10 +812,12 @@ public class EnemyBall : MonoBehaviour
 
         if (!inBetween)
         {
+            Vector3 nearestPoint = obsBounds.ClosestPoint(predictedPos);
+
             // Scale obstacle value by cos of angle between obstacle and position
             // An angle of 90 degrees means it's unreachable and is worthless
             // An angle of 0 degrees means it's straight-ahead and worth its full value
-            Vector3 posToObs = obsBounds.ClosestPoint(predictedPos) - predictedPos;
+            Vector3 posToObs = nearestPoint - predictedPos;
             posToObs.y = 0f;
             posToObs = posToObs.normalized;
 
@@ -858,9 +860,11 @@ public class EnemyBall : MonoBehaviour
             // Value Scalar: 1 - (((dist / 35) - 1) / 4)
             // Simplified: 1.25 - (dist / 140f)
 
-            float dist = Vector3.Distance(predictedPos, obstacle.transform.position);
+            float dist = Vector3.Distance(predictedPos, nearestPoint);
 
-            obsValue *= Mathf.Clamp(1.25f - (dist / 140f), 0f, 1f);
+            // obsValue *= Mathf.Clamp(1.25f - (dist / 140f), 0f, 1f);
+
+            obsValue *= 1.25f - (dist / 140f);
 
             if (showActualPositions && verboseActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
             if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Value accounting for distance: " + obsValue + "\n";
