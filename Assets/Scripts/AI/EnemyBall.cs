@@ -113,10 +113,12 @@ public class EnemyBall : MonoBehaviour
     #region Debugging
 
     [SerializeField] private bool showActualPositions = false;
+    [SerializeField] private bool verboseActualPositions = false;
     [SerializeField] private bool showPossiblePositions = false;
+    [SerializeField] private bool verbosePossiblePositions = false;
     [SerializeField] private EnemyPattern enemyPattern;
     [SerializeField] private GameObject gizmoObj;
-    private List<Vector3> _possiblePositions;
+    private EnemyPattern _possiblePositions;
     private int _posCount = 0;
     [SerializeField] private bool aiEnabled = true;
     
@@ -129,6 +131,7 @@ public class EnemyBall : MonoBehaviour
 
     private void Awake()
     {
+        _possiblePositions = new();
         Initialize();
     }
 
@@ -138,6 +141,9 @@ public class EnemyBall : MonoBehaviour
         {
             // Clear enemy pattern object regardless of whether debugging is being used
             enemyPattern.Instantiate();
+
+            _possiblePositions.Instantiate();
+
 
             _valueCache = new();
             _myBody = GetComponent<Rigidbody>();
@@ -173,7 +179,7 @@ public class EnemyBall : MonoBehaviour
 
         _myParentScript = transform.parent.GetComponent<Enemy>();
 
-        _possiblePositions = new();
+        // _possiblePositions = new();
 
         StartMovement();
     }
@@ -234,9 +240,9 @@ public class EnemyBall : MonoBehaviour
         if (showPossiblePositions && _possiblePositions != null)
         {
             Gizmos.color = Color.green;
-            for (int i = 0; i < _possiblePositions.Count; i++)
+            for (int i = 0; i < _possiblePositions.GetCount(); i++)
             {
-                Gizmos.DrawSphere(_possiblePositions[i], 1.5f);
+                Gizmos.DrawSphere(_possiblePositions.GetPosition(i), 1.5f);
             }
         }
     }
@@ -516,12 +522,12 @@ public class EnemyBall : MonoBehaviour
 
             if (showPossiblePositions)
             {
-                _possiblePositions.Clear();
+                _possiblePositions.ClearPositions();
                 // Debug.Log("Drawing possible positions for position " + _posCount + 1 + ":");
             }
 
             // Project positions horizontally in time
-            for (float i = -1f * secondsToConsider; i < secondsToConsider + 0.1f; i += timeStep)
+            for (float i = -1f * secondsToConsider, c = 0; i < secondsToConsider + 0.1f; i += timeStep)
             {
                 float time = Mathf.Abs(i);
                 // Negative going left, positive going right
@@ -529,108 +535,135 @@ public class EnemyBall : MonoBehaviour
 
                 // Project positions vertically in time
                 // for (float j = time; j < secondsToConsider + 0.1f; j += timeStep)
-                for (int j = 0; j < 1; j++)
+                // float verticalTime = secondsToConsider - j;
+
+                // Calculate predicted horizontal position
+                // a = Fdt / (m * dt)
+                Vector3 impulse = _refInvRot * rotationRef.right * (turnForce * dir);
+                Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
+                // Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
+
+                // Calculate predicted final position
+                // Vector3 predictedPos = PredictPosition(verticalTime, horizontalPos);
+
+                Vector3 predictedPos = PredictPosition(time, in accel, transform.position);
+
+                // If out of bounds, skip to next position
+                if (predictedPos.x > _laneBounds.max.x ||
+                    predictedPos.z > _laneBounds.max.z ||
+                    predictedPos.x < _laneBounds.min.x ||
+                    predictedPos.z < _laneBounds.min.z)
                 {
-                    // float verticalTime = secondsToConsider - j;
+                    continue;
+                }
 
-                    // Calculate predicted horizontal position
-                    // a = Fdt / (m * dt)
-                    Vector3 impulse = _refInvRot * rotationRef.right * (turnForce * dir);
-                    Vector3 accel = impulse / (_myBody.mass * Time.fixedDeltaTime);
-                    // Vector3 horizontalPos = PredictPosition(time, in accel, transform.position);
+                if (showPossiblePositions)
+                {
+                    _possiblePositions.AddPosition(predictedPos, gizmoObj);
+                }
 
-                    // Calculate predicted final position
-                    // Vector3 predictedPos = PredictPosition(verticalTime, horizontalPos);
+                string possibleString = "";
+                if (showPossiblePositions && verbosePossiblePositions) possibleString = "Possible target " + c + " at time " + i + "\n";
 
-                    Vector3 predictedPos = PredictPosition(time, in accel, transform.position);
+                c++;
 
-                    // If out of bounds, skip to next position
-                    if (predictedPos.x > _laneBounds.max.x ||
-                        predictedPos.z > _laneBounds.max.z ||
-                        predictedPos.x < _laneBounds.min.x ||
-                        predictedPos.z < _laneBounds.min.z)
+                string predictedString = "";
+                if (showActualPositions && verboseActualPositions) predictedString = "Actual target " + _posCount + "\n";
+
+                // Quality of the position (more positive is better)
+                float posValue = 0f;
+                    
+                // Expected fuel loss to reach position
+                float expectedFuelLoss = turnFuel * time;
+                // Deduct expected fuel cost from quality
+                posValue -= expectedFuelLoss * fuelWeight;
+
+                if (showPossiblePositions && verbosePossiblePositions)
+                {
+                    possibleString += "Expected fuel loss: " + expectedFuelLoss + "\n";
+                    possibleString += "Scaled fuel cost: " + expectedFuelLoss * fuelWeight + "\n";
+                }
+
+                if (showActualPositions && verboseActualPositions)
+                {
+                    predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
+                    predictedString += "Scaled fuel cost: " + expectedFuelLoss * fuelWeight + "\n";
+                }
+
+                RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, 2f, _refInvRot * rotationRef.forward,
+                    visibleLimit, visibleLayers);
+
+                Vector3 diff = predictedPos - transform.position;
+
+                RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, 2f, diff.normalized,
+                    diff.magnitude + 0.5f, visibleLayers);
+
+                HashSet<GameObject> obstacleCache = new();
+
+
+                //Collider[] obstaclesAhead = Physics.OverlapBox(predictedPos,
+                //    new Vector3(2f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
+
+                // Evaluate all obstacles ahead of this position
+                for (int k = 0; k < obstaclesAhead.Length; k++)
+                {
+                    GameObject obstacle = obstaclesAhead[k].collider.gameObject;
+
+                    obstacleCache.Add(obstacle);
+                        
+                    // Ignore the enemy ball itself as an obstacle
+                    if (obstacle == gameObject) continue;
+
+                    Bounds obsBounds = obstaclesAhead[k].collider.bounds;
+
+                    posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref possibleString, ref predictedPos, false);
+                }
+
+                // Evaluate all obstacles on the way to this position
+                for (int k = 0; k < obstaclesInBetween.Length; k++)
+                {
+                    GameObject obstacle = obstaclesInBetween[k].collider.gameObject;
+
+                    if (obstacleCache.Contains(obstacle))
                     {
                         continue;
                     }
 
-                    if (showPossiblePositions)
-                    {
-                        _possiblePositions.Add(predictedPos);
-                    }
+                    // Ignore the enemy ball itself as an obstacle
+                    if (obstacle == gameObject) continue;
 
-                    string predictedString = "";
-                    if (showActualPositions) predictedString = "Target position " + _posCount + "\n";
+                    Bounds obsBounds = obstaclesInBetween[k].collider.bounds;
 
-                    // Quality of the position (more positive is better)
-                    float posValue = 0f;
-                    
-                    // Expected fuel loss to reach position
-                    float expectedFuelLoss = turnFuel * time;
-                    // Deduct expected fuel cost from quality
-                    posValue -= expectedFuelLoss * fuelWeight;
+                    posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref possibleString, ref predictedPos, true);
+                }
 
-                    if (showActualPositions) predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
+                // Scale position value inversely by how far ahead it is
+                //float secondsBound = secondsToConsider * 1.5f;
+                //float timeScalar = 1f - Mathf.Pow(time / secondsBound, 2f);
 
-                    RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, 2f, _refInvRot * rotationRef.forward,
-                        visibleLimit, visibleLayers);
+                //predictedString += "Time scalar is " + timeScalar;
 
-                    Vector3 diff = predictedPos - transform.position;
+                //posValue *= timeScalar;
 
-                    RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, 2f, diff.normalized,
-                        diff.magnitude + 0.5f, visibleLayers);
+                // If attacking the player, scale position value by inverse x-distance to player ball
+                if (attackPlayer) posValue *= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
 
+                if (showPossiblePositions && verbosePossiblePositions) possibleString += "Value of position " + _posCount + ": " + posValue;
 
-                    //Collider[] obstaclesAhead = Physics.OverlapBox(predictedPos,
-                    //    new Vector3(2f, 50f, visibleLimit), rotationRef.rotation, visibleLayers);
+                if (showActualPositions && verboseActualPositions) predictedString += "Value of position " + _posCount + ": " + posValue;
 
-                    // Evaluate all obstacles ahead of this position
-                    for (int k = 0; k < obstaclesAhead.Length; k++)
-                    {
-                        GameObject obstacle = obstaclesAhead[k].collider.gameObject;
-                        
-                        // Ignore the enemy ball itself as an obstacle
-                        if (obstacle == gameObject) continue;
+                // if (showPossiblePositions) Debug.Log("Tentative position at time " + i + "\n" + predictedString);
 
-                        Bounds obsBounds = obstaclesAhead[k].collider.bounds;
+                if (showPossiblePositions) Debug.Log(possibleString);
 
-                        posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref predictedPos, false);
-                    }
-
-                    // Evaluate all obstacles on the way to this position
-                    for (int k = 0; k < obstaclesInBetween.Length; k++)
-                    {
-                        GameObject obstacle = obstaclesInBetween[k].collider.gameObject;
-
-                        // Ignore the enemy ball itself as an obstacle
-                        if (obstacle == gameObject) continue;
-
-                        Bounds obsBounds = obstaclesInBetween[k].collider.bounds;
-
-                        posValue += ScoreObstacle(obstacle, obsBounds, ref predictedString, ref predictedPos, true);
-                    }
-
-                    // Scale position value inversely by how far ahead it is
-                    //float secondsBound = secondsToConsider * 1.5f;
-                    //float timeScalar = 1f - Mathf.Pow(time / secondsBound, 2f);
-
-                    //predictedString += "Time scalar is " + timeScalar;
-
-                    //posValue *= timeScalar;
-
-                    // If attacking the player, scale position value by inverse x-distance to player ball
-                    if (attackPlayer) posValue *= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
-
-                    if (showActualPositions) predictedString += "Value of position " + _posCount + ": " + posValue;
-
-                    // Update best positions if better position is found
-                    if (posValue > bestValue)
-                    {
-                        bestValue = posValue;
-                        bestPos = predictedPos;
-                        bestDir = dir;
-                        // bestTime = time;
-                        if (showActualPositions) bestString = predictedString;
-                    }
+                // Update best positions if better position is found
+                if (posValue > bestValue)
+                {
+                    bestValue = posValue;
+                    bestPos = predictedPos;
+                    bestDir = dir;
+                    // bestTime = time;
+                    if (showActualPositions) bestString = predictedString;
                 }
             }
 
@@ -660,11 +693,16 @@ public class EnemyBall : MonoBehaviour
         }
     }
 
-    private float ScoreObstacle(GameObject obstacle, Bounds obsBounds, ref string predictedString, ref Vector3 predictedPos, bool inBetween)
+    private float ScoreObstacle(GameObject obstacle, Bounds obsBounds, ref string predictedString, ref string possibleString, ref Vector3 predictedPos, bool inBetween)
     {
         if (showActualPositions)
         {
             predictedString += "Evaluating obstacle " + obstacle.name + " with instance ID " + obstacle.GetInstanceID() + "\n";
+        }
+
+        if (showPossiblePositions)
+        {
+            possibleString += "Evaluating obstacle " + obstacle.name + " with instance ID " + obstacle.GetInstanceID() + "\n";
         }
 
         // The value of the obstacle, positive meaning it benefits you, negative meaning it hurts
@@ -754,7 +792,9 @@ public class EnemyBall : MonoBehaviour
             }
         }
 
-        if (showActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
+        if (showActualPositions && verboseActualPositions) predictedString += "    Unscaled value: " + obsValue + "\n";
+
+        if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Unscaled value: " + obsValue + "\n";
 
         if (!inBetween)
         {
@@ -772,7 +812,8 @@ public class EnemyBall : MonoBehaviour
             // Dot product is equal to 1 at 0 degrees (obs *= 1), 0 at 90 degrees (obs *= 0), -1 at 180 degrees (obs *= 0)
             obsValue *= Mathf.Clamp(Vector3.Dot(posToObs, parentForward), 0f, 1f);
 
-            if (showActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
+            if (showActualPositions && verboseActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
+            if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Value accounting for angle: " + obsValue + "\n";
 
             // Scale obstacle value by inverse distance from it to position
 
@@ -794,7 +835,8 @@ public class EnemyBall : MonoBehaviour
             // Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
             invDist = Mathf.Clamp(invDist, 0f, 1f);
             obsValue *= invDist;
-            if (showActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
+            if (showActualPositions && verboseActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
+            if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Value accounting for distance: " + obsValue + "\n";
             // obsValue *= distWeight;
         }
 

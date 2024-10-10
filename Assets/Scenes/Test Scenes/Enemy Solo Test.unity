@@ -1609,6 +1609,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2569577023320450714, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3522199209949337273, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_Name
@@ -1620,6 +1625,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 314af4b48f471c34397fd2d9de84a73c,
         type: 2}
+    - target: {fileID: 6821940882070395023, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2381,6 +2391,21 @@ PrefabInstance:
         type: 3}
       propertyPath: secondsToConsider
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 127856893041034244, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: showActualPositions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 127856893041034244, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: verboseActualPositions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 127856893041034244, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: verbosePossiblePositions
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 351631701956673748, guid: e1f30c730864d25499973d8ebc042110,
         type: 3}

@@ -351,18 +351,13 @@ MonoBehaviour:
   speedWeight: 0.2
   pointWeight: 0.4
   controlWeight: 0
-  distWeight: 0.3
-  angleWeight: 0.7
-  aggroPoints: 0
   turnForce: 6
-  hookForceMultiplier: 0
-  turnSpeedPerSecond: 0.1
   slipperyForce: 10
   minimumSpeed: 0
   extraGravity: -25
   explosionFOV: 45
   explosionVerticality: 0.5
-  turnFuel: 0.01
+  turnFuel: 0.3
   accelFuel: 0
   _fuelMeter: 1
   rotationRef: {fileID: 0}
