@@ -581,21 +581,21 @@ public class EnemyBall : MonoBehaviour
                 if (showPossiblePositions && verbosePossiblePositions)
                 {
                     possibleString += "Expected fuel loss: " + expectedFuelLoss + "\n";
-                    possibleString += "Scaled fuel cost: " + expectedFuelLoss * fuelWeight + "\n";
+                    possibleString += "Scaled fuel cost: " + expectedFuelLoss * -fuelWeight + "\n";
                 }
 
                 if (showActualPositions && verboseActualPositions)
                 {
                     predictedString += "Expected fuel loss: " + expectedFuelLoss + "\n";
-                    predictedString += "Scaled fuel cost: " + expectedFuelLoss * fuelWeight + "\n";
+                    predictedString += "Scaled fuel cost: " + expectedFuelLoss * -fuelWeight + "\n";
                 }
 
-                RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, 2f, _refInvRot * rotationRef.forward,
+                RaycastHit[] obstaclesAhead = Physics.SphereCastAll(predictedPos, _myCollider.radius, _refInvRot * rotationRef.forward,
                     visibleLimit, visibleLayers);
 
                 Vector3 diff = predictedPos - transform.position;
 
-                RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, 2f, diff.normalized,
+                RaycastHit[] obstaclesInBetween = Physics.SphereCastAll(transform.position, _myCollider.radius, diff.normalized,
                     diff.magnitude + 0.5f, visibleLayers);
 
                 HashSet<GameObject> obstacleCache = new();
@@ -815,26 +815,39 @@ public class EnemyBall : MonoBehaviour
             if (showActualPositions && verboseActualPositions) predictedString += "    Value accounting for angle: " + obsValue + "\n";
             if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Value accounting for angle: " + obsValue + "\n";
 
-            // Scale obstacle value by inverse distance from it to position
+            // Scale obstacle value according to its distance from the position
 
             // Calculate inverse distance to obstacle
 
-            float invDist;
+            //float invDist;
 
-            if (obsBounds.Contains(predictedPos))
-            {
-                invDist = 1f;
-            }
-            else
-            {
-                // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
-                // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
-                invDist = InvDistanceBounds(predictedPos, obsBounds, 1f);
-            }
+            //if (obsBounds.Contains(predictedPos))
+            //{
+            //    invDist = 1f;
+            //}
+            //else
+            //{
+            //    // float invDist = InvDistance(predictedPos, obstacle.transform.position, 0.9f);
+            //    // float invDist = InvSquareDistanceBounds(predictedPos, obsBounds, 0.9f);
+            //    invDist = InvDistanceBounds(predictedPos, obsBounds, 1f);
+            //}
 
-            // Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
-            invDist = Mathf.Clamp(invDist, 0f, 1f);
-            obsValue *= invDist;
+            //// Don't want distance below 0.1 to matter, so clamped to 1 (inv dist of 0.1 is 1)
+            //invDist = Mathf.Clamp(invDist, 0f, 1f);
+            //obsValue *= invDist;
+
+            // If distance is <= 35 meters, full value
+            // If distance is 70 meters, 75% value
+            // If distance is 105 meters, 50% value
+            // If distance is 140 meters, 25% value
+            // If distance is 175 meters, 0% value
+            // Value Scalar: 1 - (((dist / 35) - 1) / 4)
+            // Simplified: 1.25 - (dist / 140f)
+
+            float dist = Vector3.Distance(predictedPos, obstacle.transform.position);
+
+            obsValue *= Mathf.Clamp(1.25f - (dist / 140f), 0f, 1f);
+
             if (showActualPositions && verboseActualPositions) predictedString += "    Value accounting for distance: " + obsValue + "\n";
             if (showPossiblePositions && verbosePossiblePositions) possibleString += "    Value accounting for distance: " + obsValue + "\n";
             // obsValue *= distWeight;
