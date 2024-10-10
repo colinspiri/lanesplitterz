@@ -89,6 +89,7 @@ public class EnemyBall : MonoBehaviour
     private bool _flying = true;
     private Vector3 _lastVelocity;
     private bool _initialized = false;
+    private bool _outOfFuel = false;
 
     #endregion
 
@@ -147,6 +148,8 @@ public class EnemyBall : MonoBehaviour
 
             _valueCache = new();
             _myBody = GetComponent<Rigidbody>();
+
+            _outOfFuel = false;
 
             _initialized = true;
         }
@@ -212,6 +215,17 @@ public class EnemyBall : MonoBehaviour
         Vector3 parentForward = (_refInvRot * rotationRef.forward).normalized;
         float forwardLinVelocity = Vector3.Project(_myBody.velocity, parentForward).magnitude;
         if (forwardLinVelocity < minimumSpeed) Accelerate(1f, false);
+
+        // If out of fuel, stop trying to be smart
+        if (_fuelMeter <= Mathf.Epsilon && !_outOfFuel)
+        {
+            _outOfFuel = true;
+
+            Debug.Log("Enemy out of fuel");
+
+            StopAllCoroutines();
+            StartCoroutine(Straighten());
+        }
 
 
         UpdateGround();
@@ -994,27 +1008,31 @@ public class EnemyBall : MonoBehaviour
     private IEnumerator GutterStraighten(float straightenSeconds)
     {
         ResetParentForward(Vector3.forward);
+
+        StartCoroutine(Straighten());
+
+        yield break;
         
-        Vector3 forwardVelocity = (_refInvRot * rotationRef.forward).normalized;
+        //Vector3 forwardVelocity = (_refInvRot * rotationRef.forward).normalized;
 
-        float magnitude = _lastVelocity.magnitude;
+        //float magnitude = _lastVelocity.magnitude;
 
-        forwardVelocity *= magnitude;
+        //forwardVelocity *= magnitude;
 
-        // Avoid dividing by zero!
-        if (straightenSeconds < Mathf.Epsilon)
-        {
-            _myBody.velocity = forwardVelocity;
+        //// Avoid dividing by zero!
+        //if (straightenSeconds < Mathf.Epsilon)
+        //{
+        //    _myBody.velocity = forwardVelocity;
 
-            yield break;
-        }
+        //    yield break;
+        //}
 
-        for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
-        {
-            _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
+        //for (float t = 0f; t <= straightenSeconds; t += Time.fixedDeltaTime)
+        //{
+        //    _myBody.velocity = Vector3.Lerp(_myBody.velocity, forwardVelocity, t / straightenSeconds);
 
-            yield return new WaitForFixedUpdate();
-        }
+        //    yield return new WaitForFixedUpdate();
+        //}
     }
 
     //private void HoldVelocity()
