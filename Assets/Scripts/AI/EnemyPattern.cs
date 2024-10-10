@@ -36,6 +36,16 @@ public class EnemyPattern : ScriptableObject
         _positions.Add(newObj.transform.position);
     }
 
+    public void ClearPositions()
+    {
+        for (int i = 0; i < _objects.Count; i++)
+        {
+            Destroy(_objects[i]);
+        }
+        _objects.Clear();
+        _positions.Clear();
+    }
+
     public Vector3 GetPosition(int i)
     {
         return _positions[i];

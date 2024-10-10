@@ -5,6 +5,7 @@ using UnityEngine;
 using ScriptableObjectArchitecture;
 using UnityEngine.UI;
 using Unity.VisualScripting.FullSerializer.Internal;
+using DG.Tweening;
 
 public class NewThrowUI : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class NewThrowUI : MonoBehaviour
         gameState.isTutorialSecondThrow = false;
         _isSecondThrow = false;
         playerInfo.isReady = false;
+        playerInfo.pressedContinue = false;
         playerInfo.finishedTutorial = false;
     }
 
@@ -100,10 +102,10 @@ public class NewThrowUI : MonoBehaviour
             {
                 roundText.text = "Round " + gameState.currentRound;
             }
-            roundUI.SetActive(true);
+
+            roundUI.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
             yield return new WaitForSeconds(uiConstants.roundUITime);
-            roundUI.SetActive(false);
-            gameState.isPauseMenuEnabled = true;
+            roundUI.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f).onComplete += () => { gameState.isPauseMenuEnabled = true; };
 
             // enables cannon input
             roundUIEnd.Raise();
@@ -145,11 +147,10 @@ public class NewThrowUI : MonoBehaviour
     {
         gameState.isPauseMenuEnabled = false;
         roundText.text = "Round " + gameState.currentRound;
-        roundUI.SetActive(true);
+        roundUI.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
         yield return new WaitForSeconds(uiConstants.roundUITime);
-        roundUI.SetActive(false);
-        gameState.isPauseMenuEnabled = true;
-
+        roundUI.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f).onComplete += () => { gameState.isPauseMenuEnabled = true; };
+        
         // enables cannon input
         roundUIEnd.Raise();
 
@@ -186,7 +187,7 @@ public class NewThrowUI : MonoBehaviour
 
         if (!playerInfo.isPracticing) ScoreboardUI.Instance.DisplayScoreboard();
 
-        if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.isReady == true);
+        if (!playerInfo.isPracticing) yield return new WaitUntil(() => playerInfo.pressedContinue == true);
         else if (!_isFirstThrow && !_isSecondThrow)
         {
             if (gameState.currentThrow == 2) DisplayTutorialButtons();
@@ -218,6 +219,8 @@ public class NewThrowUI : MonoBehaviour
     }
 
     public void SetPlayerReady() => playerInfo.isReady = true;
+
+    public void SetPressedContinue() => playerInfo.pressedContinue = true;
 
     // call when player wants to play tutorial again
     public void NotifyTutorialReset()
@@ -261,15 +264,15 @@ public class NewThrowUI : MonoBehaviour
     public void DisplayTutorialButtons()
     {
         EnableMouse();
-        replayTutorialButton.SetActive(true);
-        playGameButton.SetActive(true);
+        replayTutorialButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
+        playGameButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
     }
 
     public void HideTutorialButtons()
     {
         DisableMouse();
-        replayTutorialButton.SetActive(false);
-        playGameButton.SetActive(false);
+        replayTutorialButton.transform.GetComponent<CanvasGroup>().DOFade(0f, 0f);
+        playGameButton.transform.GetComponent<CanvasGroup>().DOFade(0f, 0f);
         EndSecondThrowTutorialUI.SetActive(false);
     }
 

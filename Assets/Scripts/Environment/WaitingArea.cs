@@ -20,21 +20,23 @@ public class WaitingArea : ActionOnCollide
     private GameObject ballOne = null;
     private GameObject ballTwo = null;
     private int ballCount = 10;
+    private int layer;
 
     private void Awake()
     {
         RoundManager.Instance.CheckElvisAbility();
+        layer = LayerMask.NameToLayer("Balls");
     }
 
     protected override void DoAction(Collision collision)
     {
-        if (ballCount < 2)
+        if (ballCount < 2 && collision.gameObject.layer == layer)
         {
             ballCount++;
             Freeze(collision.gameObject);
         }
 
-        if (ballCount == 2)
+        if (ballCount == 2 && collision.gameObject.layer == layer)
         {
             ballCount++;
             RoundManager.Instance.PlayCrowdBoo();

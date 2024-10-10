@@ -5,6 +5,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreboardUI : MonoBehaviour {
     public static ScoreboardUI Instance;
@@ -128,17 +129,23 @@ public class ScoreboardUI : MonoBehaviour {
 
     public void DisplayScoreboard()
     {
+        scoreboardUI.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f);
+        continueButton.transform.GetComponent<CanvasGroup>().DOFade(1f, 0.1f).onComplete += () => 
+        { 
+            gameState.isScoreboardEnabled = true;
+        };
         menuManager.SetActive(true);
-        scoreboardUI.SetActive(true);
-        continueButton.SetActive(true);
-        gameState.isScoreboardEnabled = true;
     }
     public void HideScoreboard()
     {
-        menuManager.SetActive(false);
-        scoreboardUI.SetActive(false);
-        continueButton.SetActive(false);
-        gameState.isScoreboardEnabled = false;
+        scoreboardUI.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f);
+        continueButton.transform.GetComponent<CanvasGroup>().DOFade(0f, 0.1f).onComplete += () => 
+        {
+            menuManager.SetActive(false);
+            gameState.isScoreboardEnabled = false;
+            playerInfo.isReady = true;
+            playerInfo.pressedContinue = false;
+        };
     }
 
     private string ChangeScoreboardRoundText(List<int> pointsByThrow)

@@ -339,12 +339,14 @@ MonoBehaviour:
   visibleLimit: 200
   visibleLayers:
     serializedVersion: 2
-    m_Bits: 1416
+    m_Bits: 5512
   straightenSeconds: 0
   secondsToConsider: 2.5
   considerTimeSteps: 25
   changePosDiff: 0.1
+  playerAggression: 0
   playerFuelLoss: 0.1
+  player: {fileID: 0}
   fuelWeight: 0.4
   speedWeight: 0.2
   pointWeight: 0.4
