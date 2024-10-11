@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
 using DG.Tweening;
+using Unity.Burst.Intrinsics;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -208,13 +209,14 @@ public class DialogueUI : MonoBehaviour
     [YarnCommand("DisableArt")]
     public void DisableArt(GameObject artOne, GameObject artTwo)
     {
-        DisableOneArt(artOne);
-        DisableOneArt(artTwo);
+        Sequence sequence = DOTween.Sequence();
 
-        //artOne.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.1f).SetUpdate(true);
-        //artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(0f, 0.1f).SetUpdate(true);
-        //artOne.transform.GetChild(0).gameObject.SetActive(false);
-        //artTwo.transform.GetChild(0).gameObject.SetActive(false);
+        sequence.Append(artOne.transform.GetChild(0).GetComponent<Image>().DOFade(0f, fadeTime).SetEase(Ease.InSine).SetUpdate(true))
+            .onComplete += () =>
+            { artOne.transform.GetChild(0).gameObject.SetActive(false); };
+        sequence.Join(artTwo.transform.GetChild(0).GetComponent<Image>().DOFade(0f, fadeTime).SetEase(Ease.InSine).SetUpdate(true))
+            .onComplete += () =>
+            { artTwo.transform.GetChild(0).gameObject.SetActive(false); };
     }
 
     [YarnCommand("DisableOneArt")]
@@ -274,9 +276,6 @@ public class DialogueUI : MonoBehaviour
 
         EnableOneArt(artOne);
         EnableOneArt(artTwo);
-
-        // artTwo should already have color immediately set without tweening
-        //FadeArt(artOne, artTwo);
     }
 
     [YarnCommand("FadeArt")]
@@ -286,7 +285,6 @@ public class DialogueUI : MonoBehaviour
         tempColor.r = 1f;
         tempColor.g = 1f;
         tempColor.b = 1f;
-        //fadeIn.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         fadeIn.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, fadeTime).SetUpdate(true);
 
@@ -294,7 +292,6 @@ public class DialogueUI : MonoBehaviour
         tempColor2.r = 0.25f;
         tempColor2.g = 0.25f;
         tempColor2.b = 0.25f;
-        //fadeOut.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         fadeOut.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, fadeTime).SetUpdate(true);
     }
@@ -306,7 +303,6 @@ public class DialogueUI : MonoBehaviour
         tempColor.r = 0.25f;
         tempColor.g = 0.25f;
         tempColor.b = 0.25f;
-        //artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, fadeTime).SetUpdate(true);
 
@@ -314,7 +310,6 @@ public class DialogueUI : MonoBehaviour
         tempColor2.r = 0.25f;
         tempColor2.g = 0.25f;
         tempColor2.b = 0.25f;
-        //artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, fadeTime).SetUpdate(true);
     }
@@ -326,7 +321,6 @@ public class DialogueUI : MonoBehaviour
         tempColor.r = 1f;
         tempColor.g = 1f;
         tempColor.b = 1f;
-        //artOne.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         artOne.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor, fadeTime).SetUpdate(true);
 
@@ -334,7 +328,6 @@ public class DialogueUI : MonoBehaviour
         tempColor2.r = 1f;
         tempColor2.g = 1f;
         tempColor2.b = 1f;
-        //artTwo.transform.GetChild(0).GetComponent<Image>().color = tempColor;
 
         artTwo.transform.GetChild(0).GetComponent<Image>().DOColor(tempColor2, fadeTime).SetUpdate(true);
     }
