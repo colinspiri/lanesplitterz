@@ -352,10 +352,10 @@ MonoBehaviour:
   pointWeight: 0.4
   controlWeight: 0
   turnForce: 6
-  slipperyForce: 10
+  slipperyMod: 10
   minimumSpeed: 0
   extraGravity: -25
-  explosionFOV: 45
+  explosionFOV: 0
   explosionVerticality: 0.5
   turnFuel: 0.3
   accelFuel: 0
@@ -363,7 +363,9 @@ MonoBehaviour:
   rotationRef: {fileID: 0}
   hitGutter: {fileID: 9121268388709437970}
   showActualPositions: 0
+  verboseActualPositions: 0
   showPossiblePositions: 0
+  verbosePossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 6231270577809866729}
   aiEnabled: 1

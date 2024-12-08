@@ -659,8 +659,15 @@ public class EnemyBall : MonoBehaviour
 
                 //posValue *= timeScalar;
 
-                // If attacking the player, scale position value by inverse x-distance to player ball
-                if (attackPlayer) posValue *= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
+                // Reduces position value by 10% each 5 meters
+                if (attackPlayer)
+                {
+                    float dist = Vector3.Distance(predictedPos, player.transform.position);
+
+                    posValue *= 1f - ((dist * playerAggression) / 50f);
+
+                    // posValue -= Mathf.Clamp(InvXDistance(predictedPos, player.transform.position, playerAggression, 2), 0f, 1f);
+                }
 
                 if (showPossiblePositions && verbosePossiblePositions) possibleString += "Value of position " + _posCount + ": " + posValue;
 
