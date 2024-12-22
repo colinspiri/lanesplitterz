@@ -52,11 +52,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float explosionFOV;
     [SerializeField] private float explosionVerticality;
 
-    //[Header("Spin")] 
-    //[Tooltip("Every frame, hookForce is multiplied by the spin [-100, 100] to turn the ball based on the spin")]
-    //[SerializeField] private float hookForceMultiplier;
-    //[Tooltip("While turning, spin value [-100, 100] is modified each second by this value")] 
-    //[SerializeField] private float turnSpeedPerSecond = 0.1f;
+    [Header("Spin")] 
+    [Tooltip("Every frame, hookForce is multiplied by the spin [-100, 100] to turn the ball based on the spin")]
+    [SerializeField] private float hookForceMultiplier;
+    [Tooltip("While turning, spin value [-100, 100] is modified each second by this value")] 
+    [SerializeField] private float turnSpeedPerSecond = 0.1f;
 
     [Header("Fuel specifications")]
     [Tooltip("Amount of fuel expended per second while accelerating (not decelerating)")]
@@ -349,8 +349,8 @@ public class PlayerMovement : MonoBehaviour
     #region Movement Functions
 
     // Emulate frictional movement to the side
-    //private void Hook()
-    //{ 
+    private void Hook()
+    { 
         // Colin hook code
         // if (!Grounded() || IsIcy()) return;
 
@@ -363,7 +363,7 @@ public class PlayerMovement : MonoBehaviour
         // Vector3 camUp = _camInvRot * _myCam.up; 
         // float force = Vector3.Dot(_myBody.angularVelocity, camUp.normalized); 
         // Turn(force * hookMultiplier, false);
-    // }
+    }
     
     // public void Turn(float turnVal, bool expendFuel = true)
     // {

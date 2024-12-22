@@ -168,8 +168,10 @@ MonoBehaviour:
   brakeDelay: 15
   minimumSpeed: 25
   extraGravity: -25
-  explosionFOV: 0
+  explosionFOV: 45
   explosionVerticality: 0.5
+  hookForceMultiplier: 0
+  turnSpeedPerSecond: 0.1
   accelFuel: 0.2
   turnFuel: 0.3
   enemyFuelLoss: 0.1

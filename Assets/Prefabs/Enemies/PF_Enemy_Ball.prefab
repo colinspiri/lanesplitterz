@@ -287,7 +287,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: c9eb0d22ec5cab54db8254c7ea7bb2cc,
+      objectReference: {fileID: 13400000, guid: 6e50edcee19c89a4dbfddaae23382e60,
         type: 2}
     m_RemovedComponents:
     - {fileID: 3453596374459429697, guid: 27a3a13a5fa452a42b310974564d601d, type: 3}
@@ -339,33 +339,32 @@ MonoBehaviour:
   visibleLimit: 200
   visibleLayers:
     serializedVersion: 2
-    m_Bits: 5512
+    m_Bits: 1416
   straightenSeconds: 0
   secondsToConsider: 2.5
   considerTimeSteps: 25
   changePosDiff: 0.1
-  playerAggression: 0
   playerFuelLoss: 0.1
-  player: {fileID: 0}
   fuelWeight: 0.4
   speedWeight: 0.2
   pointWeight: 0.4
-  controlWeight: 0
-  turnForce: 6
-  slipperyMod: 10
+  distWeight: 0.3
+  angleWeight: 0.7
+  aggroPoints: 0
+  turnForce: 2.5
+  hookForceMultiplier: 0
+  turnSpeedPerSecond: 0.1
+  slipperyForce: 10
   minimumSpeed: 0
   extraGravity: -25
-  explosionFOV: 0
+  explosionFOV: 45
   explosionVerticality: 0.5
-  turnFuel: 0.3
+  turnFuel: 0.01
   accelFuel: 0
-  _fuelMeter: 1
   rotationRef: {fileID: 0}
   hitGutter: {fileID: 9121268388709437970}
   showActualPositions: 0
-  verboseActualPositions: 0
   showPossiblePositions: 0
-  verbosePossiblePositions: 0
   enemyPattern: {fileID: 11400000, guid: efee71e7020497f4595599314da61674, type: 2}
   gizmoObj: {fileID: 6231270577809866729}
   aiEnabled: 1

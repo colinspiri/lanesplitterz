@@ -13,7 +13,7 @@ public class Pin : MonoBehaviour {
     [SerializeField] private float uprightAngleRange = 5;
     [SerializeField] private int pointValue = 1;
     public int PointValue => pointValue;
-    public PinClusterParent parentCluster = null;
+    public PinCluster parentCluster = null;
     
     // private state
     public enum PinState { Untouched, Hit, KnockedDown }
