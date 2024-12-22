@@ -133,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 24586309}
+  - component: {fileID: 24586310}
   m_Layer: 0
   m_Name: mini pin layout (2)
   m_TagString: Untagged
@@ -158,6 +159,18 @@ Transform:
   - {fileID: 2072701895}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24586310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24586308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &55781384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,6 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68672575}
+  - component: {fileID: 68672576}
   m_Layer: 0
   m_Name: mini pin layout (12)
   m_TagString: Untagged
@@ -266,6 +280,18 @@ Transform:
   - {fileID: 525764261}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 23.661, z: 0}
+--- !u!114 &68672576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68672574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &172016509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -423,6 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 243118898}
+  - component: {fileID: 243118899}
   m_Layer: 0
   m_Name: mini pin layout (11)
   m_TagString: Untagged
@@ -448,6 +475,18 @@ Transform:
   - {fileID: 1171538475}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 23.661, z: 0}
+--- !u!114 &243118899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243118897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &303053167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1656,6 +1695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608795297}
+  - component: {fileID: 608795298}
   m_Layer: 0
   m_Name: mini pin layout (5)
   m_TagString: Untagged
@@ -1681,6 +1721,18 @@ Transform:
   - {fileID: 1527823206}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608795298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608795296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &638942370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2653,6 +2705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 906820480}
+  - component: {fileID: 906820481}
   m_Layer: 0
   m_Name: mini pin layout (6)
   m_TagString: Untagged
@@ -2678,6 +2731,18 @@ Transform:
   - {fileID: 475125008}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 23.661, z: 0}
+--- !u!114 &906820481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906820479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &924164199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3091,6 +3156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171643600}
+  - component: {fileID: 1171643601}
   m_Layer: 0
   m_Name: mini pin layout (7)
   m_TagString: Untagged
@@ -3116,6 +3182,18 @@ Transform:
   - {fileID: 1462411644}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: -97.661, z: 0}
+--- !u!114 &1171643601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171643599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1207561369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3436,6 +3514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1352681400}
+  - component: {fileID: 1352681401}
   m_Layer: 0
   m_Name: mini pin layout (4)
   m_TagString: Untagged
@@ -3461,6 +3540,18 @@ Transform:
   - {fileID: 932704730}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1352681401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352681399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1353517588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4503,6 +4594,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623358736}
+  - component: {fileID: 1623358737}
   m_Layer: 0
   m_Name: mini pin layout (10)
   m_TagString: Untagged
@@ -4528,6 +4620,18 @@ Transform:
   - {fileID: 1414141306}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 23.661, z: 0}
+--- !u!114 &1623358737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623358735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1627126981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5379,6 +5483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1923691958}
+  - component: {fileID: 1923691959}
   m_Layer: 0
   m_Name: mini pin layout (9)
   m_TagString: Untagged
@@ -5404,6 +5509,18 @@ Transform:
   - {fileID: 1427198787}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 143.305, z: 0}
+--- !u!114 &1923691959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923691957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1965118673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5567,6 +5684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2044945328}
+  - component: {fileID: 2044945329}
   m_Layer: 0
   m_Name: mini pin layout
   m_TagString: Untagged
@@ -5592,6 +5710,18 @@ Transform:
   - {fileID: 1335855698}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2044945329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044945327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2072701894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5750,6 +5880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2104142985}
+  - component: {fileID: 2104142986}
   m_Layer: 0
   m_Name: mini pin layout (3)
   m_TagString: Untagged
@@ -5775,6 +5906,18 @@ Transform:
   - {fileID: 308251177}
   m_Father: {fileID: 2098043120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2104142986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104142984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1af4c779c7331428c211828bbdad50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
