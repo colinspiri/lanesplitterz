@@ -30,17 +30,24 @@ public class WaitingArea : ActionOnCollide
 
     protected override void DoAction(Collision collision)
     {
-        if (ballCount < 2 && collision.gameObject.layer == layer)
+        if ((!ballOne || !ballTwo) && collision.gameObject.layer == layer)
         {
             ballCount++;
+            if (collision.gameObject.CompareTag("Player")) ballOne = collision.gameObject;
+            if (collision.gameObject.CompareTag("Enemy Ball")) ballTwo = collision.gameObject;
             Freeze(collision.gameObject);
         }
 
-        if (ballCount == 2 && collision.gameObject.layer == layer)
+        if (ballOne && ballTwo && collision.gameObject.layer == layer)
         {
             ballCount++;
             RoundManager.Instance.PlayCrowdBoo();
             StartCoroutine(ResetCoroutine());
+            if (playerInfo.isPracticing == true)
+            {
+                ballOne = null;
+                ballTwo = null;
+            }
         }
     }
 
@@ -79,10 +86,13 @@ public class WaitingArea : ActionOnCollide
     /// </summary>
     public void ResetBalls()
     {
-        ballOne.gameObject.SetActive(false);
-        ballTwo.gameObject.SetActive(false);
+        PlayerMovement.Instance.isFrozen = false;
+        ballOne?.gameObject?.SetActive(false);
+        ballTwo?.gameObject?.SetActive(false);
         ballOne.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         ballTwo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        ballOne = null;
+        ballTwo = null;
     }
 
     public void CallNotifyBallsAtEndOfTrack() => RoundManager.Instance.NotifyBallsAtEndOfTrack();
@@ -103,8 +113,8 @@ public class WaitingArea : ActionOnCollide
     {
         Rigidbody rb = ball.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        if (!ballOne) ballOne = ball;
-        else if (!ballTwo) ballTwo = ball;
+
+        if (ball.CompareTag("Player")) PlayerMovement.Instance.isFrozen = true;
     }
 
     public void ResetBallCount() => ballCount = 0;

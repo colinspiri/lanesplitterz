@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] private SceneLoader sceneLoader;
     private int _groundMask;
+    public bool isFrozen = false;
 
     #region MonoBehaviour Functions
 
@@ -163,6 +164,8 @@ public class PlayerMovement : MonoBehaviour
         
         transform.position = _startingPosition;
         transform.rotation = _startingRotation;
+
+        isFrozen = false;
         
         _myBody.velocity = Vector3.zero;
         _myBody.angularVelocity = Vector3.zero;
@@ -421,6 +424,8 @@ public class PlayerMovement : MonoBehaviour
     // accelVal is the force to accelerate with
     public void Accelerate(float accelVal, bool expendFuel = true)
     {
+        if (isFrozen) return;
+
         Vector3 linearForce;
         Vector3 rotationalForce;
 
@@ -516,6 +521,8 @@ public class PlayerMovement : MonoBehaviour
     // Straighten out velocity gradually
     private IEnumerator Straighten(float straightenSeconds)
     {
+        if (isFrozen) yield break;
+
         Vector3 forwardVelocity = (_camInvRot * _myCam.forward).normalized;
 
         float magnitude = _lastVelocity.magnitude;
