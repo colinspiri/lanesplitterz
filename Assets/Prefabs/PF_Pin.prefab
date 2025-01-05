@@ -136,9 +136,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.6
-  m_Height: 4
+  m_Height: 3.8141303
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 4.325054e-16, z: 0.09293485}
 --- !u!114 &7470741508688094766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   pinType: 0
   uprightAngleRange: 15
   pointValue: 1
+  parentCluster: {fileID: 0}
   pinState: 0
 --- !u!114 &7040545534150770670
 MonoBehaviour:
