@@ -281,6 +281,8 @@ public class NewThrowUI : MonoBehaviour
 
     public void CallDisplayWinLoseUI() => StartCoroutine(DisplayWinLoseUI());
 
+    public void SetScoreCalculatedToFalse() => RoundManager.Instance.scoreCalculated = false;
+
     public void EndTutorial()
     {
         playerInfo.finishedTutorial = true;

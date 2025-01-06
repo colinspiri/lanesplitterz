@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameAudioScriptingEssentials;
 using ScriptableObjectArchitecture;
+using Unity.VisualScripting;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -44,6 +45,7 @@ public class RoundManager : MonoBehaviour {
     [HideInInspector] public int enemyFinalScore;
     [HideInInspector] public int playerPointsByRound;
     [HideInInspector] public int enemyPointsByRound;
+    [HideInInspector] public bool scoreCalculated;
 
     public static Action OnNewThrow;
     public static Action OnNewRound;
@@ -106,7 +108,9 @@ public class RoundManager : MonoBehaviour {
 
     // Final scores in this case is the same as total scores
     public void CalculateFinalScores() {
-        if (playerInfo.isPracticing == true) return;
+        if (playerInfo.isPracticing == true || scoreCalculated == true) return;
+
+        scoreCalculated = true;
         
         playerPointsByThrow.Add(playerCurrentPoints.Value);
         enemyPointsByThrow.Add(enemyCurrentPoints.Value);
