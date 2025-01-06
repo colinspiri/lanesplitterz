@@ -171,7 +171,7 @@ MonoBehaviour:
   explosionFOV: 0
   explosionVerticality: 0.5
   accelFuel: 0.2
-  turnFuel: 0.3
+  turnFuel: 0.35
   enemyFuelLoss: 0.1
   fuelChanged: {fileID: 0}
   maxLinearVelocity: 1e+16
@@ -191,6 +191,7 @@ MonoBehaviour:
   AccelerationDirection: 0
   playerInfo: {fileID: 0}
   sceneLoader: {fileID: 0}
+  isFrozen: 0
 --- !u!96 &9041972455083765477
 TrailRenderer:
   serializedVersion: 3
