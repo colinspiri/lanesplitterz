@@ -111,10 +111,20 @@ public class WaitingArea : ActionOnCollide
     /// <param name="ball">Current ball to freeze</param>
     public void Freeze(GameObject ball)
     {
-        Rigidbody rb = ball.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        // Rigidbody rb = ball.GetComponent<Rigidbody>();
+        // rb.constraints = RigidbodyConstraints.FreezeAll;
 
-        if (ball.CompareTag("Player")) PlayerMovement.Instance.isFrozen = true;
+        // rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+        if (ball.CompareTag("Player"))
+        {
+            PlayerMovement.Instance.isFrozen = true;
+            PlayerMovement.Instance.Stop();
+        }
+        else
+        {
+            ball.GetComponent<EnemyBall>().Stop();
+        }
     }
 
     public void ResetBallCount() => ballCount = 0;

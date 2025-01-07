@@ -1308,6 +1308,45 @@ public class EnemyBall : MonoBehaviour
         }
     }
 
+    // Slow down to a stop quickly
+    public void Stop()
+    {
+        StartCoroutine(StopRoutine());
+    }
+
+    private IEnumerator StopRoutine()
+    {
+        //Vector3 camForward = (_camInvRot * _myCam.forward).normalized;
+        //Vector3 camRight = (_camInvRot * _myCam.right).normalized;
+
+        //Vector3 ogLinVelocity = Vector3.Project(_myBody.velocity, camForward);
+        //Vector3 ogRotVelocity = Vector3.Project(_myBody.angularVelocity, camRight);
+
+        Vector3 ogLinVelocity = _myBody.velocity;
+        Vector3 ogRotVelocity = _myBody.angularVelocity;
+
+        float stopTime = 0.1f;
+
+        Vector3 linVelocity = ogLinVelocity;
+        Vector3 rotVelocity = ogRotVelocity;
+
+        for (float time = 0f; time <= stopTime; time += Time.deltaTime)
+        {
+            _myBody.velocity -= linVelocity;
+            _myBody.angularVelocity -= rotVelocity;
+
+            linVelocity = Vector3.Lerp(ogLinVelocity, Vector3.zero, time / stopTime);
+            rotVelocity = Vector3.Slerp(ogRotVelocity, Vector3.zero, time / stopTime);
+
+            _myBody.velocity += linVelocity;
+            _myBody.angularVelocity += rotVelocity;
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        _myBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+    }
+
     // Add extra gravity to land faster
     private void ExtraGravity()
     {
