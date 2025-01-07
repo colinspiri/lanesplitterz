@@ -25,7 +25,7 @@ PrefabInstance:
         To Target","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-161.818161,130)"},"ID":3,"Name":"Rotate
         Cannon Horizontal","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":-20},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":30},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(21.8181419,130)"},"ID":4,"Name":"Rotate
         Cannon Vertical","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(171,126)"},"ID":5,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2.75},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.LaunchBall","NodeData":{"Offset":"(288.484863,129.81543)"},"ID":6,"Name":"Launch
-        Ball","Instant":true,"LaunchTypeslaunchType":"LaunchInRange","SharedFloatforceMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1200},"SharedFloatforceMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1500},"SharedFloatforce":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":700}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(456.555054,129.81543)"},"ID":7,"Name":"Clear
+        Ball","Instant":true,"LaunchTypeslaunchType":"LaunchInRange","SharedFloatforceMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1100},"SharedFloatforceMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1300},"SharedFloatforce":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":700}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(456.555054,129.81543)"},"ID":7,"Name":"Clear
         Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(651.332764,126.81543)"},"ID":8,"Name":"Activate
         Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
       objectReference: {fileID: 0}
@@ -58,12 +58,12 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: turnForce
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: fuelWeight
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
@@ -73,7 +73,7 @@ PrefabInstance:
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: pointWeight
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}

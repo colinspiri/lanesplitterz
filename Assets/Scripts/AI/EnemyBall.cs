@@ -39,6 +39,8 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float speedWeight;
     [SerializeField] private float pointWeight;
     [SerializeField] private float controlWeight;
+    [Tooltip("A number that multiplies the value of a player collision")]
+    [SerializeField] private float collisionWeightMod = 1f;
     //[SerializeField] private float distWeight;
     //[SerializeField] private float angleWeight;
     // The position being moved to
@@ -938,7 +940,7 @@ public class EnemyBall : MonoBehaviour
             _valueCache[barriers[i].gameObject] = -1f * fuelWeight * barriers[i].fuelSub;
         }
 
-        _valueCache[player.gameObject] = -1f * playerFuelLoss * fuelWeight;
+        _valueCache[player.gameObject] = -1f * playerFuelLoss * fuelWeight * collisionWeightMod;
 
         // Speed givers
         SpeedPlane[] boosters = FindObjectsOfType<SpeedPlane>();
