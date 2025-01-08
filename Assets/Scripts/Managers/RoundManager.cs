@@ -54,6 +54,8 @@ public class RoundManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        OnNewThrow = null;
+        OnNewRound = null;
     }
     private void Start() {
         playerCurrentPoints.Value = 0;

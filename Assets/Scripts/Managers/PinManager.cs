@@ -39,6 +39,7 @@ public class PinManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        OnPinHitByBall = null;
     }
 
     private void Start() {
