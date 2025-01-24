@@ -82,11 +82,6 @@ public class Cannon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
         if (!launched)
         {
             if (acceptingInputs == true && Input.GetKeyDown(KeyCode.Space))
