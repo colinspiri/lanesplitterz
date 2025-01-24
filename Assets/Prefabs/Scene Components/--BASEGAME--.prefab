@@ -1935,6 +1935,7 @@ MonoBehaviour:
   enemyFinalScore: 0
   playerPointsByRound: 0
   enemyPointsByRound: 0
+  scoreCalculated: 0
 --- !u!114 &3217843832853457725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,6 +4222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: length
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
