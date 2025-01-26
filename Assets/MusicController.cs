@@ -40,11 +40,11 @@ public class MusicController : MonoBehaviour
             currentMusic.TransitionSection(0);
             launched = true;
         }
-        if (firstLaunch)
-        {
+        //if (firstLaunch)
+        //{
             countdown.Play();
             firstLaunch = false;
-        }
+        //}
 
     }
 
