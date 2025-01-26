@@ -351,10 +351,13 @@ MonoBehaviour:
   speedWeight: 0.2
   pointWeight: 0.4
   controlWeight: 0
+  collisionWeightMod: 1
   turnForce: 6
   slipperyMod: 10
   minimumSpeed: 0
   extraGravity: -25
+  selfCollisionForce: 5
+  playerCollisionForce: 5
   explosionFOV: 0
   explosionVerticality: 0.5
   turnFuel: 0.3

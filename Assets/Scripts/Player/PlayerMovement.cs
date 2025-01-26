@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClipRandomizer TurnSFX;
     [SerializeField] AdaptiveMusicContainer AccelSFX;
     [SerializeField] AudioSource HitGutter;
+    [SerializeField] AudioSource HitEnemy;
 
     // public properties
     [HideInInspector] public int TurnDirection; // -1 is left, 1 is right, 0 is not turning
@@ -339,7 +340,49 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Enemy Ball"))
         {
-            ReduceFuel(enemyFuelLoss);
+            if (!isFrozen)
+            {
+                ReduceFuel(enemyFuelLoss);
+                HitEnemy.Play();
+                impactVFX.Play();
+                float modifiedForce = collision.gameObject.GetComponent<EnemyBall>().playerCollisionForce;
+
+                // Vector3 avgContactPos = Vector3.zero;
+                //ContactPoint[] contacts = new ContactPoint[collision.contactCount];
+                //collision.GetContacts(contacts);
+                //for (int i = 0; i < contacts.Length; i++)
+                //{
+                //    // avgContactPos += contacts[i].point - transform.position;
+
+                //    Vector3 forceVec = contacts[i].normal;
+
+                //    // Amplify force in the x-direction
+                //    forceVec.x *= modifiedForce;
+
+                //    // Amplify force in the z-direction if it's sending the player forwards, not backwards
+                //    if (forceVec.z > Mathf.Epsilon)
+                //    {
+                //        forceVec.z *= modifiedForce;
+                //    }
+
+                //    Accelerate(forceVec, false);
+                //}
+
+                // Vector3 forceDir = Vector3.Project(avgContactPos, Vector3.right).normalized;
+
+                // Accelerate(forceDir * collision.gameObject.GetComponent<EnemyBall>().playerCollisionForce * -1, false);
+
+                ContactPoint[] contacts = new ContactPoint[collision.contactCount];
+                collision.GetContacts(contacts);
+                for (int i = 0; i < contacts.Length; i++)
+                {
+                    Vector3 impactForce = (contacts[i].impulse * modifiedForce).magnitude * contacts[i].normal;
+                    impactForce.z = 0f;
+                    impactForce.y = 0f;
+
+                    _myBody.AddForceAtPosition(impactForce, contacts[i].point, ForceMode.Impulse);
+                }
+            }
         }
         else if (collision.gameObject.CompareTag("Lane Bounds"))
         {

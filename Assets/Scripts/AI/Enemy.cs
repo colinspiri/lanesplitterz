@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     private Vector3 _ogPosition;
     private Vector3 _ogScale;
     private float _ogGravity;
+    private float _ogSelfForce;
+    private float _ogPlayerForce;
 
     private Quaternion _startCannonRot;
     
@@ -32,6 +34,9 @@ public class Enemy : MonoBehaviour
         _myBall = GetComponentInChildren<EnemyBall>(true);
 
         _ogGravity = _myBall.extraGravity;
+
+        _ogSelfForce = _myBall.selfCollisionForce;
+        _ogPlayerForce = _myBall.playerCollisionForce;
 
 
         _myCannon = GetComponentInChildren<EnemyCannon>(true);
@@ -67,6 +72,8 @@ public class Enemy : MonoBehaviour
         transform.Translate(new Vector3(2.5f, 2.68f, 0f));
         transform.localScale *= 2f;
         _myBall.extraGravity *= 2f;
+        _myBall.selfCollisionForce /= 2f;
+        _myBall.playerCollisionForce *= 2f;
     }
 
     [YarnCommand("Ensmallen")]
@@ -76,6 +83,8 @@ public class Enemy : MonoBehaviour
         transform.position = _ogPosition;
         transform.localScale = _ogScale;
         _myBall.extraGravity = _ogGravity;
+        _myBall.selfCollisionForce = _ogSelfForce;
+        _myBall.playerCollisionForce = _ogPlayerForce;
     }
 
     public void LaunchSequence()
