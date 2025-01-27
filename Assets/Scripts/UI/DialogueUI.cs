@@ -20,6 +20,7 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private RectTransform checkerboard;
     [SerializeField] private GameObject replayTutorialButton;
     [SerializeField] private GameObject playGameButton;
+    [SerializeField] private GameObject[] uiElements;
 
     [Header("Variables")] 
     [SerializeField] private float checkerboardOffscreenDistance;
@@ -163,6 +164,14 @@ public class DialogueUI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameState.isPauseMenuEnabled = true;
         startTabTutorialDialogue.Raise();
+    }
+
+    [YarnCommand("ShakeScreen")]
+    public void ShakeScreen()
+    {
+        CameraShake.Instance.Shake();
+        foreach (var uiElement in uiElements)
+            uiElement.transform.DOShakePosition(0.5f, 10f, 10, 90f, false, true);
     }
 
     #endregion
