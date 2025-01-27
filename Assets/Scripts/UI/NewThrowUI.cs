@@ -257,8 +257,6 @@ public class NewThrowUI : MonoBehaviour
             if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds) ElvisEndWinLoseUI.Raise();
             if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 2) CorpoEndWinLoseUI.Raise();
             if (gameState.currentLevelIndex == RoundManager.Instance.totalRounds * 3) CaesarEndWinLoseUI.Raise();
-
-            gameState.isPauseMenuEnabled = true;
         };
     }
 

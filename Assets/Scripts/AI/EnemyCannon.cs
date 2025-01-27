@@ -17,6 +17,8 @@ public class EnemyCannon : MonoBehaviour
     [SerializeField] private Rigidbody ball;
     [SerializeField] public GameObject launchVFX;
 
+    // [SerializeField] private MusicController musicController;
+
     public bool Rotating { get; private set; } = false;
 
     #region Cannon Movement
@@ -85,7 +87,8 @@ public class EnemyCannon : MonoBehaviour
     }
     public void Launch(float launchForce)
     {
-        
+        // musicController.Launch();
+
         ball.WakeUp();
         ball.gameObject.SetActive(true);
 

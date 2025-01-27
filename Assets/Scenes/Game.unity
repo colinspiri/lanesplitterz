@@ -624,6 +624,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3234996824592338094, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: musicController
+      value: 
+      objectReference: {fileID: 1572249757}
     - target: {fileID: 4214370576227438050, guid: e1f30c730864d25499973d8ebc042110,
         type: 3}
       propertyPath: m_Name
@@ -689,6 +694,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4890993825972116572, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(2638.48486,-12280.1846)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.51513672,116.81543)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.RotateToTarget","NodeData":{"Offset":"(-441.515137,129.81543)"},"ID":2,"Name":"Rotate
+        To Target","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-281.818176,130)"},"ID":3,"Name":"Rotate
+        Cannon Horizontal","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":-20},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":30},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-98.1818542,130)"},"ID":4,"Name":"Rotate
+        Cannon Vertical","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.InvokeMethod","NodeData":{"Offset":"(48.4848633,129.81543)"},"ID":5,"Name":"Invoke
+        Method","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":0},"SharedStringcomponentName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"MusicController"},"SharedStringmethodName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Launch"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(171,126)"},"ID":6,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2.75},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.LaunchBall","NodeData":{"Offset":"(288.484863,129.81543)"},"ID":7,"Name":"Launch
+        Ball","Instant":true,"LaunchTypeslaunchType":"LaunchInRange","SharedFloatforceMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1100},"SharedFloatforceMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1300},"SharedFloatforce":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":700}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(456.555054,129.81543)"},"ID":8,"Name":"Clear
+        Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(651.332764,126.81543)"},"ID":9,"Name":"Activate
+        Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890993825972116572, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890993825972116572, guid: e1f30c730864d25499973d8ebc042110,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5764856081350089805}
     - target: {fileID: 6567970959379541656, guid: e1f30c730864d25499973d8ebc042110,
         type: 3}
       propertyPath: m_Enabled
@@ -980,11 +1007,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3862782704247891456, guid: a1dbdf3360b136a47976bb4892c967d8,
+        type: 3}
+      propertyPath: musicController
+      value: 
+      objectReference: {fileID: 1572249757}
     - target: {fileID: 4780648890607469622, guid: a1dbdf3360b136a47976bb4892c967d8,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6529679492839012082, guid: a1dbdf3360b136a47976bb4892c967d8,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(2638.48486,-12280.1846)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.51513672,116.81543)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.RotateToTarget","NodeData":{"Offset":"(-464.515137,129.81543)"},"ID":2,"Name":"Rotate
+        To Target","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-291.818176,130)"},"ID":3,"Name":"Rotate
+        Cannon Horizontal","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":-20},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":30},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-108.181854,130)"},"ID":4,"Name":"Rotate
+        Cannon Vertical","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.InvokeMethod","NodeData":{"Offset":"(38.4848633,129.81543)"},"ID":5,"Name":"Invoke
+        Method","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":0},"SharedStringcomponentName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"MusicController"},"SharedStringmethodName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Launch"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(167.484863,133.81543)"},"ID":6,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2.75},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.LaunchBall","NodeData":{"Offset":"(288.484863,129.81543)"},"ID":7,"Name":"Launch
+        Ball","Instant":true,"LaunchTypeslaunchType":"LaunchInRange","SharedFloatforceMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":900},"SharedFloatforceMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1200},"SharedFloatforce":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1200}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(456.555054,129.81543)"},"ID":8,"Name":"Clear
+        Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(651.332764,126.815437)"},"ID":9,"Name":"Activate
+        Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529679492839012082, guid: a1dbdf3360b136a47976bb4892c967d8,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529679492839012082, guid: a1dbdf3360b136a47976bb4892c967d8,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5764856081350089805}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5343600368465149412, guid: aa900fc92cb838e43adca8b1e361c046, type: 3}
@@ -1291,6 +1345,28 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4279111965211080933, guid: a8623bb10b72b2a4583c64495f981c6d,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.JSONSerialization
+      value: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(2638.48486,-12280.1846)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-4.51513672,116.81543)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.RotateToTarget","NodeData":{"Offset":"(-451.515137,129.81543)"},"ID":2,"Name":"Rotate
+        To Target","Instant":true},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-291.818176,130)"},"ID":3,"Name":"Rotate
+        Cannon Horizontal","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":-20},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":30},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.RotateCannon","NodeData":{"Offset":"(-108.181854,130)"},"ID":4,"Name":"Rotate
+        Cannon Vertical","Instant":true,"Disabled":true,"SharedBoolrandomize":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatminX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxX":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SharedFloatminY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatmaxY":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatxRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatyRot":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"BehaviorDesigner.Runtime.Tasks.InvokeMethod","NodeData":{"Offset":"(38.4848633,129.81543)"},"ID":5,"Name":"Invoke
+        Method","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":0},"SharedStringcomponentName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"MusicController"},"SharedStringmethodName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"Launch"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(161,126)"},"ID":6,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2.75},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.LaunchBall","NodeData":{"Offset":"(278.484863,129.81543)"},"ID":7,"Name":"Launch
+        Ball","Instant":true,"LaunchTypeslaunchType":"LaunchInRange","SharedFloatforceMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1200},"SharedFloatforceMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1400},"SharedFloatforce":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1200}},{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.SharedVariables.SetSharedBool","NodeData":{"Offset":"(456.555054,129.81543)"},"ID":8,"Name":"Clear
+        Player Cannon for Launch","Instant":true,"SharedBooltargetValue":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBooltargetVariable":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}},{"Type":"BehaviorDesigner.Runtime.Tasks.ActivateBall","NodeData":{"Offset":"(641.332764,126.815437)"},"ID":9,"Name":"Activate
+        Ball AI","Instant":true,"Disabled":true,"SharedTransformdestination":{"Type":"BehaviorDesigner.Runtime.SharedTransform","Name":null}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"launched","IsShared":true,"BooleanmValue":false}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279111965211080933, guid: a8623bb10b72b2a4583c64495f981c6d,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279111965211080933, guid: a8623bb10b72b2a4583c64495f981c6d,
+        type: 3}
+      propertyPath: mBehaviorSource.mTaskData.fieldSerializationData.unityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5764856081350089805}
     - target: {fileID: 4777213990760831899, guid: a8623bb10b72b2a4583c64495f981c6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,6 +1432,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy Parent
       objectReference: {fileID: 0}
+    - target: {fileID: 6081897069572925463, guid: a8623bb10b72b2a4583c64495f981c6d,
+        type: 3}
+      propertyPath: musicController
+      value: 
+      objectReference: {fileID: 1572249757}
     - target: {fileID: 7803090525773232829, guid: a8623bb10b72b2a4583c64495f981c6d,
         type: 3}
       propertyPath: m_IsActive
@@ -1422,6 +1503,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1572249757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6764594138453727965, guid: 261810348d112d944a6dfb05cfadb073,
+    type: 3}
+  m_PrefabInstance: {fileID: 5764856081350089804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5764856081350089805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4beae9a05eb587e4cb2e9c699919cea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1636470093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1863,6 +1956,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 766451381298869561, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 766451381298869561, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 766451381298869561, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 766451381298869561, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1174777937993864492, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1926,6 +2039,11 @@ PrefabInstance:
     - target: {fileID: 1772074798260220629, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772074798260220629, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1772074798260220629, guid: a3d5e174593649d489b7211f8f0b6415,
@@ -2086,6 +2204,26 @@ PrefabInstance:
     - target: {fileID: 4912926335631285498, guid: a3d5e174593649d489b7211f8f0b6415,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440638068383982961, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440638068383982961, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440638068383982961, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440638068383982961, guid: a3d5e174593649d489b7211f8f0b6415,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5469376537356460187, guid: a3d5e174593649d489b7211f8f0b6415,
@@ -2432,6 +2570,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261810348d112d944a6dfb05cfadb073, type: 3}
+--- !u!1 &5764856081350089805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7775518843304540808, guid: 261810348d112d944a6dfb05cfadb073,
+    type: 3}
+  m_PrefabInstance: {fileID: 5764856081350089804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

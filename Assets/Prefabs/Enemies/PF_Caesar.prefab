@@ -117,8 +117,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
+      propertyPath: selfCollisionForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
       propertyPath: showActualPositions
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: playerCollisionForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}

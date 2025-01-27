@@ -34,7 +34,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private GameEvent ConfirmedInitialSpinTutorial;
 
     [Header("Audio")]
-    [SerializeField] MusicController musicController;
+    // [SerializeField] MusicController musicController;
     [SerializeField] private AudioSource launchSound;
     [SerializeField] private AdaptiveMusicContainer turnSound;
 
@@ -82,11 +82,6 @@ public class Cannon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
         if (!launched)
         {
             if (acceptingInputs == true && Input.GetKeyDown(KeyCode.Space))
@@ -153,7 +148,7 @@ public class Cannon : MonoBehaviour
     {
         launched = true;
 
-        musicController.Launch();
+        // musicController.Launch();
 
         // Begin enemy launch sequence
         if (_enemy) _enemy.LaunchSequence();

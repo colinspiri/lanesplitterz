@@ -61,6 +61,10 @@ public class EnemyBall : MonoBehaviour
     [SerializeField] private float slipperyMod = 10f;
     [SerializeField] private float minimumSpeed;
     public float extraGravity;
+    // How much force to apply to self on collision with player
+    public float selfCollisionForce = 25f;
+    // How much force to apply to player on collision
+    public float playerCollisionForce = 25f;
 
     [Header("Explosion specifications")]
     //[Tooltip("The amount of bounce for explosions to give the ball")]
@@ -285,6 +289,47 @@ public class EnemyBall : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             ReduceFuel(playerFuelLoss);
+
+            //Vector3 avgContactPos = Vector3.zero;
+            //ContactPoint[] contacts = new ContactPoint[collider.contactCount];
+            //collider.GetContacts(contacts);
+            //for (int i = 0; i < contacts.Length; i++)
+            //{
+            //    // avgContactPos += contacts[i].point - transform.position;
+
+            //    Vector3 forceVec = contacts[i].normal;
+
+            //    // Amplify force in the x-direction
+            //    forceVec.x *= selfCollisionForce;
+
+            //    // Amplify force in the z-direction if it's sending the player forwards, not backwards
+            //    if (forceVec.z > Mathf.Epsilon)
+            //    {
+            //        forceVec.z *= selfCollisionForce;
+            //    }
+
+            //    Accelerate(forceVec, false);
+            //}
+
+            //for (int i = 0; i < contacts.Length; i++)
+            //{
+            //    avgContactPos += contacts[i].point - transform.position;
+            //}
+
+            //Vector3 forceDir = Vector3.Project(avgContactPos, Vector3.right).normalized;
+
+            // Accelerate(forceDir * selfCollisionForce * -1, false);
+
+            ContactPoint[] contacts = new ContactPoint[collider.contactCount];
+            collider.GetContacts(contacts);
+            for (int i = 0; i < contacts.Length; i++)
+            {
+                Vector3 impactForce =(contacts[i].impulse * selfCollisionForce).magnitude * contacts[i].normal;
+                impactForce.z = 0f;
+                impactForce.y = 0f;
+
+                _myBody.AddForceAtPosition(impactForce, contacts[i].point, ForceMode.Impulse);
+            }
         }
         else if (collider.gameObject.CompareTag("Lane Bounds"))
         {
