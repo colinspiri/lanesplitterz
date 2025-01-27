@@ -4218,6 +4218,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3078832702482216958, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078832702482216958, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20501b693dcdd1340b25dc5dc12f7037, type: 2}
+    - target: {fileID: 3078832702482216958, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3522199209949337273, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}
       propertyPath: m_Name
@@ -4227,6 +4242,36 @@ PrefabInstance:
         type: 3}
       propertyPath: length
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: endColor.b
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: endColor.g
+      value: 0.61883867
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: endColor.r
+      value: 0.12967247
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: startColor.b
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: startColor.g
+      value: 0.39565057
+      objectReference: {fileID: 0}
+    - target: {fileID: 3548600119646187193, guid: 398457fceb7213d42a1d981ab43f4b28,
+        type: 3}
+      propertyPath: startColor.r
+      value: 0.14324492
       objectReference: {fileID: 0}
     - target: {fileID: 5303637832235956996, guid: 398457fceb7213d42a1d981ab43f4b28,
         type: 3}

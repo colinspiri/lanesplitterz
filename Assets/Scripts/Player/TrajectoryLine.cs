@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Types;
 using UnityEngine;
 
 public class TrajectoryLine : MonoBehaviour
@@ -11,6 +12,8 @@ public class TrajectoryLine : MonoBehaviour
     [SerializeField] float length;
     [SerializeField] GameObject testStart;
     [SerializeField] GameObject testEnd;
+    public Color startColor;
+    public Color endColor;
 
     private void Awake()
     {
@@ -18,6 +21,8 @@ public class TrajectoryLine : MonoBehaviour
         cannon = transform.parent.gameObject;
         start = testStart.transform;
         end = testEnd.transform;
+        lr.startColor = startColor;
+        lr.endColor = endColor;
     }
 
     // Start is called before the first frame update
