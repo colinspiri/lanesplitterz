@@ -683,7 +683,7 @@ VisualEffect:
   m_GameObject: {fileID: 1263612341819180752}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 8e96aa75aee617341b5719c405986495, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
@@ -4267,6 +4267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Coin Debris
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262510315344741493, guid: 218f3330934bee947926b751f2f886b0,
+        type: 3}
+      propertyPath: m_InitialEventName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4262510315344741493, guid: 218f3330934bee947926b751f2f886b0,
         type: 3}

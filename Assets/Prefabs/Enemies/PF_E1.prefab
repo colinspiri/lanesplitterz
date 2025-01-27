@@ -95,6 +95,16 @@ PrefabInstance:
       propertyPath: straightenSeconds
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: selfCollisionForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725507922972268744, guid: aa900fc92cb838e43adca8b1e361c046,
+        type: 3}
+      propertyPath: playerCollisionForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6800576033366555298, guid: aa900fc92cb838e43adca8b1e361c046,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
