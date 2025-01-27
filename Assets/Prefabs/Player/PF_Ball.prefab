@@ -169,7 +169,6 @@ MonoBehaviour:
   brakeDelay: 15
   minimumSpeed: 25
   extraGravity: -25
-  ballCollisionModifier: 2
   explosionFOV: 0
   explosionVerticality: 0.5
   accelFuel: 0.2
@@ -487,7 +486,8 @@ AudioSource:
   m_GameObject: {fileID: 394013142470015375}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5973679299008610706, guid: 690fdda113763624ca6f76467a88c97e,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 05059558f9bff8f4588aac4cdb74f079, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
