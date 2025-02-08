@@ -287,6 +287,11 @@ public class PlayerMovement : MonoBehaviour
         // Debug.Log("Velocity is " + _myBody.velocity.magnitude);
     }
 
+    private void OnApplicationQuit()
+    {
+        speedlineVFX.SetFloat("_Speed", 0f);
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         // Negate force of collision against pin
